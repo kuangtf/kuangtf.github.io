@@ -1,0 +1,2495 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="45 个常用Linux 命令，让你轻松玩转Linux！, 帅枫">
+    <meta name="description" content="朝着成功前进">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>45 个常用Linux 命令，让你轻松玩转Linux！ | 帅枫</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/back.png);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">帅枫</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">帅枫</div>
+        <div class="logo-desc">
+            
+            朝着成功前进
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/kuangtf" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/kuangtf" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">45 个常用Linux 命令，让你轻松玩转Linux！</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                                <span class="chip bg-color">Linux 常用命令</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-12-02
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-03-21
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    42 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。</p>
+<p>接下来，让我们一起来看看都有那些常用的 Linux 命令吧！</p>
+<h2 id="一、文件目录操作"><a href="#一、文件目录操作" class="headerlink" title="一、文件目录操作"></a>一、文件目录操作</h2><h3 id="1-ls-命令"><a href="#1-ls-命令" class="headerlink" title="1. ls 命令"></a>1. ls 命令</h3><p>ls 命令不仅可以查看 linux 文件夹包含的文件而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等。</p>
+<p>命令格式</p>
+<p>ls [选项] [目录名]</p>
+<p>常用参数</p>
+<ul>
+<li>-l ：列出长数据串，包含文件的属性与权限数据等</li>
+<li>-a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用）</li>
+<li>-d ：仅列出目录本身，而不是列出目录的文件数据</li>
+<li>-h ：将文件容量以较易读的方式（GB，kB等）列出来</li>
+<li>-R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来</li>
+</ul>
+<p>使用实例</p>
+<p>1.列出 home 目录下的所有文件和目录的详细资料。</p>
+<pre class="line-numbers language-none"><code class="language-none">ls -a -l /home
+ls -al /home
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2.列出当前目录下所有以”d”开头的文件目录详情内容。</p>
+<pre class="line-numbers language-none"><code class="language-none">ls -l d*
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="2-cd命令"><a href="#2-cd命令" class="headerlink" title="2.cd命令"></a>2.cd命令</h3><p>最基本的命令语句，其他的命令语句要进行操作，都是建立在使用 cd 命令上的。用于切换当前目录至dirName。</p>
+<p>命令格式</p>
+<p>cd [目录名]</p>
+<p>操作案例</p>
+<p>1.从当前目录进入系统根目录。</p>
+<pre class="line-numbers language-none"><code class="language-none">cd /
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.跳转到 home/Code 目录。</p>
+<pre class="line-numbers language-none"><code class="language-none">cd /home/Code
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="3-pwd-命令"><a href="#3-pwd-命令" class="headerlink" title="3.pwd 命令"></a>3.pwd 命令</h3><p>查看”当前工作目录”的完整路径。</p>
+<p>命令格式：</p>
+<p>pwd [选项]</p>
+<p>常用参数：</p>
+<ul>
+<li>-P :显示实际物理路径，而非使用连接（link）路径</li>
+<li>-L :当目录为连接路径时，显示连接路径</li>
+</ul>
+<p>操作案例</p>
+<p>1.显示当前所在路径。</p>
+<pre class="line-numbers language-none"><code class="language-none">pwd
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="4-mkdir-命令"><a href="#4-mkdir-命令" class="headerlink" title="4.mkdir 命令"></a>4.mkdir 命令</h3><p>用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。</p>
+<p>命令格式</p>
+<p>mkdir [选项] 目录</p>
+<p>常用参数</p>
+<ul>
+<li>-m, –mode=模式，设定权限&lt;模式&gt; (类似 chmod)，而不是 rwxrwxrwx 减 umask</li>
+<li>-p, –parents 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录;</li>
+<li>-v, –verbose 每次创建新目录都显示信息</li>
+<li>–help 显示此帮助信息并退出</li>
+<li>–version 输出版本信息并退出</li>
+</ul>
+<p>使用实例</p>
+<p>1.创建一个空目录。</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir test
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.递归创建多个目录。</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir test/test1
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>3.创建权限为777的目录。</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir -m 777 test2
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>4.创建目录都显示信息。</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir -v test4
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="5-rm-命令"><a href="#5-rm-命令" class="headerlink" title="5.rm 命令"></a>5.rm 命令</h3><p>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
+<p>命令格式</p>
+<p>rm [选项] 文件</p>
+<p>常用参数</p>
+<ul>
+<li>-f, –force 忽略不存在的文件，从不给出提示。</li>
+<li>-i, –interactive 进行交互式删除</li>
+<li>-r, -R, –recursive 指示rm将参数中列出的全部目录和子目录均递归地删除。</li>
+<li>-v, –verbose 详细显示进行的步骤</li>
+<li>–help 显示此帮助信息并退出</li>
+<li>–version 输出版本信息并退出</li>
+</ul>
+<p>使用实例</p>
+<p>1.删除文件 test.txt,系统会提示是否删除。</p>
+<pre class="line-numbers language-none"><code class="language-none">rm test.txt
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.强制删除 test.txt，系统不再提示。</p>
+<pre class="line-numbers language-none"><code class="language-none">rm -f test.txt
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>3.将 test 子目录及目录中所有档案删除。</p>
+<pre class="line-numbers language-none"><code class="language-none">rm -r test
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="6-rmdir-命令"><a href="#6-rmdir-命令" class="headerlink" title="6.rmdir 命令"></a>6.rmdir 命令</h3><p>该命令从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对父目录的写权限。</p>
+<p>命令格式</p>
+<p>rmdir [选项] 目录</p>
+<p>常用参数</p>
+<ul>
+<li>p 递归删除目录dirname，当子目录删除后其父目录为空时，也一同被删除。如果整个路径被删除或者由于某种原因保留部分路径，则系统在标准输出上显示相应的信息。</li>
+<li>-v, –verbose 显示指令执行过程</li>
+</ul>
+<p>使用实例</p>
+<p>1.删除空目录 test1，非空目录无法删除。</p>
+<pre class="line-numbers language-none"><code class="language-none">rmdir test1
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.当子目录被删除后使它也成为空目录的话，则顺便一并删除</p>
+<pre class="line-numbers language-none"><code class="language-none">rmdir -p test2 # test 目录下仅有 test2
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="7-mv-命令"><a href="#7-mv-命令" class="headerlink" title="7. mv 命令"></a>7. mv 命令</h3><p>可以用来移动文件或者将文件改名（move (rename) files）。当第二个参数类型是文件时，mv命令完成文件重命名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。</p>
+<p>命令格式</p>
+<p>mv [选项] 源文件或目录 目标文件或目录</p>
+<p>常用参数</p>
+<ul>
+<li>-b ：若需覆盖文件，则覆盖前先行备份</li>
+<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖</li>
+<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖</li>
+<li>-u ：若目标文件已经存在，且 source 比较新，才会更新(update)</li>
+<li>-t ： –target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后</li>
+</ul>
+<p>使用实例</p>
+<p>1.将 test1.txt 重命名为 test2.txt。</p>
+<pre class="line-numbers language-none"><code class="language-none">mv test1.txt test2.txt
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.移动文件 test1.txt 到目录 test2</p>
+<pre class="line-numbers language-none"><code class="language-none">mv test1.txt test2
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>3.将文件 test1.txt、test2.txt、test3.txt 移动到目录 test3。</p>
+<pre class="line-numbers language-none"><code class="language-none">mv test1.txt test2.txt test3.txt test3
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="8-cp-命令"><a href="#8-cp-命令" class="headerlink" title="8.cp 命令"></a>8.cp 命令</h3><p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
+<p>命令格式</p>
+<p>cp [选项] 源文件 目录 或 cp [选项] -t 目录 源文件</p>
+<p>常用参数</p>
+<ul>
+<li>-t –target-directory 指定目标目录</li>
+<li>-i –interactive 覆盖前询问（使前面的 -n 选项失效）</li>
+<li>-n –no-clobber 不要覆盖已存在的文件（使前面的 -i 选项失效）</li>
+<li>-f –force 强行复制文件或目录，不论目的文件或目录是否已经存在</li>
+<li>-u –update 使用这项参数之后，只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件</li>
+</ul>
+<p>使用实例</p>
+<p>1.复制文件 test1.txt 到 test1 目录</p>
+<pre class="line-numbers language-none"><code class="language-none">cp test1.txt test1 # 若文件存在，会提示是否覆盖。若不存在直接完成复制
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>复制 test1 整个目录到 test2</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">cp -a test1 test2
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="9-touch-命令"><a href="#9-touch-命令" class="headerlink" title="9. touch 命令"></a>9. touch 命令</h3><p>touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。</p>
+<p>命令格式</p>
+<p>touch [选项] 文件</p>
+<p>常用参数</p>
+<ul>
+<li>-a 或–time=atime或–time=access或–time=use  只更改存取时间</li>
+<li>-c 或–no-create  不建立任何文档</li>
+<li>-d  使用指定的日期时间，而非现在的时间</li>
+<li>-f  此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题</li>
+<li>-m 或–time=mtime或–time=modify  只更改变动时间</li>
+<li>-r  把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同 -t  使用指定的日期时间，而非现在的时间</li>
+</ul>
+<p>使用实例</p>
+<p>1.创建不存在的文件test.txt</p>
+<pre class="line-numbers language-none"><code class="language-none">touch test.txt
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.更新 test.txt 的实践和 test1.txt 时间戳相同</p>
+<pre class="line-numbers language-none"><code class="language-none">touch -r test.txt test1.txt
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="10-cat-命令"><a href="#10-cat-命令" class="headerlink" title="10.cat 命令"></a>10.cat 命令</h3><p>用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
+<p>命令格式</p>
+<p>cat [选项] [文件]</p>
+<p>常用参数</p>
+<ul>
+<li>-A, –show-all 等价于 -vET</li>
+<li>-b, –number-nonblank 对非空输出行编号</li>
+<li>-e 等价于 -vE</li>
+<li>-E, –show-ends 在每行结束处显示 $</li>
+<li>-n, –number 对输出的所有行编号,由1开始对所有输出的行数编号</li>
+<li>-s, –squeeze-blank 有连续两行以上的空白行，就代换为一行的空白行</li>
+<li>-t 与 -vT 等价</li>
+<li>-T, –show-tabs 将跳格字符显示为 ^I</li>
+<li>-u (被忽略)</li>
+<li>-v, –show-nonprinting 使用 ^ 和 M- 引用，除了 LFD 和 TAB 之外</li>
+</ul>
+<p>使用实例</p>
+<p>1.把 test.log 的文件内容加上行号后输入 test1.log 这个文件里。</p>
+<pre class="line-numbers language-none"><code class="language-none">cat -n test.log  test1.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>将 test.log 的文件内容反向显示。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">tac  test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="11-nl-命令"><a href="#11-nl-命令" class="headerlink" title="11. nl 命令"></a>11. nl 命令</h3><p>输出的文件内容自动的加上行号！其默认的结果与 cat -n 有点不太一样， nl 可以将行号做比较多的显示设计，包括位数与是否自动补齐 0 等等的功能。</p>
+<p>命令格式</p>
+<p>nl [选项] [文件]</p>
+<p>常用参数</p>
+<ul>
+<li>-b ：指定行号指定的方式，主要有两种：</li>
+<li>-b a ：表示不论是否为空行，也同样列出行号(类似 cat -n)</li>
+<li>-b t ：如果有空行，空的那一行不要列出行号(默认值)</li>
+<li>-n ：列出行号表示的方法，主要有三种：</li>
+<li>-n ln ：行号在萤幕的最左方显示</li>
+<li>-n rn ：行号在自己栏位的最右方显示，且不加 0</li>
+<li>-n rz ：行号在自己栏位的最右方显示，且加 0</li>
+<li>-w ：行号栏位的占用的位数</li>
+</ul>
+<p>使用实例</p>
+<ol>
+<li>用 nl 列出 test.log 的内容。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">nl test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>用 nl 列出 test.log 的内容，空本行也加上行号。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">nl -b a test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="12-more-命令"><a href="#12-more-命令" class="headerlink" title="12.more 命令"></a>12.more 命令</h3><p>more 命令和 cat 的功能一样都是查看文件里的内容，但有所不同的是more可以按页来查看文件的内容，还支持直接跳转行等功能。</p>
+<p>命令格式</p>
+<p>more [-dlfpcsu ] [-num ] [+/ pattern] [+ linenum] [file … ]</p>
+<p>常用参数</p>
+<ul>
+<li>+n 从笫n行开始显示</li>
+<li>-n 定义屏幕大小为n行</li>
+<li>+/pattern 在每个档案显示前搜寻该字串（pattern），然后从该字串前两行之后开始显示</li>
+<li>-c 从顶部清屏，然后显示</li>
+<li>-d 提示“Press space to continue，’q’ to quit（按空格键继续，按q键退出）”，禁用响铃功能</li>
+<li>-l 忽略Ctrl+l（换页）字符</li>
+<li>-p 通过清除窗口而不是滚屏来对文件进行换页，与-c选项相似</li>
+<li>-s 把连续的多个空行显示为一行</li>
+<li>-u 把文件内容中的下画线去掉</li>
+</ul>
+<p>操作指令</p>
+<ul>
+<li>Enter：向下n行，需要定义。默认为1行</li>
+<li>Ctrl+F：向下滚动一屏</li>
+<li>空格键：向下滚动一屏</li>
+<li>Ctrl+B：返回上一屏</li>
+<li>= ：输出当前行的行号</li>
+<li>：f ：输出文件名和当前行的行号</li>
+<li>V ：调用vi编辑器</li>
+<li>!命令 ：调用Shell，并执行命令</li>
+<li>q ：退出more</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示文件 test.log 第3行起内容。</p>
+<pre class="line-numbers language-none"><code class="language-none">more +3 test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.从文件 test.log 查找第一个出现“day3”字符串的行，并从该处前2行开始显示输出。</p>
+<pre class="line-numbers language-none"><code class="language-none">more +/day3 test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>设置每屏显示行数</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">more -5 test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="13-less-命令"><a href="#13-less-命令" class="headerlink" title="13. less 命令"></a>13. less 命令</h3><p>less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。</p>
+<p>命令格式</p>
+<p>less [参数] 文件</p>
+<p>常用参数</p>
+<ul>
+<li>-b &lt;缓冲区大小&gt; 设置缓冲区的大小</li>
+<li>-e 当文件显示结束后，自动离开</li>
+<li>-f 强迫打开特殊文件，例如外围设备代号、目录和二进制文件</li>
+<li>-g 只标志最后搜索的关键词</li>
+<li>-i 忽略搜索时的大小写</li>
+<li>-m 显示类似more命令的百分比</li>
+<li>-N 显示每行的行号</li>
+<li>-o &lt;文件名&gt; 将less 输出的内容在指定文件中保存起来</li>
+<li>-Q 不使用警告音</li>
+<li>-s 显示连续空行为一行</li>
+<li>-S 行过长时间将超出部分舍弃</li>
+<li>-x &lt;数字&gt; 将“tab”键显示为规定的数字空格</li>
+</ul>
+<p>操作命令</p>
+<ul>
+<li>/字符串：向下搜索“字符串”的功能</li>
+<li>?字符串：向上搜索“字符串”的功能</li>
+<li>n：重复前一个搜索（与 / 或 ? 有关）</li>
+<li>N：反向重复前一个搜索（与 / 或 ? 有关）</li>
+<li>b 向后翻一页</li>
+<li>d 向后翻半页</li>
+<li>h 显示帮助界面</li>
+<li>Q 退出less 命令</li>
+<li>u 向前滚动半页</li>
+<li>y 向前滚动一行</li>
+<li>空格键 滚动一行</li>
+<li>回车键 滚动一页</li>
+<li>[pagedown]： 向下翻动一页</li>
+<li>[pageup]： 向上翻动一页</li>
+</ul>
+<p>使用实例</p>
+<p>1.查看文件 test.log。</p>
+<pre class="line-numbers language-none"><code class="language-none">less test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="14-head-命令"><a href="#14-head-命令" class="headerlink" title="14. head 命令"></a>14. head 命令</h3><p>head 用来显示档案的开头至标准输出中，默认 head 命令打印其相应文件的开头 10 行。</p>
+<p>命令格式</p>
+<p>head [参数] [文件]</p>
+<p>常用参数</p>
+<ul>
+<li>-q 隐藏文件名</li>
+<li>-v 显示文件名</li>
+<li>-c&lt;字节&gt; 显示字节数</li>
+<li>-n&lt;行数&gt; 显示的行数</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示文件 test.log 的前 5 行</p>
+<pre class="line-numbers language-none"><code class="language-none">head -n 5 test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.显示文件 test.log 前 20 个字节</p>
+<pre class="line-numbers language-none"><code class="language-none">head -c 20 test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="15-tail-命令"><a href="#15-tail-命令" class="headerlink" title="15.tail 命令"></a>15.tail 命令</h3><p>显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</p>
+<p>命令格式</p>
+<p>tail [必要参数] [选择参数] [文件]</p>
+<p>常用参数</p>
+<ul>
+<li>-f 循环读取</li>
+<li>-q 不显示处理信息</li>
+<li>-v 显示详细的处理信息</li>
+<li>-c&lt;数目&gt; 显示的字节数</li>
+<li>-n&lt;行数&gt; 显示行数</li>
+<li>–pid=PID 与-f合用,表示在进程ID,PID死掉之后结束.</li>
+<li>-q, –quiet, –silent 从不输出给出文件名的首部</li>
+<li>-s, –sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示文件 test.log 最后 5 行内容。</p>
+<pre class="line-numbers language-none"><code class="language-none">tail -n 5 test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.循环查看文件内容</p>
+<pre class="line-numbers language-none"><code class="language-none">tail -f test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="二、文件查找"><a href="#二、文件查找" class="headerlink" title="二、文件查找"></a>二、文件查找</h2><h3 id="16-which-命令"><a href="#16-which-命令" class="headerlink" title="16.which 命令"></a>16.which 命令</h3><p>which指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。</p>
+<p>命令格式</p>
+<p>which 可执行文件名称</p>
+<p>常用参数</p>
+<ul>
+<li>-n  指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名</li>
+<li>-p  与-n参数相同，但此处的包括了文件的路径</li>
+<li>-w  指定输出时栏位的宽度</li>
+<li>-V  显示版本信息</li>
+</ul>
+<p>使用实例</p>
+<p>1.查找文件、显示命令路径。</p>
+<pre class="line-numbers language-none"><code class="language-none">which pwd
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>用 which 去找出 which</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">which which
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="17-whereis-命令"><a href="#17-whereis-命令" class="headerlink" title="17.whereis 命令"></a>17.whereis 命令</h3><p>whereis命令是定位可执行文件、源代码文件、帮助文件在文件系统中的位置。</p>
+<p>命令格式</p>
+<p>whereis [-bmsu] [BMS 目录名 -f ] 文件名</p>
+<p>常用参数</p>
+<ul>
+<li>-b 定位可执行文件</li>
+<li>-m 定位帮助文件</li>
+<li>-s 定位源代码文件</li>
+<li>-u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件</li>
+<li>-B 指定搜索可执行文件的路径</li>
+<li>-M 指定搜索帮助文件的路径</li>
+<li>-S 指定搜索源代码文件的路径</li>
+</ul>
+<p>使用实例</p>
+<p>1.将和 svn 文件相关的文件都查找出来。</p>
+<pre class="line-numbers language-none"><code class="language-none">whereis svn
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.只将二进制文件查找出来。</p>
+<pre class="line-numbers language-none"><code class="language-none">whereis -b svn
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="18-locate-命令"><a href="#18-locate-命令" class="headerlink" title="18.locate 命令"></a>18.locate 命令</h3><p>可以很快速的搜寻档案系统内是否有指定的档案。</p>
+<p>命令格式</p>
+<p>Locate [选择参数] [样式]</p>
+<p>常用参数</p>
+<ul>
+<li>-e 将排除在寻找的范围之外。</li>
+<li>-1 如果 是 1．则启动安全模式。在安全模式下，使用者不会看到权限无法看到 的档案。这会始速度减慢，因为 locate 必须至实际的档案系统中取得档案的 权限资料。</li>
+<li>-f 将特定的档案系统排除在外，例如我们没有到理要把 proc 档案系统中的档案 放在资料库中。</li>
+<li>-q 安静模式，不会显示任何错误讯息。</li>
+<li>-n 至多显示 n个输出。</li>
+<li>-r 使用正规运算式 做寻找的条件。</li>
+<li>-o 指定资料库存的名称。</li>
+<li>-d 指定资料库的路径</li>
+</ul>
+<p>使用实例</p>
+<p>1.查找和 pwd 相关的所有文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">locate pwd
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>搜索etc 目录下，所有以 m 开头的文件。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">locate /etc/m
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="19-find-命令"><a href="#19-find-命令" class="headerlink" title="19. find 命令"></a>19. find 命令</h3><p>主要作用是沿着文件层次结构向下遍历，匹配符合条件的文件，并执行相应的操作。</p>
+<p>命令格式</p>
+<p>find [选项] [搜索路径] [表达式]</p>
+<p>常用参数</p>
+<ul>
+<li>-print find 命令将匹配的文件输出到标准输出</li>
+<li>-exec find 命令对匹配的文件执行该参数所给出的</li>
+<li>shell 命令</li>
+<li>-name 按照文件名查找文件</li>
+<li>-type 查找某一类型的文件</li>
+</ul>
+<p>使用实例</p>
+<p>1.打印当前目录文件目录列表。</p>
+<pre class="line-numbers language-none"><code class="language-none">find . -print
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.打印当前目录下所有不以.txt 结尾的文件名。</p>
+<pre class="line-numbers language-none"><code class="language-none">find . ! -name "*.txt"
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>3.打印当前目录下所有权限为 777 的 php 文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">find . -type f -name "*.php" -perm 777
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>4.找到当前目录下所有 php 文件，并显示其详细信息。</p>
+<pre class="line-numbers language-none"><code class="language-none">find . -name "*.php" -exec ls -l {} \;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>5.查找当前目录下所有 c 代码文件，统计总行数。</p>
+<pre class="line-numbers language-none"><code class="language-none">find . -type f -name "*.c" | xargs wc -l
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>xargs 命令可以从标准输入接收输入，并把输入转换为一个特定的参数列表。 命令格式: command | xargs [选项] [command] xargs 命令应该紧跟在管道操作符之后，因为它以标准输入作为主要的源数据流。 常用参数</p>
+<ul>
+<li>-n 指定每行最大的参数数量</li>
+<li>-d 指定分隔符</li>
+</ul>
+</blockquote>
+<h2 id="三、文件打包上传和下载"><a href="#三、文件打包上传和下载" class="headerlink" title="三、文件打包上传和下载"></a>三、文件打包上传和下载</h2><h3 id="20-tar-命令"><a href="#20-tar-命令" class="headerlink" title="20.tar 命令"></a>20.tar 命令</h3><p>用来压缩和解压文件。tar本身不具有压缩功能。他是调用压缩功能实现的。</p>
+<p>命令格式</p>
+<p>tar [必要参数] [选择参数] [文件]</p>
+<p>常用参数</p>
+<p>必要参数：</p>
+<ul>
+<li>-A 新增压缩文件到已存在的压缩</li>
+<li>-B 设置区块大小</li>
+<li>-c 建立新的压缩文件</li>
+<li>-d 记录文件的差别</li>
+<li>-r 添加文件到已经压缩的文件</li>
+<li>-u 添加改变了和现有的文件到已经存在的压缩文件</li>
+<li>-x 从压缩的文件中提取文件</li>
+<li>-t 显示压缩文件的内容</li>
+<li>-z 支持gzip解压文件</li>
+<li>-j 支持bzip2解压文件</li>
+<li>-Z 支持compress解压文件</li>
+<li>-v 显示操作过程</li>
+<li>-l 文件系统边界设置</li>
+<li>-k 保留原有文件不覆盖</li>
+<li>-m 保留文件不被覆盖</li>
+<li>-W 确认压缩文件的正确性</li>
+</ul>
+<p>可选参数：</p>
+<ul>
+<li>-b 设置区块数目</li>
+<li>-C 切换到指定目录</li>
+<li>-f 指定压缩文件</li>
+<li>–help 显示帮助信息</li>
+<li>–version 显示版本信息</li>
+</ul>
+<p>使用实例</p>
+<p>1.将文件打全部打包成tar包。</p>
+<pre class="line-numbers language-none"><code class="language-none">tar -cvf test.tar test.log    # 仅打包，不压缩！ 
+
+tar -zcvf test.tar.gz test.log  # 打包后，以 gzip 压缩 
+
+tar -zcvf test.tar.bz2 test.log # 打包后，以 bzip2 压缩
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2.将 tar 包解压缩</p>
+<pre class="line-numbers language-none"><code class="language-none">tar -zxvf test.tar.gz
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="21-gzip-命令"><a href="#21-gzip-命令" class="headerlink" title="21.gzip 命令"></a>21.gzip 命令</h3><p>使用广泛的压缩程序，文件经它压缩过后，其名称后面会多出”.gz”的扩展名。</p>
+<p>命令格式</p>
+<p>gzip [参数] [文件或者目录]</p>
+<p>常用参数</p>
+<ul>
+<li>-a或–ascii  使用ASCII文字模式。</li>
+<li>-c或–stdout或–to-stdout  把压缩后的文件输出到标准输出设备，不去更动原始文件。</li>
+<li>-d或–decompress或—-uncompress  解开压缩文件。</li>
+<li>-f或–force  强行压缩文件。不理会文件名称或硬连接是否存在以及该文件是否为符号连接。</li>
+<li>-h或–help  在线帮助。</li>
+</ul>
+<p>使用实例</p>
+<p>1.把 test1 目录下的每个文件压缩成.gz 文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">test6 $ gzip *
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="四、文件权限设置"><a href="#四、文件权限设置" class="headerlink" title="四、文件权限设置"></a>四、文件权限设置</h2><h3 id="22-chmod-命令"><a href="#22-chmod-命令" class="headerlink" title="22.chmod 命令"></a>22.chmod 命令</h3><p>用于改变linux系统文件或目录的访问权限。</p>
+<p>命令格式</p>
+<p>chmod [-cfvR] [–help] [–version] mode file</p>
+<p>常用参数</p>
+<p>必要参数：</p>
+<ul>
+<li>-c 当发生改变时，报告处理信息</li>
+<li>-f 错误信息不输出</li>
+<li>-R 处理指定目录以及其子目录下的所有文件</li>
+<li>-v 运行时显示详细处理信息</li>
+<li>选择参数：</li>
+<li>–reference=&lt;目录或者文件&gt; 设置成具有指定目录或者文件具有相同的权限</li>
+<li>–version 显示版本信息</li>
+<li>&lt;权限范围&gt;+&lt;权限设置&gt; 使权限范围内的目录或者文件具有指定的权限</li>
+<li>&lt;权限范围&gt;-&lt;权限设置&gt; 删除权限范围的目录或者文件的指定权限</li>
+<li>&lt;权限范围&gt;=&lt;权限设置&gt; 设置权限范围内的目录或者文件的权限为指定的值</li>
+</ul>
+<p>权限范围：</p>
+<ul>
+<li>u ：目录或者文件的当前的用户</li>
+<li>g ：目录或者文件的当前的群组</li>
+<li>o ：除了目录或者文件的当前用户或群组之外的用户或者群组</li>
+<li>a ：所有的用户及群组</li>
+</ul>
+<p>权限代号：</p>
+<ul>
+<li>r：读权限，用数字4表示</li>
+<li>w：写权限，用数字2表示</li>
+<li>x：执行权限，用数字1表示</li>
+<li>-：删除权限，用数字0表示</li>
+</ul>
+<p>使用实例</p>
+<p>1.增加文件所有用户组可执行权限</p>
+<pre class="line-numbers language-none"><code class="language-none">chmod a+x test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>删除所有用户的可执行权限</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">chmod a-x test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="23-chgrp-命令"><a href="#23-chgrp-命令" class="headerlink" title="23.chgrp 命令"></a>23.chgrp 命令</h3><p>可采用群组名称或群组识别码的方式改变文件或目录的所属群组。</p>
+<p>命令格式</p>
+<p>chgrp [选项] [组] [文件]</p>
+<p>常用参数</p>
+<p>必要参数:</p>
+<ul>
+<li>-c 当发生改变时输出调试信息</li>
+<li>-f 不显示错误信息</li>
+<li>-R 处理指定目录以及其子目录下的所有文件</li>
+<li>-v 运行时显示详细的处理信息</li>
+<li>–dereference 作用于符号链接的指向，而不是符号链接本身</li>
+<li>–no-dereference 作用于符号链接本身</li>
+</ul>
+<p>选择参数:</p>
+<ul>
+<li>–reference=&lt;文件或者目录&gt;</li>
+<li>–help 显示帮助信息</li>
+<li>–version 显示版本信息</li>
+</ul>
+<p>使用实例</p>
+<p>1.改变文件的群组属性</p>
+<pre class="line-numbers language-none"><code class="language-none">chgrp -v bin test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.改变文件test1.log 的群组属性，使得文件test1.log的群组属性和参考文件test.log的群组属性相同</p>
+<pre class="line-numbers language-none"><code class="language-none">chgrp --reference=test.log test1.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="24-chown-命令"><a href="#24-chown-命令" class="headerlink" title="24.chown 命令"></a>24.chown 命令</h3><p>通过chown改变文件的拥有者和群组。</p>
+<p>命令格式</p>
+<p>chown [选项] [所有者] [:[组]] 文件</p>
+<p>常用参数</p>
+<p>必要参数:</p>
+<ul>
+<li>-c 显示更改的部分的信息</li>
+<li>-f 忽略错误信息</li>
+<li>-h 修复符号链接</li>
+<li>-R 处理指定目录以及其子目录下的所有文件</li>
+<li>-v 显示详细的处理信息</li>
+<li>-deference 作用于符号链接的指向，而不是链接文件本身</li>
+</ul>
+<p>选择参数:</p>
+<ul>
+<li>–reference=&lt;目录或文件&gt; 把指定的目录/文件作为参考，把操作的文件/目录设置成参考文件/目录相同拥有者和群组</li>
+<li>–from=&lt;当前用户：当前群组&gt; 只有当前用户和群组跟指定的用户和群组相同时才进行改变</li>
+<li>–help 显示帮助信息</li>
+<li>–version 显示版本信息</li>
+</ul>
+<p>使用实例</p>
+<p>1.改变拥有者和群组</p>
+<pre class="line-numbers language-none"><code class="language-none">chown mail:mail test.log
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="五、磁盘存储"><a href="#五、磁盘存储" class="headerlink" title="五、磁盘存储"></a>五、磁盘存储</h2><h3 id="25-df-命令"><a href="#25-df-命令" class="headerlink" title="25. df 命令"></a>25. df 命令</h3><p>显示指定磁盘文件的可用空间。</p>
+<p>命令格式</p>
+<p>df [选项] [文件]</p>
+<p>常用参数</p>
+<p>必要参数：</p>
+<ul>
+<li>-a 全部文件系统列表</li>
+<li>-h 方便阅读方式显示</li>
+<li>-H 等于“-h”，但是计算式，1K=1000，而不是1K=1024</li>
+<li>-i 显示inode信息</li>
+<li>-k 区块为1024字节</li>
+<li>-l 只显示本地文件系统</li>
+<li>-m 区块为1048576字节</li>
+<li>–no-sync 忽略 sync 命令</li>
+<li>-P 输出格式为POSIX</li>
+<li>–sync 在取得磁盘信息前，先执行sync命令</li>
+<li>-T 文件系统类型</li>
+</ul>
+<p>选择参数：</p>
+<ul>
+<li>–block-size=&lt;区块大小&gt; 指定区块大小</li>
+<li>-t&lt;文件系统类型&gt; 只显示选定文件系统的磁盘信息</li>
+<li>-x&lt;文件系统类型&gt; 不显示选定文件系统的磁盘信息</li>
+<li>–help 显示帮助信息</li>
+<li>–version 显示版本信息</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示指定磁盘使用情况</p>
+<pre class="line-numbers language-none"><code class="language-none">df -t ext3
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="26-du-命令"><a href="#26-du-命令" class="headerlink" title="26. du 命令"></a>26. du 命令</h3><p>显示每个文件和目录的磁盘使用空间。</p>
+<p>命令格式</p>
+<p>du [选项] [文件]</p>
+<p>常用参数</p>
+<ul>
+<li>-a或-all 显示目录中个别文件的大小。</li>
+<li>-b或-bytes 显示目录或文件大小时，以byte为单位。 – -c或–total 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。</li>
+<li>-k或–kilobytes 以KB(1024bytes)为单位输出。</li>
+<li>-m或–megabytes 以MB为单位输出。</li>
+<li>-s或–summarize 仅显示总计，只列出最后加总的值。</li>
+<li>-h或–human-readable 以K，M，G为单位，提高信息的可读性。</li>
+<li>-x或–one-file-xystem 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过。</li>
+<li>-L&lt;符号链接&gt;或–dereference&lt;符号链接&gt; 显示选项中所指定符号链接的源文件大小。</li>
+<li>-S或–separate-dirs 显示个别目录的大小时，并不含其子目录的大小。</li>
+<li>-X&lt;文件&gt;或–exclude-from=&lt;文件&gt; 在&lt;文件&gt;指定目录或文件。</li>
+<li>–exclude=&lt;目录或文件&gt; 略过指定的目录或文件。</li>
+<li>-D或–dereference-args 显示指定符号链接的源文件大小。</li>
+<li>-H或–si 与-h参数相同，但是K，M，G是以1000为换算单位。</li>
+<li>-l或–count-links 重复计算硬件链接的文件。</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示指定目录或文件所占空间</p>
+<pre class="line-numbers language-none"><code class="language-none">du test # 目录
+du test.log # 文件
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="六、性能监控和优化命令"><a href="#六、性能监控和优化命令" class="headerlink" title="六、性能监控和优化命令"></a>六、性能监控和优化命令</h2><h3 id="27-top-命令"><a href="#27-top-命令" class="headerlink" title="27.top 命令"></a>27.top 命令</h3><p>显示当前系统正在执行的进程的相关信息，包括进程ID、内存占用率、CPU占用率等。</p>
+<p>命令格式</p>
+<p>top [参数]</p>
+<p>常见参数</p>
+<ul>
+<li>-b 批处理</li>
+<li>-c 显示完整的治命令</li>
+<li>-I 忽略失效过程</li>
+<li>-s 保密模式</li>
+<li>-S 累积模式</li>
+<li>-i&lt;时间&gt; 设置间隔时间</li>
+<li>-u&lt;用户名&gt; 指定用户名</li>
+<li>-p&lt;进程号&gt; 指定进程</li>
+<li>-n&lt;次数&gt; 循环显示的次数</li>
+</ul>
+<p>使用实例</p>
+<ol>
+<li>显示进程信息。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">top
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="28-free-命令"><a href="#28-free-命令" class="headerlink" title="28.free 命令"></a>28.free 命令</h3><p>显示系统使用和空闲的内存情况，包括物理内存、交互区内存(swap)和内核缓冲区内存。</p>
+<p>命令格式</p>
+<p>free [参数]</p>
+<p>常见参数</p>
+<ul>
+<li>-b  以Byte为单位显示内存使用情况</li>
+<li>-k  以KB为单位显示内存使用情况</li>
+<li>-m  以MB为单位显示内存使用情况</li>
+<li>-g 以GB为单位显示内存使用情况</li>
+<li>-o  不显示缓冲区调节列</li>
+<li>-s&lt;间隔秒数&gt;  持续观察内存使用状况</li>
+<li>-t  显示内存总和列。</li>
+<li>-V  显示版本信息。</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示内存情况。</p>
+<pre class="line-numbers language-none"><code class="language-none">free
+free -g #以GB为单位
+free -m #以MB为单位
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="29-vmstat"><a href="#29-vmstat" class="headerlink" title="29. vmstat"></a>29. vmstat</h3><p>用来显示虚拟内存的信息。</p>
+<p>命令格式</p>
+<ul>
+<li>vmstat [-a] [-n] [-S unit] [delay [ count]]</li>
+<li>vmstat [-s] [-n] [-S unit]</li>
+<li>vmstat [-m] [-n] [delay [ count]]</li>
+<li>vmstat [-d] [-n] [delay [ count]]</li>
+<li>vmstat [-p disk partition] [-n] [delay [ count]]</li>
+<li>vmstat [-f]</li>
+<li>vmstat [-V]</li>
+</ul>
+<p>常见参数</p>
+<ul>
+<li>-a：显示活跃和非活跃内存</li>
+<li>-f：显示从系统启动至今的fork数量</li>
+<li>-m：显示slabinfo</li>
+<li>-n：只在开始时显示一次各字段名称</li>
+<li>-s：显示内存相关统计信息及多种系统活动数量</li>
+<li>delay：刷新时间间隔。如果不指定，只显示一条结果</li>
+<li>count：刷新次数。如果不指定刷新次数，但指定了刷新时间间隔，这时刷新次数为无穷</li>
+<li>-d：显示磁盘相关统计信息</li>
+<li>-p：显示指定磁盘分区统计信息</li>
+<li>-S：使用指定单位显示。参数有 k 、K 、m 、M ，分别代表1000、1024、1000000、1048576字节（byte）。默认单位为K（1024 bytes）</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示活跃和非活跃内存。</p>
+<pre class="line-numbers language-none"><code class="language-none">vmstat -a 5 5 # 5秒时间内进行5次采样
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="30-lostat-命令"><a href="#30-lostat-命令" class="headerlink" title="30.lostat 命令"></a>30.lostat 命令</h3><p>通过iostat方便查看CPU、网卡、tty设备、磁盘、CD-ROM 等等设备的活动情况, 负载信息。</p>
+<p>命令格式</p>
+<p>iostat [参数] [时间] [次数]</p>
+<p>常见参数</p>
+<ul>
+<li>-C 显示CPU使用情况</li>
+<li>-d 显示磁盘使用情况</li>
+<li>-k 以 KB 为单位显示</li>
+<li>-m 以 M 为单位显示</li>
+<li>-N 显示磁盘阵列(LVM) 信息</li>
+<li>-n 显示NFS 使用情况</li>
+<li>-p[磁盘] 显示磁盘和分区的情况</li>
+<li>-t 显示终端和CPU的信息</li>
+<li>-x 显示详细信息</li>
+</ul>
+<p>使用实例</p>
+<p>1.定时显示所有信息。</p>
+<pre class="line-numbers language-none"><code class="language-none">iostat 2 3 #每隔 2秒刷新显示，且显示3次
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="31-lsof-命令"><a href="#31-lsof-命令" class="headerlink" title="31. lsof 命令"></a>31. lsof 命令</h3><p>用于查看你进程开打的文件，打开文件的进程，进程打开的端口(TCP、UDP)。</p>
+<p>命令格式</p>
+<p>lsof [参数] [文件]</p>
+<p>常见参数</p>
+<ul>
+<li>-a 列出打开文件存在的进程</li>
+<li>-c&lt;进程名&gt; 列出指定进程所打开的文件</li>
+<li>-g 列出GID号进程详情</li>
+<li>-d&lt;文件号&gt; 列出占用该文件号的进程</li>
+<li>+d&lt;目录&gt; 列出目录下被打开的文件</li>
+<li>+D&lt;目录&gt; 递归列出目录下被打开的文件</li>
+<li>-n&lt;目录&gt; 列出使用NFS的文件</li>
+<li>-i&lt;条件&gt; 列出符合条件的进程。（4、6、协议、:端口、 @ip ）</li>
+<li>-p&lt;进程号&gt; 列出指定进程号所打开的文件</li>
+<li>-u 列出UID号进程详情</li>
+</ul>
+<p>使用实例</p>
+<p>1.查看谁正在使用bash文件，也就是说查找某个文件相关的进程。</p>
+<pre class="line-numbers language-none"><code class="language-none">lsof /bin/bash
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="七、网络命令"><a href="#七、网络命令" class="headerlink" title="七、网络命令"></a>七、网络命令</h2><h3 id="32-ifconfig-命令"><a href="#32-ifconfig-命令" class="headerlink" title="32.ifconfig 命令"></a>32.ifconfig 命令</h3><p>ifconfig 命令用来查看和配置网络设备。</p>
+<p>命令格式</p>
+<p>ifconfig [网络设备] [参数]</p>
+<p>常见参数</p>
+<ul>
+<li>up 启动指定网络设备/网卡</li>
+<li>down 关闭指定网络设备/网卡。</li>
+<li>arp 设置指定网卡是否支持ARP协议</li>
+<li>-promisc 设置是否支持网卡的promiscuous模式，如果选择此参数，网卡将接收网络中发给它所有的数据包</li>
+<li>-allmulti 设置是否支持多播模式，如果选择此参数，网卡将接收网络中所有的多播数据包</li>
+<li>-a 显示全部接口信息</li>
+<li>-s 显示摘要信息（类似于 netstat -i）</li>
+<li>add 给指定网卡配置IPv6地址</li>
+<li>del 删除指定网卡的IPv6地址</li>
+</ul>
+<p>使用实例</p>
+<p>1.启动关闭指定网卡</p>
+<pre class="line-numbers language-none"><code class="language-none">ifconfig eth0 up
+ifconfig eth0 down
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2.用ifconfig修改MAC地址</p>
+<pre class="line-numbers language-none"><code class="language-none">ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="33-route-命令"><a href="#33-route-命令" class="headerlink" title="33. route 命令"></a>33. route 命令</h3><p>Route命令是用于操作基于内核ip路由表，它的主要作用是创建一个静态路由让指定一个主机或者一个网络通过一个网络接口，如eth0。</p>
+<p>命令格式</p>
+<p>route [-f] [-p] [Command [Destination] [mask Netmask] [Gateway] [metric Metric]] [if Interface]]</p>
+<p>常见参数</p>
+<ul>
+<li>-c 显示更多信息</li>
+<li>-n 不解析名字</li>
+<li>-v 显示详细的处理信息</li>
+<li>-F 显示发送信息</li>
+<li>-C 显示路由缓存</li>
+<li>-f 清除所有网关入口的路由表。</li>
+<li>-p 与 add 命令一起使用时使路由具有永久性。</li>
+<li>add:添加一条新路由。</li>
+<li>del:删除一条路由。</li>
+<li>-net:目标地址是一个网络。</li>
+<li>-host:目标地址是一个主机。</li>
+<li>netmask:当添加一个网络路由时，需要使用网络掩码。</li>
+<li>gw:路由数据包通过网关。注意，你指定的网关必须能够达到。</li>
+<li>metric：设置路由跳数。</li>
+<li>Command 指定您想运行的命令 (Add/Change/Delete/Print)。</li>
+<li>Destination 指定该路由的网络目标。</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示当前路由</p>
+<pre class="line-numbers language-none"><code class="language-none">route 
+route -n
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2.添加网关/设置网关</p>
+<pre class="line-numbers language-none"><code class="language-none">route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="34-ping-命令"><a href="#34-ping-命令" class="headerlink" title="34. ping 命令"></a>34. ping 命令</h3><p>确定网络和各外部主机的状态；跟踪和隔离硬件和软件问题；测试、评估和管理网络。</p>
+<p>命令格式</p>
+<p>ping [参数] [主机名或IP地址]</p>
+<p>常见参数</p>
+<ul>
+<li>-d 使用Socket的SO_DEBUG功能</li>
+<li>-f 极限检测。大量且快速地送网络封包给一台机器，看它的回应</li>
+<li>-n 只输出数值</li>
+<li>-q 不显示任何传送封包的信息，只显示最后的结果</li>
+<li>-r 忽略普通的Routing Table，直接将数据包送到远端主机上。通常是查看本机的网络接口是否有问题</li>
+<li>-R 记录路由过程</li>
+<li>-v 详细显示指令的执行过程</li>
+<li>-c 数目：在发送指定数目的包后停止</li>
+<li>-i 秒数：设定间隔几秒送一个网络封包给一台机器，预设值是一秒送一次 -I 网络界面：使用指定的网络界面送出数据包 -l 前置载入：设置在送出要求信息之前，先行发出的数据包 -p 范本样式：设置填满数据包的范本样式 -s 字节数：指定发送的数据字节数，预设值是56，加上8字节的ICMP头，一共是64ICMP数据字节 -t 存活数值：设置存活数值TTL的大小</li>
+</ul>
+<p>使用实例</p>
+<ol>
+<li>ping 网关</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">ping -b 192.168.120.1
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="35-traceroute-命令"><a href="#35-traceroute-命令" class="headerlink" title="35.traceroute 命令"></a>35.traceroute 命令</h3><p>让你追踪网络数据包的路由途径，预设数据包大小是40Bytes，用户可另行设置。</p>
+<p>命令格式</p>
+<p>traceroute [参数] [主机]</p>
+<p>常见参数</p>
+<ul>
+<li>-d 使用Socket层级的排错功能</li>
+<li>-f 设置第一个检测数据包的存活数值TTL的大小</li>
+<li>-F 设置勿离断位</li>
+<li>-g 设置来源路由网关，最多可设置8个</li>
+<li>-i 使用指定的网络界面送出数据包</li>
+<li>-I 使用ICMP回应取代UDP资料信息</li>
+<li>-m 设置检测数据包的最大存活数值TTL的大小</li>
+<li>-n 直接使用IP地址而非主机名称</li>
+<li>-p 设置UDP传输协议的通信端口</li>
+<li>-r 忽略普通的Routing Table，直接将数据包送到远端主机上</li>
+<li>-s 设置本地主机送出数据包的IP地址</li>
+<li>-t 设置检测数据包的TOS数值</li>
+<li>-v 详细显示指令的执行过程</li>
+<li>-w 设置等待远端主机回报的时间</li>
+<li>-x 开启或关闭数据包的正确性检验</li>
+</ul>
+<p>使用实例</p>
+<p>1.traceroute 用法简单、最常用的用法</p>
+<pre class="line-numbers language-none"><code class="language-none">traceroute www.baidu.com
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>跳数设置</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">traceroute -m 10 www.baidu.com
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="36-netstat-命令"><a href="#36-netstat-命令" class="headerlink" title="36.netstat 命令"></a>36.netstat 命令</h3><p>用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。</p>
+<p>命令格式</p>
+<p>netstat [-acCeFghilMnNoprstuvVwx] [-A&lt;网络类型&gt;] [–ip]</p>
+<p>常见参数</p>
+<ul>
+<li>-a或–all 显示所有连线中的Socket</li>
+<li>-A&lt;网络类型&gt;或–&lt;网络类型&gt; 列出该网络类型连线中的相关地址</li>
+<li>-c或–continuous 持续列出网络状态</li>
+<li>-C或–cache 显示路由器配置的快取信息</li>
+<li>-e或–extend 显示网络其他相关信息</li>
+<li>-F或–fib 显示FIB</li>
+<li>-g或–groups 显示多重广播功能群组组员名单</li>
+<li>-h或–help 在线帮助</li>
+<li>-i或–interfaces 显示网络界面信息表单</li>
+<li>-l或–listening 显示监控中的服务器的Socket</li>
+<li>-M或–masquerade 显示伪装的网络连线</li>
+<li>-n或–numeric 直接使用IP地址，而不通过域名服务器</li>
+<li>-N或–netlink或–symbolic 显示网络硬件外围设备的符号连接名称</li>
+<li>-o或–timers 显示计时器</li>
+<li>-p或–programs 显示正在使用Socket的程序识别码和程序名称</li>
+<li>-r或–route 显示Routing Table</li>
+<li>-s或–statistice 显示网络工作信息统计表</li>
+<li>-t或–tcp 显示TCP传输协议的连线状况</li>
+<li>-u或–udp 显示UDP传输协议的连线状况</li>
+<li>-v或–verbose 显示指令执行过程</li>
+<li>-V或–version 显示版本信息</li>
+<li>-w或–raw 显示RAW传输协议的连线状况</li>
+<li>-x或–unix 此参数的效果和指定”-A unix”参数相同</li>
+<li>–ip或–inet 此参数的效果和指定”-A inet”参数相同</li>
+</ul>
+<p>使用实例</p>
+<ol>
+<li>列出所有端口</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">netstat -a
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="37-telnet-命令"><a href="#37-telnet-命令" class="headerlink" title="37.telnet 命令"></a>37.telnet 命令</h3><p>执行telnet指令开启终端机阶段作业，并登入远端主机。</p>
+<p>命令格式</p>
+<p>telnet [参数] [主机]</p>
+<p>常见参数</p>
+<ul>
+<li>-8 允许使用8位字符资料，包括输入与输出</li>
+<li>-a 尝试自动登入远端系统</li>
+<li>-b&lt;主机别名&gt; 使用别名指定远端主机名称</li>
+<li>-c 不读取用户专属目录里的.telnetrc文件</li>
+<li>-d 启动排错模式</li>
+<li>-e&lt;脱离字符&gt; 设置脱离字符</li>
+<li>-E 滤除脱离字符</li>
+<li>-f 此参数的效果和指定”-F”参数相同</li>
+</ul>
+<p>使用实例</p>
+<p>1.远程服务器无法访问</p>
+<pre class="line-numbers language-none"><code class="language-none">telnet 192.168.120.206
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="八、其他命令"><a href="#八、其他命令" class="headerlink" title="八、其他命令"></a>八、其他命令</h2><h3 id="38-ln-命令"><a href="#38-ln-命令" class="headerlink" title="38.ln 命令"></a>38.ln 命令</h3><p>为某一个文件在另外一个位置建立一个同步的链接.当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
+<p>命令格式</p>
+<p>ln [参数] [源文件或目录] [目标文件或目录]</p>
+<p>常用参数</p>
+<p>必要参数:</p>
+<ul>
+<li>-b 删除，覆盖以前建立的链接</li>
+<li>-d 允许超级用户制作目录的硬链接</li>
+<li>-f 强制执行</li>
+<li>-i 交互模式，文件存在则提示用户是否覆盖</li>
+<li>-n 把符号链接视为一般目录</li>
+<li>-s 软链接(符号链接)</li>
+<li>-v 显示详细的处理过程</li>
+</ul>
+<p>选择参数:</p>
+<ul>
+<li>-S “-S&lt;字尾备份字符串&gt; ”或 “–suffix=&lt;字尾备份字符串&gt;”</li>
+<li>-V “-V&lt;备份方式&gt;”或“–version-control=&lt;备份方式&gt;”</li>
+</ul>
+<p>使用实例</p>
+<p>1.为 test.log文件创建软链接linktest。</p>
+<pre class="line-numbers language-none"><code class="language-none">ln -s test.log linktest
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.为 test.log创建硬链接lntest。</p>
+<pre class="line-numbers language-none"><code class="language-none">ln test.log lntest
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="39-diff-命令"><a href="#39-diff-命令" class="headerlink" title="39.diff 命令"></a>39.diff 命令</h3><p>比较单个文件或者目录内容。</p>
+<p>命令格式</p>
+<p>diff [参数] [文件1或目录1] [文件2或目录2]</p>
+<p>常用参数</p>
+<ul>
+<li>-c 上下文模式，显示全部内文，并标出不同之处</li>
+<li>-u 统一模式，以合并的方式来显示文件内容的不同</li>
+<li>-a 只会逐行比较文本文件</li>
+<li>-N 在比较目录时，若文件 A 仅出现在某个目录中，预设会显示：Only in 目录。若使用 -N 参数，则 diff 会将文件 A 与一个空白的文件比较</li>
+<li>-r 递归比较目录下的文件</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示 test1.txt 和 test2.txt 两个文件差异。</p>
+<pre class="line-numbers language-none"><code class="language-none">diff test1.txt test2.txt
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="40-grep-命令"><a href="#40-grep-命令" class="headerlink" title="40.grep 命令"></a>40.grep 命令</h3><p>一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。</p>
+<p>命令格式</p>
+<p>grep [option] pattern file</p>
+<p>常用参数</p>
+<ul>
+<li>-c 计算找到‘搜寻字符串’（即 pattern）的次数</li>
+<li>-i 忽略大小写的不同，所以大小写视为相同</li>
+<li>-n 输出行号</li>
+<li>-v 反向选择，打印不匹配的行</li>
+<li>-r 递归搜索</li>
+<li>–color=auto 将找到的关键词部分加上颜色显示</li>
+</ul>
+<p>使用实例</p>
+<p>1.将 /etc/passwd 文件中出现 root 的行取出来，关键词部分加上颜色显示。</p>
+<pre class="line-numbers language-none"><code class="language-none">grep "root" /etc/passwd --color=auto
+cat /etc/passwd | grep "root" --color=auto
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2.将 /etc/passwd 文件中没有出现 root 和 nologin 的行取出来。</p>
+<pre class="line-numbers language-none"><code class="language-none">grep -v "root" /etc/passwd | grep -v "nologin"
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="41-wc-命令"><a href="#41-wc-命令" class="headerlink" title="41.wc 命令"></a>41.wc 命令</h3><p>用来显示文件所包含的行、字和字节数。</p>
+<p>命令格式</p>
+<p>wc [选项] [文件]</p>
+<p>常用参数</p>
+<ul>
+<li>-c 统计字节数</li>
+<li>-l 统计行数</li>
+<li>-m 统计字符数，这个标志不能与 -c 标志一起使用</li>
+<li>-w 统计字数，一个字被定义为由空白、跳格或换行字符分隔的字符串</li>
+<li>-L 打印最长行的长度</li>
+</ul>
+<p>使用实例</p>
+<p>1.统计文件的字节数、行数和字符数。</p>
+<pre class="line-numbers language-none"><code class="language-none">wc -c test.txt
+wc -l test.txt
+wc -m test.txt
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2.统计文件的字节数、行数和字符数，只打印数字，不打印文件名。</p>
+<pre class="line-numbers language-none"><code class="language-none">cat test.txt | wc -c
+cat test.txt | wc -l
+cat test.txt | wc -m
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="42-ps-命令"><a href="#42-ps-命令" class="headerlink" title="42.ps 命令"></a>42.ps 命令</h3><p>用来显示当前进程的状态。</p>
+<p>命令格式</p>
+<p>ps[参数]</p>
+<p>常用参数</p>
+<ul>
+<li>a 显示所有进程</li>
+<li>-a 显示同一终端下的所有程序</li>
+<li>-A 显示所有进程</li>
+<li>c 显示进程的真实名称</li>
+<li>-N 反向选择</li>
+<li>-e 等于“-A”</li>
+<li>e 显示环境变量</li>
+<li>f 显示程序间的关系</li>
+<li>-H 显示树状结构</li>
+<li>r 显示当前终端的进程</li>
+<li>T 显示当前终端的所有程序</li>
+<li>u 指定用户的所有进程</li>
+<li>-au 显示较详细的资讯</li>
+<li>-aux 显示所有包含其他使用者的行程</li>
+<li>-C&lt;命令&gt; 列出指定命令的状况</li>
+<li>–lines&lt;行数&gt; 每页显示的行数</li>
+<li>–width&lt;字符数&gt; 每页显示的字符数</li>
+</ul>
+<p>使用实例</p>
+<p>1.显示所有进程信息。</p>
+<pre class="line-numbers language-none"><code class="language-none">ps -A
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>显示指定用户信息。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">ps -u root
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol>
+<li>显示所有进程信息，连同命令行。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">ps -ef
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="43-watch-命令"><a href="#43-watch-命令" class="headerlink" title="43.watch 命令"></a>43.watch 命令</h3><p>可以将命令的输出结果输出到标准输出设备，多用于周期性执行命令/定时执行命令。</p>
+<p>命令格式</p>
+<p>watch [参数] [命令]</p>
+<p>常用参数</p>
+<ul>
+<li>-n或–interval watch缺省每2秒运行一下程序，可以用-n或-interval来指定间隔的时间。</li>
+<li>-d或–differences 用-d或–differences 选项watch 会高亮显示变化的区域。 而-d=cumulative选项会把变动过的地方(不管最近的那次有没有变动)都高亮显示出来。</li>
+<li>-t 或-no-title 会关闭watch命令在顶部的时间间隔,命令，当前时间的输出。</li>
+<li>-h, –help 查看帮助文档</li>
+</ul>
+<p>使用实例</p>
+<p>1.每隔一秒高亮显示网络链接数的变化情况</p>
+<pre class="line-numbers language-none"><code class="language-none">watch -n 1 -d netstat -ant
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.每隔一秒高亮显示http链接数的变化情况</p>
+<pre class="line-numbers language-none"><code class="language-none">watch -n 1 -d 'pstree|grep http'
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="44-at-命令"><a href="#44-at-命令" class="headerlink" title="44. at 命令"></a>44. at 命令</h3><p>在一个指定的时间执行一个指定任务，只能执行一次。（需开启atd进程）</p>
+<p>命令格式</p>
+<p>at [参数] [时间]</p>
+<p>常用参数</p>
+<ul>
+<li>-m 当指定的任务被完成之后，将给用户发送邮件，即使没有标准输出</li>
+<li>-I atq的别名</li>
+<li>-d atrm的别名</li>
+<li>-v 显示任务将被执行的时间</li>
+<li>-c 打印任务的内容到标准输出</li>
+<li>-V 显示版本信息</li>
+<li>-q&lt;列队&gt; 使用指定的列队</li>
+<li>-f&lt;文件&gt; 从指定文件读入任务而不是从标准输入读入</li>
+<li>-t&lt;时间参数&gt; 以时间参数的形式提交要运行的任务</li>
+</ul>
+<p>使用实例</p>
+<p>1.3天后的下午5点执行/bin/ls</p>
+<pre class="line-numbers language-none"><code class="language-none">at 5pm+3 days 
+at&gt; /bin/ls
+at&gt; &lt;EOT&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="45-crontab-命令"><a href="#45-crontab-命令" class="headerlink" title="45.crontab 命令"></a>45.crontab 命令</h3><p>在固定的间隔时间执行指定的系统指令或 shell script脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。(需开启crond服务)</p>
+<p>命令格式</p>
+<p>crontab [-u user] file 或</p>
+<p>crontab [-u user] [ -e | -l | -r ]</p>
+<p>常用参数</p>
+<ul>
+<li>-u user：用来设定某个用户的crontab服务，例如，“-u ixdba”表示设定ixdba用户的crontab服务，此参数一般有root用户来运行。</li>
+<li>file：file是命令文件的名字,表示将file做为crontab的任务列表文件并载入crontab。如果在命令行中没有指定这个文件，crontab命令将接受标准输入（键盘）上键入的命令，并将它们载入crontab。</li>
+<li>-e：编辑某个用户的crontab文件内容。如果不指定用户，则表示编辑当前用户的crontab文件。</li>
+<li>-l：显示某个用户的crontab文件内容，如果不指定用户，则表示显示当前用户的crontab文件内容。</li>
+<li>-r：从/var/spool/cron目录中删除某个用户的crontab文件，如果不指定用户，则默认删除当前用户的crontab文件。</li>
+<li>-i：在删除用户的crontab文件时给确认提示。</li>
+</ul>
+<p>使用实例</p>
+<p>1.列出 crontab 文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">crontab -l
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.编辑crontab 文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">crontab -e
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>Crontab 任务实例</p>
+<p>1.每1分钟执行一次command</p>
+<pre class="line-numbers language-none"><code class="language-none">* * * * * command
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.每小时的第3和第15分钟执行</p>
+<pre class="line-numbers language-none"><code class="language-none">3,15 * * * * command
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>3.在上午8点到11点的第3和第15分钟执行</p>
+<pre class="line-numbers language-none"><code class="language-none">3,15 8-11 * * * command<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<blockquote>
+<p>引用：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903930166509581#heading-185">https://juejin.cn/post/6844903930166509581#heading-185</a></p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">帅枫</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://kuangtf.github.io/2021/12/02/gong-ju/linux-chang-yong-ming-ling/">https://kuangtf.github.io/2021/12/02/gong-ju/linux-chang-yong-ming-ling/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">帅枫</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                                    <span class="chip bg-color">Linux 常用命令</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">先赞后看，养成习惯</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/12/02/gong-ju/git-chang-yong-ming-ling/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Git常用命令">
+                        
+                        <span class="card-title">Git常用命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                        <span class="chip bg-color">Git常用命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/12/01/bing-fa/chang-jian-mian-shi-ti-zhi-liang-ge-xian-cheng-jiao-ti-da-yin-qi-ou-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="常见面试题之两个线程交替打印奇偶数">
+                        
+                        <span class="card-title">常见面试题之两个线程交替打印奇偶数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
+                                    并发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0%E5%A5%87%E5%81%B6%E6%95%B0/">
+                        <span class="chip bg-color">交替打印奇偶数</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 帅枫<br />'
+            + '文章作者: 帅枫<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="kugou"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="sitetime"></span>
+            <br>
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">帅枫</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">570.5k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/kuangtf" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1162849426@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1162849426" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1162849426" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/kuangtf" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/kuangtf" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2021, 10, 01, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

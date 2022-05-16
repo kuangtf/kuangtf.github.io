@@ -1,0 +1,2052 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Docker 详解, 帅枫">
+    <meta name="description" content="朝着成功前进">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Docker 详解 | 帅枫</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/back.png);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">帅枫</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">帅枫</div>
+        <div class="logo-desc">
+            
+            朝着成功前进
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/kuangtf" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/kuangtf" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Docker 详解</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Docker-%E5%85%A5%E9%97%A8/">
+                                <span class="chip bg-color">Docker 入门</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-05-16
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-03-27
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    28 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="一、-Docker概述"><a href="#一、-Docker概述" class="headerlink" title="一、 Docker概述"></a>一、 Docker概述</h2><h3 id="1、基本介绍"><a href="#1、基本介绍" class="headerlink" title="1、基本介绍"></a>1、基本介绍</h3><p>Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源。</p>
+<p>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux机器上，也可以实现虚拟化。</p>
+<p>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。</p>
+<p>Docker 从 17.03 版本之后分为 CE（Community Edition: 社区版） 和 EE（Enterprise Edition: 企业版），我们用社区版就可以了。官网：<a target="_blank" rel="noopener" href="https://docs.docker.com/">https://docs.docker.com/</a></p>
+<h3 id="2、应用场景"><a href="#2、应用场景" class="headerlink" title="2、应用场景"></a>2、应用场景</h3><ul>
+<li>Web 应用的自动化打包和发布。</li>
+<li>自动化测试和持续集成、发布。</li>
+<li>在服务型环境中部署和调整数据库或其他的后台应用。</li>
+<li>从头编译或者扩展现有的 OpenShift 或 Cloud Foundry 平台来搭建自己的 PaaS 环境。</li>
+</ul>
+<h3 id="3、Docker-的优势"><a href="#3、Docker-的优势" class="headerlink" title="3、Docker 的优势"></a>3、Docker 的优势</h3><p>Docker 是一个用于开发，交付和运行应用程序的开放平台。Docker 使您能够将应用程序与基础架构分开，从而可以快速交付软件。借助 Docker，您可以与管理应用程序相同的方式来管理基础架构。通过利用 Docker 的方法来快速交付，测试和部署代码，您可以大大减少编写代码和在生产环境中运行代码之间的延迟。</p>
+<ul>
+<li><p>快速，一致地交付您的应用程序。Docker 允许开发人员使用您提供的应用程序或服务的本地容器在标准化环境中工作，从而简化了开发的生命周期。</p>
+<p>容器非常适合持续集成和持续交付（CI / CD）工作流程，请考虑以下示例方案：</p>
+<p>您的开发人员在本地编写代码，并使用 Docker 容器与同事共享他们的工作。<br>他们使用 Docker 将其应用程序推送到测试环境中，并执行自动或手动测试。<br>当开发人员发现错误时，他们可以在开发环境中对其进行修复，然后将其重新部署到测试环境中，以进行测试和验证。测试完成后，将修补程序推送给生产环境，就像将更新的镜像推送到生产环境一样简单。</p>
+</li>
+<li><p>响应式部署和扩展<br>Docker 是基于容器的平台，允许高度可移植的工作负载。Docker 容器可以在开发人员的本机上，数据中心的物理或虚拟机上，云服务上或混合环境中运行。</p>
+<p>Docker 的可移植性和轻量级的特性，还可以使您轻松地完成动态管理的工作负担，并根据业务需求指示，实时扩展或拆除应用程序和服务。</p>
+</li>
+<li><p>在同一硬件上运行更多工作负载<br>Docker 轻巧快速。它为基于虚拟机管理程序的虚拟机提供了可行、经济、高效的替代方案，因此您可以利用更多的计算能力来实现业务目标。Docker 非常适合于高密度环境以及中小型部署，而您可以用更少的资源做更多的事情。</p>
+</li>
+</ul>
+<h2 id="2-虚拟化技术和容器化技术"><a href="#2-虚拟化技术和容器化技术" class="headerlink" title="2. 虚拟化技术和容器化技术"></a>2. 虚拟化技术和容器化技术</h2><p>虚拟化技术特点：1.资源占用多 2.冗余步骤多 3.启动很慢</p>
+<p>容器化技术：容器化技术不是模拟的一个完整的操作系统</p>
+<p>比较Docker和虚拟机的不同：</p>
+<p>1.传统虚拟机，虚拟出硬件，运行一个完整的操作系统，然后在这个系统上安装和运行软件。</p>
+<p>2.Docker容器内的应用直接运行在宿主机的内容，容器是没有自己的内核的，也没有虚拟硬件。</p>
+<p>3.每个容器都是相互隔离的，每个容器都有属于自己的文件系统，互不影响。</p>
+<p>容器化带来的好处：</p>
+<ul>
+<li>应用更快速的交付和部署</li>
+<li>更便捷的升级和扩缩容</li>
+<li>更简单的系统运维</li>
+<li>更高效的计算资源利用</li>
+</ul>
+<h2 id="3-Docker的基本组成"><a href="#3-Docker的基本组成" class="headerlink" title="3. Docker的基本组成"></a>3. Docker的基本组成</h2><p>Docker的基本组成图如下：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/image-20211130100116751.png" alt="img" style="zoom:80%;">
+
+<p>说明：</p>
+<ul>
+<li><p>镜像（image）：</p>
+<p>docker 镜像就好比是一个模板，可以通过这个模板来创建容器服务，tomcat镜像—》run—》tomcat01 容器（提供服务器）通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中）</p>
+</li>
+<li><p>容器（container）：</p>
+<p>docker 利用容器技术，独立运行一个或者一个组应用，通过镜像来创建的</p>
+<p>启动，停止，删除，基本命令</p>
+<p>目前就可以把这个容器理解为就是一个简易的 linux 系统</p>
+</li>
+<li><p>仓库（repository）：</p>
+<p>仓库就是存放镜像的地方</p>
+<p>仓库为公有的窗口和私有的仓库</p>
+<p>Docker Hub</p>
+</li>
+</ul>
+<h2 id="4-Docker的安装"><a href="#4-Docker的安装" class="headerlink" title="4. Docker的安装"></a>4. Docker的安装</h2><p>查看系统的内核：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">uname</span> -r<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>系统内核版本为3.10.0-514.26.2.el7.x86_64</p>
+<p>查看系统配置</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> /etc/os-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># cat /etc/os-release</span>
+<span class="token assign-left variable">NAME</span><span class="token operator">=</span><span class="token string">"CentOS Linux"</span>
+<span class="token assign-left variable">VERSION</span><span class="token operator">=</span><span class="token string">"7 (Core)"</span>
+<span class="token assign-left variable">ID</span><span class="token operator">=</span><span class="token string">"centos"</span>
+<span class="token assign-left variable">ID_LIKE</span><span class="token operator">=</span><span class="token string">"rhel fedora"</span>
+<span class="token assign-left variable">VERSION_ID</span><span class="token operator">=</span><span class="token string">"7"</span>
+<span class="token assign-left variable">PRETTY_NAME</span><span class="token operator">=</span><span class="token string">"CentOS Linux 7 (Core)"</span>
+<span class="token assign-left variable">ANSI_COLOR</span><span class="token operator">=</span><span class="token string">"0;31"</span>
+<span class="token assign-left variable">CPE_NAME</span><span class="token operator">=</span><span class="token string">"cpe:/o:centos:centos:7"</span>
+<span class="token assign-left variable">HOME_URL</span><span class="token operator">=</span><span class="token string">"https://www.centos.org/"</span>
+<span class="token assign-left variable">BUG_REPORT_URL</span><span class="token operator">=</span><span class="token string">"https://bugs.centos.org/"</span>
+
+<span class="token assign-left variable">CENTOS_MANTISBT_PROJECT</span><span class="token operator">=</span><span class="token string">"CentOS-7"</span>
+<span class="token assign-left variable">CENTOS_MANTISBT_PROJECT_VERSION</span><span class="token operator">=</span><span class="token string">"7"</span>
+<span class="token assign-left variable">REDHAT_SUPPORT_PRODUCT</span><span class="token operator">=</span><span class="token string">"centos"</span>
+<span class="token assign-left variable">REDHAT_SUPPORT_PRODUCT_VERSION</span><span class="token operator">=</span><span class="token string">"7"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Docker的安装步骤：</p>
+<p><strong>（1）卸载旧的版本</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum remove docker <span class="token punctuation">\</span>
+                  docker-client <span class="token punctuation">\</span>
+                  docker-client-latest <span class="token punctuation">\</span>
+                  docker-common <span class="token punctuation">\</span>
+                  docker-latest <span class="token punctuation">\</span>
+                  docker-latest-logrotate <span class="token punctuation">\</span>
+                  docker-logrotate <span class="token punctuation">\</span>
+                  docker-engine<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>（2）下载需要的安装包</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y yum-utils<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（3）设置镜像的仓库</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum-config-manager <span class="token punctuation">\</span>
+    --add-repo <span class="token punctuation">\</span>
+    https://download.docker.com/linux/centos/docker-ce.repo  <span class="token comment">#国外的地址</span>
+    
+    <span class="token comment"># 设置阿里云的Docker镜像仓库</span>
+yum-config-manager <span class="token punctuation">\</span>
+    --add-repo <span class="token punctuation">\</span>
+    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo  <span class="token comment">#国外的地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>（4）更新yum软件包索引</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum makecache fast<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（5）安装docker相关的配置</strong></p>
+<p>docker-ce 是社区版，docker-ee 企业版</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> docker-ce docker-ce-cli containerd.io<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>出现了completed即安装成功。</p>
+<p><strong>（6）启动Docker</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start docker
+<span class="token comment"># 查看当前版本号，是否启动成功</span>
+docker version
+<span class="token comment"># 设置开机自启动</span>
+systemctl <span class="token builtin class-name">enable</span> docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>结果：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker version</span>
+Client: Docker Engine - Community
+ Version:           <span class="token number">20.10</span>.11
+ API version:       <span class="token number">1.41</span>
+ Go version:        go1.16.9
+ Git commit:        dea9396
+ Built:             Thu Nov <span class="token number">18</span> 00:38:53 <span class="token number">2021</span>
+ OS/Arch:           linux/amd64
+ Context:           default
+ Experimental:      <span class="token boolean">true</span>
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          <span class="token number">20.10</span>.11
+  API version:      <span class="token number">1.41</span> <span class="token punctuation">(</span>minimum version <span class="token number">1.12</span><span class="token punctuation">)</span>
+  Go version:       go1.16.9
+  Git commit:       847da18
+  Built:            Thu Nov <span class="token number">18</span> 00:37:17 <span class="token number">2021</span>
+  OS/Arch:          linux/amd64
+  Experimental:     <span class="token boolean">false</span>
+ containerd:
+  Version:          <span class="token number">1.4</span>.12
+  GitCommit:        7b11cfaabd73bb80907dd23182b9347b4245eb5d
+ runc:
+  Version:          <span class="token number">1.0</span>.2
+  GitCommit:        v1.0.2-0-g52b36a2
+ docker-init:
+  Version:          <span class="token number">0.19</span>.0
+  GitCommit:        de40ad0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>下载hello-world镜像进行测试</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker run hello-world</span>
+Unable to <span class="token function">find</span> image <span class="token string">'hello-world:latest'</span> locally
+latest: Pulling from library/hello-world
+2db29710123e: Pull complete 
+Digest: sha256:cc15c5b292d8525effc0f89cb299f1804f3a725c8d05e158653a563f15e4f685
+Status: Downloaded newer image <span class="token keyword">for</span> hello-world:latest
+
+Hello from Docker<span class="token operator">!</span>
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ <span class="token number">1</span>. The Docker client contacted the Docker daemon.
+ <span class="token number">2</span>. The Docker daemon pulled the <span class="token string">"hello-world"</span> image from the Docker Hub.
+    <span class="token punctuation">(</span>amd64<span class="token punctuation">)</span>
+ <span class="token number">3</span>. The Docker daemon created a new container from that image <span class="token function">which</span> runs the
+    executable that produces the output you are currently reading.
+ <span class="token number">4</span>. The Docker daemon streamed that output to the Docker client, <span class="token function">which</span> sent it
+    to your terminal.
+
+To try something <span class="token function">more</span> ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu <span class="token function">bash</span>
+
+Share images, automate workflows, and <span class="token function">more</span> with a <span class="token function">free</span> Docker ID:
+ https://hub.docker.com/
+
+For <span class="token function">more</span> examples and ideas, visit:
+ https://docs.docker.com/get-started/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>查看下载的hello world镜像</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker images</span>
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+hello-world   latest    feb5d9fea6a5   <span class="token number">2</span> months ago   <span class="token number">13</span>.3kB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5-Docker的卸载"><a href="#5-Docker的卸载" class="headerlink" title="5. Docker的卸载"></a>5. Docker的卸载</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 1. 卸载依赖</span>
+yum remove docker-ce docker-ce-cli containerd.io
+<span class="token comment"># 2. 删除资源  . /var/lib/docker是docker的默认工作路径</span>
+<span class="token function">rm</span> -rf /var/lib/docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="6-配置阿里云镜像加速"><a href="#6-配置阿里云镜像加速" class="headerlink" title="6. 配置阿里云镜像加速"></a>6. 配置阿里云镜像加速</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">mkdir</span> -p /etc/docker
+<span class="token function">sudo</span> <span class="token function">tee</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;-</span><span class="token string">'EOF'
+{
+  "registry-mirrors": ["https://axvfsf7e.mirror.aliyuncs.com"]
+}
+EOF</span>
+<span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7-Docker容器运行流程"><a href="#7-Docker容器运行流程" class="headerlink" title="7. Docker容器运行流程"></a>7. Docker容器运行流程</h2><p>启动一个容器，Docker的运行流程如下图：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/image-20211130102141637.png" alt="img" style="zoom:80%;">
+
+<h2 id="8-底层原理"><a href="#8-底层原理" class="headerlink" title="8. 底层原理"></a>8. 底层原理</h2><p>Docker是一个Client-Server结构的系统，Docker的守护进程运行在主机上，通过Socker从客户端访问！Docker Server接收到Docker-Client的指令，就会执行这个指令！</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/image-20211130102253834.png" alt="img" style="zoom:80%;">
+
+<p>Docker为什么比VM Ware快？</p>
+<p>1、Docker比虚拟机更少的抽象层</p>
+<p>2、docker利用宿主机的内核，VM需要的是Guest OS</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/image-20211130102336790.png" alt="img" style="zoom:80%;">
+
+<p>Docker新建一个容器的时候，不需要像虚拟机一样重新加载一个操作系统内核，直接利用宿主机的操作系统，而虚拟机是需要加载Guest OS。Docker和VM的对比如下：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/image-20211130102619800.png" alt="img" style="zoom:80%;">
+
+<h2 id="9-Docker常用命令"><a href="#9-Docker常用命令" class="headerlink" title="9. Docker常用命令"></a>9. Docker常用命令</h2><h3 id="9-1-基础命令"><a href="#9-1-基础命令" class="headerlink" title="9.1 基础命令"></a>9.1 基础命令</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker version          <span class="token comment">#查看docker的版本信息</span>
+docker info             <span class="token comment">#查看docker的系统信息,包括镜像和容器的数量</span>
+docker 命令 --help       <span class="token comment">#帮助命令(可查看可选的参数)</span>
+docker COMMAND --help<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9-2-镜像命令"><a href="#9-2-镜像命令" class="headerlink" title="9.2 镜像命令"></a>9.2 镜像命令</h3><ul>
+<li><strong>docker images</strong> 查看本地主机的所有镜像</li>
+</ul>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker images</span>
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+hello-world   latest    feb5d9fea6a5   <span class="token number">2</span> months ago   <span class="token number">13</span>.3kB
+
+<span class="token comment">#解释:</span>
+<span class="token number">1</span>.REPOSITORY  镜像的仓库源
+
+<span class="token number">2</span>.TAG  镜像的标签
+
+<span class="token number">3</span>.IMAGE ID 镜像的id
+
+<span class="token number">4</span>.CREATED 镜像的创建时间
+
+<span class="token number">5</span>.SIZE 镜像的大小
+
+<span class="token comment"># 可选参数</span>
+
+-a/--all 列出所有镜像
+
+-q/--quiet 只显示镜像的id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>docker search</strong> 搜索镜像</li>
+</ul>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker search mysql</span>
+NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql                             MySQL is a widely used, open-source relation…   <span class="token number">11748</span>     <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>       
+mariadb                           MariaDB Server is a high performing <span class="token function">open</span> sou…   <span class="token number">4478</span>      <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>       
+mysql/mysql-server                Optimized MySQL Server Docker images. Create…   <span class="token number">877</span>                  <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+percona                           Percona Server is a fork of the MySQL relati…   <span class="token number">564</span>       <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>       
+phpmyadmin                        phpMyAdmin - A web interface <span class="token keyword">for</span> MySQL and M…   <span class="token number">384</span>       <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>       
+centos/mysql-57-centos7           MySQL <span class="token number">5.7</span> SQL database server                   <span class="token number">92</span>                   
+mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   <span class="token number">89</span>                   
+centurylink/mysql                 Image containing mysql. Optimized to be link…   <span class="token number">59</span>                   <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+databack/mysql-backup             Back up mysql databases to<span class="token punctuation">..</span>. anywhere<span class="token operator">!</span>         <span class="token number">53</span>                   
+prom/mysqld-exporter                                                              <span class="token number">43</span>                   <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+deitch/mysql-backup               REPLACED<span class="token operator">!</span> Please use http://hub.docker.com/r…   <span class="token number">41</span>                   <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+tutum/mysql                       Base docker image to run a MySQL database se…   <span class="token number">35</span>                   
+linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   <span class="token number">34</span>                   
+schickling/mysql-backup-s3        Backup MySQL to S3 <span class="token punctuation">(</span>supports periodic backup…   <span class="token number">31</span>                   <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+mysql/mysql-router                MySQL Router provides transparent routing be…   <span class="token number">23</span>                   
+centos/mysql-56-centos7           MySQL <span class="token number">5.6</span> SQL database server                   <span class="token number">21</span>                   
+arey/mysql-client                 Run a MySQL client from a docker container      <span class="token number">19</span>                   <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+fradelg/mysql-cron-backup         MySQL/MariaDB database backup using <span class="token function">cron</span> tas…   <span class="token number">16</span>                   <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   <span class="token number">6</span>                    
+devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   <span class="token number">3</span>                    
+ansibleplaybookbundle/mysql-apb   An APB <span class="token function">which</span> deploys RHSCL MySQL                <span class="token number">3</span>                    <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+jelastic/mysql                    An image of the MySQL database server mainta…   <span class="token number">2</span>                    
+centos/mysql-80-centos7           MySQL <span class="token number">8.0</span> SQL database server                   <span class="token number">2</span>                    
+widdpim/mysql-client              Dockerized MySQL Client <span class="token punctuation">(</span><span class="token number">5.7</span><span class="token punctuation">)</span> including Curl…   <span class="token number">1</span>                    <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>
+monasca/mysql-init                A minimal decoupled init container <span class="token keyword">for</span> mysql    <span class="token number">0</span>
+
+<span class="token comment">#可选参数</span>
+
+Search the Docker Hub <span class="token keyword">for</span> images
+
+Options:
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print search using a Go template
+      --limit int       Max number of search results <span class="token punctuation">(</span>default <span class="token number">25</span><span class="token punctuation">)</span>
+      --no-trunc        Don't truncate output
+      
+
+<span class="token comment">#搜索收藏数大于3000的镜像</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker search mysql --filter=STARS=3000</span>
+NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql     MySQL is a widely used, open-source relation…   <span class="token number">11748</span>     <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>       
+mariadb   MariaDB Server is a high performing <span class="token function">open</span> sou…   <span class="token number">4478</span>      <span class="token punctuation">[</span>OK<span class="token punctuation">]</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>docker pull 镜像名[:tag]</strong> 下载镜像</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker pull mysql</span>
+Using default tag: latest     <span class="token comment">#如果不写tag默认就是latest 	</span>
+latest: Pulling from library/mysql
+a10c77af2613: Pull complete    <span class="token comment">#分层下载,docker image的核心-联合文件系统</span>
+b76a7eb51ffd: Pull complete 
+258223f927e4: Pull complete 
+2d2c75386df9: Pull complete 
+63e92e4046c9: Pull complete 
+f5845c731544: Pull complete 
+bd0401123a9b: Pull complete 
+3ef07ec35f1a: Pull complete 
+c93a31315089: Pull complete 
+3349ed800d44: Pull complete 
+6d01857ca4c1: Pull complete 
+4cc13890eda8: Pull complete 
+Digest: sha256:aeecae58035f3868bf4f00e5fc623630d8b438db9d05f4d8c6538deb14d4c31b
+Status: Downloaded newer image <span class="token keyword">for</span> mysql:latest
+docker.io/library/mysql:latest    <span class="token comment">#下载来源的真实地址  #docker pull mysql等价于docker pull docker.io/library/mysql:latest</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>指定版本下载</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment">#  docker pull mysql:5.7</span>
+<span class="token number">5.7</span>: Pulling from library/mysql
+a10c77af2613: Already exists 
+b76a7eb51ffd: Already exists 
+258223f927e4: Already exists 
+2d2c75386df9: Already exists 
+63e92e4046c9: Already exists 
+f5845c731544: Already exists 
+bd0401123a9b: Already exists 
+2724b2da64fd: Pull complete 
+d10a7e9e325c: Pull complete 
+1c5fd9c3683d: Pull complete 
+2e35f83a12e9: Pull complete 
+Digest: sha256:7a3a7b7a29e6fbff433c339fc52245435fa2c308586481f2f92ab1df239d6a29
+Status: Downloaded newer image <span class="token keyword">for</span> mysql:5.7
+docker.io/library/mysql:5.7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>docker rmi</strong> 删除镜像</li>
+</ul>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#1.删除指定的镜像id</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker rmi -f  镜像id</span>
+<span class="token comment">#2.删除多个镜像id</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker rmi -f  镜像id 镜像id 镜像id</span>
+<span class="token comment">#3.删除全部的镜像id</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker rmi -f  $(docker images -aq)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9-3-容器命令"><a href="#9-3-容器命令" class="headerlink" title="9.3 容器命令"></a>9.3 容器命令</h3><p>如拉取一个centos容器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker pull centos<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>运行容器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run <span class="token punctuation">[</span>可选参数<span class="token punctuation">]</span> image
+
+<span class="token comment">#参数说明</span>
+--name<span class="token operator">=</span><span class="token string">"名字"</span>           指定容器名字
+-d                     后台方式运行
+-it                    使用交互方式运行,进入容器查看内容
+-p                     指定容器的端口
+<span class="token punctuation">(</span>
+-p ip:主机端口:容器端口  配置主机端口映射到容器端口
+-p 主机端口:容器端口
+-p 容器端口
+<span class="token punctuation">)</span>
+-P                     随机指定端口<span class="token punctuation">(</span>大写的P<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>进入容器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker run -it centos /bin/bash</span>
+<span class="token punctuation">[</span>root@858613ca7c96 /<span class="token punctuation">]</span><span class="token comment"># ls</span>
+bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>退出容器</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#exit 停止并退出容器（后台方式运行则仅退出）</span>
+<span class="token comment">#Ctrl+P+Q  不停止容器退出</span>
+<span class="token punctuation">[</span>root@858613ca7c96 /<span class="token punctuation">]</span><span class="token comment"># exit</span>
+<span class="token builtin class-name">exit</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>列出运行过的容器</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#docker ps </span>
+     <span class="token comment"># 列出当前正在运行的容器</span>
+-a   <span class="token comment"># 列出所有容器的运行记录</span>
+-n<span class="token operator">=</span>? <span class="token comment"># 显示最近创建的n个容器</span>
+-q   <span class="token comment"># 只显示容器的编号</span>
+
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker ps -a</span>
+CONTAINER ID   IMAGE         COMMAND       CREATED          STATUS                      PORTS     NAMES
+858613ca7c96   centos        <span class="token string">"/bin/bash"</span>   <span class="token number">2</span> minutes ago    Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">54</span> seconds ago             loving_taussig
+bee46b5c198b   hello-world   <span class="token string">"/hello"</span>      <span class="token number">22</span> minutes ago   Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">22</span> minutes ago             nice_wright<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>删除容器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">rm</span> 容器id                 <span class="token comment">#删除指定的容器,不能删除正在运行的容器,强制删除使用 rm -f</span>
+docker <span class="token function">rm</span> -f <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span>   <span class="token comment">#删除所有的容器</span>
+docker <span class="token function">ps</span> -a -q<span class="token operator">|</span><span class="token function">xargs</span> docker <span class="token function">rm</span> <span class="token comment">#删除所有的容器</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>启动和停止容器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker start 容器id          <span class="token comment">#启动容器</span>
+docker restart 容器id        <span class="token comment">#重启容器</span>
+docker stop 容器id           <span class="token comment">#停止当前运行的容器</span>
+docker <span class="token function">kill</span> 容器id           <span class="token comment">#强制停止当前容器</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9-4-其他常用命令"><a href="#9-4-其他常用命令" class="headerlink" title="9.4 其他常用命令"></a>9.4 其他常用命令</h3><ul>
+<li>日志的查看：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker logs --help</span>
+
+Usage:  docker logs <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER
+
+Fetch the logs of a container
+
+Options:
+      --details        Show extra details provided to logs
+  -f, --follow         Follow log output
+      --since string   Show logs since timestamp <span class="token punctuation">(</span>e.g. <span class="token number">2013</span>-01-02T13:23:37Z<span class="token punctuation">)</span> or relative <span class="token punctuation">(</span>e.g. 42m <span class="token keyword">for</span> <span class="token number">42</span> minutes<span class="token punctuation">)</span>
+  -n, --tail string    Number of lines to show from the end of the logs <span class="token punctuation">(</span>default <span class="token string">"all"</span><span class="token punctuation">)</span>
+  -t, --timestamps     Show timestamps
+      --until string   Show logs before a timestamp <span class="token punctuation">(</span>e.g. <span class="token number">2013</span>-01-02T13:23:37Z<span class="token punctuation">)</span> or relative <span class="token punctuation">(</span>e.g. 42m <span class="token keyword">for</span> <span class="token number">42</span> minutes<span class="token punctuation">)</span>
+
+
+常用：
+docker logs -tf 容器id
+docker logs --tail number 容器id <span class="token comment">#num为要显示的日志条数</span>
+
+
+<span class="token comment">#docker容器后台运行，必须要有一个前台的进程，否则会自动停止</span>
+<span class="token comment">#编写shell脚本循环执行，使得centos容器保持运行状态</span>
+
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker run -d centos /bin/sh -c "while true;do echo hi;sleep 5;done"</span>
+fad4e4cfcdf8011ffb87c4af223a4def8bb56c4a915d0f2aae22fe7c36f4ea8f
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+fad4e4cfcdf8   centos    <span class="token string">"/bin/sh -c 'while t…"</span>   <span class="token number">18</span> seconds ago   Up <span class="token number">16</span> seconds             interesting_yalow
+
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz /<span class="token punctuation">]</span><span class="token comment"># docker logs -tf --tail 10 fad4e4cfcdf8</span>
+<span class="token number">2021</span>-11-30T02:41:50.333740257Z hi
+<span class="token number">2021</span>-11-30T02:41:55.335647423Z hi
+<span class="token number">2021</span>-11-30T02:42:00.337543066Z hi
+<span class="token number">2021</span>-11-30T02:42:05.339273910Z hi
+<span class="token number">2021</span>-11-30T02:42:10.341044647Z hi
+<span class="token number">2021</span>-11-30T02:42:15.342753069Z hi
+<span class="token number">2021</span>-11-30T02:42:20.344723632Z hi
+<span class="token number">2021</span>-11-30T02:42:25.346358519Z hi
+<span class="token number">2021</span>-11-30T02:42:30.348062446Z hi
+<span class="token number">2021</span>-11-30T02:42:35.349795650Z hi
+<span class="token number">2021</span>-11-30T02:42:40.351508777Z hi
+<span class="token number">2021</span>-11-30T02:42:45.353192496Z hi
+<span class="token number">2021</span>-11-30T02:42:50.354857997Z hi
+<span class="token number">2021</span>-11-30T02:42:55.356589223Z hi
+<span class="token number">2021</span>-11-30T02:43:00.358487414Z hi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>查看容器中进程信息</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker top c703b5b1911f</span>
+<span class="token environment constant">UID</span>                 PID                 <span class="token environment constant">PPID</span>                C                   STIME               TTY                 TIME                CMD
+root                <span class="token number">11156</span>               <span class="token number">11135</span>               <span class="token number">0</span>                   <span class="token number">11</span>:31               ?                   00:00:00            /bin/sh -c <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span><span class="token keyword">do</span> <span class="token builtin class-name">echo</span> hi<span class="token punctuation">;</span><span class="token function">sleep</span> <span class="token number">5</span><span class="token punctuation">;</span><span class="token keyword">done</span>
+root                <span class="token number">11886</span>               <span class="token number">11156</span>               <span class="token number">0</span>                   <span class="token number">11</span>:43               ?                   00:00:00            /usr/bin/coreutils --coreutils-prog-shebang<span class="token operator">=</span>sleep /usr/bin/sleep <span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>查看容器的元数据</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker inspect 容器id</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>进入当前正在运行的容器</p>
+<p>因为通常我们的容器都是使用后台方式来运行的，有时需要进入容器修改配置</p>
+<p>方式一：</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker exec -it c703b5b1911f /bin/bash</span>
+<span class="token punctuation">[</span>root@858613ca7c96 /<span class="token punctuation">]</span><span class="token comment"># ls</span>
+bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+<span class="token punctuation">[</span>root@c703b5b1911f /<span class="token punctuation">]</span><span class="token comment"># ps -ef      </span>
+<span class="token environment constant">UID</span>        PID  <span class="token environment constant">PPID</span>  C STIME TTY          TIME CMD
+root         <span class="token number">1</span>     <span class="token number">0</span>  <span class="token number">0</span> 03:31 ?        00:00:00 /bin/sh -c <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span><span class="token keyword">do</span> <span class="token builtin class-name">echo</span> hi<span class="token punctuation">;</span><span class="token function">sleep</span> <span class="token number">5</span><span class="token punctuation">;</span><span class="token keyword">done</span>
+root       <span class="token number">279</span>     <span class="token number">0</span>  <span class="token number">0</span> 03:54 pts/0    00:00:00 /bin/bash
+root       <span class="token number">315</span>     <span class="token number">1</span>  <span class="token number">0</span> 03:56 ?        00:00:00 /usr/bin/coreutils --coreutils-prog-shebang<span class="token operator">=</span>sleep /usr/bin/sleep <span class="token number">5</span>
+root       <span class="token number">316</span>   <span class="token number">279</span>  <span class="token number">0</span> 03:56 pts/0    00:00:00 <span class="token function">ps</span> -ef<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>​    方式二：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker attach c703b5b1911f</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>docker exec 进入容器后开启一个新的终端，可以在里面操作</p>
+<p>docker attach 进入容器正在执行的终端，不会启动新的进程</p>
+<p>拷贝容器的文件到主机中</p>
+<p>docker cp 容器id:容器内路径 目的主机路径</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker exec -it c703b5b1911f /bin/bash</span>
+<span class="token punctuation">[</span>root@858613ca7c96 /<span class="token punctuation">]</span><span class="token comment"># cd home</span>
+<span class="token punctuation">[</span>root@858613ca7c96 home<span class="token punctuation">]</span><span class="token comment"># ls</span>
+<span class="token comment">#touch 新建文件</span>
+<span class="token punctuation">[</span>root@858613ca7c96 home<span class="token punctuation">]</span><span class="token comment"># touch test.java</span>
+<span class="token punctuation">[</span>root@858613ca7c96 home<span class="token punctuation">]</span><span class="token comment"># ls</span>
+test.java
+<span class="token punctuation">[</span>root@c703b5b1911f home<span class="token punctuation">]</span><span class="token comment"># exit</span>
+<span class="token builtin class-name">exit</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+c703b5b1911f   centos    <span class="token string">"/bin/sh -c 'while t…"</span>   <span class="token number">35</span> minutes ago   Up <span class="token number">35</span> minutes             pedantic_banach
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker cp c703b5b1911f:/home/test.java /home</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># ls /home</span>
+hai  pan  test.java<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>命令小结的图解如下：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/image-20211130105021275.png" alt="img" style="zoom:80%;">
+
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/2022-03-27_10-4-55.png" style="zoom:80%;">
+
+<p><img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/2022-03-27_0-57-05.png"></p>
+<h2 id="10-Docker镜像详解"><a href="#10-Docker镜像详解" class="headerlink" title="10. Docker镜像详解"></a>10. Docker镜像详解</h2><h3 id="10-1-什么是镜像"><a href="#10-1-什么是镜像" class="headerlink" title="10.1 什么是镜像"></a>10.1 什么是镜像</h3><p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需要的所有内容，包括代码，运行时（一个程序在运行或者在被执行的依赖）、库，环境变量和配置文件。</p>
+<h3 id="10-2-Docker镜像加载原理"><a href="#10-2-Docker镜像加载原理" class="headerlink" title="10.2 Docker镜像加载原理"></a>10.2 Docker镜像加载原理</h3><p>Docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统是UnionFS联合文件系统。</p>
+<p>UnionFS（联合文件系统）：Union 文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改，作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下（unite several directories into a single virtual filesystem）。Union 文件系统是 Docker 镜像的基础，镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像</p>
+<p>特性：一次同时加载多个文件，但从外面看来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录</p>
+<p>bootfs(boot system) 主要包含 bootloader 和 kernel，bootloader 主要引导加载 kernel，linux 刚启动时会加载 botfs 文件系统，在 Docker 镜像的最底层是 bootfs，这一层与我们典型的 Linux / Unix 系统是一样的，包含 boot 加载器和内核，当 boot 加载完成之后，整个内核就都在内存中了，此时内存的使用权已由 bootfs 转交给内核，此时系统也会卸载 bootfs</p>
+<p>rootfs（root file system），在 bootfs 之上，包含的就是典型 Linux 系统中的 /dev, /proc, /bin, /etc 等标准目录和文件，rootfs 就是各种不同的操作系统发行版，比如 Ubuntu Centos等等</p>
+<h3 id="10-3-分层理解"><a href="#10-3-分层理解" class="headerlink" title="10.3 分层理解"></a>10.3 分层理解</h3><p>我们可以去下载一个镜像，注意观察下载的日志输出，可以看到是一层一层的在下载</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker pull redis</span>
+Using default tag: latest
+latest: Pulling from library/redis
+eff15d958d66: Pull complete 
+1aca8391092b: Pull complete 
+06e460b3ba1b: Pull complete 
+def49df025c0: Pull complete 
+646c72a19e83: Pull complete 
+db2c789841df: Pull complete 
+Digest: sha256:619af14d3a95c30759a1978da1b2ce375504f1af70ff9eea2a8e35febc45d747
+Status: Downloaded newer image <span class="token keyword">for</span> redis:latest
+docker.io/library/redis:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>为啥 Docker 镜像采用这种分层的结构呢？</p>
+<p>最大的好处，我觉得就是资源共享了，比如有多个镜像都从相同的 Base 镜像构造而来，那么宿主机只需要在磁盘上保留一份 base 镜像，同时内存中也只需加载一份 base 镜像，这样就可以为所有的容器服务了，而且镜像的每一层都可以被共享</p>
+<p>查看镜像分层的方式可以通过 docker image inspect 命令</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker image inspect redis</span>
+<span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"Id"</span><span class="token builtin class-name">:</span> <span class="token string">"sha256:40c68ed3a4d246b2dd6e59d1b05513accbd2070efb746ec16848adc1b8e07fd4"</span>,
+        <span class="token string">"RepoTags"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"redis:latest"</span>
+        <span class="token punctuation">]</span>,
+        <span class="token string">"RepoDigests"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"redis@sha256:619af14d3a95c30759a1978da1b2ce375504f1af70ff9eea2a8e35febc45d747"</span>
+        <span class="token punctuation">]</span>,
+        <span class="token string">"Parent"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+        <span class="token string">"Comment"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+        <span class="token string">"Created"</span><span class="token builtin class-name">:</span> <span class="token string">"2021-11-17T23:55:32.992203883Z"</span>,
+        <span class="token string">"Container"</span><span class="token builtin class-name">:</span> <span class="token string">"204dce7042f7d9b9ddfe3166f1fb31ab9e6796e9f85a61add0d162fa1b2af1d5"</span>,
+        <span class="token string">"ContainerConfig"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"Hostname"</span><span class="token builtin class-name">:</span> <span class="token string">"204dce7042f7"</span>,
+            <span class="token string">"Domainname"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+            <span class="token string">"User"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+            <span class="token string">"AttachStdin"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"AttachStdout"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"AttachStderr"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"ExposedPorts"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"6379/tcp"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">"Tty"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"OpenStdin"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"StdinOnce"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"Env"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</span>,
+                <span class="token string">"GOSU_VERSION=1.12"</span>,
+                <span class="token string">"REDIS_VERSION=6.2.6"</span>,
+                <span class="token string">"REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-6.2.6.tar.gz"</span>,
+                <span class="token string">"REDIS_DOWNLOAD_SHA=5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab"</span>
+            <span class="token punctuation">]</span>,
+            <span class="token string">"Cmd"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"/bin/sh"</span>,
+                <span class="token string">"-c"</span>,
+                <span class="token string">"#(nop) "</span>,
+                <span class="token string">"CMD [<span class="token entity" title="\&quot;">\"</span>redis-server<span class="token entity" title="\&quot;">\"</span>]"</span>
+            <span class="token punctuation">]</span>,
+            <span class="token string">"Image"</span><span class="token builtin class-name">:</span> <span class="token string">"sha256:f68fe14ac3ec56717680e0a1e8562ba7ec42aabcc9626615012304e2f18c5a84"</span>,
+            <span class="token string">"Volumes"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"/data"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">"WorkingDir"</span><span class="token builtin class-name">:</span> <span class="token string">"/data"</span>,
+            <span class="token string">"Entrypoint"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"docker-entrypoint.sh"</span>
+            <span class="token punctuation">]</span>,
+            <span class="token string">"OnBuild"</span><span class="token builtin class-name">:</span> null,
+            <span class="token string">"Labels"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>,
+        <span class="token string">"DockerVersion"</span><span class="token builtin class-name">:</span> <span class="token string">"20.10.7"</span>,
+        <span class="token string">"Author"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+        <span class="token string">"Config"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"Hostname"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+            <span class="token string">"Domainname"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+            <span class="token string">"User"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>,
+            <span class="token string">"AttachStdin"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"AttachStdout"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"AttachStderr"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"ExposedPorts"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"6379/tcp"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">"Tty"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"OpenStdin"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"StdinOnce"</span><span class="token builtin class-name">:</span> false,
+            <span class="token string">"Env"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</span>,
+                <span class="token string">"GOSU_VERSION=1.12"</span>,
+                <span class="token string">"REDIS_VERSION=6.2.6"</span>,
+                <span class="token string">"REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-6.2.6.tar.gz"</span>,
+                <span class="token string">"REDIS_DOWNLOAD_SHA=5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab"</span>
+            <span class="token punctuation">]</span>,
+            <span class="token string">"Cmd"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"redis-server"</span>
+            <span class="token punctuation">]</span>,
+            <span class="token string">"Image"</span><span class="token builtin class-name">:</span> <span class="token string">"sha256:f68fe14ac3ec56717680e0a1e8562ba7ec42aabcc9626615012304e2f18c5a84"</span>,
+            <span class="token string">"Volumes"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"/data"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">"WorkingDir"</span><span class="token builtin class-name">:</span> <span class="token string">"/data"</span>,
+            <span class="token string">"Entrypoint"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"docker-entrypoint.sh"</span>
+            <span class="token punctuation">]</span>,
+            <span class="token string">"OnBuild"</span><span class="token builtin class-name">:</span> null,
+            <span class="token string">"Labels"</span><span class="token builtin class-name">:</span> null
+        <span class="token punctuation">}</span>,
+        <span class="token string">"Architecture"</span><span class="token builtin class-name">:</span> <span class="token string">"amd64"</span>,
+        <span class="token string">"Os"</span><span class="token builtin class-name">:</span> <span class="token string">"linux"</span>,
+        <span class="token string">"Size"</span><span class="token builtin class-name">:</span> <span class="token number">112704339</span>,
+        <span class="token string">"VirtualSize"</span><span class="token builtin class-name">:</span> <span class="token number">112704339</span>,
+        <span class="token string">"GraphDriver"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"Data"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"LowerDir"</span><span class="token builtin class-name">:</span> <span class="token string">"/var/lib/docker/overlay2/79ddc136a5dafad37f136be013e6d46ca4c297b55078a581b667c48c2d0e2567/diff:/var/lib/docker/overlay2/f8adcd0b43cf5385c4a2857a2cfce1a003c04a652ef72150c74cca840fece768/diff:/var/lib/docker/overlay2/a2f88281181f6a7770fd70ad1865f1b453bd95bfd921d9a7586ada939e0b1d5c/diff:/var/lib/docker/overlay2/cdee6729b7975bde1f239e8d99de0ca980120b313e7d20f0c9ce8868ba9689f1/diff:/var/lib/docker/overlay2/a928c67db61c1eaf8439c38f7aa7c5b928010d2645a13eee2f8eb51b0fc54d46/diff"</span>,
+                <span class="token string">"MergedDir"</span><span class="token builtin class-name">:</span> <span class="token string">"/var/lib/docker/overlay2/f7368939a93243eb249a4c06f26a208a500e1f03b795e88fca0d4349fb574bc0/merged"</span>,
+                <span class="token string">"UpperDir"</span><span class="token builtin class-name">:</span> <span class="token string">"/var/lib/docker/overlay2/f7368939a93243eb249a4c06f26a208a500e1f03b795e88fca0d4349fb574bc0/diff"</span>,
+                <span class="token string">"WorkDir"</span><span class="token builtin class-name">:</span> <span class="token string">"/var/lib/docker/overlay2/f7368939a93243eb249a4c06f26a208a500e1f03b795e88fca0d4349fb574bc0/work"</span>
+            <span class="token punctuation">}</span>,
+            <span class="token string">"Name"</span><span class="token builtin class-name">:</span> <span class="token string">"overlay2"</span>
+        <span class="token punctuation">}</span>,
+        <span class="token string">"RootFS"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"Type"</span><span class="token builtin class-name">:</span> <span class="token string">"layers"</span>,
+            <span class="token string">"Layers"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"sha256:e1bbcf243d0e7387fbfe5116a485426f90d3ddeb0b1738dca4e3502b6743b325"</span>,
+                <span class="token string">"sha256:58e6a16139eebebf7f6f0cb15f9cb3c2a4553a062d2cbfd1a782925452ead433"</span>,
+                <span class="token string">"sha256:503a5c57d9786921c992b7b2216ae58f69dcf433eedb28719ddea3606b42ce26"</span>,
+                <span class="token string">"sha256:277199a0027e044f64ef3719a6d7c3842e99319d6e0261c3a5190249e55646cf"</span>,
+                <span class="token string">"sha256:d0d567a1257963b9655dfceaddc76203c8544fbf6c8672b372561a3c8a3143d4"</span>,
+                <span class="token string">"sha256:a7115aa098139866d7073846e4321bafb8d5ca0d0f907a3c9625f877311bee7c"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>,
+        <span class="token string">"Metadata"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"LastTagTime"</span><span class="token builtin class-name">:</span> <span class="token string">"0001-01-01T00:00:00Z"</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里指示了分层信息：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token string">"RootFS"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"Type"</span><span class="token builtin class-name">:</span> <span class="token string">"layers"</span>,
+            <span class="token string">"Layers"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"sha256:e1bbcf243d0e7387fbfe5116a485426f90d3ddeb0b1738dca4e3502b6743b325"</span>,
+                <span class="token string">"sha256:58e6a16139eebebf7f6f0cb15f9cb3c2a4553a062d2cbfd1a782925452ead433"</span>,
+                <span class="token string">"sha256:503a5c57d9786921c992b7b2216ae58f69dcf433eedb28719ddea3606b42ce26"</span>,
+                <span class="token string">"sha256:277199a0027e044f64ef3719a6d7c3842e99319d6e0261c3a5190249e55646cf"</span>,
+                <span class="token string">"sha256:d0d567a1257963b9655dfceaddc76203c8544fbf6c8672b372561a3c8a3143d4"</span>,
+                <span class="token string">"sha256:a7115aa098139866d7073846e4321bafb8d5ca0d0f907a3c9625f877311bee7c"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>所有的 Docker 镜像都起始于一个基础镜像，当进项修改或增加新内容时，就会在镜像层之上，创建新的镜像层，举一个简单的例子，例如基于 Ubuntu Linux 16.04 创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加 Python 包，就会在基础镜像层之上创建第二个镜像层；如果继续添加一个安全补丁，就会创建第三个镜像层</p>
+<p>该镜像当前已经包含 3 个镜像层，如下图所示（这只是一个用于演示的很简单的例子）</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/2022-03-27_0-57-45.png" style="zoom:80%;">
+
+<p>在添加额外的镜像层的同时，镜像始终保持是当前所有镜像的组合，理解这一点非常重要，下图中举了一个简单的例子，每个镜像层包含了 3 个文件，而镜像包含了来自两个镜像层的 6 个文件</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/2022-03-27_0-58-15.png" style="zoom:80%;">
+
+<p>这种情况下，上层镜像层中的文件覆盖了底层镜像层中的文件，这样就使得文件的更新版本作为一个新的镜像层添加到镜像中，Docker 通过存储引擎（新版本采用快照进制）的方式来实现镜像层堆栈，并保证镜像层对外展示为统一的文件系统</p>
+<p>Linux 上可用存储引擎有 AUFS、Overlay2。顾名思义，每种存在引擎都基于 Linux 中对应的文件系统或者块设备技术，并且每种存储引擎都有其独有的性能特点</p>
+<p>Docker  在 Windows 上仅支持 windowsfileter 一种存储引擎，该引擎基于 NTFS 文件系统之上实现了分成和 Cow[1]，下图展示了与系统显示相同的三层镜像，所有镜像堆叠并合并，对外提供统一的视图</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/2022-03-27_10-8-57.png" style="zoom:80%;">
+
+<blockquote>
+<p>特点：Docker 镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部！</p>
+<p>这一层就是我们通常说的容器层，容器之下的都叫镜像层!</p>
+</blockquote>
+<h3 id="10-4-提交镜像"><a href="#10-4-提交镜像" class="headerlink" title="10.4 提交镜像"></a>10.4 提交镜像</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">使用docker commit 命令提交容器成为一个新的版本
+
+docker commit -m<span class="token operator">=</span>“提交的描述信息”  -a<span class="token operator">=</span><span class="token string">"作者"</span> 容器id 目标镜像名:<span class="token punctuation">[</span>TAG<span class="token punctuation">]</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>由于默认的Tomcat镜像的webapps文件夹中没有任何内容，需要从webapps.dist中拷贝文件到webapps文件夹。下面自行制作镜像：就是从webapps.dist中拷贝文件到webapps文件夹下，并提交该镜像作为一个新的镜像。使得该镜像默认的webapps文件夹下就有文件。具体命令如下：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#1.复制文件夹</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker run -it tomcat /bin/bash</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat<span class="token comment"># cd webapps</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat/webapps<span class="token comment"># ls</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat/webapps<span class="token comment"># cd ../</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat<span class="token comment"># cp -r webapps.dist/* webapps</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat<span class="token comment"># cd webapps</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat/webapps<span class="token comment"># ls</span>
+ROOT  docs  examples  host-manager  manager
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
+CONTAINER ID   IMAGE                 COMMAND        CREATED         STATUS         PORTS                    NAMES
+2a3bf3eaa2e4   tomcat                <span class="token string">"/bin/bash"</span>    <span class="token number">4</span> minutes ago   Up <span class="token number">4</span> minutes   <span class="token number">8080</span>/tcp                 competent_torvalds
+7789d4505a00   portainer/portainer   <span class="token string">"/portainer"</span>   <span class="token number">24</span> hours ago    Up <span class="token number">24</span> hours    <span class="token number">0.0</span>.0.0:8088-<span class="token operator">&gt;</span><span class="token number">9000</span>/tcp   quirky_sinoussi
+<span class="token punctuation">[</span>root@iZwz99sm8v95sckz8bd2c4Z ~<span class="token punctuation">]</span><span class="token comment"># docker exec -it 2a3bf3eaa2e4 /bin/bash</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat<span class="token comment"># cd webapps</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat/webapps<span class="token comment"># ls</span>
+ROOT  docs  examples  host-manager  manager
+root@2a3bf3eaa2e4:/usr/local/tomcat/webapps<span class="token comment"># cd ../</span>
+root@2a3bf3eaa2e4:/usr/local/tomcat<span class="token comment"># read escape sequence</span>
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
+CONTAINER ID   IMAGE                 COMMAND        CREATED         STATUS         PORTS                    NAMES
+2a3bf3eaa2e4   tomcat                <span class="token string">"/bin/bash"</span>    <span class="token number">8</span> minutes ago   Up <span class="token number">8</span> minutes   <span class="token number">8080</span>/tcp                 competent_torvalds
+7789d4505a00   portainer/portainer   <span class="token string">"/portainer"</span>   <span class="token number">24</span> hours ago    Up <span class="token number">24</span> hours    <span class="token number">0.0</span>.0.0:8088-<span class="token operator">&gt;</span><span class="token number">9000</span>/tcp   quirky_sinoussi
+<span class="token comment">#2.提交镜像作为一个新的镜像</span>
+
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker commit -m="add webapps" -a="Ethan" 2a3bf3eaa2e4 mytomcat:1.0</span>
+sha256:f189aac861de51087af5bc88a5f1de02d9574e7ee2d163c647dd7503a2d3982b
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker images</span>
+REPOSITORY            TAG       IMAGE ID       CREATED         SIZE
+mytomcat              <span class="token number">1.0</span>       f189aac861de   <span class="token number">7</span> seconds ago   653MB
+mysql                 <span class="token number">5.7</span>       f07dfa83b528   <span class="token number">6</span> days ago      448MB
+tomcat                latest    feba8d001e3f   <span class="token number">10</span> days ago     649MB
+nginx                 latest    ae2feff98a0c   <span class="token number">12</span> days ago     133MB
+centos                latest    300e315adb2f   <span class="token number">2</span> weeks ago     209MB
+portainer/portainer   latest    62771b0b9b09   <span class="token number">5</span> months ago    <span class="token number">79</span>.1MB
+elasticsearch         <span class="token number">7.6</span>.2     f29a1ee41030   <span class="token number">9</span> months ago    791MB
+
+<span class="token comment">#3.运行容器</span>
+
+<span class="token punctuation">[</span>root@izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker run -it mytomcat:1.0 /bin/bash</span>
+root@1645774d4605:/usr/local/tomcat<span class="token comment"># cd webapps</span>
+root@1645774d4605:/usr/local/tomcat/webapps<span class="token comment"># ls</span>
+ROOT  docs  examples  host-manager  manager
+izbp16oqont6wmaa5jso2yz ~<span class="token punctuation">]</span><span class="token comment"># docker images</span>
+REPOSITORY            TAG       IMAGE ID       CREATED         SIZE
+mytomcat              <span class="token number">1.0</span>       f189aac861de   <span class="token number">7</span> seconds ago   653MB
+mysql                 <span class="token number">5.7</span>       f07dfa83b528   <span class="token number">6</span> days ago      448MB
+tomcat                latest    feba8d001e3f   <span class="token number">10</span> days ago     649MB
+nginx                 latest    ae2feff98a0c   <span class="token number">12</span> days ago     133MB
+centos                latest    300e315adb2f   <span class="token number">2</span> weeks ago     209MB
+portainer/portainer   latest    62771b0b9b09   <span class="token number">5</span> months ago    <span class="token number">79</span>.1MB
+elasticsearch         <span class="token number">7.6</span>.2     f29a1ee41030   <span class="token number">9</span> months ago    791MB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>好了，到这里我们 Docker 的入门就完成了！</p>
+<blockquote>
+<p>引用：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1og4y1q7M4">https://www.bilibili.com/video/BV1og4y1q7M4</a></p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">帅枫</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://kuangtf.github.io/2022/05/16/gong-ju/docker/">https://kuangtf.github.io/2022/05/16/gong-ju/docker/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">帅枫</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Docker-%E5%85%A5%E9%97%A8/">
+                                    <span class="chip bg-color">Docker 入门</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">先赞后看，养成习惯</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/05/16/bing-fa/java-nei-cun-mo-xing-yu-yuan-zi-xing-ke-jian-xing-you-xu-xing-xiang-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="学妹要我教她 JMM">
+                        
+                        <span class="card-title">学妹要我教她 JMM</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
+                                    并发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JMM/">
+                        <span class="chip bg-color">JMM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/16/fen-bu-shi/huan-cun-he-shu-ju-ku-yi-zhi-xing-wen-ti/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="缓存和数据库一致性问题，看这篇就够了">
+                        
+                        <span class="card-title">缓存和数据库一致性问题，看这篇就够了</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis-%E4%B8%80%E8%87%B4%E6%80%A7/">
+                        <span class="chip bg-color">Redis 一致性</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 帅枫<br />'
+            + '文章作者: 帅枫<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="kugou"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="sitetime"></span>
+            <br>
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">帅枫</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">570.5k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/kuangtf" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1162849426@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1162849426" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1162849426" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/kuangtf" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/kuangtf" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2021, 10, 01, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
