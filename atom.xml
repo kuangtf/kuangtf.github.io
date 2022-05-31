@@ -6,7 +6,7 @@
   <link href="https://kuangtf.github.io/atom.xml" rel="self"/>
   
   <link href="https://kuangtf.github.io/"/>
-  <updated>2022-05-23T09:55:02.830Z</updated>
+  <updated>2022-05-31T01:10:19.589Z</updated>
   <id>https://kuangtf.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MyBatis 终极版</title>
+    <link href="https://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/"/>
+    <id>https://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/</id>
+    <published>2022-05-31T01:08:29.941Z</published>
+    <updated>2022-05-31T01:10:19.589Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;第一部分：自定义持久层框架&quot;&gt;&lt;a href=&quot;#第一部分：自定义持久层框架&quot; class=&quot;headerlink&quot; title=&quot;第一部分：自定义持久层框架&quot;&gt;&lt;/a&gt;第一部分：自定义持久层框架&lt;/h1&gt;&lt;h2 id=&quot;1-1-分析JDBC操作问题&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="MyBatis" scheme="https://kuangtf.github.io/categories/MyBatis/"/>
+    
+    
+    <category term="MyBatis 终极版" scheme="https://kuangtf.github.io/tags/MyBatis-%E7%BB%88%E6%9E%81%E7%89%88/"/>
+    
+  </entry>
   
   <entry>
     <title>Kafka快速入门与实战</title>
@@ -495,31 +520,6 @@
     
     
     <category term="CAP理论" scheme="https://kuangtf.github.io/tags/CAP%E7%90%86%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BASE 理论</title>
-    <link href="https://kuangtf.github.io/2022/05/16/fen-bu-shi/base-li-lun/"/>
-    <id>https://kuangtf.github.io/2022/05/16/fen-bu-shi/base-li-lun/</id>
-    <published>2022-05-16T12:25:17.356Z</published>
-    <updated>2022-03-27T06:34:40.774Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;BASE-理论&quot;&gt;&lt;a href=&quot;#BASE-理论&quot; class=&quot;headerlink&quot; title=&quot;BASE 理论&quot;&gt;&lt;/a&gt;BASE 理论&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="分布式" scheme="https://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-    <category term="BASE 理论" scheme="https://kuangtf.github.io/tags/BASE-%E7%90%86%E8%AE%BA/"/>
     
   </entry>
   
