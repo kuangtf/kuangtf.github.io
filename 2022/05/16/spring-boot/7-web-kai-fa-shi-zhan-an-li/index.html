@@ -454,14 +454,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    3.7k
                 </div>
                 
 
@@ -499,14 +499,17 @@
 <p>📂 源码在此：<a target="_blank" rel="noopener" href="https://gitee.com/veal98/springboot_demo">https://gitee.com/veal98/springboot_demo</a></p>
 </blockquote>
 <p>Thymeleaf 取值语法：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200705173227.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705173227.png" alt="img" style="zoom:80%;">
 
 <p>👇 案例的最终效果如下：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200707144408.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200707144408.png" alt="img" style="zoom:80%;">
+
 <p>📄 目录结构如下：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200707144736.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200707144736.png" alt="img" style="zoom:80%;">
+
 <h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><p>准备工作包括静态资源导入，实体类编写，以及模拟数据库操作</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200705161106.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705161106.png" alt="img" style="zoom:80%;">
+
 <p><strong>添加依赖</strong>：</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
@@ -747,15 +750,19 @@
 
 <h2 id="3-国际化"><a href="#3-国际化" class="headerlink" title="3. 国际化"></a>3. 国际化</h2><h3 id="①-创建国际化配置文件"><a href="#①-创建国际化配置文件" class="headerlink" title="① 创建国际化配置文件"></a>① 创建国际化配置文件</h3><p>在 resources 文件夹下创建 i18n 文件夹，以及<code>login.properties</code> 和 <code>login_zh_CN.properties</code></p>
 <p>创建完毕后，两个文件会自动合并成一个文件夹：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200705165012.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705165012.png" alt="img" style="zoom:80%;">
+
 <p>右键可直接添加配置文件</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200705165036.png"></p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200705165220.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705165036.png" alt="img" style="zoom:80%;">
+
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705165220.png" alt="img" style="zoom:80%;">
+
 <h3 id="②-编写国际化配置文件"><a href="#②-编写国际化配置文件" class="headerlink" title="② 编写国际化配置文件"></a>② 编写国际化配置文件</h3><p>可点击 <code>Resource Bundle</code> 进行可视化配置：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200705165321.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705165321.png" alt="img" style="zoom:80%;">
 
 <p>添加如下配置：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200705165925.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705165925.png" alt="img" style="zoom:80%;">
+
 <p>同时在全局配置文件中添加如下配置：</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token comment"># 国际化配置文件的真实路径</span>
 <span class="token attr-name">spring.messages.basename</span> <span class="token punctuation">=</span> <span class="token attr-value">i18n.login</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -805,7 +812,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>参考<code>LocaleResolver </code>类（获取区域信息对象）的源码如下：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200705171737.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705171737.png" alt="img" style="zoom:80%;">
 
 <p>将我们自己写的国际化组件配置到 Spring 的容器中（<code>@Bean</code>），即注册国际化组件：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
@@ -827,7 +834,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>效果如下：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200705173441.gif" style="zoom: 67%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705173441.gif" alt="img" style="zoom:80%;">
 
 <h2 id="4-登陆"><a href="#4-登陆" class="headerlink" title="4. 登陆"></a>4. 登陆</h2><h3 id="①-禁用模板引擎的缓存"><a href="#①-禁用模板引擎的缓存" class="headerlink" title="① 禁用模板引擎的缓存"></a>① 禁用模板引擎的缓存</h3><p>在全局配置文件中禁用模板引擎的缓存，使得开发期间模板引擎页面修改以后实时生效</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token comment"># 禁用缓存</span>
@@ -880,9 +887,7 @@
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">registry<span class="token punctuation">.</span><span class="token function">addViewController</span><span class="token punctuation">(</span><span class="token string">"/main.html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">"dashboard"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>效果如下：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200705200333.png" style="zoom: 67%;">
-
-
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705200333.png" alt="img" style="zoom:80%;">
 
 
 
@@ -930,10 +935,11 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>效果如下，如果我们未经登录直接访问 <code>main.html</code> 的话：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200705202134.png" style="zoom:67%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705202134.png" alt="img" style="zoom:80%;">
 
 <h3 id="③-回显用户名"><a href="#③-回显用户名" class="headerlink" title="③ 回显用户名"></a>③ 回显用户名</h3><p>在后台管理界面实现用户名回显：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200705204017.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705204017.png" alt="img" style="zoom:80%;">
+
 <p>在前端界面从 session 中取出数据就行了：</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>navbar-brand col-sm-3 col-md-2 mr-0<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>[[${session.loginUser}]]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -1014,7 +1020,8 @@
 </tr>
 </tbody></table>
 <h2 id="7-CRUD-员工列表"><a href="#7-CRUD-员工列表" class="headerlink" title="7.  CRUD - 员工列表"></a>7.  CRUD - 员工列表</h2><p>展示员工信息</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200705213428.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200705213428.png" alt="img" style="zoom:80%;">
+
 <p>点击员工管理后调用 <code>list </code>函数显示所有员工信息：</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nav-link active<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@{/emps}<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
     ...
@@ -1145,7 +1152,8 @@
 <span class="token attr-name">spring.mvc.format.date</span><span class="token punctuation">=</span><span class="token attr-value">yyyy-MM-dd</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><strong>最终效果如下</strong>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200707104649.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200707104649.png" alt="img" style="zoom:80%;">
+
 <h2 id="9-CRUD-员工修改"><a href="#9-CRUD-员工修改" class="headerlink" title="9. CRUD - 员工修改"></a>9. CRUD - 员工修改</h2><p>OK，接下来进行员工的修改：(编辑按钮在 <code>list </code>界面)</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn btn-sm btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@{<span class="token punctuation">'</span>/emp/<span class="token punctuation">'</span>+${emp.getId()}}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>编辑<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -1223,9 +1231,11 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="11-BUG-提醒"><a href="#11-BUG-提醒" class="headerlink" title="11. BUG 提醒"></a>11. BUG 提醒</h2><p>兄弟萌，在创建员工信息的时候，一定要注意Map 的 key 要和后面的 Employee 对象的 id 一致，否则没办法通过 <code>getEmployeeById </code>查询到对应的员工信息。如下是错误的示范：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200707142639.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200707142639.png" alt="img" style="zoom:80%;">
+
 <p>✅ 下面是正确的：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200707142252.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200707142252.png" alt="img" style="zoom:80%;">
+
 <h2 id="12-登出"><a href="#12-登出" class="headerlink" title="12. 登出"></a>12. 登出</h2><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@{/user/logout}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>退出<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 登出</span>
@@ -1235,12 +1245,6 @@
     <span class="token keyword">return</span> <span class="token string">"redirect:/index.html"</span><span class="token punctuation">;</span> <span class="token comment">// 重定向到首页</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<blockquote>
-<p>完结撒花~ 🎉</p>
-</blockquote>
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PE411i7CV?p=26">【狂神说Java】SpringBoot 最新教程IDEA版通俗易懂</a></li>
-</ul>
 
                 
             </div>
@@ -1805,7 +1809,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

@@ -454,14 +454,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    796
+                    768
                 </div>
                 
 
@@ -508,28 +508,30 @@
 <li>比如：<code>mybatis-spring-boot-starter</code></li>
 </ul>
 <h2 id="2-编写启动器"><a href="#2-编写启动器" class="headerlink" title="2. 编写启动器"></a>2. 编写启动器</h2><p><strong>1）在IDEA中新建一个空项目 spring-boot-starter-mydiy</strong>  </p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711105910.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711105910.png" alt="img" style="zoom:80%;">
 
 <p><strong>2）在该项目中新建一个普通 Maven 模块：<code>smallbeef-spring-boot-starter</code> 启动器模块</strong></p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711110125.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711110125.png" alt="img" style="zoom:80%;">
 
 
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711103454.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711103454.png" alt="img" style="zoom:80%;">
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711103531.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711103531.png" alt="img" style="zoom:80%;">
 
 <p><strong>3）然后，再在该项目中新建一个 Springboot 模块：<code>smallbeef-spring-boot-starter-autoconfigure</code> 自动配置模块</strong></p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711103728.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711103728.png" alt="img" style="zoom:80%;">
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711110442.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711110638.png" alt="img" style="zoom:80%;">
 
 <p><strong>4）点击 Apply，基本结构如下：</strong></p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711110605.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711110605.png" alt="img" style="zoom:80%;">
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200711110638.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602163525939.png" alt="img" style="zoom:80%;">
+
 <p><strong>5）在启动器 starter 模块中自动配置autoconfigure 模块的依赖</strong>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200711110712.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711110712.png" alt="img" style="zoom:80%;">
+
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 启动器 --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>
     <span class="token comment">&lt;!--  引入自动配置模块 --&gt;</span>
@@ -541,8 +543,10 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>6）将 autoconfigure 项目下多余的文件都删掉（包括 test 文件夹、配置文件、启动类等），pom.xml 中只留下一个 starter，这是所有的启动器基本配置</strong>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200711104800.png"></p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200711104922.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711104800.png" alt="img" style="zoom:80%;">
+
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711104922.png" alt="img" style="zoom:80%;">
+
 <p><strong>7）在 autoconfigure 中编写一个自己的服务</strong>：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>smallbeef</span><span class="token punctuation">;</span>
 
@@ -593,11 +597,6 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<blockquote>
-<p>该文件有个警告</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200711114538.png"></p>
-<p>不碍事~</p>
-</blockquote>
 <p><strong>9）编写自动配置类并注入bean</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>smallbeef</span><span class="token punctuation">;</span>
 
@@ -633,7 +632,7 @@ com.smallbeef.HelloServiceAutoConfiguration<span aria-hidden="true" class="line-
 <blockquote>
 <p>🚨 注意先安装 autocongifure，因为启动器 starter 依赖于 autoconfigure</p>
 </blockquote>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711111606.png">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711111606.png" alt="img" style="zoom:80%;">
 
 <h2 id="3-测试自定义启动器"><a href="#3-测试自定义启动器" class="headerlink" title="3. 测试自定义启动器"></a>3. 测试自定义启动器</h2><p>1）新建一个SpringBoot 项目，注意需要导入 Web 模块，因为我们在自动配置类中配置了 <code>@ConditionalOnWebApplication</code> 只有在 Web 应用中配置类才生效 </p>
 <p>2）导入我们自己写的启动器</p>
@@ -664,15 +663,7 @@ com.smallbeef.HelloServiceAutoConfiguration<span aria-hidden="true" class="line-
 <span class="token attr-name">smallbeef.hello.suffix</span><span class="token punctuation">=</span><span class="token attr-value">"sss"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>5）启动项目进行测试：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200711115905.png" style="zoom:80%;">
-
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Et411Y7tQ">视频 - SpringBoot_权威教程_雷丰阳_尚硅谷</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/homepage?__biz=Mzg2NTAzMTExNg==&amp;hid=1&amp;sn=3247dca1433a891523d9e4176c90c499">狂神说 SpringBoot</a></p>
-</li>
-</ul>
-
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200711115905.png" alt="img" style="zoom:80%;">
                 
             </div>
             <hr/>
@@ -1236,7 +1227,7 @@ com.smallbeef.HelloServiceAutoConfiguration<span aria-hidden="true" class="line-
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

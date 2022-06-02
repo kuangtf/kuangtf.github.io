@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -534,8 +534,7 @@
 
 	<span class="token comment">//得到bean的别名，如果根据别名检索，那么其原名也会被检索出来</span>
 	<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getAliases</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="1-1、使用场景"><a href="#1-1、使用场景" class="headerlink" title="1.1、使用场景"></a>1.1、使用场景</h3><ul>
 <li>从Ioc容器中获取Bean(byName or byType)</li>
@@ -557,8 +556,7 @@
 	<span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">isSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 		<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>从它定义的接口可以看出，<code>FactoryBean</code>表现的是一个工厂的职责。   <strong>即一个Bean A如果实现了FactoryBean接口，那么A就变成了一个工厂，根据A的名称获取到的实际上是工厂调用<code>getObject()</code>返回的对象，而不是A本身，如果要获取工厂A自身的实例，那么需要在名称前面加上’<code>&amp;</code>‘符号。</strong></p>
 <ul>
@@ -909,7 +907,7 @@ myBean1<span class="token punctuation">.</span><span class="token function">equa
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/16/spring/3-aop-xiang-jie/">
+                <a href="/2022/05/16/spring/aop-xiang-jie/">
                     <div class="card-image">
                         
                         
@@ -1185,7 +1183,7 @@ myBean1<span class="token punctuation">.</span><span class="token function">equa
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

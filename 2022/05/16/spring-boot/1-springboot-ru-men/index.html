@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -507,17 +507,16 @@
 <li>内嵌式容器简化Web项目</li>
 <li>没有冗余代码生成和XML配置的要求</li>
 </ul>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200528210455.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200528210455.png" alt="img" style="zoom:80%;">
+
 <h2 id="2-微服务介绍"><a href="#2-微服务介绍" class="headerlink" title="2. 微服务介绍"></a>2. 微服务介绍</h2><p><strong>微服务</strong>：是一种架构风格（服务微化）</p>
 <p>一个应用应该是一组小型服务；可以通过 HTTP 的方式进行互通；</p>
 <blockquote>
 <p><strong>单体应用</strong>：ALL IN ONE</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200528211512.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200528211512.png" alt="img" style="zoom:80%;">
 </blockquote>
 <p><strong>微服务：每一个功能元素最终都是一个可独立替换和独立升级的软件单元：</strong></p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200528211629.png">
-
-
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200528211629.png" alt="img" style="zoom:80%;">
 
 <h2 id="3-环境准备"><a href="#3-环境准备" class="headerlink" title="3. 环境准备"></a>3. 环境准备</h2><p>本博客所用环境：</p>
 <ul>
@@ -535,15 +534,16 @@
 <h2 id="4-HelloWorld"><a href="#4-HelloWorld" class="headerlink" title="4. HelloWorld"></a>4. HelloWorld</h2><p>我们将学习如何快速的创建一个Spring Boot应用，并且实现一个简单的Http请求处理。通过这个例子对Spring Boot有一个初步的了解，并体验其结构简单、开发快速的特性。</p>
 <p>💬 需求：浏览器发送 hello 请求，服务器接受请求并处理，响应Hello World 字符串。</p>
 <h3 id="①-Spring-Initializer-快速创建-Spring-Boot-项目"><a href="#①-Spring-Initializer-快速创建-Spring-Boot-项目" class="headerlink" title="① Spring Initializer 快速创建 Spring Boot 项目"></a>① Spring Initializer 快速创建 Spring Boot 项目</h3><p>IDE 都支持使用 Spring 的<u>项目创建向导</u>快速创建一个 Spring Boot 项目；</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200529093821.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200529093821.png" alt="img" style="zoom:80%;">
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20200630222558.png" style="zoom: 67%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160736336.png" alt="image-20220602160736336" style="zoom:80%;">
 
 <p>OK，然后选择我们需要的模块，向导会联网自动创建 Spring Boot 项目；</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200529093907.png" style="zoom:67%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160752332.png" alt="image-20220602160752332" style="zoom:80%;">
 
 <p>🎉 默认生成的 Spring Boot 项目目录结构如下：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200529094814.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160809336.png" alt="image-20220602160809336" style="zoom:80%;">
+
 <ul>
 <li><p>程序的<strong>主启动类</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
@@ -662,9 +662,11 @@
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>打包：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200528220845.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200528220845.png" alt="img" style="zoom:80%;">
+
 <p>成功打包后该 <code>jar</code> 包会放在 <code>target </code>文件夹下：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200528220933.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200528220933.png" alt="img" style="zoom:80%;">
+
 <p>直接使用 <code>java -jar 包名</code> 的命令即可执行该 jar 包。</p>
 <p>首先，打开命令行 cd 到该 <code>jar </code>包所在文件夹，然后运行以下命令：</p>
 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">java <span class="token operator">-</span>jar spring_boot<span class="token operator">-</span>01<span class="token operator">-</span>helloworld<span class="token operator">-</span>1<span class="token punctuation">.</span>0<span class="token operator">-</span>SNAPSHOT<span class="token punctuation">.</span>jar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -692,14 +694,14 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><p><code>spring-boot-starter-xxx</code>：<strong>spring-boot 场景启动器</strong>；</p>
-</li>
-<li><p><code>spring-boot-starter-web</code>：帮我们导入了 web 模块正常运行所依赖的组件：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200528221854.png"></p>
-</li>
+<li><code>spring-boot-starter-xxx</code>：<strong>spring-boot 场景启动器</strong>；</li>
+<li><code>spring-boot-starter-web</code>：帮我们导入了 web 模块正常运行所依赖的组件：</li>
 </ul>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200528221854.png" alt="img" style="zoom:80%;">
+
 <p>⭐ Spring Boot将所有的功能场景都抽取出来，做成一个个的 starter（启动器），只需要在项目里面引入这些 starter ，相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200528222416.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200528222416.png" alt="img" style="zoom:80%;">
+
 <h3 id="②-主启动类-主程序类"><a href="#②-主启动类-主程序类" class="headerlink" title="② 主启动类/主程序类"></a>② 主启动类/主程序类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  *  @SpringBootApplication 来标注一个主程序类，说明这是一个Spring Boot应用
  */</span>
@@ -829,12 +831,14 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h4 id="Ⅴ-spring-factories"><a href="#Ⅴ-spring-factories" class="headerlink" title="Ⅴ spring.factories"></a>Ⅴ spring.factories</h4><p>⭐ 在上面这段源码中，我们发现了一个多次出现的文件 <code>spring.factories</code>，在 <u>External Libraries</u> 中找到它：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200701105523.png" style="zoom:80%;"> 
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200701105523.png" alt="img" style="zoom:80%;">
 
 <p>其中包含了很多自动配置的文件（自动配置类 <code>xxxAutoConfiguration</code>），这就是<strong>自动配置的根源所在</strong>！</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200701105548.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200701105548.png" alt="img" style="zoom:80%;">
+
 <p>我们在上面的自动配置类随便找一个打开看看，比如 ：<code>WebMvcAutoConfiguration</code></p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200701105838.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200701105838.png" alt="img" style="zoom:80%;">
+
 <p>可以看到这些一个个的都是JavaConfig 配置类，而且都注入了一些 Bean。</p>
 <p>⭐ 所以，自动配置真正实现是从 classpath 中搜寻所有的 <code>META-INF/spring.factories</code> 配置文件 ，并将其中对应的  <code>org.springframework.boot.autoconfigure.</code> 包下的配置项，通过<strong>反射</strong>实例化为对应标注了 <code>@Configuration</code> 的 JavaConfig 形式的 IoC 容器配置类 ， 然后将这些都汇总成为一个实例并加载到 IoC 容器中。</p>
 <br>
@@ -887,16 +891,10 @@
 <li><p>推断并设置 <code>main</code> 方法的定义类，找到运行的主类</p>
 </li>
 </ul>
-<h4 id="Ⅱ-run-方法流程分析"><a href="#Ⅱ-run-方法流程分析" class="headerlink" title="Ⅱ  run 方法流程分析"></a>Ⅱ  run 方法流程分析</h4><blockquote>
-<p>🔗 图片来源狂神说公众号</p>
-</blockquote>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200701111258.png"></p>
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Et411Y7tQ">视频 - SpringBoot_权威教程_雷丰阳_尚硅谷</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/homepage?__biz=Mzg2NTAzMTExNg==&amp;hid=1&amp;sn=3247dca1433a891523d9e4176c90c499">狂神说 SpringBoot</a></p>
-</li>
-</ul>
+<h4 id="Ⅱ-run-方法流程分析"><a href="#Ⅱ-run-方法流程分析" class="headerlink" title="Ⅱ  run 方法流程分析"></a>Ⅱ  run 方法流程分析</h4><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200701111258.png" alt="img" style="zoom:80%;">
+
+
+
 
                 
             </div>
@@ -1461,7 +1459,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

@@ -454,14 +454,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2k
                 </div>
                 
 
@@ -699,13 +699,17 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>点进去 <code>spring-boot-starter-mail</code>，可以看到 <code>jakarta.mail</code>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200714115330.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200714115330.png" alt="img" style="zoom:80%;">
+
 <p>查看自动配置类：<code>MailSenderAutoConfiguration</code>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200714120502.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200714120502.png" alt="img" style="zoom:80%;">
+
 <p>查看 <code>MailSenderJndiConfiguration</code>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200714120623.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200714120623.png" alt="img" style="zoom:80%;">
+
 <p>然后我们去看下 <code>MailPropertires</code>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200714120741.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200714120741.png" alt="img" style="zoom:80%;">
+
 <p>**2）显然，需要我们在全局配置文件中配置 <code>spring.mail</code>**：</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">spring.mail.username</span><span class="token punctuation">=</span><span class="token attr-value">1912420914@qq.com</span>
 <span class="token attr-name">spring.mail.password</span><span class="token punctuation">=</span><span class="token attr-value">你的qq授权码 </span>
@@ -714,7 +718,8 @@
 <span class="token attr-name">spring.mail.properties.mail.smtp.ssl.enable</span><span class="token punctuation">=</span><span class="token attr-value">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>📡 <strong>获取授权码</strong>：在QQ邮箱中的 设置 -&gt; 账户 -&gt; 开启 pop3 和 smtp 服务</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200714121635.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200714121635.png" alt="img" style="zoom:80%;">
+
 <p><strong>3）Spring 单元测试</strong>：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringBootTest</span>
 <span class="token keyword">class</span> <span class="token class-name">DemoApplicationTests</span> <span class="token punctuation">{</span>
@@ -738,7 +743,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>查看邮件，邮件接收成功。</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200714122223.png" style="zoom:67%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200714122223.png" alt="img" style="zoom:80%;">
 
 <p>👍 还可以通过 MIME 协议发送带有复杂内容的邮件：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
@@ -759,13 +764,6 @@
 
     mailSender<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>mimeMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PE411i7CV?p=26">【狂神说Java】SpringBoot 最新教程IDEA版通俗易懂</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiang--liu/p/11378860.html">@Scheduled cron表达式</a></p>
-</li>
-</ul>
 
                 
             </div>
@@ -1330,7 +1328,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

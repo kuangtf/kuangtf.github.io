@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SpingBoot 自动装配原理, 帅枫">
+    <meta name="keywords" content="帅枫">
     <meta name="description" content="朝着成功前进">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SpingBoot 自动装配原理 | 帅枫</title>
+    <title>帅枫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -301,12 +301,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SpingBoot 自动装配原理</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -420,25 +420,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/SpingBoot-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/">
-                                <span class="chip bg-color">SpingBoot 自动装配原理</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Spring-Boot/" class="post-category">
-                                Spring Boot
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -454,7 +441,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -631,7 +618,8 @@ spring<span class="token operator">-</span>servlet<span class="token punctuation
 
 <p>这里我们需要重点关注一下<code>getAutoConfigurationEntry()</code>方法，这个方法主要负责加载自动配置类的。</p>
 <p>该方法调用链如下：</p>
-<p><a target="_blank" rel="noopener" href="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c1200712655443ca4b38500d615bb70~tplv-k3u1fbpfcp-watermark.image"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c1200712655443ca4b38500d615bb70~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602155917078.png" alt="image-20220602155917078" style="zoom:80%;">
+
 <p>现在我们结合<code>getAutoConfigurationEntry()</code>的源码来详细分析一下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">AutoConfigurationEntry</span> EMPTY_ENTRY <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AutoConfigurationEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -657,25 +645,31 @@ spring<span class="token operator">-</span>servlet<span class="token punctuation
 
 <p><strong>第 1 步</strong>:</p>
 <p>判断自动装配开关是否打开。默认<code>spring.boot.enableautoconfiguration=true</code>，可在 <code>application.properties</code> 或 <code>application.yml</code> 中设置</p>
-<p><a target="_blank" rel="noopener" href="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/77aa6a3727ea4392870f5cccd09844ab~tplv-k3u1fbpfcp-watermark.image"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/77aa6a3727ea4392870f5cccd09844ab~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602155957094.png" alt="image-20220602155957094" style="zoom:80%;">
+
 <p><strong>第 2 步</strong> ：</p>
 <p>用于获取<code>EnableAutoConfiguration</code>注解中的 <code>exclude</code> 和 <code>excludeName</code>。</p>
-<p><a target="_blank" rel="noopener" href="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3d6ec93bbda1453aa08c52b49516c05a~tplv-k3u1fbpfcp-zoom-1.image"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3d6ec93bbda1453aa08c52b49516c05a~tplv-k3u1fbpfcp-zoom-1.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160036237.png" alt="image-20220602160036237" style="zoom:80%;">
+
 <p><strong>第 3 步</strong></p>
 <p>获取需要自动装配的所有配置类，读取<code>META-INF/spring.factories</code></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">spring-boot/spring-boot-project/spring-boot-autoconfigure/src/main/resources/META-INF/spring.factories<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><a target="_blank" rel="noopener" href="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58c51920efea4757aa1ec29c6d5f9e36~tplv-k3u1fbpfcp-watermark.image"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58c51920efea4757aa1ec29c6d5f9e36~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160118488.png" alt="image-20220602160118488" style="zoom:80%;">
+
 <p>从下图可以看到这个文件的配置内容都被我们读取到了。<code>XXXAutoConfiguration</code>的作用就是按需加载组件。</p>
-<p><a target="_blank" rel="noopener" href="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/94d6e1a060ac41db97043e1758789026~tplv-k3u1fbpfcp-watermark.image"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/94d6e1a060ac41db97043e1758789026~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160139533.png" alt="image-20220602160139533" style="zoom:80%;">
+
 <p>不光是这个依赖下的<code>META-INF/spring.factories</code>被读取到，所有 Spring Boot Starter 下的<code>META-INF/spring.factories</code>都会被读取到。</p>
 <p>所以，你可以清楚滴看到， druid 数据库连接池的 Spring Boot Starter 就创建了<code>META-INF/spring.factories</code>文件。</p>
 <p>如果，我们自己要创建一个 Spring Boot Starter，这一步是必不可少的。</p>
-<p><a target="_blank" rel="noopener" href="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68fa66aeee474b0385f94d23bcfe1745~tplv-k3u1fbpfcp-watermark.image"><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68fa66aeee474b0385f94d23bcfe1745~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160208703.png" alt="image-20220602160208703" style="zoom:80%;">
+
 <p><strong>第 4 步</strong> ：</p>
 <p>到这里可能面试官会问你:“<code>spring.factories</code>中这么多配置，每次启动都要全部加载么？”。</p>
 <p>很明显，这是不现实的。我们 debug 到后面你会发现，<code>configurations</code> 的值变小了。</p>
-<p><a target="_blank" rel="noopener" href="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/267f8231ae2e48d982154140af6437b0~tplv-k3u1fbpfcp-watermark.image"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/267f8231ae2e48d982154140af6437b0~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160229799.png" alt="image-20220602160229799" style="zoom:80%;">
+
 <p>因为，这一步有经历了一遍筛选，<code>@ConditionalOnXXX</code> 中的所有条件都满足，该类才会生效。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
 <span class="token comment">// 检查相关的类：RabbitTemplate 和 Channel是否存在</span>
@@ -703,17 +697,22 @@ spring<span class="token operator">-</span>servlet<span class="token punctuation
 </ul>
 <h2 id="如何实现一个-Starter"><a href="#如何实现一个-Starter" class="headerlink" title="如何实现一个 Starter"></a>如何实现一个 Starter</h2><p>光说不练假把式，现在就来撸一个 starter，实现自定义线程池</p>
 <p>第一步，创建<code>threadpool-spring-boot-starter</code>工程</p>
-<p><a target="_blank" rel="noopener" href="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ff0ebe7844f40289eb60213af72c5a6~tplv-k3u1fbpfcp-watermark.image"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ff0ebe7844f40289eb60213af72c5a6~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160253163.png" alt="image-20220602160253163" style="zoom:80%;">
+
 <p>第二步，引入 Spring Boot 相关依赖</p>
-<p><a target="_blank" rel="noopener" href="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e14254276604f87b261e5a80a354cc0~tplv-k3u1fbpfcp-watermark.image"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e14254276604f87b261e5a80a354cc0~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160306096.png" alt="image-20220602160306096" style="zoom:80%;">
+
 <p>第三步，创建<code>ThreadPoolAutoConfiguration</code></p>
-<p><a target="_blank" rel="noopener" href="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1843f1d12c5649fba85fd7b4e4a59e39~tplv-k3u1fbpfcp-watermark.image"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1843f1d12c5649fba85fd7b4e4a59e39~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160319378.png" alt="image-20220602160319378" style="zoom:80%;">
+
 <p>第四步，在<code>threadpool-spring-boot-starter</code>工程的 resources 包下创建<code>META-INF/spring.factories</code>文件</p>
-<p><a target="_blank" rel="noopener" href="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/97b738321f1542ea8140484d6aaf0728~tplv-k3u1fbpfcp-watermark.image"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/97b738321f1542ea8140484d6aaf0728~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160332888.png" alt="image-20220602160332888" style="zoom:80%;">
+
 <p>最后新建工程引入<code>threadpool-spring-boot-starter</code></p>
-<p><a target="_blank" rel="noopener" href="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/edcdd8595a024aba85b6bb20d0e3fed4~tplv-k3u1fbpfcp-watermark.image"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/edcdd8595a024aba85b6bb20d0e3fed4~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<p>[<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160341343.png" alt="image-20220602160341343" style="zoom:80%;">](h</p>
 <p>测试通过！！！</p>
-<p><a target="_blank" rel="noopener" href="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9a265eea4de742a6bbdbbaa75f437307~tplv-k3u1fbpfcp-watermark.image"><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9a265eea4de742a6bbdbbaa75f437307~tplv-k3u1fbpfcp-watermark.image" alt="img"></a></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160413134.png" alt="image-20220602160413134" style="zoom:80%;">
+
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Spring Boot 通过<code>@EnableAutoConfiguration</code>开启自动装配，通过 SpringFactoriesLoader 最终加载<code>META-INF/spring.factories</code>中的自动配置类实现自动装配，自动配置类其实就是通过<code>@Conditional</code>按需加载的配置类，想要其生效必须引入<code>spring-boot-starter-xxx</code>包实现起步依赖</p>
 
                 
@@ -778,11 +777,7 @@ spring<span class="token operator">-</span>servlet<span class="token punctuation
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/SpingBoot-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/">
-                                    <span class="chip bg-color">SpingBoot 自动装配原理</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1279,7 +1274,7 @@ spring<span class="token operator">-</span>servlet<span class="token punctuation
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

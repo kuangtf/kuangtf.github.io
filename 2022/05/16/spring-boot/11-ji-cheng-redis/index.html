@@ -454,21 +454,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    919
+                    889
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -525,7 +525,8 @@
 <li><code>opsForSet</code>： 对应 Set（集合）</li>
 <li><code>opsForGeo</code>： 对应 GEO（地理位置）</li>
 </ul>
-<h2 id="3-整合测试"><a href="#3-整合测试" class="headerlink" title="3. 整合测试"></a>3. 整合测试</h2><h3 id="①-导入依赖"><a href="#①-导入依赖" class="headerlink" title="① 导入依赖"></a>① 导入依赖</h3><p><img src="https://gitee.com/veal98/images/raw/master/img/20200725102121.png"></p>
+<h2 id="3-整合测试"><a href="#3-整合测试" class="headerlink" title="3. 整合测试"></a>3. 整合测试</h2><h3 id="①-导入依赖"><a href="#①-导入依赖" class="headerlink" title="① 导入依赖"></a>① 导入依赖</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200725102121.png" alt="img" style="zoom:80%;">
+
 <p>或者手动导入依赖：</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
@@ -559,13 +560,15 @@
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>redisTemplate<span class="token punctuation">.</span><span class="token function">opsForValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200725105227.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200725105227.png" alt="img" style="zoom:80%;">
+
 <p>🚨 报错：所有的对象都需要序列化。</p>
 <p>将实体类序列化：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>OK！</p>
-<h2 id="5-自定义-RedisTemplate"><a href="#5-自定义-RedisTemplate" class="headerlink" title="5. 自定义 RedisTemplate"></a>5. 自定义 RedisTemplate</h2><p><img src="https://gitee.com/veal98/images/raw/master/img/20200725105703.png"></p>
+<h2 id="5-自定义-RedisTemplate"><a href="#5-自定义-RedisTemplate" class="headerlink" title="5. 自定义 RedisTemplate"></a>5. 自定义 RedisTemplate</h2><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200725105703.png" alt="img" style="zoom:80%;">
+
 <p>上示代码中 <code>RedisTemplate&lt;Object,Object&gt;</code> 泛型选用的是两个 <code>Object </code>类，通常情况下，对于 <code>key </code>值我们一般会选用 <code>String </code>类型，使得我们每次都要进行强制类型转换。而且 <code>RedisTemplate </code>类默认采用的是 jdk 的序列化方式，但在真实的开发中，我们一般使用 Json 来传递对象，接下来我们自定义一个 <code>RedisTemplate&lt;String,Object&gt;</code>（新建一个 configuration.<code>RedisConfig</code>类）：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RedisConfig</span> <span class="token punctuation">{</span>
@@ -596,8 +599,6 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>测试：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -605,12 +606,6 @@
     redisTemplate<span class="token punctuation">.</span><span class="token function">opsForValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>redisTemplate<span class="token punctuation">.</span><span class="token function">opsForValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>🎉 Successful ！</p>
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1S54y1R7SB?from=search&amp;seid=3325634079268895938">【狂神说Java】Redis最新超详细版教程通俗易懂</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/leeeeemz/p/12766186.html">SpringBoot整合Redis—自定义配置</a></li>
-</ul>
 
                 
             </div>
@@ -1175,7 +1170,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

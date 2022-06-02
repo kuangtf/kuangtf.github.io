@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -512,7 +512,8 @@
 </blockquote>
 <p>多说一句，很多开发者入门就直接接触的 SpringMVC，对 Spring 其实不是很了解，Spring 是渐进式的工具，并不具有很强的侵入性，它的模块也划分得很合理，即使你的应用不是 web 应用，或者之前完全没有使用到 Spring，而你就想用 Spring 的依赖注入这个功能，其实完全是可以的，它的引入不会对其他的组件产生冲突。</p>
 <p>废话说完，我们继续。<code>ApplicationContext context = new ClassPathXmlApplicationContext(...)</code> 其实很好理解，从名字上就可以猜出一二，就是在 ClassPath 中寻找 xml 配置文件，根据 xml 文件内容来构建 ApplicationContext。当然，除了 ClassPathXmlApplicationContext 以外，我们也还有其他构建 ApplicationContext 的方案可供选择，我们先来看看大体的继承结构是怎么样的：</p>
-<p><img src="https://www.javadoop.com/blogimages/spring-context/1.png" alt="1"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602151830810.png" alt="image-20220602151830810" style="zoom:80%;">
+
 <blockquote>
 <p>读者可以大致看一下类名，源码分析的时候不至于找不着看哪个类，因为 Spring 为了适应各种使用场景，提供的各个接口都可能有很多的实现类。对于我们来说，就是揪着一个完整的分支看完。</p>
 <p>当然，读本文的时候读者也不必太担心，每个代码块分析的时候，我都会告诉读者我们在说哪个类第几行。</p>
@@ -562,7 +563,8 @@
 <p>以上例子很简单，不过也够引出本文的主题了，就是怎么样通过配置文件来启动 Spring 的 ApplicationContext ？也就是我们今天要分析的 IOC 的核心了。ApplicationContext 启动过程中，会负责创建实例 Bean，往各个 Bean 中注入依赖等。</p>
 <h2 id="2-BeanFactory-简介"><a href="#2-BeanFactory-简介" class="headerlink" title="2. BeanFactory 简介"></a>2. BeanFactory 简介</h2><p>BeanFactory，从名字上也很好理解，生产 bean 的工厂，它负责生产和管理各个 bean 实例。</p>
 <p>初学者可别以为我之前说那么多和 BeanFactory 无关，前面说的 ApplicationContext 其实就是一个 BeanFactory。我们来看下和 BeanFactory 接口相关的主要的继承结构：</p>
-<p><img src="https://www.javadoop.com/blogimages/spring-context/2.png" alt="2"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602151843303.png" alt="image-20220602151843303" style="zoom:80%;">
+
 <p>我想，大家看完这个图以后，可能就不是很开心了。ApplicationContext 往下的继承结构前面一张图说过了，这里就不重复了。这张图呢，背下来肯定是不需要的，有几个重点和大家说明下就好。</p>
 <ol>
 <li>ApplicationContext 继承了 ListableBeanFactory，这个 Listable 的意思就是，通过这个接口，我们可以获取多个 Bean，大家看源码会发现，最顶层 BeanFactory 接口的方法都是获取单个 Bean 的。</li>
@@ -573,7 +575,7 @@
 </ol>
 <p>然后，请读者打开编辑器，翻一下 BeanFactory、ListableBeanFactory、HierarchicalBeanFactory、AutowireCapableBeanFactory、ApplicationContext 这几个接口的代码，大概看一下各个接口中的方法，大家心里要有底，限于篇幅，我就不贴代码介绍了。</p>
 <h2 id="3-启动过程分析"><a href="#3-启动过程分析" class="headerlink" title="3. 启动过程分析"></a>3. 启动过程分析</h2><p>总的来说，Spring IoC 的启动过程如下图：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20201221100608.png" style="zoom:50%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152055554.png" alt="image-20220602152055554" style="zoom:80%;">
 
 <p>下面将会是冗长的代码分析，记住，一定要自己打开源码来看，不然纯看是很累的。</p>
 <p>第一步，我们肯定要从 ClassPathXmlApplicationContext 的构造方法说起。</p>
@@ -751,7 +753,8 @@
 <p>看到这里的时候，我觉得读者就应该站在高处看 ApplicationContext 了，ApplicationContext 继承自 BeanFactory，但是它不应该被理解为 BeanFactory 的实现类，而是说其内部持有一个实例化的 BeanFactory（DefaultListableBeanFactory）。以后所有的 BeanFactory 相关的操作其实是委托给这个实例来处理的。</p>
 </blockquote>
 <p>我们说说为什么选择实例化 <strong>DefaultListableBeanFactory</strong> ？前面我们说了有个很重要的接口 ConfigurableListableBeanFactory，它实现了 BeanFactory 下面一层的所有三个接口，我把之前的继承图再拿过来大家再仔细看一下：</p>
-<p><img src="https://www.javadoop.com/blogimages/spring-context/3.png" alt="3"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152238176.png" alt="image-20220602152238176" style="zoom:80%;">
+
 <p>我们可以看到 ConfigurableListableBeanFactory 只有一个实现类 DefaultListableBeanFactory，而且实现类 DefaultListableBeanFactory 还通过实现右边的 AbstractAutowireCapableBeanFactory 通吃了右路。所以结论就是，最底下这个家伙 DefaultListableBeanFactory 基本上是最牛的 BeanFactory 了，这也是为什么这边会使用这个类来实例化的原因。</p>
 <blockquote>
 <p>如果你想要在程序运行的时候动态往 Spring IOC 容器注册新的 bean，就会使用到这个类。那我们怎么在运行时获得这个实例呢？</p>
@@ -2865,7 +2868,7 @@ ctx<span class="token punctuation">.</span><span class="token function">refresh<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kuangtf.github.io/2022/05/16/spring/2-springioc-rong-qi-yuan-ma-fen-xi/">https://kuangtf.github.io/2022/05/16/spring/2-springioc-rong-qi-yuan-ma-fen-xi/</a>
+                    <a href="https://kuangtf.github.io/2022/05/16/spring/springioc-rong-qi-yuan-ma-fen-xi/">https://kuangtf.github.io/2022/05/16/spring/springioc-rong-qi-yuan-ma-fen-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -3078,7 +3081,7 @@ ctx<span class="token punctuation">.</span><span class="token function">refresh<
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/16/spring/3-aop-xiang-jie/">
+                <a href="/2022/05/16/spring/aop-xiang-jie/">
                     <div class="card-image">
                         
                         
@@ -3127,7 +3130,7 @@ ctx<span class="token punctuation">.</span><span class="token function">refresh<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/16/spring/1-spring-jian-jie-ioc-xiang-jie/">
+                <a href="/2022/05/16/spring/spring-jian-jie-ioc-xiang-jie/">
                     <div class="card-image">
                         
                         
@@ -3403,7 +3406,7 @@ ctx<span class="token punctuation">.</span><span class="token function">refresh<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

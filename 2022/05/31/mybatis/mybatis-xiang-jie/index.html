@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-31
+                    2022-06-02
                 </div>
                 
 
@@ -491,7 +491,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第一部分：自定义持久层框架"><a href="#第一部分：自定义持久层框架" class="headerlink" title="第一部分：自定义持久层框架"></a>第一部分：自定义持久层框架</h1><h2 id="1-1-分析JDBC操作问题"><a href="#1-1-分析JDBC操作问题" class="headerlink" title="1.1 分析JDBC操作问题"></a>1.1 分析JDBC操作问题</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <h2 id="第一部分：自定义持久层框架"><a href="#第一部分：自定义持久层框架" class="headerlink" title="第一部分：自定义持久层框架"></a>第一部分：自定义持久层框架</h2><h3 id="1-1-分析JDBC操作问题"><a href="#1-1-分析JDBC操作问题" class="headerlink" title="1.1 分析JDBC操作问题"></a>1.1 分析JDBC操作问题</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">Connection</span> connection <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
     <span class="token class-name">PreparedStatement</span> preparedStatement <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
     <span class="token class-name">ResultSet</span> resultSet <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
@@ -552,10 +552,10 @@
 <p>2 、 Sql语句在代码中硬编码，造成代码不易维护，实际应用中sql变化的可能较大，sql变动需要改变 java代码。</p>
 <p>3 、 使用preparedStatement向占有位符号传参数存在硬编码，因为sql语句的where条件不一定，可能 多也可能<br>少，修改sql还要修改代码，系统不易维护。</p>
 <p>4 、 对结果集解析存在硬编码(查询列名)，sql变化导致解析代码变化，系统不易维护，如果能将数据 库记录封装成<br>pojo对象解析比较方便</p>
-<h2 id="1-2-问题解决思路"><a href="#1-2-问题解决思路" class="headerlink" title="1.2 问题解决思路"></a>1.2 问题解决思路</h2><p>①使用数据库连接池初始化连接资源</p>
+<h3 id="1-2-问题解决思路"><a href="#1-2-问题解决思路" class="headerlink" title="1.2 问题解决思路"></a>1.2 问题解决思路</h3><p>①使用数据库连接池初始化连接资源</p>
 <p>②将sql语句抽取到xml配置文件中</p>
 <p>③使用反射、内省等底层技术，自动将实体与表进行属性与字段的自动映射</p>
-<h2 id="1-3-自定义框架设计"><a href="#1-3-自定义框架设计" class="headerlink" title="1.3 自定义框架设计"></a>1.3 自定义框架设计</h2><p><strong>使用端</strong>：</p>
+<h3 id="1-3-自定义框架设计"><a href="#1-3-自定义框架设计" class="headerlink" title="1.3 自定义框架设计"></a>1.3 自定义框架设计</h3><p><strong>使用端</strong>：</p>
 <p>提供核心配置文件：</p>
 <p>sqlMapConfig.xml : 存放数据源信息，引入mapper.xml</p>
 <p>Mapper.xml : sql语句的配置文件信息</p>
@@ -578,7 +578,7 @@
 <p>具体实现：封装JDBC完成对数据库表的查询操作</p>
 <p><strong>涉及到的设计模式：</strong></p>
 <p>Builder构建者设计模式、工厂模式、代理模式</p>
-<h2 id="1-4-自定义框架实现"><a href="#1-4-自定义框架实现" class="headerlink" title="1.4 自定义框架实现"></a>1.4 自定义框架实现</h2><p>在使用端项目中创建配置配置文件</p>
+<h3 id="1-4-自定义框架实现"><a href="#1-4-自定义框架实现" class="headerlink" title="1.4 自定义框架实现"></a>1.4 自定义框架实现</h3><p>在使用端项目中创建配置配置文件</p>
 <p>创建 sqlMapConfig.xml</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
     <span class="token comment">&lt;!--数据库连接信息--&gt;</span>
@@ -963,7 +963,7 @@
         <span class="token keyword">this</span><span class="token punctuation">.</span>parameterMappingList <span class="token operator">=</span> parameterMappingList<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="1-5-自定义框架优化"><a href="#1-5-自定义框架优化" class="headerlink" title="1.5 自定义框架优化"></a>1.5 自定义框架优化</h2><p>通过上述我们的自定义框架，我们解决了JDBC操作数据库带来的一些问题：例如频繁创建释放数据库连 接，硬编</p>
+<h3 id="1-5-自定义框架优化"><a href="#1-5-自定义框架优化" class="headerlink" title="1.5 自定义框架优化"></a>1.5 自定义框架优化</h3><p>通过上述我们的自定义框架，我们解决了JDBC操作数据库带来的一些问题：例如频繁创建释放数据库连 接，硬编</p>
 <p>码，手动封装返回结果集等问题，但是现在我们继续来分析刚刚完成的自定义框架代码，有没 有什么问题？</p>
 <p>问题如下：</p>
 <ul>
@@ -1013,23 +1013,23 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="第二部分：Mybatis相关概念"><a href="#第二部分：Mybatis相关概念" class="headerlink" title="第二部分：Mybatis相关概念"></a>第二部分：Mybatis相关概念</h1><h2 id="2-1-对象-关系数据库映射（ORM）"><a href="#2-1-对象-关系数据库映射（ORM）" class="headerlink" title="2.1 对象/关系数据库映射（ORM）"></a>2.1 对象/关系数据库映射（ORM）</h2><p>ORM全称Object/Relation Mapping：表示对象-关系映射的缩写</p>
+<h2 id="第二部分：Mybatis相关概念"><a href="#第二部分：Mybatis相关概念" class="headerlink" title="第二部分：Mybatis相关概念"></a>第二部分：Mybatis相关概念</h2><h3 id="2-1-对象-关系数据库映射（ORM）"><a href="#2-1-对象-关系数据库映射（ORM）" class="headerlink" title="2.1 对象/关系数据库映射（ORM）"></a>2.1 对象/关系数据库映射（ORM）</h3><p>ORM全称Object/Relation Mapping：表示对象-关系映射的缩写</p>
 <p>ORM完成面向对象的编程语言到关系数据库的映射。当ORM框架完成映射后，程序员既可以利用面向 对象程序设<br>计语言的简单易用性，又可以利用关系数据库的技术优势。ORM把关系数据库包装成面向对 象的模型。ORM框架<br>是面向对象设计语言与关系数据库发展不同步时的中间解决方案。采用ORM框架 后，应用程序不再直接访问底层<br>数据库，而是以面向对象的方式来操作持久化对象，而ORM框架则将这 些面向对象的操作转换成底层SQL操作。<br>ORM框架实现的效果：把对持久化对象的保存、修改、删除 等操作，转换为对数据库的操作</p>
-<h2 id="2-2-Mybatis简介"><a href="#2-2-Mybatis简介" class="headerlink" title="2.2 Mybatis简介"></a>2.2 Mybatis简介</h2><p>MyBatis是一款优秀的基于ORM的半自动轻量级持久层框架，它支持定制化SQL、存储过程以及高级映 射。<br>MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。MyBatis可以使用简单的 XML或注解来配置<br>和映射原生类型、接口和Java的POJO （Plain Old Java Objects,普通老式Java对 象）为数据库中的记录。</p>
-<h2 id="2-3-Mybatis历史"><a href="#2-3-Mybatis历史" class="headerlink" title="2.3 Mybatis历史"></a>2.3 Mybatis历史</h2><p>原是apache的一个开源项目iBatis, 2010年 6 月这个项目由apache software foundation 迁移到了google code，随<br>着开发团队转投Google Code旗下，ibatis3.x正式更名为Mybatis ，代码于 2013 年 11 月迁移到Github。</p>
+<h3 id="2-2-Mybatis简介"><a href="#2-2-Mybatis简介" class="headerlink" title="2.2 Mybatis简介"></a>2.2 Mybatis简介</h3><p>MyBatis是一款优秀的基于ORM的半自动轻量级持久层框架，它支持定制化SQL、存储过程以及高级映 射。<br>MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。MyBatis可以使用简单的 XML或注解来配置<br>和映射原生类型、接口和Java的POJO （Plain Old Java Objects,普通老式Java对 象）为数据库中的记录。</p>
+<h3 id="2-3-Mybatis历史"><a href="#2-3-Mybatis历史" class="headerlink" title="2.3 Mybatis历史"></a>2.3 Mybatis历史</h3><p>原是apache的一个开源项目iBatis, 2010年 6 月这个项目由apache software foundation 迁移到了google code，随<br>着开发团队转投Google Code旗下，ibatis3.x正式更名为Mybatis ，代码于 2013 年 11 月迁移到Github。</p>
 <p>iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL<br>Maps和Data Access Objects(DAO)</p>
-<h2 id="2-4-Mybatis优势"><a href="#2-4-Mybatis优势" class="headerlink" title="2.4 Mybatis优势"></a>2.4 Mybatis优势</h2><p>Mybatis是一个半自动化的持久层框架，对开发人员开说，核心sql还是需要自己进行优化，sql和java编码进行分<br>离，功能边界清晰，一个专注业务，一个专注数据。</p>
+<h3 id="2-4-Mybatis优势"><a href="#2-4-Mybatis优势" class="headerlink" title="2.4 Mybatis优势"></a>2.4 Mybatis优势</h3><p>Mybatis是一个半自动化的持久层框架，对开发人员开说，核心sql还是需要自己进行优化，sql和java编码进行分<br>离，功能边界清晰，一个专注业务，一个专注数据。</p>
 <p>分析图示如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220526093241429.png" alt="image-20220526093241429" style="zoom:80%;">
 
-<h1 id="第三部分：Mybatis基本应用"><a href="#第三部分：Mybatis基本应用" class="headerlink" title="第三部分：Mybatis基本应用"></a>第三部分：Mybatis基本应用</h1><h2 id="3-1-快速入⻔"><a href="#3-1-快速入⻔" class="headerlink" title="3.1 快速入⻔"></a>3.1 快速入⻔</h2><p>MyBatis官网地址：<a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/">http://www.mybatis.org/mybatis-3/</a></p>
-<h3 id="3-1-1-开发步骤："><a href="#3-1-1-开发步骤：" class="headerlink" title="3.1.1 开发步骤："></a>3.1.1 开发步骤：</h3><p>①添加MyBatis的坐标</p>
+<h2 id="第三部分：Mybatis基本应用"><a href="#第三部分：Mybatis基本应用" class="headerlink" title="第三部分：Mybatis基本应用"></a>第三部分：Mybatis基本应用</h2><h3 id="3-1-快速入⻔"><a href="#3-1-快速入⻔" class="headerlink" title="3.1 快速入⻔"></a>3.1 快速入⻔</h3><p>MyBatis官网地址：<a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/">http://www.mybatis.org/mybatis-3/</a></p>
+<h4 id="3-1-1-开发步骤："><a href="#3-1-1-开发步骤：" class="headerlink" title="3.1.1 开发步骤："></a>3.1.1 开发步骤：</h4><p>①添加MyBatis的坐标</p>
 <p>②创建user数据表</p>
 <p>③编写User实体类</p>
 <p>④编写映射文件UserMapper.xml</p>
 <p>⑤编写核心文件SqlMapConfig.xml</p>
 <p>⑥编写测试类</p>
-<h3 id="3-1-2环境搭建："><a href="#3-1-2环境搭建：" class="headerlink" title="3.1.2环境搭建："></a>3.1.2环境搭建：</h3><p>1)导入MyBatis的坐标和其他相关坐标</p>
+<h4 id="3-1-2环境搭建："><a href="#3-1-2环境搭建：" class="headerlink" title="3.1.2环境搭建："></a>3.1.2环境搭建：</h4><p>1)导入MyBatis的坐标和其他相关坐标</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.build.sourceEncoding</span><span class="token punctuation">&gt;</span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.build.sourceEncoding</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.encoding</span><span class="token punctuation">&gt;</span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.encoding</span><span class="token punctuation">&gt;</span></span>
@@ -1120,7 +1120,7 @@
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>userList<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//释放资源</span>
 sqlSession<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3-1-3-MyBatis的增删改查操作"><a href="#3-1-3-MyBatis的增删改查操作" class="headerlink" title="3.1.3 MyBatis的增删改查操作"></a><strong>3.1.3 MyBatis的增删改查操作</strong></h3><p><strong>MyBatis的插入数据操作</strong></p>
+<h4 id="3-1-3-MyBatis的增删改查操作"><a href="#3-1-3-MyBatis的增删改查操作" class="headerlink" title="3.1.3 MyBatis的增删改查操作"></a><strong>3.1.3 MyBatis的增删改查操作</strong></h4><p><strong>MyBatis的插入数据操作</strong></p>
 <p>1)编写UserMapper映射文件</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userMapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>insert</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>add<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.domain.User<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -1145,7 +1145,7 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
 <li>插⼊操作使⽤的API是sqlSession.insert(“命名空间.id”,实体对象);</li>
 <li>插⼊操作涉及数据库数据变化，所以要使⽤sqlSession对象显示的提交事务，即sqlSession.commit()</li>
 </ul>
-<h3 id="3-1-4-MyBatis的修改数据操作"><a href="#3-1-4-MyBatis的修改数据操作" class="headerlink" title="3.1.4 MyBatis的修改数据操作"></a><strong>3.1.4 MyBatis的修改数据操作</strong></h3><p>1)编写UserMapper映射文件</p>
+<h4 id="3-1-4-MyBatis的修改数据操作"><a href="#3-1-4-MyBatis的修改数据操作" class="headerlink" title="3.1.4 MyBatis的修改数据操作"></a><strong>3.1.4 MyBatis的修改数据操作</strong></h4><p>1)编写UserMapper映射文件</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userMapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>update</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>update<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.domain.User<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
         update user set username=#{username},password=#{password} where id=#{id}
@@ -1166,7 +1166,7 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
 <li>修改语句使用update标签</li>
 <li>修改操作使用的API是sqlSession.update(“命名空间.id”,实体对象)</li>
 </ul>
-<h3 id="3-1-5-MyBatis的删除数据操作"><a href="#3-1-5-MyBatis的删除数据操作" class="headerlink" title="3.1.5 MyBatis的删除数据操作"></a><strong>3.1.5 MyBatis的删除数据操作</strong></h3><p>1)编写UserMapper映射文件</p>
+<h4 id="3-1-5-MyBatis的删除数据操作"><a href="#3-1-5-MyBatis的删除数据操作" class="headerlink" title="3.1.5 MyBatis的删除数据操作"></a><strong>3.1.5 MyBatis的删除数据操作</strong></h4><p>1)编写UserMapper映射文件</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userMapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>delete</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>delete<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>java.lang.Integer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
         delete from user where id=#{id}
@@ -1194,7 +1194,7 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
 <p><strong>3.1.5 MyBatis的映射文件概述</strong></p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530150540587.png" alt="image-20220530150540587" style="zoom:80%;">
 
-<h3 id="3-1-6-入⻔核心配置文件分析："><a href="#3-1-6-入⻔核心配置文件分析：" class="headerlink" title="3.1.6 入⻔核心配置文件分析："></a>3.1.6 入⻔核心配置文件分析：</h3><p>MyBatis核心配置文件层级关系</p>
+<h4 id="3-1-6-入⻔核心配置文件分析："><a href="#3-1-6-入⻔核心配置文件分析：" class="headerlink" title="3.1.6 入⻔核心配置文件分析："></a>3.1.6 入⻔核心配置文件分析：</h4><p>MyBatis核心配置文件层级关系</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530150714724.png" alt="image-20220530150714724" style="zoom:80%;">
 
 <p><strong>MyBatis常用配置解析</strong></p>
@@ -1224,7 +1224,7 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
 •将包内的映射器接⼝实现全部注册为映射器，例如：
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.mybatis.builder<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-1-7-Mybatis相应API介绍"><a href="#3-1-7-Mybatis相应API介绍" class="headerlink" title="3.1.7 Mybatis相应API介绍"></a><strong>3.1.7 Mybatis相应API介绍</strong></h3><p><strong>SqlSession工厂构建器SqlSessionFactoryBuilder</strong></p>
+<h4 id="3-1-7-Mybatis相应API介绍"><a href="#3-1-7-Mybatis相应API介绍" class="headerlink" title="3.1.7 Mybatis相应API介绍"></a><strong>3.1.7 Mybatis相应API介绍</strong></h4><p><strong>SqlSession工厂构建器SqlSessionFactoryBuilder</strong></p>
 <p>常用API：SqlSessionFactory build(InputStream inputStream)</p>
 <p>通过加载mybatis的核心文件的输入流的形式构建一个SqlSessionFactory对象</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> resource <span class="token operator">=</span> <span class="token string">"org/mybatis/builder/mybatis-config.xml"</span><span class="token punctuation">;</span>
@@ -1248,7 +1248,7 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
 <p>操作事务的⽅法主要有：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">void</span> <span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="3-2-Mybatis的Dao层实现"><a href="#3-2-Mybatis的Dao层实现" class="headerlink" title="3.2 Mybatis的Dao层实现"></a>3.2 Mybatis的Dao层实现</h2><h3 id="3-2-1-传统开发方式"><a href="#3-2-1-传统开发方式" class="headerlink" title="3.2.1 传统开发方式"></a>3.2.1 传统开发方式</h3><p>编写UserDao接口</p>
+<h3 id="3-2-Mybatis的Dao层实现"><a href="#3-2-Mybatis的Dao层实现" class="headerlink" title="3.2 Mybatis的Dao层实现"></a>3.2 Mybatis的Dao层实现</h3><h4 id="3-2-1-传统开发方式"><a href="#3-2-1-传统开发方式" class="headerlink" title="3.2.1 传统开发方式"></a>3.2.1 传统开发方式</h4><p>编写UserDao接口</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserDao</span> <span class="token punctuation">{</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -1272,7 +1272,7 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>all<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-2-2-代理开发方式"><a href="#3-2-2-代理开发方式" class="headerlink" title="3.2.2 代理开发方式"></a>3.2.2 代理开发方式</h3><p><strong>代理开发方式介绍</strong></p>
+<h4 id="3-2-2-代理开发方式"><a href="#3-2-2-代理开发方式" class="headerlink" title="3.2.2 代理开发方式"></a>3.2.2 代理开发方式</h4><p><strong>代理开发方式介绍</strong></p>
 <p>采用 Mybatis 的代理开发方式实现 DAO 层的开发，这种方式是我们后面进入企业的主流。</p>
 <p>Mapper 接口开发方法只需要程序员编写Mapper 接口（相当于Dao 接口），由Mybatis 框架根据接口定义创建接<br>口的动态代理对象，代理对象的方法体同上边Dao接口实现类方法。</p>
 <p>Mapper 接口开发需要遵循以下规范：</p>
@@ -1296,9 +1296,9 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
     sqlSession<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="第四部分：Mybatis配置文件深入"><a href="#第四部分：Mybatis配置文件深入" class="headerlink" title="第四部分：Mybatis配置文件深入"></a>第四部分：Mybatis配置文件深入</h1><h2 id="4-1-核心配置文件SqlMapConfig-xml"><a href="#4-1-核心配置文件SqlMapConfig-xml" class="headerlink" title="4.1 核心配置文件SqlMapConfig.xml"></a>4.1 核心配置文件SqlMapConfig.xml</h2><h3 id="4-1-1-MyBatis核心配置文件层级关系"><a href="#4-1-1-MyBatis核心配置文件层级关系" class="headerlink" title="4.1.1 MyBatis核心配置文件层级关系"></a>4.1.1 MyBatis核心配置文件层级关系</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530151351537.png" alt="image-20220530151351537" style="zoom:80%;">
+<h2 id="第四部分：Mybatis配置文件深入"><a href="#第四部分：Mybatis配置文件深入" class="headerlink" title="第四部分：Mybatis配置文件深入"></a>第四部分：Mybatis配置文件深入</h2><h3 id="4-1-核心配置文件SqlMapConfig-xml"><a href="#4-1-核心配置文件SqlMapConfig-xml" class="headerlink" title="4.1 核心配置文件SqlMapConfig.xml"></a>4.1 核心配置文件SqlMapConfig.xml</h3><h4 id="4-1-1-MyBatis核心配置文件层级关系"><a href="#4-1-1-MyBatis核心配置文件层级关系" class="headerlink" title="4.1.1 MyBatis核心配置文件层级关系"></a>4.1.1 MyBatis核心配置文件层级关系</h4><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530151351537.png" alt="image-20220530151351537" style="zoom:80%;">
 
-<h2 id="4-2-MyBatis常用配置解析"><a href="#4-2-MyBatis常用配置解析" class="headerlink" title="4.2 MyBatis常用配置解析"></a>4.2 MyBatis常用配置解析</h2><p><strong>1)environments标签</strong></p>
+<h3 id="4-2-MyBatis常用配置解析"><a href="#4-2-MyBatis常用配置解析" class="headerlink" title="4.2 MyBatis常用配置解析"></a>4.2 MyBatis常用配置解析</h3><p><strong>1)environments标签</strong></p>
 <p>数据库环境的配置，支持多环境配置</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530151446078.png" alt="image-20220530151446078" style="zoom:80%;">
 
@@ -1336,13 +1336,13 @@ sqlSession<span class="token punctuation">.</span><span class="token function">c
 <p>上面我们是自定义的别名，mybatis框架已经为我们设置好的一些常用的类型的别名</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530151716011.png" alt="image-20220530151716011" style="zoom:80%;">
 
-<h2 id="4-2-映射配置文件mapper-xml"><a href="#4-2-映射配置文件mapper-xml" class="headerlink" title="4.2 映射配置文件mapper.xml"></a>4.2 映射配置文件mapper.xml</h2><p><strong>动态sql语句</strong></p>
+<h3 id="4-3-映射配置文件mapper-xml"><a href="#4-3-映射配置文件mapper-xml" class="headerlink" title="4.3 映射配置文件mapper.xml"></a>4.3 映射配置文件mapper.xml</h3><p><strong>动态sql语句</strong></p>
 <p><strong>动态sql语句概述</strong></p>
 <p>Mybatis 的映射文件中，前面我们的 SQL 都是比较简单的，有些时候业务逻辑复杂时，我们的 SQL是动态变化<br>的，此时在前面的学习中我们的 SQL 就不能满足要求了。</p>
 <p>参考的官方文档，描述如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530151743261.png" alt="image-20220530151743261" style="zoom:80%;">
 
-<h3 id="动态-SQL-之-if"><a href="#动态-SQL-之-if" class="headerlink" title="动态 SQL 之 if"></a>动态 SQL 之 if</h3><p>我们根据实体类的不同取值，使用不同的 SQL语句来进行查询。比如在 id如果不为空时可以根据id查询，如果<br>username 不同空时还要加入用户名作为条件。这种情况在我们的多条件组合查询中经常会碰到。</p>
+<h3 id="4-4-动态-SQL-之-if"><a href="#4-4-动态-SQL-之-if" class="headerlink" title="4.4 动态 SQL 之 if"></a>4.4 动态 SQL 之 if</h3><p>我们根据实体类的不同取值，使用不同的 SQL语句来进行查询。比如在 id如果不为空时可以根据id查询，如果<br>username 不同空时还要加入用户名作为条件。这种情况在我们的多条件组合查询中经常会碰到。</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>findByCondition<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     select * from User
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>where</span><span class="token punctuation">&gt;</span></span>
@@ -1374,7 +1374,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
 
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530152010945.png" alt="image-20220530152010945" style="zoom:80%;">
 
-<h3 id="动态-SQL-之where"><a href="#动态-SQL-之where" class="headerlink" title="动态 SQL 之where"></a>动态 SQL 之where</h3><p>循环执行sql的拼接操作，例如：SELECT * FROM USER WHERE id IN (1,2,5)。</p>
+<h3 id="4-5-动态-SQL-之where"><a href="#4-5-动态-SQL-之where" class="headerlink" title="4.5 动态 SQL 之where"></a>4.5 动态 SQL 之where</h3><p>循环执行sql的拼接操作，例如：SELECT * FROM USER WHERE id IN (1,2,5)。</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>findByIds<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     select * from User
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>where</span><span class="token punctuation">&gt;</span></span>
@@ -1418,15 +1418,15 @@ condition<span class="token punctuation">.</span><span class="token function">se
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>foreach</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>where</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="第五部分：Mybatis复杂映射开发"><a href="#第五部分：Mybatis复杂映射开发" class="headerlink" title="第五部分：Mybatis复杂映射开发"></a>第五部分：Mybatis复杂映射开发</h1><h2 id="5-1-一对一查询"><a href="#5-1-一对一查询" class="headerlink" title="5.1 一对一查询"></a>5.1 一对一查询</h2><h3 id="5-1-1-一对一查询的模型"><a href="#5-1-1-一对一查询的模型" class="headerlink" title="5.1.1 一对一查询的模型"></a>5.1.1 一对一查询的模型</h3><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
+<h2 id="第五部分：Mybatis复杂映射开发"><a href="#第五部分：Mybatis复杂映射开发" class="headerlink" title="第五部分：Mybatis复杂映射开发"></a>第五部分：Mybatis复杂映射开发</h2><h3 id="5-1-一对一查询"><a href="#5-1-一对一查询" class="headerlink" title="5.1 一对一查询"></a>5.1 一对一查询</h3><h4 id="5-1-1-一对一查询的模型"><a href="#5-1-1-一对一查询的模型" class="headerlink" title="5.1.1 一对一查询的模型"></a>5.1.1 一对一查询的模型</h4><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
 <p>一对一查询的需求：查询一个订单，与此同时查询出该订单所属的用户</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530152422265.png" alt="image-20220530152422265" style="zoom:80%;">
 
-<h3 id="5-1-2一对一查询的语句"><a href="#5-1-2一对一查询的语句" class="headerlink" title="5.1.2一对一查询的语句"></a>5.1.2一对一查询的语句</h3><p>对应的sql语句：select * from orders o,user u where o.uid=u.id;</p>
+<h4 id="5-1-2一对一查询的语句"><a href="#5-1-2一对一查询的语句" class="headerlink" title="5.1.2一对一查询的语句"></a>5.1.2一对一查询的语句</h4><p>对应的sql语句：select * from orders o,user u where o.uid=u.id;</p>
 <p>查询的结果如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530152735839.png" alt="image-20220530152735839" style="zoom:80%;">
 
-<h3 id="5-1-3-创建Order和User实体"><a href="#5-1-3-创建Order和User实体" class="headerlink" title="5.1.3 创建Order和User实体"></a>5.1.3 创建Order和User实体</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
+<h4 id="5-1-3-创建Order和User实体"><a href="#5-1-3-创建Order和User实体" class="headerlink" title="5.1.3 创建Order和User实体"></a>5.1.3 创建Order和User实体</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">Date</span> ordertime<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">double</span> total<span class="token punctuation">;</span>
@@ -1441,11 +1441,11 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="5-1-4-创建OrderMapper接口"><a href="#5-1-4-创建OrderMapper接口" class="headerlink" title="5.1.4 创建OrderMapper接口"></a>5.1.4 创建OrderMapper接口</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderMapper</span> <span class="token punctuation">{</span>
+<h4 id="5-1-4-创建OrderMapper接口"><a href="#5-1-4-创建OrderMapper接口" class="headerlink" title="5.1.4 创建OrderMapper接口"></a>5.1.4 创建OrderMapper接口</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderMapper</span> <span class="token punctuation">{</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="5-1-5-配置OrderMapper-xml"><a href="#5-1-5-配置OrderMapper-xml" class="headerlink" title="5.1.5 配置OrderMapper.xml"></a>5.1.5 配置OrderMapper.xml</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.mapper.OrderMapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<h4 id="5-1-5-配置OrderMapper-xml"><a href="#5-1-5-配置OrderMapper-xml" class="headerlink" title="5.1.5 配置OrderMapper.xml"></a>5.1.5 配置OrderMapper.xml</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.mapper.OrderMapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>orderMap<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.domain.Order<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>uid<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user.id<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user.username<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
@@ -1468,7 +1468,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>birthday<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>birthday<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>association</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resultMap</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="5-1-6-测试结果"><a href="#5-1-6-测试结果" class="headerlink" title="5.1.6 测试结果"></a>5.1.6 测试结果</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">OrderMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">OrderMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h4 id="5-1-6-测试结果"><a href="#5-1-6-测试结果" class="headerlink" title="5.1.6 测试结果"></a>5.1.6 测试结果</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">OrderMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">OrderMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> all <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Order</span> order <span class="token operator">:</span> all<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1476,15 +1476,15 @@ condition<span class="token punctuation">.</span><span class="token function">se
 
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530152958576.png" alt="image-20220530152958576" style="zoom:80%;">
 
-<h2 id="5-2-一对多查询"><a href="#5-2-一对多查询" class="headerlink" title="5.2 一对多查询"></a>5.2 一对多查询</h2><h3 id="5-2-1-一对多查询的模型"><a href="#5-2-1-一对多查询的模型" class="headerlink" title="5.2.1 一对多查询的模型"></a>5.2.1 一对多查询的模型</h3><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
+<h3 id="5-2-一对多查询"><a href="#5-2-一对多查询" class="headerlink" title="5.2 一对多查询"></a>5.2 一对多查询</h3><h4 id="5-2-1-一对多查询的模型"><a href="#5-2-1-一对多查询的模型" class="headerlink" title="5.2.1 一对多查询的模型"></a>5.2.1 一对多查询的模型</h4><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
 <p>一对多查询的需求：查询一个用户，与此同时查询出该用户具有的订单</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153034464.png" alt="image-20220530153034464" style="zoom:80%;">
 
-<h3 id="5-2-2-一对多查询的语句"><a href="#5-2-2-一对多查询的语句" class="headerlink" title="5.2.2 一对多查询的语句"></a>5.2.2 一对多查询的语句</h3><p>对应的sql语句：select *,o.id oid from user u left join orders o on u.id=o.uid;</p>
+<h4 id="5-2-2-一对多查询的语句"><a href="#5-2-2-一对多查询的语句" class="headerlink" title="5.2.2 一对多查询的语句"></a>5.2.2 一对多查询的语句</h4><p>对应的sql语句：select *,o.id oid from user u left join orders o on u.id=o.uid;</p>
 <p>查询的结果如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153112184.png" alt="image-20220530153112184" style="zoom:80%;">
 
-<h3 id="5-2-3-修改User实体"><a href="#5-2-3-修改User实体" class="headerlink" title="5.2.3 修改User实体"></a>5.2.3 修改User实体</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
+<h4 id="5-2-3-修改User实体"><a href="#5-2-3-修改User实体" class="headerlink" title="5.2.3 修改User实体"></a>5.2.3 修改User实体</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">Date</span> ordertime<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">double</span> total<span class="token punctuation">;</span>
@@ -1501,10 +1501,10 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> orderList<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="5-2-4-创建UserMapper接口"><a href="#5-2-4-创建UserMapper接口" class="headerlink" title="5.2.4 创建UserMapper接口"></a>5.2.4 创建UserMapper接口</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
+<h4 id="5-2-4-创建UserMapper接口"><a href="#5-2-4-创建UserMapper接口" class="headerlink" title="5.2.4 创建UserMapper接口"></a>5.2.4 创建UserMapper接口</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
  <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="5-2-5-配置UserMapper-xml"><a href="#5-2-5-配置UserMapper-xml" class="headerlink" title="5.2.5 配置UserMapper.xml"></a>5.2.5 配置UserMapper.xml</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.mapper.UserMapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<h4 id="5-2-5-配置UserMapper-xml"><a href="#5-2-5-配置UserMapper-xml" class="headerlink" title="5.2.5 配置UserMapper.xml"></a>5.2.5 配置UserMapper.xml</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.mapper.UserMapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userMap<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.domain.User<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
@@ -1521,7 +1521,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="5-2-6-测试结果"><a href="#5-2-6-测试结果" class="headerlink" title="5.2.6 测试结果"></a>5.2.6 测试结果</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h4 id="5-2-6-测试结果"><a href="#5-2-6-测试结果" class="headerlink" title="5.2.6 测试结果"></a>5.2.6 测试结果</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> all <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">User</span> user <span class="token operator">:</span> all<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1533,16 +1533,16 @@ condition<span class="token punctuation">.</span><span class="token function">se
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153328527.png" alt="image-20220530153328527" style="zoom:80%;">
 
-<h2 id="5-3-多对多查询"><a href="#5-3-多对多查询" class="headerlink" title="5.3 多对多查询"></a>5.3 多对多查询</h2><h3 id="5-3-1-多对多查询的模型"><a href="#5-3-1-多对多查询的模型" class="headerlink" title="5.3.1 多对多查询的模型"></a>5.3.1 多对多查询的模型</h3><p>用户表和⻆色表的关系为，一个用户有多个⻆色，一个⻆色被多个用户使用</p>
+<h3 id="5-3-多对多查询"><a href="#5-3-多对多查询" class="headerlink" title="5.3 多对多查询"></a>5.3 多对多查询</h3><h4 id="5-3-1-多对多查询的模型"><a href="#5-3-1-多对多查询的模型" class="headerlink" title="5.3.1 多对多查询的模型"></a>5.3.1 多对多查询的模型</h4><p>用户表和⻆色表的关系为，一个用户有多个⻆色，一个⻆色被多个用户使用</p>
 <p>多对多查询的需求：查询用户同时查询出该用户的所有⻆色</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153401076.png" alt="image-20220530153401076" style="zoom:80%;">
 
-<h3 id="5-3-2-多对多查询的语句"><a href="#5-3-2-多对多查询的语句" class="headerlink" title="5.3.2 多对多查询的语句"></a>5.3.2 多对多查询的语句</h3><p>对应的sql语句：select u. <em>,r.</em> ,r.id rid from user u left join user_role ur on u.id=ur.user_id</p>
+<h4 id="5-3-2-多对多查询的语句"><a href="#5-3-2-多对多查询的语句" class="headerlink" title="5.3.2 多对多查询的语句"></a>5.3.2 多对多查询的语句</h4><p>对应的sql语句：select u. <em>,r.</em> ,r.id rid from user u left join user_role ur on u.id=ur.user_id</p>
 <p>inner join role r on ur.role_id=r.id;</p>
 <p>查询的结果如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153418775.png" alt="image-20220530153418775" style="zoom:80%;">
 
-<h3 id="5-3-3-创建Role实体，修改User实体"><a href="#5-3-3-创建Role实体，修改User实体" class="headerlink" title="5.3.3 创建Role实体，修改User实体"></a>5.3.3 创建Role实体，修改User实体</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+<h4 id="5-3-3-创建Role实体，修改User实体"><a href="#5-3-3-创建Role实体，修改User实体" class="headerlink" title="5.3.3 创建Role实体，修改User实体"></a>5.3.3 创建Role实体，修改User实体</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> password<span class="token punctuation">;</span>
@@ -1556,9 +1556,9 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> rolename<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="5-3-4-添加UserMapper接口方法"><a href="#5-3-4-添加UserMapper接口方法" class="headerlink" title="5.3.4 添加UserMapper接口方法"></a>5.3.4 添加UserMapper接口方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAllUserAndRole</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="5-3-4-添加UserMapper接口方法"><a href="#5-3-4-添加UserMapper接口方法" class="headerlink" title="5.3.4 添加UserMapper接口方法"></a>5.3.4 添加UserMapper接口方法</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAllUserAndRole</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="5-3-5-配置UserMapper-xml"><a href="#5-3-5-配置UserMapper-xml" class="headerlink" title="5.3.5 配置UserMapper.xml"></a>5.3.5 配置UserMapper.xml</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userRoleMap<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.domain.User<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<h4 id="5-3-5-配置UserMapper-xml"><a href="#5-3-5-配置UserMapper-xml" class="headerlink" title="5.3.5 配置UserMapper.xml"></a>5.3.5 配置UserMapper.xml</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userRoleMap<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.domain.User<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span>
@@ -1573,7 +1573,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
     inner join role r on ur.role_id=r.id
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="5-3-6-测试结果"><a href="#5-3-6-测试结果" class="headerlink" title="5.3.6 测试结果"></a>5.3.6 测试结果</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h4 id="5-3-6-测试结果"><a href="#5-3-6-测试结果" class="headerlink" title="5.3.6 测试结果"></a>5.3.6 测试结果</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> all <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">findAllUserAndRole</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">User</span> user <span class="token operator">:</span> all<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1585,11 +1585,11 @@ condition<span class="token punctuation">.</span><span class="token function">se
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153601449.png" alt="image-20220530153601449" style="zoom:80%;">
 
-<h2 id="5-4-知识小结"><a href="#5-4-知识小结" class="headerlink" title="5.4 知识小结"></a>5.4 知识小结</h2><p>MyBatis多表配置方式：</p>
+<h3 id="5-4-知识小结"><a href="#5-4-知识小结" class="headerlink" title="5.4 知识小结"></a>5.4 知识小结</h3><p>MyBatis多表配置方式：</p>
 <p><strong>一对一配置：使用做配置</strong></p>
 <p><strong>一对多配置：使用+做配置</strong></p>
 <p><strong>多对多配置：使用+做配置</strong></p>
-<h1 id="第六部分：Mybatis注解开发"><a href="#第六部分：Mybatis注解开发" class="headerlink" title="第六部分：Mybatis注解开发"></a>第六部分：Mybatis注解开发</h1><h2 id="6-1-MyBatis的常用注解"><a href="#6-1-MyBatis的常用注解" class="headerlink" title="6.1 MyBatis的常用注解"></a>6.1 MyBatis的常用注解</h2><p>这几年来注解开发越来越流行，Mybatis也可以使用注解开发方式，这样我们就可以减少编写Mapper</p>
+<h2 id="第六部分：Mybatis注解开发"><a href="#第六部分：Mybatis注解开发" class="headerlink" title="第六部分：Mybatis注解开发"></a>第六部分：Mybatis注解开发</h2><h3 id="6-1-MyBatis的常用注解"><a href="#6-1-MyBatis的常用注解" class="headerlink" title="6.1 MyBatis的常用注解"></a>6.1 MyBatis的常用注解</h3><p>这几年来注解开发越来越流行，Mybatis也可以使用注解开发方式，这样我们就可以减少编写Mapper</p>
 <p>映射文件了。我们先围绕一些基本的CRUD来学习，再学习复杂映射多表操作。</p>
 <p>@Insert：实现新增</p>
 <p>@Update：实现更新</p>
@@ -1599,7 +1599,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
 <p>@Results：可以与@Result 一起使用，封装多个结果集</p>
 <p>@One：实现一对一结果集封装</p>
 <p>@Many：实现一对多结果集封装</p>
-<h2 id="6-2-MyBatis的增删改查"><a href="#6-2-MyBatis的增删改查" class="headerlink" title="6.2 MyBatis的增删改查"></a>6.2 MyBatis的增删改查</h2><p>我们完成简单的user表的增删改查的操作</p>
+<h3 id="6-2-MyBatis的增删改查"><a href="#6-2-MyBatis的增删改查" class="headerlink" title="6.2 MyBatis的增删改查"></a>6.2 MyBatis的增删改查</h3><p>我们完成简单的user表的增删改查的操作</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">UserMapper</span> userMapper<span class="token punctuation">;</span>
 <span class="token annotation punctuation">@Before</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
@@ -1653,21 +1653,21 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token comment">&lt;!--扫描使⽤注解的类所在的包--&gt;</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.lagou.mapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>package</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mappers</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="6-3-MyBatis的注解实现复杂映射开发"><a href="#6-3-MyBatis的注解实现复杂映射开发" class="headerlink" title="6.3 MyBatis的注解实现复杂映射开发"></a>6.3 MyBatis的注解实现复杂映射开发</h2><p>实现复杂关系映射之前我们可以在映射文件中通过配置来实现，使用注解开发后，我们可以使用@Results注解，<br>@Result注解，@One注解，@Many注解组合完成复杂关系的配置</p>
+<h3 id="6-3-MyBatis的注解实现复杂映射开发"><a href="#6-3-MyBatis的注解实现复杂映射开发" class="headerlink" title="6.3 MyBatis的注解实现复杂映射开发"></a>6.3 MyBatis的注解实现复杂映射开发</h3><p>实现复杂关系映射之前我们可以在映射文件中通过配置来实现，使用注解开发后，我们可以使用@Results注解，<br>@Result注解，@One注解，@Many注解组合完成复杂关系的配置</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153746592.png" alt="image-20220530153746592" style="zoom:80%;">
 
-<h2 id="6-4-一对一查询"><a href="#6-4-一对一查询" class="headerlink" title="6.4 一对一查询"></a>6.4 一对一查询</h2><h3 id="6-4-1-一对一查询的模型"><a href="#6-4-1-一对一查询的模型" class="headerlink" title="6.4.1 一对一查询的模型"></a>6.4.1 一对一查询的模型</h3><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
+<h3 id="6-4-一对一查询"><a href="#6-4-一对一查询" class="headerlink" title="6.4 一对一查询"></a>6.4 一对一查询</h3><h4 id="6-4-1-一对一查询的模型"><a href="#6-4-1-一对一查询的模型" class="headerlink" title="6.4.1 一对一查询的模型"></a>6.4.1 一对一查询的模型</h4><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
 <p>一对一查询的需求：查询一个订单，与此同时查询出该订单所属的用户</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153808291.png" alt="image-20220530153808291" style="zoom:80%;">
 
-<h3 id="6-4-2-一对一查询的语句"><a href="#6-4-2-一对一查询的语句" class="headerlink" title="6.4.2 一对一查询的语句"></a>6.4.2 一对一查询的语句</h3><p>对应的sql语句：</p>
+<h4 id="6-4-2-一对一查询的语句"><a href="#6-4-2-一对一查询的语句" class="headerlink" title="6.4.2 一对一查询的语句"></a>6.4.2 一对一查询的语句</h4><p>对应的sql语句：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> orders<span class="token punctuation">;</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">where</span> id<span class="token operator">=</span>查询出订单的uid<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>查询的结果如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530153915687.png" alt="image-20220530153915687" style="zoom:80%;">
 
-<h3 id="6-4-3-创建Order和User实体"><a href="#6-4-3-创建Order和User实体" class="headerlink" title="6.4.3 创建Order和User实体"></a><strong>6.4.3 创建Order和User实体</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
+<h4 id="6-4-3-创建Order和User实体"><a href="#6-4-3-创建Order和User实体" class="headerlink" title="6.4.3 创建Order和User实体"></a><strong>6.4.3 创建Order和User实体</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">Date</span> ordertime<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">double</span> total<span class="token punctuation">;</span>
@@ -1682,10 +1682,10 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="6-4-4-创建OrderMapper接口"><a href="#6-4-4-创建OrderMapper接口" class="headerlink" title="6.4.4 创建OrderMapper接口"></a><strong>6.4.4 创建OrderMapper接口</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderMapper</span> <span class="token punctuation">{</span>
+<h4 id="6-4-4-创建OrderMapper接口"><a href="#6-4-4-创建OrderMapper接口" class="headerlink" title="6.4.4 创建OrderMapper接口"></a><strong>6.4.4 创建OrderMapper接口</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderMapper</span> <span class="token punctuation">{</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="6-4-5-使用注解配置Mapper"><a href="#6-4-5-使用注解配置Mapper" class="headerlink" title="6.4.5 使用注解配置Mapper"></a><strong>6.4.5 使用注解配置Mapper</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderMapper</span> <span class="token punctuation">{</span>
+<h4 id="6-4-5-使用注解配置Mapper"><a href="#6-4-5-使用注解配置Mapper" class="headerlink" title="6.4.5 使用注解配置Mapper"></a><strong>6.4.5 使用注解配置Mapper</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderMapper</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from orders"</span><span class="token punctuation">)</span>
     <span class="token annotation punctuation">@Results</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>id<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span>column <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -1704,7 +1704,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="6-4-6-测试结果"><a href="#6-4-6-测试结果" class="headerlink" title="6.4.6 测试结果"></a>6.4.6 测试结果</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<h4 id="6-4-6-测试结果"><a href="#6-4-6-测试结果" class="headerlink" title="6.4.6 测试结果"></a>6.4.6 测试结果</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testSelectOrderAndUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> all <span class="token operator">=</span> orderMapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Order</span> order <span class="token operator">:</span> all<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -1714,18 +1714,18 @@ condition<span class="token punctuation">.</span><span class="token function">se
 
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530154351955.png" alt="image-20220530154351955" style="zoom:80%;">
 
-<h2 id="6-5-一对多查询"><a href="#6-5-一对多查询" class="headerlink" title="6.5 一对多查询"></a>6.5 一对多查询</h2><h3 id="6-5-1-一对多查询的模型"><a href="#6-5-1-一对多查询的模型" class="headerlink" title="6.5.1 一对多查询的模型"></a>6.5.1 一对多查询的模型</h3><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
+<h3 id="6-5-一对多查询"><a href="#6-5-一对多查询" class="headerlink" title="6.5 一对多查询"></a>6.5 一对多查询</h3><h4 id="6-5-1-一对多查询的模型"><a href="#6-5-1-一对多查询的模型" class="headerlink" title="6.5.1 一对多查询的模型"></a>6.5.1 一对多查询的模型</h4><p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
 <p>一对多查询的需求：查询一个用户，与此同时查询出该用户具有的订单</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530154420771.png" alt="image-20220530154420771" style="zoom:80%;">
 
-<h3 id="6-5-2-一对多查询的语句"><a href="#6-5-2-一对多查询的语句" class="headerlink" title="6.5.2 一对多查询的语句"></a>6.5.2 一对多查询的语句</h3><p>对应的sql语句：</p>
+<h4 id="6-5-2-一对多查询的语句"><a href="#6-5-2-一对多查询的语句" class="headerlink" title="6.5.2 一对多查询的语句"></a>6.5.2 一对多查询的语句</h4><p>对应的sql语句：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> orders <span class="token keyword">where</span> uid<span class="token operator">=</span>查询出⽤户的id<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>查询的结果如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530154505641.png" alt="image-20220530154505641" style="zoom:80%;">
 
-<h3 id="6-5-3-修改User实体"><a href="#6-5-3-修改User实体" class="headerlink" title="6.5.3 修改User实体"></a><strong>6.5.3 修改User实体</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
+<h4 id="6-5-3-修改User实体"><a href="#6-5-3-修改User实体" class="headerlink" title="6.5.3 修改User实体"></a><strong>6.5.3 修改User实体</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">Date</span> ordertime<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">double</span> total<span class="token punctuation">;</span>
@@ -1741,9 +1741,9 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token comment">//代表当前⽤户具备哪些订单</span>
     <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> orderList<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="6-5-4-创建UserMapper接口"><a href="#6-5-4-创建UserMapper接口" class="headerlink" title="6.5.4 创建UserMapper接口"></a><strong>6.5.4 创建UserMapper接口</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAllUserAndOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="6-5-4-创建UserMapper接口"><a href="#6-5-4-创建UserMapper接口" class="headerlink" title="6.5.4 创建UserMapper接口"></a><strong>6.5.4 创建UserMapper接口</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAllUserAndOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="6-5-5-使用注解配置Mapper"><a href="#6-5-5-使用注解配置Mapper" class="headerlink" title="6.5.5 使用注解配置Mapper"></a><strong>6.5.5 使用注解配置Mapper</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
+<h4 id="6-5-5-使用注解配置Mapper"><a href="#6-5-5-使用注解配置Mapper" class="headerlink" title="6.5.5 使用注解配置Mapper"></a><strong>6.5.5 使用注解配置Mapper</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from user"</span><span class="token punctuation">)</span>
     <span class="token annotation punctuation">@Results</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span>column <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -1761,7 +1761,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> <span class="token function">findByUid</span><span class="token punctuation">(</span><span class="token keyword">int</span> uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="6-5-6-测试结果"><a href="#6-5-6-测试结果" class="headerlink" title="6.5.6 测试结果"></a>6.5.6 测试结果</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> all <span class="token operator">=</span> userMapper<span class="token punctuation">.</span><span class="token function">findAllUserAndOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h4 id="6-5-6-测试结果"><a href="#6-5-6-测试结果" class="headerlink" title="6.5.6 测试结果"></a>6.5.6 测试结果</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> all <span class="token operator">=</span> userMapper<span class="token punctuation">.</span><span class="token function">findAllUserAndOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">User</span> user <span class="token operator">:</span> all<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> orderList <span class="token operator">=</span> user<span class="token punctuation">.</span><span class="token function">getOrderList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1772,18 +1772,18 @@ condition<span class="token punctuation">.</span><span class="token function">se
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530154640261.png" alt="image-20220530154640261" style="zoom:80%;">
 
-<h2 id="6-6-多对多查询"><a href="#6-6-多对多查询" class="headerlink" title="6.6 多对多查询"></a>6.6 多对多查询</h2><h3 id="6-6-1-多对多查询的模型"><a href="#6-6-1-多对多查询的模型" class="headerlink" title="6.6.1 多对多查询的模型"></a>6.6.1 多对多查询的模型</h3><p>用户表和⻆色表的关系为，一个用户有多个⻆色，一个⻆色被多个用户使用</p>
+<h3 id="6-6-多对多查询"><a href="#6-6-多对多查询" class="headerlink" title="6.6 多对多查询"></a>6.6 多对多查询</h3><h4 id="6-6-1-多对多查询的模型"><a href="#6-6-1-多对多查询的模型" class="headerlink" title="6.6.1 多对多查询的模型"></a>6.6.1 多对多查询的模型</h4><p>用户表和⻆色表的关系为，一个用户有多个⻆色，一个⻆色被多个用户使用</p>
 <p>多对多查询的需求：查询用户同时查询出该用户的所有⻆色</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530154715480.png" alt="image-20220530154715480" style="zoom:80%;">
 
-<h3 id="6-6-2-多对多查询的语句"><a href="#6-6-2-多对多查询的语句" class="headerlink" title="6.6.2 多对多查询的语句"></a>6.6.2 多对多查询的语句</h3><p>对应的sql语句：</p>
+<h4 id="6-6-2-多对多查询的语句"><a href="#6-6-2-多对多查询的语句" class="headerlink" title="6.6.2 多对多查询的语句"></a>6.6.2 多对多查询的语句</h4><p>对应的sql语句：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> role r<span class="token punctuation">,</span>user_role ur <span class="token keyword">where</span> r<span class="token punctuation">.</span>id<span class="token operator">=</span>ur<span class="token punctuation">.</span>role_id <span class="token operator">and</span> ur<span class="token punctuation">.</span>user_id<span class="token operator">=</span>⽤户的id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>查询的结果如下：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530154807584.png" alt="image-20220530154807584" style="zoom:80%;">
 
-<h3 id="6-6-3-创建Role实体，修改User实体"><a href="#6-6-3-创建Role实体，修改User实体" class="headerlink" title="6.6.3 创建Role实体，修改User实体"></a><strong>6.6.3 创建Role实体，修改User实体</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+<h4 id="6-6-3-创建Role实体，修改User实体"><a href="#6-6-3-创建Role实体，修改User实体" class="headerlink" title="6.6.3 创建Role实体，修改User实体"></a><strong>6.6.3 创建Role实体，修改User实体</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> password<span class="token punctuation">;</span>
@@ -1797,9 +1797,9 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> rolename<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="6-6-4-添加UserMapper接口方法"><a href="#6-6-4-添加UserMapper接口方法" class="headerlink" title="6.6.4 添加UserMapper接口方法"></a><strong>6.6.4 添加UserMapper接口方法</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAllUserAndRole</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="6-6-4-添加UserMapper接口方法"><a href="#6-6-4-添加UserMapper接口方法" class="headerlink" title="6.6.4 添加UserMapper接口方法"></a><strong>6.6.4 添加UserMapper接口方法</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token function">findAllUserAndRole</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="6-6-5-使用注解配置Mapper"><a href="#6-6-5-使用注解配置Mapper" class="headerlink" title="6.6.5 使用注解配置Mapper"></a><strong>6.6.5 使用注解配置Mapper</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
+<h4 id="6-6-5-使用注解配置Mapper"><a href="#6-6-5-使用注解配置Mapper" class="headerlink" title="6.6.5 使用注解配置Mapper"></a><strong>6.6.5 使用注解配置Mapper</strong></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from user"</span><span class="token punctuation">)</span>
     <span class="token annotation punctuation">@Results</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span>column <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -1817,7 +1817,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Role</span><span class="token punctuation">&gt;</span></span> <span class="token function">findByUid</span><span class="token punctuation">(</span><span class="token keyword">int</span> uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="6-6-6-测试结果"><a href="#6-6-6-测试结果" class="headerlink" title="6.6.6 测试结果"></a>6.6.6 测试结果</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h4 id="6-6-6-测试结果"><a href="#6-6-6-测试结果" class="headerlink" title="6.6.6 测试结果"></a>6.6.6 测试结果</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> all <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">findAllUserAndRole</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">User</span> user <span class="token operator">:</span> all<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1829,7 +1829,7 @@ condition<span class="token punctuation">.</span><span class="token function">se
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530155021845.png" alt="image-20220530155021845" style="zoom:80%;">
 
-<h1 id="第七部分：Mybatis缓存"><a href="#第七部分：Mybatis缓存" class="headerlink" title="第七部分：Mybatis缓存"></a>第七部分：Mybatis缓存</h1><h2 id="7-1-一级缓存"><a href="#7-1-一级缓存" class="headerlink" title="7.1 一级缓存"></a>7.1 一级缓存</h2><p>①、在一个sqlSession中，对User表根据id进行两次查询，查看他们发出sql语句的情况</p>
+<h2 id="第七部分：Mybatis缓存"><a href="#第七部分：Mybatis缓存" class="headerlink" title="第七部分：Mybatis缓存"></a>第七部分：Mybatis缓存</h2><h3 id="7-1-一级缓存"><a href="#7-1-一级缓存" class="headerlink" title="7.1 一级缓存"></a>7.1 一级缓存</h3><p>①、在一个sqlSession中，对User表根据id进行两次查询，查看他们发出sql语句的情况</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token comment">//根据 sqlSessionFactory 产生 session</span>
@@ -1966,7 +1966,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
     cache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="7-2-二级缓存"><a href="#7-2-二级缓存" class="headerlink" title="7.2 二级缓存"></a>7.2 二级缓存</h2><p>二级缓存的原理和一级缓存原理一样，第一次查询，会将数据放入缓存中，然后第二次查询则会直接去 缓存中取。但是一级缓存是基于sqlSession的，而二级缓存是基于mapper文件的namespace的，也 就是说多个sqlSession可以共享一个mapper中的二级缓存区域，并且如果两个mapper的namespace 相同，即使是两个mapper,那么这两个mapper中执行sql查询到的数据也将存在相同的二级缓存区域 中</p>
+<h3 id="7-2-二级缓存"><a href="#7-2-二级缓存" class="headerlink" title="7.2 二级缓存"></a>7.2 二级缓存</h3><p>二级缓存的原理和一级缓存原理一样，第一次查询，会将数据放入缓存中，然后第二次查询则会直接去 缓存中取。但是一级缓存是基于sqlSession的，而二级缓存是基于mapper文件的namespace的，也 就是说多个sqlSession可以共享一个mapper中的二级缓存区域，并且如果两个mapper的namespace 相同，即使是两个mapper,那么这两个mapper中执行sql查询到的数据也将存在相同的二级缓存区域 中</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530161725002.png" alt="image-20220530161725002" style="zoom:80%;">
 
 <p>如何使用二级缓存</p>
@@ -2066,7 +2066,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>一般下执行完commit操作都需要刷新缓存，flushCache=true表示刷新缓存，这样可以避免数据库脏读。所以我们不用设置，默认即可</p>
-<h2 id="7-3-二级缓存整合redis"><a href="#7-3-二级缓存整合redis" class="headerlink" title="7.3 二级缓存整合redis"></a>7.3 二级缓存整合redis</h2><p>上面我们介绍了 mybatis自带的二级缓存，但是这个缓存是单服务器工作，无法实现分布式缓存。 那么什么是分布<br>式缓存呢？假设现在有两个服务器 1 和2,用户访问的时候访问了 1 服务器，查询后的缓 存就会放在 1 服务器上，假设<br>现在有个用户访问的是 2 服务器，那么他在 2 服务器上就无法获取刚刚那个 缓存，如下图所示：</p>
+<h3 id="7-3-二级缓存整合redis"><a href="#7-3-二级缓存整合redis" class="headerlink" title="7.3 二级缓存整合redis"></a>7.3 二级缓存整合redis</h3><p>上面我们介绍了 mybatis自带的二级缓存，但是这个缓存是单服务器工作，无法实现分布式缓存。 那么什么是分布<br>式缓存呢？假设现在有两个服务器 1 和2,用户访问的时候访问了 1 服务器，查询后的缓 存就会放在 1 服务器上，假设<br>现在有个用户访问的是 2 服务器，那么他在 2 服务器上就无法获取刚刚那个 缓存，如下图所示：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530162251238.png" alt="image-20220530162251238" style="zoom:80%;">
 
 
@@ -2222,8 +2222,8 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以很清楚的看到，mybatis-redis在存储数据的时候，是使用的hash结构，把cache的id作为这个hash 的key(cache的id在mybatis中就是mapper的namespace)；这个mapper中的查询缓存数据作为 hash的field,需要缓存的内容直接使用SerializeUtil存储，SerializeUtil和其他的序列化类差不多，负责 对象的序列化和反序列化；</p>
-<h1 id="第八部分：Mybatis插件"><a href="#第八部分：Mybatis插件" class="headerlink" title="第八部分：Mybatis插件"></a>第八部分：Mybatis插件</h1><h2 id="8-1-插件简介"><a href="#8-1-插件简介" class="headerlink" title="8.1 插件简介"></a>8.1 插件简介</h2><p>一般情况下，开源框架都会提供插件或其他形式的拓展点，供开发者自行拓展。这样的好处是显而易⻅ 的，一是增加了框架的灵活性。二是开发者可以结合实际需求，对框架进行拓展，使其能够更好的工 作。以MyBatis为例，我<br>们可基于MyBati s插件机制实现分⻚、分表，监控等功能。由于插件和业务 无关，业务也无法感知插件的存在。因<br>此可以无感植入插件，在无形中增强功能</p>
-<h2 id="8-2-Mybatis插件介绍"><a href="#8-2-Mybatis插件介绍" class="headerlink" title="8.2 Mybatis插件介绍"></a>8.2 Mybatis插件介绍</h2><p>Mybati s作为一个应用广泛的优秀的ORM开源框架，这个框架具有强大的灵活性，在四大组件(Executor、StatementHandler、ParameterHandler、ResultSetHandler)处提供了简单易用的插 件扩展机制。Mybatis对持久层的操作就是借助于四大核心对象。MyBatis支持用插件对四大核心对象进 行拦截，对mybatis来说插件就是拦截器，用来增强核心对象的功能，增强功能本质上是借助于底层的 动态代理实现的，换句话说，MyBatis中的四大对象都是代理对象</p>
+<h2 id="第八部分：Mybatis插件"><a href="#第八部分：Mybatis插件" class="headerlink" title="第八部分：Mybatis插件"></a>第八部分：Mybatis插件</h2><h3 id="8-1-插件简介"><a href="#8-1-插件简介" class="headerlink" title="8.1 插件简介"></a>8.1 插件简介</h3><p>一般情况下，开源框架都会提供插件或其他形式的拓展点，供开发者自行拓展。这样的好处是显而易⻅ 的，一是增加了框架的灵活性。二是开发者可以结合实际需求，对框架进行拓展，使其能够更好的工 作。以MyBatis为例，我<br>们可基于MyBati s插件机制实现分⻚、分表，监控等功能。由于插件和业务 无关，业务也无法感知插件的存在。因<br>此可以无感植入插件，在无形中增强功能</p>
+<h3 id="8-2-Mybatis插件介绍"><a href="#8-2-Mybatis插件介绍" class="headerlink" title="8.2 Mybatis插件介绍"></a>8.2 Mybatis插件介绍</h3><p>Mybati s作为一个应用广泛的优秀的ORM开源框架，这个框架具有强大的灵活性，在四大组件(Executor、StatementHandler、ParameterHandler、ResultSetHandler)处提供了简单易用的插 件扩展机制。Mybatis对持久层的操作就是借助于四大核心对象。MyBatis支持用插件对四大核心对象进 行拦截，对mybatis来说插件就是拦截器，用来增强核心对象的功能，增强功能本质上是借助于底层的 动态代理实现的，换句话说，MyBatis中的四大对象都是代理对象</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530170440957.png" alt="image-20220530170440957" style="zoom:80%;">
 
 <p><strong>MyBatis所允许拦截的方法如下：</strong></p>
@@ -2233,7 +2233,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
 <li>参数处理器ParameterHandler (getParameterObject、setParameters⽅法)； </li>
 <li>结果集处理器ResultSetHandler (handleResultSets、handleOutputParameters等⽅法)；</li>
 </ul>
-<h2 id="8-3-Mybatis插件原理"><a href="#8-3-Mybatis插件原理" class="headerlink" title="8.3 Mybatis插件原理"></a>8.3 Mybatis插件原理</h2><p>在四大对象创建的时候</p>
+<h3 id="8-3-Mybatis插件原理"><a href="#8-3-Mybatis插件原理" class="headerlink" title="8.3 Mybatis插件原理"></a>8.3 Mybatis插件原理</h3><p>在四大对象创建的时候</p>
 <p>1、每个创建出来的对象不是直接返回的，⽽是interceptorChain.pluginAll(parameterHandler); </p>
 <p>2、获取到所有的Interceptor (拦截器)(插件需要实现的接⼝)；调⽤ interceptor.plugin(target);返回 target 包 装后的对象 </p>
 <p>3、插件机制，我们可以使⽤插件为⽬标对象创建⼀个代理对象；AOP (⾯向切⾯)我们的插件可 以为四⼤对象 创建出代理对象，代理对象就可以拦截到四⼤对象的每⼀个执⾏；</p>
@@ -2272,7 +2272,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
 
 <p>这样MyBatis在启动时可以加载插件，并保存插件实例到相关对象(InterceptorChain，拦截器链) 中。待准备工作做完后，MyBatis处于就绪状态。我们在执行SQL时，需要先通过DefaultSqlSessionFactory 创建 SqlSession。Executor 实例在创建 SqlSession 的过程中被创建， Executor实例创建完毕后，MyBatis会通过JDK动态代理为实例生成代理类。这样，插件逻辑即可在 Executor相关方法被调用前执行。</p>
 <p>以上就是MyBatis插件机制的基本原理</p>
-<h2 id="8-4-自定义插件"><a href="#8-4-自定义插件" class="headerlink" title="8.4 自定义插件"></a>8.4 自定义插件</h2><h3 id="8-4-1-插件接口"><a href="#8-4-1-插件接口" class="headerlink" title="8.4.1 插件接口"></a>8.4.1 插件接口</h3><p>Mybatis 插件接口-Interceptor</p>
+<h3 id="8-4-自定义插件"><a href="#8-4-自定义插件" class="headerlink" title="8.4 自定义插件"></a>8.4 自定义插件</h3><h4 id="8-4-1-插件接口"><a href="#8-4-1-插件接口" class="headerlink" title="8.4.1 插件接口"></a>8.4.1 插件接口</h4><p>Mybatis 插件接口-Interceptor</p>
 <ul>
 <li><p>Intercept方法，插件的核心方法</p>
 </li>
@@ -2281,7 +2281,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
 <li><p>setProperties方法，传递插件所需参数</p>
 </li>
 </ul>
-<h3 id="8-4-2自定义插件"><a href="#8-4-2自定义插件" class="headerlink" title="8.4.2自定义插件"></a>8.4.2自定义插件</h3><p>设计实现一个自定义插件</p>
+<h4 id="8-4-2自定义插件"><a href="#8-4-2自定义插件" class="headerlink" title="8.4.2自定义插件"></a>8.4.2自定义插件</h4><p>设计实现一个自定义插件</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Intercepts</span> <span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token comment">//注意看这个⼤花括号，也就这说这⾥可以定义多个@Signature对多个地⽅拦截，都⽤这个拦截器</span>
     <span class="token annotation punctuation">@Signature</span> <span class="token punctuation">(</span>type <span class="token operator">=</span> <span class="token class-name">StatementHandler</span> <span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">,</span> <span class="token comment">//这是指拦截哪个接⼝</span>
                 method <span class="token operator">=</span> <span class="token string">"prepare"</span>，<span class="token comment">//这个接⼝内的哪个⽅法名，不要拼错了</span>
@@ -2353,7 +2353,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="8-5-源码分析"><a href="#8-5-源码分析" class="headerlink" title="8.5 源码分析"></a>8.5 源码分析</h2><p>执行插件逻辑</p>
+<h3 id="8-5-源码分析"><a href="#8-5-源码分析" class="headerlink" title="8.5 源码分析"></a>8.5 源码分析</h3><p>执行插件逻辑</p>
 <p>Plugin实现了 InvocationHandler接口，因此它的invoke方法会拦截所有的方法调用。invoke方法会 对所拦截的方法进行检测，以决定是否执行插件逻辑。该方法的逻辑如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// -Plugin</span>
 <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">invoke</span><span class="token punctuation">(</span><span class="token class-name">Object</span> proxy<span class="token punctuation">,</span> <span class="token class-name">Method</span> method<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">{</span>
@@ -2387,7 +2387,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="8-6-pageHelper分⻚插件"><a href="#8-6-pageHelper分⻚插件" class="headerlink" title="8.6 pageHelper分⻚插件"></a>8.6 pageHelper分⻚插件</h2><p>MyBati s可以使用第三方的插件来对功能进行扩展，分⻚助手PageHelper是将分⻚的复杂操作进行封 装，使用简单的方式即可获得分⻚的相关数据</p>
+<h3 id="8-6-pageHelper分⻚插件"><a href="#8-6-pageHelper分⻚插件" class="headerlink" title="8.6 pageHelper分⻚插件"></a>8.6 pageHelper分⻚插件</h3><p>MyBati s可以使用第三方的插件来对功能进行扩展，分⻚助手PageHelper是将分⻚的复杂操作进行封 装，使用简单的方式即可获得分⻚的相关数据</p>
 <p>开发步骤：</p>
 <p>① 导入通用PageHelper的坐标</p>
 <p>② 在mybatis核心配置文件中配置PageHelper插件</p>
@@ -2430,7 +2430,7 @@ cacheKey<span class="token punctuation">.</span><span class="token function">upd
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"每⻚显万⻓度："</span><span class="token operator">+</span>pageInfo<span class="token punctuation">.</span><span class="token function">getPageSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否第⼀⻚："</span><span class="token operator">+</span>pageInfo<span class="token punctuation">.</span><span class="token function">isIsFirstPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否最后⼀⻚："</span><span class="token operator">+</span>pageInfo<span class="token punctuation">.</span><span class="token function">isIsLastPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="8-7-通用-mapper"><a href="#8-7-通用-mapper" class="headerlink" title="8.7 通用 mapper"></a>8.7 通用 mapper</h2><p><strong>什么是通用Mapper</strong></p>
+<h3 id="8-7-通用-mapper"><a href="#8-7-通用-mapper" class="headerlink" title="8.7 通用 mapper"></a>8.7 通用 mapper</h3><p><strong>什么是通用Mapper</strong></p>
 <p>通用Mapper就是为了解决单表增删改查，基于Mybatis的插件机制。开发人员不需要编写SQL,不需要 在DAO中增加方法，只要写好实体类，就能支持相应的增删改查方法</p>
 <p><strong>如何使用</strong></p>
 <ol>
@@ -2505,7 +2505,7 @@ public class User {<span aria-hidden="true" class="line-numbers-rows"><span></sp
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer id;
 private String username;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="第九部分：Mybatis架构原理"><a href="#第九部分：Mybatis架构原理" class="headerlink" title="第九部分：Mybatis架构原理"></a>第九部分：Mybatis架构原理</h1><h2 id="9-1架构设计"><a href="#9-1架构设计" class="headerlink" title="9.1架构设计"></a>9.1架构设计</h2><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530175203250.png" alt="image-20220530175203250" style="zoom:80%;">
+<h2 id="第九部分：Mybatis架构原理"><a href="#第九部分：Mybatis架构原理" class="headerlink" title="第九部分：Mybatis架构原理"></a>第九部分：Mybatis架构原理</h2><h3 id="9-1架构设计"><a href="#9-1架构设计" class="headerlink" title="9.1架构设计"></a>9.1架构设计</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530175203250.png" alt="image-20220530175203250" style="zoom:80%;">
 
 <p>我们把Mybatis的功能架构分为三层：</p>
 <p>(1) API接口层：提供给外部使用的接口 API，开发人员通过这些本地API来操纵数据库。接口层一接收到 调用请求<br>就会调用数据处理层来完成具体的数据处理。</p>
@@ -2514,7 +2514,7 @@ private String username;<span aria-hidden="true" class="line-numbers-rows"><span
 <p>b. 使用Mapper代理的方式</p>
 <p>(2) 数据处理层：负责具体的SQL查找、SQL解析、SQL执行和执行结果映射处理等。它主要的目的是根 据调用的<br>请求完成一次数据库操作。</p>
 <p>(3) 基础支撑层：负责最基础的功能支撑，包括连接管理、事务管理、配置加载和缓存处理，这些都是共 用的东<br>⻄，将他们抽取出来作为最基础的组件。为上层的数据处理层提供最基础的支撑</p>
-<h2 id="9-2主要构件及其相互关系"><a href="#9-2主要构件及其相互关系" class="headerlink" title="9.2主要构件及其相互关系"></a>9.2主要构件及其相互关系</h2><table>
+<h3 id="9-2主要构件及其相互关系"><a href="#9-2主要构件及其相互关系" class="headerlink" title="9.2主要构件及其相互关系"></a>9.2主要构件及其相互关系</h3><table>
 <thead>
 <tr>
 <th>构建</th>
@@ -2560,7 +2560,7 @@ private String username;<span aria-hidden="true" class="line-numbers-rows"><span
 </tbody></table>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220530184418699.png" alt="image-20220530184418699" style="zoom:80%;">
 
-<h2 id="9-3总体流程"><a href="#9-3总体流程" class="headerlink" title="9.3总体流程"></a>9.3总体流程</h2><p>(1) 加载配置并初始化</p>
+<h3 id="9-3总体流程"><a href="#9-3总体流程" class="headerlink" title="9.3总体流程"></a>9.3总体流程</h3><p>(1) 加载配置并初始化</p>
 <p>触发条件： 加载配置文件</p>
 <p>配置来源于两个地方，一个是配置文件(主配置文件conf.xml,mapper文件*.xml),—个是java代码中的 注解，将主配置文件内容解析封装到Configuration,将sql的配置信息加载成为一个mappedstatement 对象，存储在内存之中</p>
 <p>(2) 接收调用请求</p>
@@ -2578,7 +2578,7 @@ private String username;<span aria-hidden="true" class="line-numbers-rows"><span
 <p>(E) 释放连接资源。</p>
 <p><strong>(4) 返回处理结果</strong></p>
 <p>将最终的处理结果返回。</p>
-<h1 id="第十部分：Mybatis源码剖析"><a href="#第十部分：Mybatis源码剖析" class="headerlink" title="第十部分：Mybatis源码剖析"></a>第十部分：Mybatis源码剖析</h1><h2 id="10-1传统方式源码剖析："><a href="#10-1传统方式源码剖析：" class="headerlink" title="10.1传统方式源码剖析："></a>10.1传统方式源码剖析：</h2><p>源码剖析-初始化</p>
+<h2 id="第十部分：Mybatis源码剖析"><a href="#第十部分：Mybatis源码剖析" class="headerlink" title="第十部分：Mybatis源码剖析"></a>第十部分：Mybatis源码剖析</h2><h3 id="10-1传统方式源码剖析："><a href="#10-1传统方式源码剖析：" class="headerlink" title="10.1传统方式源码剖析："></a>10.1传统方式源码剖析：</h3><p>源码剖析-初始化</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Inputstream</span> inputstream <span class="token operator">=</span> <span class="token class-name">Resources</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"mybatis-config.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//这一行代码正是初始化工作的开始。</span>
 <span class="token class-name">SqlSessionFactory</span> factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionFactoryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>inputStream<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -2959,7 +2959,7 @@ private String username;<span aria-hidden="true" class="line-numbers-rows"><span
 <span class="token comment">//如果是multipleResults单元素，则取⾸元素返回</span>
 <span class="token keyword">return</span> <span class="token function">collapseSingleResultList</span><span class="token punctuation">(</span>multipleResults<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="10-2-Mapper代理方式："><a href="#10-2-Mapper代理方式：" class="headerlink" title="10.2 Mapper代理方式："></a>10.2 Mapper代理方式：</h2><p>回顾下写法:</p>
+<h3 id="10-2-Mapper代理方式："><a href="#10-2-Mapper代理方式：" class="headerlink" title="10.2 Mapper代理方式："></a>10.2 Mapper代理方式：</h3><p>回顾下写法:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">//前三步都相同</span>
     <span class="token class-name">InputStream</span> inputStream <span class="token operator">=</span> <span class="token class-name">Resources</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"sqlMapConfig.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -3110,7 +3110,7 @@ private String username;<span aria-hidden="true" class="line-numbers-rows"><span
     <span class="token comment">//返回结果</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="10-3-二级缓存源码剖析："><a href="#10-3-二级缓存源码剖析：" class="headerlink" title="10.3 二级缓存源码剖析："></a>10.3 二级缓存源码剖析：</h2><p>二级缓存构建在一级缓存之上，在收到查询请求时，MyBatis 首先会查询二级缓存，若二级缓存未命中，再去查询一级缓存，一级缓存没有，再查询数据库。</p>
+<h3 id="10-3-二级缓存源码剖析："><a href="#10-3-二级缓存源码剖析：" class="headerlink" title="10.3 二级缓存源码剖析："></a>10.3 二级缓存源码剖析：</h3><p>二级缓存构建在一级缓存之上，在收到查询请求时，MyBatis 首先会查询二级缓存，若二级缓存未命中，再去查询一级缓存，一级缓存没有，再查询数据库。</p>
 <p>二级缓存——》 一级缓存——》数据库与一级缓存不同，二级缓存和具体的命名空间绑定，一个Mapper中有一个Cache，相同Mapper中的MappedStatement共用一个Cache，一级缓存则是和 SqlSession 绑定。</p>
 <p><strong>启用二级缓存</strong></p>
 <p>分为三步走：</p>
@@ -3598,7 +3598,7 @@ private String username;<span aria-hidden="true" class="line-numbers-rows"><span
 <li>⼆级缓存可由多个装饰器，与基础缓存组合⽽成</li>
 <li>⼆级缓存⼯作由 ⼀个缓存装饰执⾏器CachingExecutor和 ⼀个事务型预缓存TransactionalCache 完成。</li>
 </ul>
-<h2 id="10-4-延迟加载源码剖析："><a href="#10-4-延迟加载源码剖析：" class="headerlink" title="10.4 延迟加载源码剖析："></a>10.4 延迟加载源码剖析：</h2><p>什么是延迟加载？<br><strong>问题</strong><br>在开发过程中很多时候我们并不需要总是在加载⽤户信息时就⼀定要加载他的订单信息。此时就是我们所说的延迟加载。<br><strong>举个栗⼦</strong></p>
+<h3 id="10-4-延迟加载源码剖析："><a href="#10-4-延迟加载源码剖析：" class="headerlink" title="10.4 延迟加载源码剖析："></a>10.4 延迟加载源码剖析：</h3><p>什么是延迟加载？<br><strong>问题</strong><br>在开发过程中很多时候我们并不需要总是在加载⽤户信息时就⼀定要加载他的订单信息。此时就是我们所说的延迟加载。<br><strong>举个栗⼦</strong></p>
 <ul>
 <li>在⼀对多中，当我们有⼀个⽤户，它有个100个订单在查询⽤户的时候，要不要把关联的订单查出来？在查询订单的时候，要不要把关联的⽤户查出来？</li>
 <li>回答:在查询⽤户时，⽤户下的订单应该是，什么时候⽤，什么时候查询。在查询订单时，订单所属的⽤户信息应该是随着订单⼀起查询出来。</li>
@@ -4411,7 +4411,7 @@ lazyLoadTriggerMethods).
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

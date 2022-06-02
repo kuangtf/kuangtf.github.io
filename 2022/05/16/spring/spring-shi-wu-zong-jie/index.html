@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -491,7 +491,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-什么是事务？"><a href="#1-什么是事务？" class="headerlink" title="1. 什么是事务？"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1%EF%BC%9F">1. 什么是事务？</a></h2><p><strong>事务是逻辑上的一组操作，要么都执行，要么都不执行。</strong></p>
+                <h2 id="1-什么是事务？"><a href="#1-什么是事务？" class="headerlink" title="1. 什么是事务？"></a>1. 什么是事务？</h2><p><strong>事务是逻辑上的一组操作，要么都执行，要么都不执行。</strong></p>
 <p><em>Guide 哥：大家应该都能背上面这句话了，下面我结合我们日常的真实开发来谈一谈。</em></p>
 <p>我们系统的每个业务方法可能包括了多个原子性的数据库操作，比如下面的 <code>savePerson()</code> 方法中就有两个原子性的数据库操作。这些原子性的数据库操作是有依赖的，它们要么都执行，要不就都不执行。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">savePerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -527,16 +527,14 @@
 <span class="token punctuation">}</span><span class="token class-name">Copy</span> <span class="token keyword">to</span> <span class="token namespace">clipboardErrorCopied</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>另外，数据库事务的 ACID 四大特性是事务的基础，下面简单来了解一下。</p>
-<h2 id="2-事务的特性（ACID）了解么"><a href="#2-事务的特性（ACID）了解么" class="headerlink" title="2. 事务的特性（ACID）了解么?"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_2-%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%88acid%EF%BC%89%E4%BA%86%E8%A7%A3%E4%B9%88">2. 事务的特性（ACID）了解么?</a></h2><img src="https://snailclimb.gitee.io/javaguide/docs/system-design/framework/spring/images/spring-transaction/bda7231b-ab05-4e23-95ee-89ac90ac7fcf.png" alt="img" style="zoom:80%;">
-
-<ul>
+<h2 id="2-事务的特性（ACID）了解么"><a href="#2-事务的特性（ACID）了解么" class="headerlink" title="2. 事务的特性（ACID）了解么?"></a>2. 事务的特性（ACID）了解么?</h2><ul>
 <li><strong>原子性（Atomicity）：</strong> 一个事务（transaction）中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。即，事务不可分割、不可约简。</li>
 <li><strong>一致性（Consistency）：</strong> 在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设约束、触发器、级联回滚等。</li>
 <li><strong>隔离性（Isolation）：</strong> 数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括未提交读（Read uncommitted）、提交读（read committed）、可重复读（repeatable read）和串行化（Serializable）。</li>
 <li><strong>持久性（Durability）:</strong> 事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</li>
 </ul>
 <p>参考 ：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/ACID">https://zh.wikipedia.org/wiki/ACID</a> 。</p>
-<h2 id="3-详谈-Spring-对事务的支持"><a href="#3-详谈-Spring-对事务的支持" class="headerlink" title="3. 详谈 Spring 对事务的支持"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_3-%E8%AF%A6%E8%B0%88-spring-%E5%AF%B9%E4%BA%8B%E5%8A%A1%E7%9A%84%E6%94%AF%E6%8C%81">3. 详谈 Spring 对事务的支持</a></h2><p><strong>再提醒一次：你的程序是否支持事务首先取决于数据库 ，比如使用 MySQL 的话，如果你选择的是 innodb 引擎，那么恭喜你，是可以支持事务的。但是，如果你的 MySQL 数据库使用的是 myisam 引擎的话，那不好意思，从根上就是不支持事务的。</strong></p>
+<h2 id="3-详谈-Spring-对事务的支持"><a href="#3-详谈-Spring-对事务的支持" class="headerlink" title="3. 详谈 Spring 对事务的支持"></a>3. 详谈 Spring 对事务的支持</h2><p><strong>再提醒一次：你的程序是否支持事务首先取决于数据库 ，比如使用 MySQL 的话，如果你选择的是 innodb 引擎，那么恭喜你，是可以支持事务的。但是，如果你的 MySQL 数据库使用的是 myisam 引擎的话，那不好意思，从根上就是不支持事务的。</strong></p>
 <p>这里再多提一下一个非常重要的知识点： <strong>MySQL 怎么保证原子性的？</strong></p>
 <p>我们知道如果想要保证事务的原子性，就需要在异常发生时，对已经执行的操作进行<strong>回滚</strong>，在 MySQL 中，恢复机制是通过 <strong>回滚日志（undo log）</strong> 实现的，所有事务进行的修改都会先先记录到这个回滚日志中，然后再执行相关的操作。如果执行过程中遇到异常的话，我们直接利用 <strong>回滚日志</strong> 中的信息将数据回滚到修改之前的样子即可！并且，回滚日志会先于数据持久化到磁盘上。这样就保证了即使遇到数据库突然宕机等情况，当用户再次启动数据库的时候，数据库还能够通过查询回滚日志来回滚将之前未完成的事务。</p>
 <h3 id="3-1-Spring-支持两种方式的事务管理"><a href="#3-1-Spring-支持两种方式的事务管理" class="headerlink" title="3.1. Spring 支持两种方式的事务管理"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_31-spring-%E6%94%AF%E6%8C%81%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86">3.1. Spring 支持两种方式的事务管理</a></h3><h4 id="1-编程式事务管理"><a href="#1-编程式事务管理" class="headerlink" title="1).编程式事务管理"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_1%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86">1).编程式事务管理</a></h4><p>通过 <code>TransactionTemplate</code>或者<code>TransactionManager</code>手动管理事务，实际应用中很少使用，但是对于你理解 Spring 事务管理原理有帮助。</p>
@@ -598,7 +596,7 @@
 <h4 id="3-2-1-PlatformTransactionManager-事务管理接口"><a href="#3-2-1-PlatformTransactionManager-事务管理接口" class="headerlink" title="3.2.1. PlatformTransactionManager:事务管理接口"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_321-platformtransactionmanager%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3">3.2.1. PlatformTransactionManager:事务管理接口</a></h4><p><strong>Spring 并不直接管理事务，而是提供了多种事务管理器</strong> 。Spring 事务管理器的接口是： <strong><code>PlatformTransactionManager</code></strong> 。</p>
 <p>通过这个接口，Spring 为各个平台如 JDBC(<code>DataSourceTransactionManager</code>)、Hibernate(<code>HibernateTransactionManager</code>)、JPA(<code>JpaTransactionManager</code>)等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。</p>
 <p><strong><code>PlatformTransactionManager</code> 接口的具体实现如下:</strong></p>
-<img src="https://snailclimb.gitee.io/javaguide/docs/system-design/framework/spring/images/spring-transaction/ae964c2c-7289-441c-bddd-511161f51ee1.png" alt="img" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/PlatformTransactionManager.bfc04603.png" alt="img" style="zoom:80%;">
 
 <p><code>PlatformTransactionManager</code>接口中定义了三个方法：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>transaction</span><span class="token punctuation">;</span>
@@ -621,8 +619,13 @@
 <p>那么什么是 <strong>事务属性</strong> 呢？</p>
 <p>事务属性可以理解成事务的一些基本配置，描述了事务策略如何应用到方法上。</p>
 <p>事务属性包含了 5 个方面：</p>
-<img src="https://snailclimb.gitee.io/javaguide/docs/system-design/framework/spring/images/spring-transaction/a616b84d-9eea-4ad1-b4fc-461ff05e951d.png" alt="img" style="zoom:80%;">
-
+<ul>
+<li>隔离级别</li>
+<li>传播行为</li>
+<li>回滚规则</li>
+<li>是否只读</li>
+<li>事务超时</li>
+</ul>
 <p><code>TransactionDefinition</code> 接口中定义了 5 个方法以及一些表示事务属性的常量比如隔离级别、传播行为等等。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>transaction</span><span class="token punctuation">;</span>
 
@@ -903,9 +906,10 @@
 <li>如果你一次执行多条查询语句，例如统计查询，报表查询，在这种场景下，多条查询 SQL 必须保证整体的读一致性，否则，在前条 SQL 查询之后，后条 SQL 查询之前，数据被其他用户改变，则该次整体的统计查询将会出现读数据不一致的状态，此时，应该启用事务支持</li>
 </ol>
 <h4 id="3-3-5-事务回滚规则"><a href="#3-3-5-事务回滚规则" class="headerlink" title="3.3.5. 事务回滚规则"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_335-%E4%BA%8B%E5%8A%A1%E5%9B%9E%E6%BB%9A%E8%A7%84%E5%88%99">3.3.5. 事务回滚规则</a></h4><p>这些规则定义了哪些异常会导致事务回滚而哪些不会。默认情况下，事务只有遇到运行期异常（RuntimeException 的子类）时才会回滚，Error 也会导致事务回滚，但是，在遇到检查型（Checked）异常时不会回滚。</p>
-<p><img src="https://snailclimb.gitee.io/javaguide/docs/system-design/framework/spring/images/spring-transaction/f6c6f0aa-0f26-49e1-84b3-7f838c7379d1.png" alt="img"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602153601613.png" alt="image-20220602153601613" style="zoom:80%;">
+
 <p>如果你想要回滚你定义的特定的异常类型的话，可以这样：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>rollbackFor<span class="token operator">=</span> <span class="token class-name">MyException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token class-name">Copy</span> <span class="token keyword">to</span> <span class="token namespace">clipboardErrorCopied</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>rollbackFor<span class="token operator">=</span> <span class="token class-name">MyException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="3-4-Transactional-注解使用详解"><a href="#3-4-Transactional-注解使用详解" class="headerlink" title="3.4. @Transactional 注解使用详解"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_34-transactional-%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3">3.4. @Transactional 注解使用详解</a></h3><h4 id="1-Transactional-的作用范围"><a href="#1-Transactional-的作用范围" class="headerlink" title="1) @Transactional 的作用范围"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/Spring%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93?id=_1-transactional-%E7%9A%84%E4%BD%9C%E7%94%A8%E8%8C%83%E5%9B%B4">1) <code>@Transactional</code> 的作用范围</a></h4><ol>
 <li><strong>方法</strong> ：推荐将注解使用于方法上，不过需要注意的是：<strong>该注解只能应用到 public 方法上，否则不生效。</strong></li>
@@ -1587,7 +1591,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

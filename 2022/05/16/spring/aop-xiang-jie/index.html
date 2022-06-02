@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -508,7 +508,8 @@
 <p>🔗 关于 Java 代理可参见这篇文章 <a target="_blank" rel="noopener" href="https://veal98.gitee.io/cs-wiki/#/Java/Java%E5%9F%BA%E7%A1%80/10-%E4%BB%A3%E7%90%86">CS-Wiki — 👦 静态代理 + JDK/CGLIB/Javassit 动态代理</a></p>
 </blockquote>
 <p>如下图所示：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20201221101337.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152500041.png" alt="image-20220602152500041" style="zoom:80%;">
+
 <p>🚨 <strong>AOP 和 IoC 一样，都不是 Spring 独有的，Spring 只是支持 AOP / IoC 的框架之一</strong></p>
 <h2 id="2-AOP-相关术语"><a href="#2-AOP-相关术语" class="headerlink" title="2. AOP 相关术语"></a>2. AOP 相关术语</h2><ul>
 <li><p>🔸 <strong>连接点（Joinpoint)</strong> 程序执行的某个特定位置，如某个方法调用前，调用后，方法抛出异常后，这些代码中的特定点称为连接点。<u>简单来说，就是在哪加入你的逻辑增强</u></p>
@@ -534,14 +535,14 @@
 <li><p>🔸 <strong>切面（Aspect）</strong> 切面由切点和增强组成，它既包括了横切逻辑的定义，也包括了连接点的定义，SpringAOP 就是将切面所定义的横切逻辑织入到切面所制定的连接点中。<strong>通常来说切面是一个类（切面类），即对该类的某个方法进行增强</strong></p>
 </li>
 </ul>
-<img src="https://gitee.com/veal98/images/raw/master/img/20201221102543.png" style="zoom:75%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152530318.png" alt="image-20220602152530318" style="zoom:80%;">
 
 <h2 id="4-切入点表达式"><a href="#4-切入点表达式" class="headerlink" title="4. 切入点表达式"></a>4. 切入点表达式</h2><h3 id="①-切入点表达式的作用"><a href="#①-切入点表达式的作用" class="headerlink" title="① 切入点表达式的作用"></a>① 切入点表达式的作用</h3><p>切入点表达式的作用是：指明要对业务层中哪些方法增强</p>
 <h3 id="②-切入点表达式的写法"><a href="#②-切入点表达式的写法" class="headerlink" title="② 切入点表达式的写法"></a>② 切入点表达式的写法</h3><p><strong>标准的表达式写法</strong>：访问修饰符 返回值 包名.包名.包名…类名.方法名(参数列表)</p>
- <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">public void com.smallbeef.service.impl.AccountServiceImpl.saveAccount()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+ <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smallbeef<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">.</span></span>AccountServiceImpl</span><span class="token punctuation">.</span><span class="token function">saveAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><strong>访问修饰符可以省略</strong></p>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">void com.smallbeef.service.impl.AccountServiceImpl.saveAccount()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">void</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smallbeef<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">.</span></span>AccountServiceImpl</span><span class="token punctuation">.</span><span class="token function">saveAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><strong>可以使用通配符 <code>*</code>，表示任意或所有</strong>*。</p>
 <p>对于参数列表 可以直接写数据类型：</p>
@@ -573,7 +574,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>before</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beforePribeforePrintLogntLog<span class="token punctuation">"</span></span> <span class="token attr-name">pointcut-ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pt1<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">aop:</span>before</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h3 id="②-后置通知"><a href="#②-后置通知" class="headerlink" title="② 后置通知"></a>② 后置通知</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 配置最终通知：无论切入点方法afterReturningPrintLog是否正常执行它都会在其后面执行--&gt;</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>after-returning</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>afterReturningPrintLog<span class="token punctuation">"</span></span> <span class="token attr-name">pointcut-ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pt1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">aop:</span>after</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>after-returning</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>afterReturningPrintLog<span class="token punctuation">"</span></span> <span class="token attr-name">pointcut-ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pt1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">aop:</span>after-returning</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h3 id="③-异常通知"><a href="#③-异常通知" class="headerlink" title="③ 异常通知"></a>③ 异常通知</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"> <span class="token comment">&lt;!-- 配置异常通知：在切入点方法afterThrowingPrintLog执行产生异常之后执行。它和后置通知永远只能执行一个--&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>after-throwing</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>afterThrowingPrintLog<span class="token punctuation">"</span></span> <span class="token attr-name">pointcut-ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pt1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">aop:</span>after-throwing</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -791,7 +792,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kuangtf.github.io/2022/05/16/spring/3-aop-xiang-jie/">https://kuangtf.github.io/2022/05/16/spring/3-aop-xiang-jie/</a>
+                    <a href="https://kuangtf.github.io/2022/05/16/spring/aop-xiang-jie/">https://kuangtf.github.io/2022/05/16/spring/aop-xiang-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1053,7 +1054,7 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/16/spring/2-springioc-rong-qi-yuan-ma-fen-xi/">
+                <a href="/2022/05/16/spring/springioc-rong-qi-yuan-ma-fen-xi/">
                     <div class="card-image">
                         
                         
@@ -1329,7 +1330,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

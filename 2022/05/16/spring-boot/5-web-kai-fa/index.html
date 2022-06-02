@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -507,7 +507,8 @@
   <span class="token comment">//可以设置和静态资源有关的参数，缓存时间等</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>SpringBoot 中，SpringMVC 的 web 配置都在 <code>WebMvcAutoConfiguration </code>这个配置类里面，其中有很多配置类方法：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703145014.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703145014.png" alt="img" style="zoom:80%;">
+
 <h4 id="Ⅰ-静态资源映射规则"><a href="#Ⅰ-静态资源映射规则" class="headerlink" title="Ⅰ 静态资源映射规则"></a>Ⅰ 静态资源映射规则</h4><p><code>WebMvcAutoConfiguration </code>类中有一个方法：<code>addResourceHandlers </code>添加资源处理</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 添加资源处理</span>
 <span class="token annotation punctuation">@Override</span>
@@ -547,7 +548,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>导入完毕，查看 <code>webjars </code>目录结构，并访问 <code>Jquery.js</code>文件：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200703143112.png" style="zoom: 50%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703143112.png" alt="img" style="zoom:80%;">
 
 <p>访问：只要是静态资源，SpringBoot 就会去对应的路径寻找资源，我们可以在这里访问：<code>http://localhost:8080/webjars/jquery/3.4.1/jquery.js</code></p>
 <h4 id="Ⅱ-静态资源文件夹"><a href="#Ⅱ-静态资源文件夹" class="headerlink" title="Ⅱ 静态资源文件夹"></a>Ⅱ 静态资源文件夹</h4><p>❓ 那我们项目中要是使用自己的静态资源该怎么导入呢？我们看 <code>addResourceHandlers </code> 中的这行代码：</p>
@@ -625,7 +626,8 @@
 <p>那不支持jsp，如果我们直接用纯静态页面的方式，那给我们开发会带来非常大的麻烦，怎么办呢？</p>
 <p><strong>SpringBoot 推荐使用模板引擎：</strong></p>
 <p>其实jsp就是一个模板引擎，还有用的比较多的 freemarker，包括 SpringBoot 给我们推荐的 Thymeleaf，模板引擎有非常多，但再多的模板引擎，他们的思想都是一样的：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703150258.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703150258.png" alt="img" style="zoom:80%;">
+
 <p>模板引擎的作用就是我们来写一个页面模板，比如我们写一些表达式获取动态的值。而这些值，从哪来呢？就是我们在后台封装的一些数据。然后把这个模板和这个数据交给我们模板引擎，模板引擎按照我们的数据解析表达式、填充到我们指定的位置，然后把这个数据最终生成一个我们想要的内容写出去，这就是模板引擎，不管是jsp还是其他模板引擎，都是这个思想。</p>
 <p>只不过不同模板引擎之间，他们语法有点不一样。以下主要来介绍一下 SpringBoot 给我们推荐的 Thymeleaf模板引擎，它是一个高级语言的模板引擎，语法更简单，功能更强大。</p>
 <h3 id="①-引入-Thymeleaf"><a href="#①-引入-Thymeleaf" class="headerlink" title="① 引入 Thymeleaf"></a>① 引入 Thymeleaf</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
@@ -679,13 +681,15 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20200703153356.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703153356.png" alt="img" style="zoom:80%;">
 
 <p>目录结构：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703153229.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703153229.png" alt="img" style="zoom:80%;">
+
 <h3 id="④-语法规则"><a href="#④-语法规则" class="headerlink" title="④ 语法规则"></a>④ 语法规则</h3><h4 id="Ⅰ-th-attr-标签"><a href="#Ⅰ-th-attr-标签" class="headerlink" title="Ⅰ th:attr 标签"></a>Ⅰ th:attr 标签</h4><p><strong>我们可以使用任意的 th:attr 来替换Html中原生属性的值</strong></p>
 <p>比如 <code>th:text</code>：改变当前元素里面的文本内容</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703153740.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703153740.png" alt="img" style="zoom:80%;">
+
 <h4 id="Ⅱ-表达式"><a href="#Ⅱ-表达式" class="headerlink" title="Ⅱ 表达式"></a>Ⅱ 表达式</h4><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties">
 <span class="token attr-name">Simple</span> <span class="token attr-value">expressions:（表达式语法）</span>
 <span class="token attr-name">Variable</span> <span class="token attr-value">Expressions: ${...}：获取变量值；OGNL；</span>
@@ -866,10 +870,12 @@ custom instances of <span class="token class-name">RequestMappingHandlerMapping<
 
 <p>我们继续点进去 <code>getCandidateViews</code>，他是怎么获得候选的视图的呢？</p>
 <p>可以看到他是把所有的视图解析器拿来，进行 <code>while</code> 循环，挨个解析</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703155430.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703155430.png" alt="img" style="zoom:80%;">
+
 <p>所以得出结论：**<code>ContentNegotiatingViewResolver</code> 这个视图解析器就是用来组合所有的视图解析器的** </p>
 <p>我们再去研究下<code>ContentNegotiatingViewResolver</code> 的组合逻辑，看到有个属性<code>viewResolvers</code>，看看它是在哪里进行赋值的：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703155736.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703155736.png" alt="img" style="zoom:80%;">
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">initServletContext</span><span class="token punctuation">(</span><span class="token class-name">ServletContext</span> servletContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 这里它是从beanFactory工具中获取容器中的所有视图解析器</span>
     <span class="token comment">// ViewRescolver.class 把所有的视图解析器来组合的</span>
@@ -961,9 +967,8 @@ custom instances of <span class="token class-name">RequestMappingHandlerMapping<
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<blockquote>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703162107.png"></p>
-</blockquote>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200703162107.png" alt="img" style="zoom:80%;">
+
 <p>🚩 <strong>原理</strong>：为什么 <code>@EnableWebMvc</code> 自动配置就失效了；</p>
 <ul>
 <li><p>@EnableWebMvc的核心</p>
@@ -985,12 +990,6 @@ custom instances of <span class="token class-name">RequestMappingHandlerMapping<
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebMvcAutoConfiguration</span> <span class="token punctuation">{</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>⭐ <code>@EnableWebMvc</code> 将 <code>WebMvcConfigurationSupport</code> 组件导入进来了，而导入的 <code>WebMvcConfigurationSupport </code>只是 SpringMVC 最基本的功能。</p>
-</li>
-</ul>
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Et411Y7tQ">视频 - SpringBoot_权威教程_雷丰阳_尚硅谷</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/homepage?__biz=Mzg2NTAzMTExNg==&amp;hid=1&amp;sn=3247dca1433a891523d9e4176c90c499">狂神说 SpringBoot</a></p>
 </li>
 </ul>
 
@@ -1557,7 +1556,7 @@ custom instances of <span class="token class-name">RequestMappingHandlerMapping<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

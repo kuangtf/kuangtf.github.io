@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -496,7 +496,8 @@
 <p>Spring Boot 底层都是采用 Spring Data 的方式进行统一处理各种数据库，Spring Data 也是 Spring 中与 Spring Boot、Spring Cloud 等齐名的知名项目。</p>
 <p>Sping Data 官网：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-data">https://spring.io/projects/spring-data</a></p>
 <h2 id="2-整合-JDBC"><a href="#2-整合-JDBC" class="headerlink" title="2. 整合 JDBC"></a>2. 整合 JDBC</h2><h3 id="①-数据源-DataSource"><a href="#①-数据源-DataSource" class="headerlink" title="① 数据源 DataSource"></a>① 数据源 DataSource</h3><p>新建一个项目，导入以下模块：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709122710.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709122710.png" alt="img" style="zoom:80%;">
+
 <p>项目建好之后，发现自动帮我们导入了如下的启动器：</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
@@ -537,7 +538,8 @@
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709123650.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709123650.png" alt="img" style="zoom:80%;">
+
 <p>可以看到他默认给我们配置的数据源为 : <code>class com.zaxxer.hikari.HikariDataSource</code> ， 我们并没有手动配置。全局搜索一下 <code>Hikari</code>，找到数据源的所有自动配置都在 <code>DataSourceAutoConfiguration</code> 文件中：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token class-name">Hikari</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">Tomcat</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">Dbcp2</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">Generic</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">DataSourceJmxConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">PooledDataSourceConfiguration</span> <span class="token punctuation">{</span>
@@ -546,7 +548,8 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里导入的类都在 <code>DataSourceConfiguration </code>配置类下：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709124410.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709124410.png" alt="img" style="zoom:80%;">
+
 <p>💡 可以看出 <strong>Spring Boot 2.2.5 默认使用 <code>HikariDataSource </code> 数据源</strong>，而以前版本，如 Spring Boot 1.5 默认使用 <code>org.apache.tomcat.jdbc.pool.DataSource</code> 作为数据源；</p>
 <p>👍 <code>HikariDataSource </code>号称 Java WEB 当前速度最快的数据源，相比于传统的 C3P0 、DBCP、Tomcat jdbc 等连接池更加优秀。</p>
 <blockquote>
@@ -813,7 +816,8 @@
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709153659.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709153659.png" alt="img" style="zoom:80%;">
+
 <p>OK，数据源成功切换 😊</p>
 <p>接下来可以设置数据源连接初始化大小、最大连接数、等待时间、最小连接数 等设置项：</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
@@ -890,7 +894,8 @@
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709154902.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709154902.png" alt="img" style="zoom:80%;">
+
 <p>可见配置参数已经生效~</p>
 <h3 id="③-配置-Druid-数据源监控"><a href="#③-配置-Druid-数据源监控" class="headerlink" title="③ 配置 Druid 数据源监控"></a>③ 配置 Druid 数据源监控</h3><p>Druid 数据源具有监控的功能，并提供了一个 web 界面方便用户查看，类似安装路由器时也提供了一个默认的 web 页面。所以第一步需要设置 Druid 的后台管理页面，比如登录账号、密码等。</p>
 <p><strong>配置后台管理</strong>：</p>
@@ -930,9 +935,10 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>配置完毕后，我们可以选择访问 ：<a target="_blank" rel="noopener" href="http://localhost:8080/druid/login.html">http://localhost:8080/druid/login.html</a></p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200709160550.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709160550.png" alt="img" style="zoom:80%;">
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709160605.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709160605.png" alt="img" style="zoom:80%;">
+
 <p><strong>配置 Druid web 监控 filter 过滤器：</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 配置 Druid 监控 之  web 监控的 filter</span>
 <span class="token comment">// WebStatFilter：用于配置Web和Druid数据源之间的管理关联监控统计</span>
@@ -983,7 +989,8 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.1.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709162203.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709162203.png" style="zoom:80%;">
+
 <p>👉 <strong>创建JavaBean</strong>：</p>
 <blockquote>
 <p>数据库表和上一节一样</p>
@@ -1060,7 +1067,8 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709170324.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709170324.png" style="zoom:80%;">
+
 <p>注意：直接写 <code>resultType="Employee"</code> 是无法识别的，需要在全局配置文件中配置别名，或者指定全类名也可：<code>resultType="com.smallbeef.jdbcdemo.Bean.Employee"</code></p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># 整合 Mybatis</span>
 <span class="token key atrule">mybatis</span><span class="token punctuation">:</span>
@@ -1106,11 +1114,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>👉 <strong>启动项目访问进行测试</strong>：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200709170643.png"></p>
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PE411i7CV?p=26">【狂神说Java】SpringBoot 最新教程IDEA版通俗易懂</a></li>
-</ul>
-
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200709170643.png" alt="img" style="zoom:80%;">
                 
             </div>
             <hr/>
@@ -1353,9 +1357,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="SpingBoot 自动装配原理">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">SpingBoot 自动装配原理</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1370,23 +1374,11 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Spring-Boot/" class="post-category">
-                                    Spring Boot
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            帅枫
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/SpingBoot-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">SpingBoot 自动装配原理</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1674,7 +1666,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

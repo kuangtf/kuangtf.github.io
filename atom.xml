@@ -6,7 +6,7 @@
   <link href="https://kuangtf.github.io/atom.xml" rel="self"/>
   
   <link href="https://kuangtf.github.io/"/>
-  <updated>2022-05-31T01:10:19.589Z</updated>
+  <updated>2022-06-02T07:05:14.069Z</updated>
   <id>https://kuangtf.github.io/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/"/>
     <id>https://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/</id>
     <published>2022-05-31T01:08:29.941Z</published>
-    <updated>2022-05-31T01:10:19.589Z</updated>
+    <updated>2022-06-02T07:05:14.069Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;第一部分：自定义持久层框架&quot;&gt;&lt;a href=&quot;#第一部分：自定义持久层框架&quot; class=&quot;headerlink&quot; title=&quot;第一部分：自定义持久层框架&quot;&gt;&lt;/a&gt;第一部分：自定义持久层框架&lt;/h1&gt;&lt;h2 id=&quot;1-1-分析JDBC操作问题&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;第一部分：自定义持久层框架&quot;&gt;&lt;a href=&quot;#第一部分：自定义持久层框架&quot; class=&quot;headerlink&quot; title=&quot;第一部分：自定义持久层框架&quot;&gt;&lt;/a&gt;第一部分：自定义持久层框架&lt;/h2&gt;&lt;h3 id=&quot;1-1-分析JDBC操作问题&quot;&gt;&lt;a</summary>
         
       
     

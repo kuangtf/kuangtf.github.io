@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -659,7 +659,8 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"userName"</span><span class="token operator">:</span><span class="token string">"coder"</span><span class="token punctuation">,</span><span class="token property">"fullName"</span><span class="token operator">:</span><span class="token string">"shuangkou"</span><span class="token punctuation">,</span><span class="token property">"password"</span><span class="token operator">:</span><span class="token string">"123456"</span><span class="token punctuation">}</span>Copy to clipboardErrorCopied<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这样我们的后端就可以直接把 json 格式的数据映射到我们的 <code>UserRegisterRequest</code> 类上。</p>
-<p><img src="https://snailclimb.gitee.io/javaguide/docs/system-design/framework/spring/images/spring-annotations/@RequestBody.png" alt="img"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160433612.png" alt="image-20220602160433612" style="zoom:80%;">
+
 <p>👉 需要注意的是：**一个请求方法只可以有一个<code>@RequestBody</code>，但是可以有多个<code>@RequestParam</code>和<code>@PathVariable</code>**。 如果你的方法必须要用两个 <code>@RequestBody</code>来接受数据的话，大概率是你的数据库设计或者系统设计出问题了！</p>
 <h3 id="5-读取配置信息"><a href="#5-读取配置信息" class="headerlink" title="5. 读取配置信息"></a>5. 读取配置信息</h3><p><strong>很多时候我们需要将一些常用的配置信息比如阿里云 oss、发送短信、微信认证的相关配置信息等等放到配置文件中。</strong></p>
 <p><strong>下面我们来看一下 Spring 为我们提供了哪些方式帮助我们从配置文件中读取这些配置信息。</strong></p>
@@ -721,7 +722,7 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
 <p>校验的时候我们实际用的是 <strong>Hibernate Validator</strong> 框架。Hibernate Validator 是 Hibernate 团队最初的数据校验框架，Hibernate Validator 4.x 是 Bean Validation 1.0（JSR 303）的参考实现，Hibernate Validator 5.x 是 Bean Validation 1.1（JSR 349）的参考实现，目前最新版的 Hibernate Validator 6.x 是 Bean Validation 2.0（JSR 380）的参考实现。</p>
 <p>SpringBoot 项目的 spring-boot-starter-web 依赖中已经有 hibernate-validator 包，不需要引用相关依赖。如下图所示（通过 idea 插件—Maven Helper 生成）：</p>
 <p><strong>注</strong>：更新版本的 spring-boot-starter-web 依赖中不再有 hibernate-validator 包（如2.3.11.RELEASE），需要自己引入 <code>spring-boot-starter-validation</code> 依赖。</p>
-<img src="https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/2021/03/c7bacd12-1c1a-4e41-aaaf-4cad840fc073.png" alt="img" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602160443344.png" alt="image-20220602160443344" style="zoom:80%;">
 
 <p>非 SpringBoot 项目需要自行引入相关依赖包，这里不多做讲解</p>
 <p>👉 需要注意的是： <strong>所有的注解，推荐使用 JSR 注解，即<code>javax.validation.constraints</code>，而不是<code>org.hibernate.validator.constraints</code></strong></p>
@@ -1384,13 +1385,13 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/16/spring-boot/springboot-zhi-nan/">
+                <a href="/2022/05/16/fen-bu-shi/base-li-lun/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="SpingBoot 指南">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="BASE 理论">
                         
-                        <span class="card-title">SpingBoot 指南</span>
+                        <span class="card-title">BASE 理论</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1407,8 +1408,8 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Spring-Boot/" class="post-category">
-                                    Spring Boot
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
                                 </a>
                             
                             
@@ -1418,8 +1419,8 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SpingBoot-%E6%8C%87%E5%8D%97/">
-                        <span class="chip bg-color">SpingBoot 指南</span>
+                    <a href="/tags/BASE-%E7%90%86%E8%AE%BA/">
+                        <span class="chip bg-color">BASE 理论</span>
                     </a>
                     
                 </div>
@@ -1437,9 +1438,9 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="SpingBoot 自动装配原理">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">SpingBoot 自动装配原理</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1454,23 +1455,11 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Spring-Boot/" class="post-category">
-                                    Spring Boot
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            帅枫
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/SpingBoot-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">SpingBoot 自动装配原理</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1709,7 +1698,7 @@ public ResponseEntity deleteUser(@PathVariable(value = "userId") Long userId){
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

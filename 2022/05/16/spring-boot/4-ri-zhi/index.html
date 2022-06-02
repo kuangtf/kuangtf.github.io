@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -529,7 +529,10 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>图示：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200530101749.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200530101749.png" alt="img" style="zoom:80%;">
+
+
+
 <p>每一个日志的实现框架都有自己的配置文件。使用 slf4j 以后，<strong>配置文件还是做成日志实现框架自己本身的配置文件</strong></p>
 <h3 id="②-遗留问题"><a href="#②-遗留问题" class="headerlink" title="② 遗留问题"></a>② 遗留问题</h3><p>💬 比如：a 系统使用的日志框架（slf4j+logback）:  Spring（commons-logging）、Hibernate（jboss-logging）、MyBatis、xxxx</p>
 <p>❓ <strong>如何统一日志记录呢？即使是别的框架也统一使用 slf4j 进行输出</strong></p>
@@ -542,7 +545,8 @@
 </li>
 </ul>
 <p>⭐ <strong>slf4j 的日志适配图</strong>如下：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200530102415.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200530102415.png" alt="img" style="zoom:80%;">
+
 <h2 id="3-SpringBoot日志关系"><a href="#3-SpringBoot日志关系" class="headerlink" title="3. SpringBoot日志关系"></a>3. SpringBoot日志关系</h2><p>SpringBoot使用它来做日志功能；</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
 		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
@@ -552,9 +556,10 @@
 <p>底层依赖关系</p>
 <blockquote>
 <p>分析依赖关系，如何在 IDEA 中打开下图所示的依赖关系图：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200530103743.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200530103743.png" alt="img" style="zoom:80%;">
 </blockquote>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200530103809.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200530103809.png" alt="img" style="zoom:80%;">
+
 <p>总结：</p>
 <ul>
 <li><p>SpringBoot 底层使用 slf4j+logback 的方式进行日志记录</p>
@@ -568,8 +573,7 @@
     <span class="token keyword">static</span> <span class="token class-name">String</span> UNSUPPORTED_OPERATION_IN_JCL_OVER_SLF4J <span class="token operator">=</span> <span class="token string">"http://www.slf4j.org/codes.html#unsupported_operation_in_jcl_over_slf4j"</span><span class="token punctuation">;</span>
 
     <span class="token keyword">static</span> <span class="token class-name">LogFactory</span> logFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SLF4JLogFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  <img src="https://gitee.com/veal98/images/raw/master/img/20200530104011.png"></p>
-</li>
+  <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200530104011.png" alt="img" style="zoom:80%;"></li>
 </ul>
 <p>⭐ <strong>如果我们要引入其他框架，一定要把这个框架的默认日志依赖移除掉</strong></p>
 <p>比如 Spring Boot 会排除掉 Spring 框架使用的 commons-logging框架：</p>
@@ -611,7 +615,8 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>输出结果如下：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200530110404.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200530110404.png" alt="img" style="zoom:80%;">
+
 <p>⚙ <strong>SpringBoot 修改日志的默认配置：</strong></p>
 <ul>
 <li><p><code>loggin.path = springboot.log</code>：指定生成日志文件的位置（可以指定完整的路径，不指定路径在当前项目下生成日志）</p>
@@ -728,7 +733,8 @@
 </li>
 </ul>
 <h2 id="5-切换日志框架"><a href="#5-切换日志框架" class="headerlink" title="5. 切换日志框架"></a>5. 切换日志框架</h2><p>可以按照 slf4j 的日志适配图，进行相关的切换</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200530102415.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602164007564.png" alt="image-20220602164007564" style="zoom:80%;">
+
 <p>比如：slf4j + log4j 的方式：</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
@@ -751,8 +757,6 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <p>切换为log4j2</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
@@ -769,10 +773,6 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-log4j2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Et411Y7tQ">视频 - SpringBoot_权威教程_雷丰阳_尚硅谷</a></li>
-</ul>
 
                 
             </div>
@@ -1337,7 +1337,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

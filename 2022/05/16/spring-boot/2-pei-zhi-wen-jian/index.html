@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -517,8 +517,6 @@
 
 <p>properties：</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8081</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
 
 <h2 id="2-YAML-语法"><a href="#2-YAML-语法" class="headerlink" title="2. YAML 语法"></a>2. YAML 语法</h2><h3 id="①-基本语法"><a href="#①-基本语法" class="headerlink" title="① 基本语法"></a>① 基本语法</h3><p><code>k: v</code>：表示一对键值对（空格必须有）</p>
 <p>以<strong>空格</strong>的缩进来控制层级关系，只要是左对齐的一列数据，都是同一个层级的</p>
@@ -610,7 +608,7 @@ lisi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 
 <blockquote>
 <p>🚨 properties 配置文件在 IDEA 中默认 utf-8 可能会乱码，如图进行相应设置：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200529104339.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200529104339.png" alt="img" style="zoom:80%;">
 </blockquote>
 <p>实体类：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
@@ -796,8 +794,7 @@ lisi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <p>🌎 显然，这样给容器中添加组件的方法比较麻烦，SpringBoot 推荐给容器中添加组件的方式：<strong>使用全注解的方式</strong>：</p>
 <ul>
 <li><p>创建一个 config.MyAppConfig.java 配置类</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200529112651.png"></p>
-</li>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200529112651.png" alt="img" style="zoom:80%;"></li>
 <li><p>⭐ 使用**@Bean** 给容器中添加组件</p>
 <p><code>@Configuration</code> 表示此类是 Spring 的配置类（替代原来的 Spring 配置文件）</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
@@ -846,8 +843,7 @@ lisi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 </li>
 <li><p>虚拟机参数；</p>
 <p><code>-Dspring.profiles.active=dev</code></p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200529120620.png"></p>
-</li>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/20200529120620.png" alt="img" style="zoom:80%;"></li>
 </ul>
 <h3 id="③-yml-支持多文档块方式"><a href="#③-yml-支持多文档块方式" class="headerlink" title="③ yml 支持多文档块方式"></a>③ yml 支持多文档块方式</h3><p>和 <code>properties </code>配置文件中一样，但是<strong>使用 <code>yml </code>去实现不需要创建多个配置文件</strong>，更加方便了~</p>
 <pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">server</span><span class="token punctuation">:</span> 
@@ -998,12 +994,14 @@ lisi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>⭐ 在上面这段源码中，我们发现了一个多次出现的文件 <code>spring.factories</code>，在 <u>External Libraries</u> 中找到它：</p>
-<img src="https://gitee.com/veal98/images/raw/master/img/20200701105523.png" style="zoom:80%;"> 
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602163107661.png" alt="image-20220602163107661" style="zoom:80%;">
 
 <p>其中包含了很多自动配置的文件（自动配置类 <code>xxxAutoConfiguration</code>），这就是<strong>自动配置的根源所在</strong>！</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200701105548.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602163134062.png" alt="image-20220602163134062" style="zoom:80%;">
+
 <p>我们在上面的自动配置类随便找一个打开看看，比如 ：<code>WebMvcAutoConfiguration</code></p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200701105838.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602163158203.png" alt="image-20220602163158203" style="zoom:80%;">
+
 <p>可以看到这些一个个的都是JavaConfig 配置类，而且都注入了一些 Bean。</p>
 <blockquote>
 <p>⭐ 自动配置第 2 步：利用 <code>AutoConfigurationImportSelector</code> 给容器中导入一些组件：</p>
@@ -1074,8 +1072,7 @@ lisi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Charset</span> DEFAULT_CHARSET <span class="token operator">=</span> <span class="token class-name">Charset</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我们去配置文件里面试试前缀，看看提示：</p>
-<p><img src="https://gitee.com/veal98/images/raw/master/img/20200703112249.png"></p>
-</li>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602163221992.png" alt="image-20220602163221992" style="zoom:80%;"></li>
 </ul>
 <p>⭐ <strong>精髓：</strong></p>
 <ul>
@@ -1185,12 +1182,6 @@ Negative matches:（没有启动，没有匹配成功的自动配置类）
 <li><p><strong>Negative matches:（没有启动，没有匹配成功的自动配置类：负匹配）</strong></p>
 </li>
 <li><p><strong>Unconditional classes: （没有条件的类）</strong></p>
-</li>
-</ul>
-<h2 id="📚-References"><a href="#📚-References" class="headerlink" title="📚 References"></a>📚 References</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Et411Y7tQ">视频 - SpringBoot_权威教程_雷丰阳_尚硅谷</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/homepage?__biz=Mzg2NTAzMTExNg==&amp;hid=1&amp;sn=3247dca1433a891523d9e4176c90c499">狂神说 SpringBoot</a></p>
 </li>
 </ul>
 
@@ -1757,7 +1748,7 @@ Negative matches:（没有启动，没有匹配成功的自动配置类）
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             

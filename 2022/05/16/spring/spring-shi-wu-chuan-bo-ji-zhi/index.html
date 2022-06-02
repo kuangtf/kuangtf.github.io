@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-20
+                    2022-06-02
                 </div>
                 
 
@@ -504,7 +504,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>代码中<code>methodA()</code>方法嵌套调用了<code>methodB()</code>方法，<code>methodB()</code>的事务传播行为由<code>@Transaction(Propagation=XXX)</code>设置决定。这里需要注意的是<code>methodA()</code>并没有开启事务，某一个事务传播行为修饰的方法并不是必须要在开启事务的外围方法中调用。</p>
-<h2 id="2-Spring-中七种事务传播行为"><a href="#2-Spring-中七种事务传播行为" class="headerlink" title="2. Spring 中七种事务传播行为"></a>2. Spring 中七种事务传播行为</h2><img src="https://gitee.com/kuangty/blogImage/raw/master/img/2022-02-20_10-02-59.png" style="zoom:80%;">
+<h2 id="2-Spring-中七种事务传播行为"><a href="#2-Spring-中七种事务传播行为" class="headerlink" title="2. Spring 中七种事务传播行为"></a>2. Spring 中七种事务传播行为</h2><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152823163.png" alt="image-20220602152823163" style="zoom:80%;">
 
 <p>定义非常简单，也很好理解，下面我们就进入代码测试部分，验证我们的理解是否正确。</p>
 <h1 id="代码验证"><a href="#代码验证" class="headerlink" title="代码验证"></a>代码验证</h1><p>文中代码以传统三层结构中两层呈现，即 Service 和 Dao 层，由 Spring 负责依赖注入和注解式事务管理，DAO 层由 Mybatis 实现，你也可以使用任何喜欢的方式，例如，Hibernate,JPA,JDBCTemplate 等。数据库使用的是 MySQL 数据库，你也可以使用任何支持事务的数据库，并不会影响验证结果。</p>
@@ -613,7 +613,7 @@ ENGINE <span class="token operator">=</span> <span class="token class-name">Inno
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分别执行验证方法，结果：</p>
-<img src="https://gitee.com/kuangty/blogImage/raw/master/img/2022-02-20_10-03-07.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152853711.png" alt="image-20220602152853711" style="zoom:80%;">
 
 <p><strong>结论：通过这两个方法我们证明了在外围方法未开启事务的情况下<code>Propagation.REQUIRED</code>修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。</strong></p>
 <h3 id="1-2-场景二"><a href="#1-2-场景二" class="headerlink" title="1.2 场景二"></a>1.2 场景二</h3><p>外围方法开启事务，这个是使用率比较高的场景。</p>
@@ -663,7 +663,7 @@ ENGINE <span class="token operator">=</span> <span class="token class-name">Inno
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分别执行验证方法，结果：</p>
-<img src="https://gitee.com/kuangty/blogImage/raw/master/img/2022-02-20_10-03-14.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152919784.png" alt="image-20220602152919784" style="zoom:80%;">
 
 <p><strong>结论：以上试验结果我们证明在外围方法开启事务的情况下<code>Propagation.REQUIRED</code>修饰的内部方法会加入到外围方法的事务中，所有<code>Propagation.REQUIRED</code>修饰的内部方法和外围方法均属于同一事务，只要一个方法回滚，整个事务均回滚。</strong></p>
 <h2 id="2-PROPAGATION-REQUIRES-NEW"><a href="#2-PROPAGATION-REQUIRES-NEW" class="headerlink" title="2.PROPAGATION_REQUIRES_NEW"></a>2.PROPAGATION_REQUIRES_NEW</h2><p>我们为 User1Service 和 User2Service 相应方法加上<code>Propagation.REQUIRES_NEW</code>属性。<strong>User1Service 方法：</strong></p>
@@ -728,7 +728,7 @@ ENGINE <span class="token operator">=</span> <span class="token class-name">Inno
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分别执行验证方法，结果：</p>
-<img src="https://gitee.com/kuangty/blogImage/raw/master/img/2022-02-20_10-03-20.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602152945772.png" alt="image-20220602152945772" style="zoom:80%;">
 
 <p><strong>结论：通过这两个方法我们证明了在外围方法未开启事务的情况下<code>Propagation.REQUIRES_NEW</code>修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。</strong></p>
 <h3 id="2-2-场景二"><a href="#2-2-场景二" class="headerlink" title="2.2 场景二"></a>2.2 场景二</h3><p>外围方法开启事务。</p>
@@ -788,7 +788,7 @@ ENGINE <span class="token operator">=</span> <span class="token class-name">Inno
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分别执行验证方法，结果：</p>
-<img src="https://gitee.com/kuangty/blogImage/raw/master/img/2022-02-20_10-03-27.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602153010157.png" alt="image-20220602153010157" style="zoom:80%;">
 
 <p><strong>结论：在外围方法开启事务的情况下<code>Propagation.REQUIRES_NEW</code>修饰的内部方法依然会单独开启独立事务，且与外部方法事务也独立，内部方法之间、内部方法和外部方法事务均相互独立，互不干扰。</strong></p>
 <h2 id="3-PROPAGATION-NESTED"><a href="#3-PROPAGATION-NESTED" class="headerlink" title="3.PROPAGATION_NESTED"></a>3.PROPAGATION_NESTED</h2><p>我们为 User1Service 和 User2Service 相应方法加上<code>Propagation.NESTED</code>属性。<strong>User1Service 方法：</strong></p>
@@ -847,7 +847,7 @@ ENGINE <span class="token operator">=</span> <span class="token class-name">Inno
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分别执行验证方法，结果：</p>
-<img src="https://gitee.com/kuangty/blogImage/raw/master/img/2022-02-20_10-03-34.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602153032598.png" alt="image-20220602153032598" style="zoom:80%;">
 
 <p><strong>结论：通过这两个方法我们证明了在外围方法未开启事务的情况下<code>Propagation.NESTED</code>和<code>Propagation.REQUIRED</code>作用相同，修饰的内部方法都会新开启自己的事务，且开启的事务相互独立，互不干扰。</strong></p>
 <h3 id="3-2-场景二"><a href="#3-2-场景二" class="headerlink" title="3.2 场景二"></a>3.2 场景二</h3><p>外围方法开启事务。</p>
@@ -896,7 +896,7 @@ ENGINE <span class="token operator">=</span> <span class="token class-name">Inno
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分别执行验证方法，结果：</p>
-<img src="https://gitee.com/kuangty/blogImage/raw/master/img/2022-02-20_10-03-42.png" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220602153058015.png" alt="image-20220602153058015" style="zoom:80%;">
 
 <p><strong>结论：以上试验结果我们证明在外围方法开启事务的情况下<code>Propagation.NESTED</code>修饰的内部方法属于外部事务的子事务，外围主事务回滚，子事务一定回滚，而内部子事务可以单独回滚而不影响外围主事务和其他子事务</strong></p>
 <h2 id="4-REQUIRED-REQUIRES-NEW-NESTED-异同"><a href="#4-REQUIRED-REQUIRES-NEW-NESTED-异同" class="headerlink" title="4. REQUIRED,REQUIRES_NEW,NESTED 异同"></a>4. REQUIRED,REQUIRES_NEW,NESTED 异同</h2><p>由“1.2 场景二”和“3.2 场景二”对比，我们可知：<strong>NESTED 和 REQUIRED 修饰的内部方法都属于外围方法事务，如果外围方法抛出异常，这两种方法的事务都会被回滚。但是 REQUIRED 是加入外围方法事务，所以和外围事务同属于一个事务，一旦 REQUIRED 事务抛出异常被回滚，外围方法事务也将被回滚。而 NESTED 是外围方法的子事务，有单独的保存点，所以 NESTED 方法抛出异常被回滚，不会影响到外围方法的事务。</strong></p>
@@ -1515,7 +1515,7 @@ ENGINE <span class="token operator">=</span> <span class="token class-name">Inno
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">603.5k</span>&nbsp;字
+                class="white-color">602.8k</span>&nbsp;字
             
             
             
