@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-03-27
+                    2022-06-05
                 </div>
                 
 
@@ -493,24 +493,17 @@
             <div id="articleContent">
                 <h1 id="一、初识JVM规范"><a href="#一、初识JVM规范" class="headerlink" title="一、初识JVM规范"></a>一、初识JVM规范</h1><h2 id="1、从三种角度认识JVM"><a href="#1、从三种角度认识JVM" class="headerlink" title="1、从三种角度认识JVM"></a>1、从三种角度认识JVM</h2><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114009826.png" alt="image-20220327114009826" style="zoom:80%;">
 
-<h3 id="1-JVM概述"><a href="#1-JVM概述" class="headerlink" title="1. JVM概述"></a>1. JVM概述</h3><ul>
-<li>JVM：Java Virtual Machine，也就是Java虚拟机</li>
-<li>所谓虚拟机是指：通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的计算机系统</li>
-<li>JVM是通过软件来模拟Java字节码的指令集，是Java程序的运行环境</li>
-</ul>
-<h3 id="2-JVM主要功能"><a href="#2-JVM主要功能" class="headerlink" title="2. JVM主要功能"></a>2. JVM主要功能</h3><ul>
-<li>通过 ClassLoader 寻找和装载 class 文件</li>
-<li>解释字节码成为指令并执行，提供 class 文件的运行环境</li>
-<li>进行运行期间的内存分配和垃圾回收</li>
-<li>提供与硬件交互的平台</li>
-</ul>
+<h3 id="1-JVM概述"><a href="#1-JVM概述" class="headerlink" title="1. JVM概述"></a>1. JVM概述</h3><p>JVM：Java Virtual Machine，也就是Java虚拟机，所谓虚拟机是指：通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的计算机系统。</p>
+<p>JVM是通过软件来模拟Java字节码的指令集，是Java程序的运行环境。</p>
+<h3 id="2-JVM主要功能"><a href="#2-JVM主要功能" class="headerlink" title="2. JVM主要功能"></a>2. JVM主要功能</h3><p>通过 ClassLoader 寻找和装载 class 文件</p>
+<p>解释字节码成为指令并执行，提供 class 文件的运行环境</p>
+<p>进行运行期间的内存分配和垃圾回收</p>
+<p>提供与硬件交互的平台</p>
 <h3 id="3-虚拟机是Java平台无关的保障"><a href="#3-虚拟机是Java平台无关的保障" class="headerlink" title="3. 虚拟机是Java平台无关的保障"></a>3. 虚拟机是Java平台无关的保障</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114016195.png" alt="image-20220327114016195" style="zoom:80%;">
 
-<h2 id="2、JVM规范作用及其核心"><a href="#2、JVM规范作用及其核心" class="headerlink" title="2、JVM规范作用及其核心"></a>2、JVM规范作用及其核心</h2><h3 id="1-JVM规范作用"><a href="#1-JVM规范作用" class="headerlink" title="1. JVM规范作用"></a>1. JVM规范作用</h3><ul>
-<li>Java 虚拟机规范为不同的硬件提供了一种编译Java技术代码的规范</li>
-<li>该规范使Java软件独立于平台，因为编译时针对作为虚拟机的“一般机器”而做</li>
-<li>这个“一般机器”可用软件模拟并运行于各种现存的计算机系统，也可用硬件来实现</li>
-</ul>
+<h2 id="2、JVM规范作用及其核心"><a href="#2、JVM规范作用及其核心" class="headerlink" title="2、JVM规范作用及其核心"></a>2、JVM规范作用及其核心</h2><h3 id="1-JVM规范作用"><a href="#1-JVM规范作用" class="headerlink" title="1. JVM规范作用"></a>1. JVM规范作用</h3><p>Java 虚拟机规范为不同的硬件提供了一种编译Java技术代码的规范</p>
+<p>该规范使Java软件独立于平台，因为编译时针对作为虚拟机的“一般机器”而做</p>
+<p>这个“一般机器”可用软件模拟并运行于各种现存的计算机系统，也可用硬件来实现</p>
 <h3 id="2-JVM规范定义的主要内容"><a href="#2-JVM规范定义的主要内容" class="headerlink" title="2. JVM规范定义的主要内容"></a>2. JVM规范定义的主要内容</h3><ul>
 <li>字节码指令集</li>
 <li>Class文件的格式</li>
@@ -523,8 +516,8 @@
 <li>虚拟机的启动、加载、链接和初始化</li>
 <li>……</li>
 </ul>
-<h2 id="3、Class字节码解析"><a href="#3、Class字节码解析" class="headerlink" title="3、Class字节码解析"></a>3、Class字节码解析</h2><h3 id="1-Class文件格式概述"><a href="#1-Class文件格式概述" class="headerlink" title="1. Class文件格式概述"></a>1. Class文件格式概述</h3><ul>
-<li>Class文件是JVM的输入，Java虚拟机规范中定义了Class文件的结构，Class文件是JVM实现平台无关、技术无关的基础<ol>
+<h2 id="3、Class字节码解析"><a href="#3、Class字节码解析" class="headerlink" title="3、Class字节码解析"></a>3、Class字节码解析</h2><h3 id="1-Class文件格式概述"><a href="#1-Class文件格式概述" class="headerlink" title="1. Class文件格式概述"></a>1. Class文件格式概述</h3><p>Class文件是JVM的输入，Java虚拟机规范中定义了Class文件的结构，Class文件是JVM实现平台无关、技术无关的基础</p>
+<ol>
 <li>Class文件是一组以8字节为单位的字节流，各个数据项目按序紧凑排列</li>
 <li>对于占用空间大于8字节的数据项，按照高位在前的方式分割成多个8字节进行存储</li>
 <li>Class文件格式里面只有两种类型：无符号数、表<ol>
@@ -533,83 +526,65 @@
 </ol>
 </li>
 </ol>
-</li>
-</ul>
-<h3 id="2-Class文件的格式"><a href="#2-Class文件的格式" class="headerlink" title="2. Class文件的格式"></a>2. Class文件的格式</h3><ul>
-<li>javap工具生成非正式的 ”虚拟机汇编语言“，格式如下：<ul>
+<h3 id="2-Class文件的格式"><a href="#2-Class文件的格式" class="headerlink" title="2. Class文件的格式"></a>2. Class文件的格式</h3><p>javap工具生成非正式的 ”虚拟机汇编语言“，格式如下：</p>
+<ul>
 <li><index> <opcode> [<operand1>[<operand2>]…]] [comment]</operand2></operand1></opcode></index></li>
 </ul>
-</li>
-<li><index>是指令操作码在数组中的下标，该数组以字节形式来存储当前方法的Java虚拟机代码；也可以是相当于方法起始处的字节偏移量</index></li>
-<li><opcode>是指令的助记码、<operand>是操作数、<comment>是行尾的注释</comment></operand></opcode></li>
-</ul>
-<h3 id="3-Class文件格式说明"><a href="#3-Class文件格式说明" class="headerlink" title="3. Class文件格式说明"></a>3. Class文件格式说明</h3><ul>
-<li>constant_pool_count：是从1开始的</li>
-<li>不同的常量类型，用tag来区分，它后面对应的 info 结构是不一样的</li>
-<li>L表示对象，[ 表示数组、V表示void</li>
-<li>stack：方法执行时，操作栈的深度</li>
-<li>Locals：局部变量所需的储存空间，单位是slot<ul>
+<p><index>是指令操作码在数组中的下标，该数组以字节形式来存储当前方法的Java虚拟机代码；也可以是相当于方法起始处的字节偏移量</index></p>
+<p><opcode>是指令的助记码、<operand>是操作数、<comment>是行尾的注释</comment></operand></opcode></p>
+<h3 id="3-Class文件格式说明"><a href="#3-Class文件格式说明" class="headerlink" title="3. Class文件格式说明"></a>3. Class文件格式说明</h3><p>constant_pool_count：是从1开始的</p>
+<p>不同的常量类型，用tag来区分，它后面对应的 info 结构是不一样的</p>
+<p>L表示对象，[ 表示数组、V表示void</p>
+<p>stack：方法执行时，操作栈的深度</p>
+<p>Locals：局部变量所需的储存空间，单位是slot</p>
+<ul>
 <li>slot是虚拟机为局部变量分配内存所使用的最小单位</li>
 <li>args_size：参数个数，为1的话，因实例方法默认会传入this，locals也会预留一个slot来存放</li>
-</ul>
-</li>
 </ul>
 <h2 id="4、ASM"><a href="#4、ASM" class="headerlink" title="4、ASM"></a>4、ASM</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a85e8f83fa14">参考博文</a></p>
 </blockquote>
-<h3 id="1-ASM概述"><a href="#1-ASM概述" class="headerlink" title="1. ASM概述"></a>1. ASM概述</h3><ul>
-<li>ASM是一个Java字节码操纵框架，它能被用来动态生成类或者增强既有类的功能</li>
-<li>ASM可以直接产生二进制class文件，也可以在类被加载入虚拟机之前动态改变类行为，ASM从类文件中读入信息后，能够改变类行为，分析类信息，甚至能根据要求生成新类</li>
-<li>目前许多框架如 cglib、Hibernate、spring 都直接或间接地使用ASM操作字节码</li>
-</ul>
-<h3 id="2-ASM编程模型"><a href="#2-ASM编程模型" class="headerlink" title="2. ASM编程模型"></a>2. ASM编程模型</h3><ul>
-<li>Core API：提供了基于事件形式的编程模型。该模型不需要一次性将整个类的结构读取到内存中，因此这种方式更快，需要的内存更少，但这种编程方式难度较大</li>
-<li>Tree API：提供了基于树型的编程模型。该模型需要一次性将一个类的完整结构全部读取到内存中，所以这种方法需要更多的内存，这种编程方式较简单</li>
-</ul>
-<h3 id="3-ASM的Core-API"><a href="#3-ASM的Core-API" class="headerlink" title="3. ASM的Core API"></a>3. ASM的Core API</h3><ul>
-<li>ASM Core ApI 中操纵字节码的功能基于 ClassVisitor 接口。这个接口中的每个方法对应了 class 文件中的每一项</li>
-<li>ASM 提供了三个基于 ClassVisitor 接口的类来实现 class 文件的生成和转换<ul>
+<h3 id="1-ASM概述"><a href="#1-ASM概述" class="headerlink" title="1. ASM概述"></a>1. ASM概述</h3><p>ASM是一个Java字节码操纵框架，它能被用来动态生成类或者增强既有类的功能</p>
+<p>ASM可以直接产生二进制class文件，也可以在类被加载入虚拟机之前动态改变类行为，ASM从类文件中读入信息后，能够改变类行为，分析类信息，甚至能根据要求生成新类</p>
+<p>目前许多框架如 cglib、Hibernate、spring 都直接或间接地使用ASM操作字节码</p>
+<h3 id="2-ASM编程模型"><a href="#2-ASM编程模型" class="headerlink" title="2. ASM编程模型"></a>2. ASM编程模型</h3><p>Core API：提供了基于事件形式的编程模型。该模型不需要一次性将整个类的结构读取到内存中，因此这种方式更快，需要的内存更少，但这种编程方式难度较大</p>
+<p>Tree API：提供了基于树型的编程模型。该模型需要一次性将一个类的完整结构全部读取到内存中，所以这种方法需要更多的内存，这种编程方式较简单</p>
+<h3 id="3-ASM的Core-API"><a href="#3-ASM的Core-API" class="headerlink" title="3. ASM的Core API"></a>3. ASM的Core API</h3><p>ASM Core ApI 中操纵字节码的功能基于 ClassVisitor 接口。这个接口中的每个方法对应了 class 文件中的每一项</p>
+<p>ASM 提供了三个基于 ClassVisitor 接口的类来实现 class 文件的生成和转换</p>
+<ul>
 <li>ClassReader：ClassReader 解析一个类的  class 字节码</li>
 <li>ClassAdapter：ClassAdapter 是 ClassVisitor 的实现类，实现要变化的功能</li>
 <li>ClassWriter：ClassWriter 也是 ClassVisitro 的实现类，可以用来输出变化后的字节码</li>
 </ul>
-</li>
-<li>ASM 给我们提供了 ASMifier 工具来帮助开发，可使用ASMifier 工具生成 ASM 结构来对比</li>
-</ul>
-<h1 id="二、类加载、连接和初始化"><a href="#二、类加载、连接和初始化" class="headerlink" title="二、类加载、连接和初始化"></a>二、类加载、连接和初始化</h1><h2 id="1、类加载和类加载器"><a href="#1、类加载和类加载器" class="headerlink" title="1、类加载和类加载器"></a>1、类加载和类加载器</h2><ul>
-<li><p>类被加载到 JVM 开始，到卸载出内存，整个生命周期如图：</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114023933.png" alt="image-20220327114023933" style="zoom:80%;"></li>
-<li><p>加载：查找并加载类文件的二进制数据</p>
-</li>
-<li><p>连接：就是将已经读入内存的类的二进制数据合并到 JVM 运行时环境中去，包含以下步骤：</p>
+<p>ASM 给我们提供了 ASMifier 工具来帮助开发，可使用ASMifier 工具生成 ASM 结构来对比</p>
+<h1 id="二、类加载、连接和初始化"><a href="#二、类加载、连接和初始化" class="headerlink" title="二、类加载、连接和初始化"></a>二、类加载、连接和初始化</h1><h2 id="1、类加载和类加载器"><a href="#1、类加载和类加载器" class="headerlink" title="1、类加载和类加载器"></a>1、类加载和类加载器</h2><p>类被加载到 JVM 开始，到卸载出内存，整个生命周期如图：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114023933.png" alt="image-20220327114023933" style="zoom:80%;">
+
+<p>加载：查找并加载类文件的二进制数据</p>
+<p>连接：就是将已经读入内存的类的二进制数据合并到 JVM 运行时环境中去，包含以下步骤：</p>
 <ul>
-<li>验证：确保被加载类的正确性</li>
-<li>准备：为类的 静态变量 分配内存，并初始化</li>
-<li>解析：把常量池中的符号引用转换成直接引用</li>
-</ul>
+<li><p>验证：确保被加载类的正确性</p>
+</li>
+<li><p>准备：为类的 静态变量 分配内存，并初始化</p>
+</li>
+<li><p>解析：把常量池中的符号引用转换成直接引用</p>
 </li>
 <li><p>初始化：为类的静态变量赋初始值</p>
 </li>
 </ul>
-<h3 id="1-类加载要完成的功能"><a href="#1-类加载要完成的功能" class="headerlink" title="1. 类加载要完成的功能"></a>1. 类加载要完成的功能</h3><ul>
-<li>通过类的全限定名来获取该类的二进制字节流</li>
-<li>把二进制字节流转化为方法区的运行时数据结构</li>
-<li>在堆上创建一个 java.lang.Class 对象，用来封装类在方法区内的数据结构，并向外提供了访问方法区内数据结构的接口</li>
-</ul>
-<h3 id="2-加载类的方式"><a href="#2-加载类的方式" class="headerlink" title="2. 加载类的方式"></a>2. 加载类的方式</h3><ul>
-<li>最常见的方式：本地文件系统中加载、从jar等归档文件中加载</li>
-<li>动态的方式：将 java 源文件动态编译成 class</li>
-<li>其他方式：网络下载、从专有数据库中加载等等</li>
-</ul>
-<h3 id="3-类加载器"><a href="#3-类加载器" class="headerlink" title="3. 类加载器"></a>3. 类加载器</h3><ul>
-<li>Java 虚拟机自带的加载器包括以下几种：<ul>
+<h3 id="1-类加载要完成的功能"><a href="#1-类加载要完成的功能" class="headerlink" title="1. 类加载要完成的功能"></a>1. 类加载要完成的功能</h3><p>通过类的全限定名来获取该类的二进制字节流</p>
+<p>把二进制字节流转化为方法区的运行时数据结构</p>
+<p>在堆上创建一个 java.lang.Class 对象，用来封装类在方法区内的数据结构，并向外提供了访问方法区内数据结构的接口</p>
+<h3 id="2-加载类的方式"><a href="#2-加载类的方式" class="headerlink" title="2. 加载类的方式"></a>2. 加载类的方式</h3><p>最常见的方式：本地文件系统中加载、从jar等归档文件中加载</p>
+<p>动态的方式：将 java 源文件动态编译成 class</p>
+<p>其他方式：网络下载、从专有数据库中加载等等</p>
+<h3 id="3-类加载器"><a href="#3-类加载器" class="headerlink" title="3. 类加载器"></a>3. 类加载器</h3><p>Java 虚拟机自带的加载器包括以下几种：</p>
+<ul>
 <li>启动类加载器（BootstrapClassLoader）</li>
 <li>平台类加载器（PlatformClassLoader）   JDK8：扩展类加载器（ExtensionClassLoader）</li>
 <li>应用程序类加载器（AppClassLoader）</li>
 </ul>
-</li>
-<li>用户自定义的加载器：是 java.lang.ClassLoader 的子类，用户可以定制类的加载方式；只不过自定义类加载器其加载的顺序是在所有系统类加载器的最后</li>
-</ul>
+<p>用户自定义的加载器：是 java.lang.ClassLoader 的子类，用户可以定制类的加载方式；只不过自定义类加载器其加载的顺序是在所有系统类加载器的最后</p>
 <h3 id="4-类加载器的关系"><a href="#4-类加载器的关系" class="headerlink" title="4. 类加载器的关系"></a>4. 类加载器的关系</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114030560.png" alt="image-20220327114030560" style="zoom:80%;">
 
 <h2 id="2、类加载器使用"><a href="#2、类加载器使用" class="headerlink" title="2、类加载器使用"></a>2、类加载器使用</h2><h3 id="类加载器说明"><a href="#类加载器说明" class="headerlink" title="类加载器说明"></a>类加载器说明</h3><ul>
@@ -619,52 +594,40 @@
 <li>JDK8：启动类加载器：负责将<java_home>/lib，或者 -Xbootclasspath 参数指定的路径中的，且是虚拟机识别的类库加载到内存中（按照名字识别，比如 rt.jar，对于不能识别的文件不予装载）</java_home></li>
 <li>JDK8：扩展类加载器：负责加载 <jre_home>/lib/ext，或者 java.ext.dirs 系统变量所指定路径中的所有类库</jre_home></li>
 <li>JDK8：应用程序类加载器：负责加载 classpath 路径中的所有类库</li>
-<li>Java 程序不能直接引用启动类加载器，直接设置 classLoader 为 null，默认就使用启动类加载器</li>
-<li>类加载器并不需要等到某个类“首次主动使用”的时候才加载它，JVM规范允许类加载器在预料到某个类将要被使用的时候就预先加载它</li>
-<li>如果在加载的时候 .class 文件缺失，会在该类首次主动使用时报告 LinkageError 错误，如果一直没有被使用，就不会报错</li>
 </ul>
-<h2 id="3、双亲委派模型"><a href="#3、双亲委派模型" class="headerlink" title="3、双亲委派模型"></a>3、双亲委派模型</h2><ul>
-<li>JVM中的 ClassLoader 通常采用双亲委派模型，要求除了启动类加载器外，其余的类加载器都应该有自己的父级加载器。这里的父子关系是组合而不是继承，工作过程如下：<ol>
+<p>Java 程序不能直接引用启动类加载器，直接设置 classLoader 为 null，默认就使用启动类加载器</p>
+<p>类加载器并不需要等到某个类“首次主动使用”的时候才加载它，JVM规范允许类加载器在预料到某个类将要被使用的时候就预先加载它</p>
+<p>如果在加载的时候 .class 文件缺失，会在该类首次主动使用时报告 LinkageError 错误，如果一直没有被使用，就不会报错</p>
+<h2 id="3、双亲委派模型"><a href="#3、双亲委派模型" class="headerlink" title="3、双亲委派模型"></a>3、双亲委派模型</h2><p>JVM中的 ClassLoader 通常采用双亲委派模型，要求除了启动类加载器外，其余的类加载器都应该有自己的父级加载器。这里的父子关系是组合而不是继承，工作过程如下：</p>
+<ol>
 <li>一个类加载器接收到类加载请求后，首先搜索它的内建加载器定义的所有“具名模块”</li>
 <li>如果找到了合适的模块定义，将会使用该加载器来加载</li>
 <li>如果 class 没有在这些加载器定义的具名模块中找到，那么将委托给父级加载器，直到启动类加载器</li>
 <li>如果父级加载器反馈它不能完成加载请求，比如在它的搜索路径下找不到这个类，那子类加载器才自己来加载</li>
 <li>在类路径下找到的类将成为这些加载器的无名模块 </li>
 </ol>
-</li>
-<li>双亲委派模型对于保证 Java 程序的稳定运作很重要，可以避免一个类被加载多次</li>
-<li>实现双亲委派的代码在 java.lang.ClassLoader 的 loadClass() 方法中，如果自定义类加载器的话，推荐覆盖实现 findClass() 方法</li>
-<li>如果有一个类加载器能加载某个类，称为 定义类加载器，所有能成功返回该类的 Class 的类加载器 都被称为初始类加载器</li>
-</ul>
-<h2 id="4、双亲委派模型的说明"><a href="#4、双亲委派模型的说明" class="headerlink" title="4、双亲委派模型的说明"></a>4、双亲委派模型的说明</h2><ul>
-<li>双亲委派模型对于保证 Java 程序的稳定运作很重要</li>
-<li>实现双亲委派的代码 java.lang.ClassLoader 的 loadClass() 方法中，如果自定义类加载器的话，推荐覆盖实现 findClass() 方法</li>
-<li>如果有一个类加载器能加载某个类，称为 定义类加载器，所有能成功返回该类的 Class 的类加载器 都被称为 初始化加载器</li>
-<li>如果没有指定父加载器，默认就是启动类加载器</li>
-<li>每个类加载器都有自己的命名空间，命名空间由该类加载器及其所有父加载器所加载的类构成，不同的命名空间，可以出现类的全路径名 相同的情况</li>
-<li>运行时包由同一个类加载器的类构成，决定两个类是否属于同一个运行时包，不仅要看全路径名是否一样，还要看定义类加载器是否相同。只有属于同一个运行时包的类才能实现相互包内可见</li>
-</ul>
-<h3 id="破坏双亲委派模型"><a href="#破坏双亲委派模型" class="headerlink" title="破坏双亲委派模型"></a>破坏双亲委派模型</h3><ul>
-<li>双亲委派模型有一个问题：父加载器无法向下识别子加载器加载的资源</li>
-<li>为了解决这个问题，引入了线程上下文类加载器，可以通过 Thread 的 setContextClassLoader() 进行设置</li>
-<li>实现热部署时，比如 OSGI 的模块化热部署，它的类加载器就不再是严格按照双亲委派模型，很多可能就在平级的类加载器中执行了</li>
-</ul>
-<h2 id="5、类连接和初始化"><a href="#5、类连接和初始化" class="headerlink" title="5、类连接和初始化"></a>5、类连接和初始化</h2><h3 id="1-类连接主要验证的内容"><a href="#1-类连接主要验证的内容" class="headerlink" title="1. 类连接主要验证的内容"></a>1. 类连接主要验证的内容</h3><ul>
-<li>类文件结构检查：按照 JVM 规范规定的类文件结构进行</li>
-<li>元数据验证：对字节码描述的信息进行语义分析，保证其符合 Java 语言规范要求</li>
-<li>字节码验证：通过对数据流和控制流进行分析，确保程序语义是合法和符合逻辑的。这里主要对方法体进行校验</li>
-<li>符号引用验证：对类自身以外的信息，也就是常量池中的各种符号引用，进行匹配校验</li>
-</ul>
-<h3 id="2-类连接中的准备"><a href="#2-类连接中的准备" class="headerlink" title="2. 类连接中的准备"></a>2. 类连接中的准备</h3><ul>
-<li>为类的 静态变量 分配内存，并初始化</li>
-</ul>
-<h3 id="3-类连接中的解析"><a href="#3-类连接中的解析" class="headerlink" title="3. 类连接中的解析"></a>3. 类连接中的解析</h3><ul>
-<li>解析就是把常量中的符号引用转换成直接引用的过程，包括：符号引用：以一组无歧义（唯一）的符号来描述所引用的目标，与虚拟机的失效无关</li>
-<li>直接引用：直接执行目标的指针、相对偏移量、或是能间接定位到目标的句柄，是和虚拟机实现相关的</li>
-<li>主要针对：类、接口、字段、类方法、接口方法、方法类型、方法句柄、调用点限定符</li>
-</ul>
-<h3 id="4-类的初始化"><a href="#4-类的初始化" class="headerlink" title="4. 类的初始化"></a>4. 类的初始化</h3><ul>
-<li>类的初始化就是为类的静态变量赋初始值，或者说是执行类构造器 <clinit> 方法的过程<ol>
+<p>双亲委派模型对于保证 Java 程序的稳定运作很重要，可以避免一个类被加载多次</p>
+<p>实现双亲委派的代码在 java.lang.ClassLoader 的 loadClass() 方法中，如果自定义类加载器的话，推荐覆盖实现 findClass() 方法</p>
+<p>如果有一个类加载器能加载某个类，称为 定义类加载器，所有能成功返回该类的 Class 的类加载器 都被称为初始类加载器</p>
+<h2 id="4、双亲委派模型的说明"><a href="#4、双亲委派模型的说明" class="headerlink" title="4、双亲委派模型的说明"></a>4、双亲委派模型的说明</h2><p>双亲委派模型对于保证 Java 程序的稳定运作很重要</p>
+<p>实现双亲委派的代码 java.lang.ClassLoader 的 loadClass() 方法中，如果自定义类加载器的话，推荐覆盖实现 findClass() 方法</p>
+<p>如果有一个类加载器能加载某个类，称为 定义类加载器，所有能成功返回该类的 Class 的类加载器 都被称为 初始化加载器</p>
+<p>如果没有指定父加载器，默认就是启动类加载器</p>
+<p>每个类加载器都有自己的命名空间，命名空间由该类加载器及其所有父加载器所加载的类构成，不同的命名空间，可以出现类的全路径名 相同的情况</p>
+<p>运行时包由同一个类加载器的类构成，决定两个类是否属于同一个运行时包，不仅要看全路径名是否一样，还要看定义类加载器是否相同。只有属于同一个运行时包的类才能实现相互包内可见</p>
+<h3 id="破坏双亲委派模型"><a href="#破坏双亲委派模型" class="headerlink" title="破坏双亲委派模型"></a>破坏双亲委派模型</h3><p>双亲委派模型有一个问题：父加载器无法向下识别子加载器加载的资源</p>
+<p>为了解决这个问题，引入了线程上下文类加载器，可以通过 Thread 的 setContextClassLoader() 进行设置</p>
+<p>实现热部署时，比如 OSGI 的模块化热部署，它的类加载器就不再是严格按照双亲委派模型，很多可能就在平级的类加载器中执行了</p>
+<h2 id="5、类连接和初始化"><a href="#5、类连接和初始化" class="headerlink" title="5、类连接和初始化"></a>5、类连接和初始化</h2><h3 id="1-类连接主要验证的内容"><a href="#1-类连接主要验证的内容" class="headerlink" title="1. 类连接主要验证的内容"></a>1. 类连接主要验证的内容</h3><p>类文件结构检查：按照 JVM 规范规定的类文件结构进行</p>
+<p>元数据验证：对字节码描述的信息进行语义分析，保证其符合 Java 语言规范要求</p>
+<p>字节码验证：通过对数据流和控制流进行分析，确保程序语义是合法和符合逻辑的。这里主要对方法体进行校验</p>
+<p>符号引用验证：对类自身以外的信息，也就是常量池中的各种符号引用，进行匹配校验</p>
+<h3 id="2-类连接中的准备"><a href="#2-类连接中的准备" class="headerlink" title="2. 类连接中的准备"></a>2. 类连接中的准备</h3><p>为类的 静态变量 分配内存，并初始化</p>
+<h3 id="3-类连接中的解析"><a href="#3-类连接中的解析" class="headerlink" title="3. 类连接中的解析"></a>3. 类连接中的解析</h3><p>解析就是把常量中的符号引用转换成直接引用的过程，包括：符号引用：以一组无歧义（唯一）的符号来描述所引用的目标，与虚拟机的失效无关</p>
+<p>直接引用：直接执行目标的指针、相对偏移量、或是能间接定位到目标的句柄，是和虚拟机实现相关的</p>
+<p>主要针对：类、接口、字段、类方法、接口方法、方法类型、方法句柄、调用点限定符</p>
+<h3 id="4-类的初始化"><a href="#4-类的初始化" class="headerlink" title="4. 类的初始化"></a>4. 类的初始化</h3><p>类的初始化就是为类的静态变量赋初始值，或者说是执行类构造器 <clinit> 方法的过程</clinit></p>
+<ol>
 <li>如果类还没有加载和连接，就先加载和连接</li>
 <li>如果类存在父类，且父类没有初始化，就先初始化父类</li>
 <li>如果类中存在初始化语句，就依次执行这些初始化语句</li>
@@ -676,10 +639,8 @@
 </li>
 <li>调用 Classloader 类的 loadClass 方法类装载一个类，并不会初始化这个类，不是对类的主动使用</li>
 </ol>
-</clinit></li>
-</ul>
-<h2 id="6、类的主动初始化"><a href="#6、类的主动初始化" class="headerlink" title="6、类的主动初始化"></a>6、类的主动初始化</h2><h3 id="1-类的初始化时机"><a href="#1-类的初始化时机" class="headerlink" title="1. 类的初始化时机"></a>1. 类的初始化时机</h3><ul>
-<li>Java 程序对类的使用方式分成：主动使用和被动使用，JVM 必须在每个类或接口 ”首次主动使用“ 时才初始化它们；被动使用类不会导致类的初始化，主动使用的情况：<ol>
+<h2 id="6、类的主动初始化"><a href="#6、类的主动初始化" class="headerlink" title="6、类的主动初始化"></a>6、类的主动初始化</h2><h3 id="1-类的初始化时机"><a href="#1-类的初始化时机" class="headerlink" title="1. 类的初始化时机"></a>1. 类的初始化时机</h3><p>Java 程序对类的使用方式分成：主动使用和被动使用，JVM 必须在每个类或接口 ”首次主动使用“ 时才初始化它们；被动使用类不会导致类的初始化，主动使用的情况：</p>
+<ol>
 <li>创建类实例</li>
 <li>访问某个类或接口的静态变量</li>
 <li>调用类的静态方法</li>
@@ -688,85 +649,61 @@
 <li>JVM 启动的时候运行的主类</li>
 <li>定义了 default 方法的接口，当接口实现类初始化时</li>
 </ol>
-</li>
-</ul>
-<h3 id="2-类的卸载"><a href="#2-类的卸载" class="headerlink" title="2. 类的卸载"></a>2. 类的卸载</h3><ul>
-<li>当代表一个类的 Class 对象不再被引用，那么 Class  对象的生命周期就结束了，对应的在方法区中的数据也会被卸载</li>
-<li>JVM 自带的类加载器装载的类，是不会卸载的，由用户自定义的类加载器的加载的类是可以卸载的</li>
-</ul>
+<h3 id="2-类的卸载"><a href="#2-类的卸载" class="headerlink" title="2. 类的卸载"></a>2. 类的卸载</h3><p>当代表一个类的 Class 对象不再被引用，那么 Class  对象的生命周期就结束了，对应的在方法区中的数据也会被卸载</p>
+<p>JVM 自带的类加载器装载的类，是不会卸载的，由用户自定义的类加载器的加载的类是可以卸载的</p>
 <h1 id="三、内存分配"><a href="#三、内存分配" class="headerlink" title="三、内存分配"></a>三、内存分配</h1><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114038840.png" alt="image-20220327114038840" style="zoom:80%;">
 
 <h2 id="1、JVM的简化架构和运行时数据区"><a href="#1、JVM的简化架构和运行时数据区" class="headerlink" title="1、JVM的简化架构和运行时数据区"></a>1、JVM的简化架构和运行时数据区</h2><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114045998.png" alt="image-20220327114045998" style="zoom:80%;">
 
-<h3 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h3><ul>
-<li>PC 寄存器、Java虚拟机栈、Java堆、方法区、运行时常量池、本地方法栈等</li>
-</ul>
-<h4 id="1-PC-寄存器"><a href="#1-PC-寄存器" class="headerlink" title="1. PC 寄存器"></a>1. PC 寄存器</h4><ul>
-<li>每个线程都拥有一个PC寄存器，是线程私有的，用来存储指向下一条指令的地址</li>
-<li>在创建线程的时候，创建相应的PC寄存器</li>
-<li>执行本地方法时，PC寄存器的值为 undefined</li>
-<li>是一块比较小的内存空间，是唯一一个在JVM规范中没有规定 OutOfMemoryError 的内存区域</li>
-</ul>
-<h4 id="2-Java栈"><a href="#2-Java栈" class="headerlink" title="2. Java栈"></a>2. Java栈</h4><ul>
-<li>栈由一系列帧（栈帧）（Frame）组成（因此Java栈也叫做帧栈），是线程私有的</li>
-<li>栈帧用来保存一个方法的局部变量、操作数栈（Java没有寄存器，所有参数传递使用操作数栈）、常量池指针、动态链接、方法返回等</li>
-<li>每一次方法调用创建一个帧，并压栈，退出方法的时候，修改栈顶指针就可以把栈帧中的内容销毁</li>
-<li>局部变量表存放了编译期可知的各种基本数据类型和引用类型，每个 slot 存放32位的数据，long、double、占两个槽位</li>
-<li>栈的优点： 存取速度比堆块，仅次于寄存器</li>
-<li>栈的缺点：存在栈中的数据大小、生存区是在编译器决定的，缺乏灵活性</li>
-</ul>
-<h4 id="3-Java堆"><a href="#3-Java堆" class="headerlink" title="3. Java堆"></a>3. Java堆</h4><ul>
-<li>用来存放应用系统创建的对象和数组，所有线程共享 Java 堆</li>
-<li>GC主要管理堆空间，对分代GC来说，堆也是分代的</li>
-<li>堆的优点：运行期动态分配内存大小，自动进行垃圾回收；</li>
-<li>堆的缺点：效率相对较慢</li>
-</ul>
-<h4 id="4-方法区"><a href="#4-方法区" class="headerlink" title="4. 方法区"></a>4. 方法区</h4><ul>
-<li>方法区是线程共享的，通常用来保存装载的类的结构信息</li>
-<li>通常和元空间关联在一起，但具体的跟JVM实现和版本有关</li>
-<li>JVM规范把方法区描述为堆的一个逻辑部分，但它有一个别名称为 Non-heap（非堆），应是为了与 Java 堆分开</li>
-</ul>
-<h4 id="5-运行时常量池"><a href="#5-运行时常量池" class="headerlink" title="5. 运行时常量池"></a>5. 运行时常量池</h4><ul>
-<li>是Class文件中每个类或接口的常量池表，在运行期间的表示形式，通常包括：类的版、字段、方法、接口等信息</li>
-<li>在方法区中分配</li>
-<li>通常在加载类和接口到JVM后，就创建相应的运行时常量池</li>
-</ul>
-<h4 id="6-本地方法栈"><a href="#6-本地方法栈" class="headerlink" title="6. 本地方法栈"></a>6. 本地方法栈</h4><ul>
-<li>在 JVM 中用来支持 native 方法执行的栈就是本地方法栈</li>
-</ul>
+<h3 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h3><p>PC 寄存器、Java虚拟机栈、Java堆、方法区、运行时常量池、本地方法栈等</p>
+<h4 id="1-PC-寄存器"><a href="#1-PC-寄存器" class="headerlink" title="1. PC 寄存器"></a>1. PC 寄存器</h4><p>每个线程都拥有一个PC寄存器，是线程私有的，用来存储指向下一条指令的地址</p>
+<p>在创建线程的时候，创建相应的PC寄存器</p>
+<p>执行本地方法时，PC寄存器的值为 undefined</p>
+<p>是一块比较小的内存空间，是唯一一个在JVM规范中没有规定 OutOfMemoryError 的内存区域</p>
+<h4 id="2-Java栈"><a href="#2-Java栈" class="headerlink" title="2. Java栈"></a>2. Java栈</h4><p>栈由一系列帧（栈帧）（Frame）组成（因此Java栈也叫做帧栈），是线程私有的</p>
+<p>栈帧用来保存一个方法的局部变量、操作数栈（Java没有寄存器，所有参数传递使用操作数栈）、常量池指针、动态链接、方法返回等</p>
+<p>每一次方法调用创建一个帧，并压栈，退出方法的时候，修改栈顶指针就可以把栈帧中的内容销毁</p>
+<p>局部变量表存放了编译期可知的各种基本数据类型和引用类型，每个 slot 存放32位的数据，long、double、占两个槽位</p>
+<p>栈的优点： 存取速度比堆块，仅次于寄存器</p>
+<p>栈的缺点：存在栈中的数据大小、生存区是在编译器决定的，缺乏灵活性</p>
+<h4 id="3-Java堆"><a href="#3-Java堆" class="headerlink" title="3. Java堆"></a>3. Java堆</h4><p>用来存放应用系统创建的对象和数组，所有线程共享 Java 堆</p>
+<p>GC主要管理堆空间，对分代GC来说，堆也是分代的</p>
+<p>堆的优点：运行期动态分配内存大小，自动进行垃圾回收；</p>
+<p>堆的缺点：效率相对较慢</p>
+<h4 id="4-方法区"><a href="#4-方法区" class="headerlink" title="4. 方法区"></a>4. 方法区</h4><p>方法区是线程共享的，通常用来保存装载的类的结构信息</p>
+<p>通常和元空间关联在一起，但具体的跟JVM实现和版本有关</p>
+<p>JVM规范把方法区描述为堆的一个逻辑部分，但它有一个别名称为 Non-heap（非堆），应是为了与 Java 堆分开</p>
+<h4 id="5-运行时常量池"><a href="#5-运行时常量池" class="headerlink" title="5. 运行时常量池"></a>5. 运行时常量池</h4><p>是Class文件中每个类或接口的常量池表，在运行期间的表示形式，通常包括：类的版、字段、方法、接口等信息</p>
+<p>在方法区中分配</p>
+<p>通常在加载类和接口到JVM后，就创建相应的运行时常量池</p>
+<h4 id="6-本地方法栈"><a href="#6-本地方法栈" class="headerlink" title="6. 本地方法栈"></a>6. 本地方法栈</h4><p>在 JVM 中用来支持 native 方法执行的栈就是本地方法栈</p>
 <h4 id="7-栈、堆、方法区交互关系"><a href="#7-栈、堆、方法区交互关系" class="headerlink" title="7. 栈、堆、方法区交互关系"></a>7. 栈、堆、方法区交互关系</h4><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114052963.png" alt="image-20220327114052963" style="zoom:80%;">
 
-<h2 id="2、Java堆内存模型和分配"><a href="#2、Java堆内存模型和分配" class="headerlink" title="2、Java堆内存模型和分配"></a>2、Java堆内存模型和分配</h2><h3 id="1-Java堆内存概述"><a href="#1-Java堆内存概述" class="headerlink" title="1. Java堆内存概述"></a>1. Java堆内存概述</h3><ul>
-<li>Java 堆用来存放应用系统创建的对象和数组，所有线程共享Java堆</li>
-<li>Java堆是在运行期动态分配内存大小，自动进行垃圾回收</li>
-<li>Java垃圾回收（GC）主要就是回收堆内存，对分代GC来说，堆也是分代的</li>
-</ul>
+<h2 id="2、Java堆内存模型和分配"><a href="#2、Java堆内存模型和分配" class="headerlink" title="2、Java堆内存模型和分配"></a>2、Java堆内存模型和分配</h2><h3 id="1-Java堆内存概述"><a href="#1-Java堆内存概述" class="headerlink" title="1. Java堆内存概述"></a>1. Java堆内存概述</h3><p>Java 堆用来存放应用系统创建的对象和数组，所有线程共享Java堆</p>
+<p>Java堆是在运行期动态分配内存大小，自动进行垃圾回收</p>
+<p>Java垃圾回收（GC）主要就是回收堆内存，对分代GC来说，堆也是分代的</p>
 <h3 id="2-Java堆的结构"><a href="#2-Java堆的结构" class="headerlink" title="2. Java堆的结构"></a>2. Java堆的结构</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114059534.png" alt="image-20220327114059534" style="zoom:80%;">
 
+<p>新生代用来存放新分配的对象；新生代中经过垃圾回收，没有回收掉的对象，被复制到老年代</p>
+<p>老年代存储对象比新生代存储对象的年龄大得多</p>
+<p>老年代存储一些大对象</p>
+<p>整个堆大小 = 新生代 + 老年龄</p>
+<p>新生代 = Eden + 存活区</p>
+<p>从前的持久代，用来存放Class、Method 等元信息的区域，从 JDK8 开始去掉了，取而代之的是元空间（MetaSpace），元空间并不在虚拟机里面，而是直接使用本地内存</p>
+<h3 id="3-对象内存布局"><a href="#3-对象内存布局" class="headerlink" title="3. 对象内存布局"></a>3. 对象内存布局</h3><p>对象在内存中储存的布局（这里以Hotspot虚拟机为例来说明），分为：对象头、实例数据和对齐填充</p>
+<p>对象头，包含两部分：</p>
 <ul>
-<li>新生代用来存放新分配的对象；新生代中经过垃圾回收，没有回收掉的对象，被复制到老年代</li>
-<li>老年代存储对象比新生代存储对象的年龄大得多</li>
-<li>老年代存储一些大对象</li>
-<li>整个堆大小 = 新生代 + 老年龄</li>
-<li>新生代 = Eden + 存活区</li>
-<li>从前的持久代，用来存放Class、Method 等元信息的区域，从 JDK8 开始去掉了，取而代之的是元空间（MetaSpace），元空间并不在虚拟机里面，而是直接使用本地内存</li>
-</ul>
-<h3 id="3-对象内存布局"><a href="#3-对象内存布局" class="headerlink" title="3. 对象内存布局"></a>3. 对象内存布局</h3><ul>
-<li>对象在内存中储存的布局（这里以Hotspot虚拟机为例来说明），分为：对象头、实例数据和对齐填充</li>
-<li>对象头，包含两部分：<ul>
 <li>Mark Word：存储对象自身的运行数据，如：HashCode、GC分代年龄，锁状态标志等</li>
 <li>类型指针：对象指向它的类元数据的指针</li>
 </ul>
-</li>
-<li>实例数据：真正存放对象实例数据的地方</li>
-<li>对齐填充：这部分不一定存在，也没有什么特别含义，仅仅是占位符。因为 HotSpot 要求对象起始地址都是8字节的整数倍，如果不是，就对齐</li>
-</ul>
-<h3 id="4-对象的访问定位"><a href="#4-对象的访问定位" class="headerlink" title="4. 对象的访问定位"></a>4. 对象的访问定位</h3><ul>
-<li><p>使用句柄：Java堆中会划分出一块内存来作为句柄池，reference 中存储句柄的地址，句柄中存储对象的实例数据和类元数据的地址，如图</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114105548.png" alt="image-20220327114105548" style="zoom:80%;"></li>
-<li><p>使用指针：Java堆中会存放访问类元数据的地址，reference存储的就直接是对象的地址，如图：</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114111612.png" alt="image-20220327114111612" style="zoom:80%;"></li>
-</ul>
+<p>实例数据：真正存放对象实例数据的地方</p>
+<p>对齐填充：这部分不一定存在，也没有什么特别含义，仅仅是占位符。因为 HotSpot 要求对象起始地址都是8字节的整数倍，如果不是，就对齐</p>
+<h3 id="4-对象的访问定位"><a href="#4-对象的访问定位" class="headerlink" title="4. 对象的访问定位"></a>4. 对象的访问定位</h3><p>使用句柄：Java堆中会划分出一块内存来作为句柄池，reference 中存储句柄的地址，句柄中存储对象的实例数据和类元数据的地址，如图</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114105548.png" alt="image-20220327114105548" style="zoom:80%;">
+
+<p>使用指针：Java堆中会存放访问类元数据的地址，reference存储的就直接是对象的地址，如图：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114111612.png" alt="image-20220327114111612" style="zoom:80%;">
+
 <h2 id="3、Trace跟踪和Java堆的参数配置"><a href="#3、Trace跟踪和Java堆的参数配置" class="headerlink" title="3、Trace跟踪和Java堆的参数配置"></a>3、Trace跟踪和Java堆的参数配置</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/13/docs/specs/man/java.html">doc</a></p>
 </blockquote>
@@ -801,61 +738,44 @@
 <li>-XX:MinMetaspaceFreeRatio：在GC之后，最小的Metaspace 剩余空间容量的百分比</li>
 <li>-XX:MaxMetaspaceFreeRatio：在GC之后，最大的Metaspace剩余空间容量的百分比</li>
 </ul>
-<h1 id="四、字节码执行引擎"><a href="#四、字节码执行引擎" class="headerlink" title="四、字节码执行引擎"></a>四、字节码执行引擎</h1><ul>
-<li>JVM 的字节码执行引擎，功能基本就是输入字节码文件，然后对字节码进行解析并处理，最后输出执行的结果</li>
-<li>实现方式可能有通过解释器直接解释执行字节码，或者通过即时编译器产生本地代码，也就是编译执行，当然也可能两者都有</li>
-</ul>
-<h2 id="1、栈帧"><a href="#1、栈帧" class="headerlink" title="1、栈帧"></a>1、栈帧</h2><ul>
-<li><p>栈帧是用于支持JVM进行方法调用和方法执行的数据结构</p>
-</li>
-<li><p>栈帧随着方法调用而创建，随着方法结束而销毁</p>
-</li>
-<li><p>栈帧里面存储了方法的局部变量表、操作数栈、动态链接、方法返回地址等信息</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114119045.png" alt="image-20220327114119045" style="zoom:80%;"></li>
-</ul>
-<h3 id="1-局部变量表"><a href="#1-局部变量表" class="headerlink" title="1. 局部变量表"></a>1. 局部变量表</h3><ul>
-<li>局部变量表：用来存放方法参数和方法内部定义的局部变量的存储空间<ol>
+<h1 id="四、字节码执行引擎"><a href="#四、字节码执行引擎" class="headerlink" title="四、字节码执行引擎"></a>四、字节码执行引擎</h1><p>JVM 的字节码执行引擎，功能基本就是输入字节码文件，然后对字节码进行解析并处理，最后输出执行的结果</p>
+<p>实现方式可能有通过解释器直接解释执行字节码，或者通过即时编译器产生本地代码，也就是编译执行，当然也可能两者都有</p>
+<h2 id="1、栈帧"><a href="#1、栈帧" class="headerlink" title="1、栈帧"></a>1、栈帧</h2><p>栈帧是用于支持JVM进行方法调用和方法执行的数据结构</p>
+<p>栈帧随着方法调用而创建，随着方法结束而销毁</p>
+<p>栈帧里面存储了方法的局部变量表、操作数栈、动态链接、方法返回地址等信息</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114119045.png" alt="image-20220327114119045" style="zoom:80%;">
+
+<h3 id="1-局部变量表"><a href="#1-局部变量表" class="headerlink" title="1. 局部变量表"></a>1. 局部变量表</h3><p>局部变量表：用来存放方法参数和方法内部定义的局部变量的存储空间</p>
+<ol>
 <li>以变量槽 slot 为单位，目前一个 slot 存放32位以内的数据类型</li>
 <li>对于64位的数据占2个slot</li>
 <li>对于实例方法，第0位 slot 存放的是 this，然后从1到n，依次分配给参数列表</li>
 <li>然后根据方法体内部定义的变量顺序和作用域来分配 slot</li>
 <li>slot 是复用的，以节省栈帧的空间，这种设计可能会影响系统的垃圾收集行为</li>
 </ol>
-</li>
-</ul>
-<h3 id="2-操作数栈"><a href="#2-操作数栈" class="headerlink" title="2. 操作数栈"></a>2. 操作数栈</h3><ul>
-<li>操作数栈：用来存放方法运行期间，各个指令操作的数据<ol>
+<h3 id="2-操作数栈"><a href="#2-操作数栈" class="headerlink" title="2. 操作数栈"></a>2. 操作数栈</h3><p>操作数栈：用来存放方法运行期间，各个指令操作的数据</p>
+<ol>
 <li>操作数栈中元素的数据类型必须和字节码指令的顺序严格匹配</li>
 <li>虚拟机在实现栈帧的时候可能会做一些优化，让两个栈帧出现部分重叠区域，以存放公用的数据</li>
 </ol>
-</li>
-</ul>
-<h3 id="3-动态链接"><a href="#3-动态链接" class="headerlink" title="3. 动态链接"></a>3. 动态链接</h3><ul>
-<li>动态链接：每一个栈帧持有一个指向运行时常量池中该栈帧所属方法的引用，以支持方法调用过程的动态链接<ol>
+<h3 id="3-动态连接"><a href="#3-动态连接" class="headerlink" title="3. 动态连接"></a>3. 动态连接</h3><p>动态连接：每一个栈帧持有一个指向运行时常量池中该栈帧所属方法的引用，以支持方法调用过程的动态链接</p>
+<ol>
 <li>静态解析：类加载的时候，符号引用就转化为直接引用</li>
-<li>动态链接：运行期间转化为直接引用</li>
+<li>动态连接：运行期间转化为直接引用</li>
 </ol>
-</li>
-</ul>
-<h3 id="4-方法返回地址"><a href="#4-方法返回地址" class="headerlink" title="4. 方法返回地址"></a>4. 方法返回地址</h3><ul>
-<li>方法返回地址：方法执行后返回的地址</li>
-</ul>
-<h3 id="5-方法调用"><a href="#5-方法调用" class="headerlink" title="5. 方法调用"></a>5. 方法调用</h3><ul>
-<li>方法调用：就是确定具体调用哪一个方法，并不涉及方法内部的执行过程<ol>
+<h3 id="4-方法返回地址"><a href="#4-方法返回地址" class="headerlink" title="4. 方法返回地址"></a>4. 方法返回地址</h3><p>方法返回地址：方法执行后返回的地址</p>
+<h3 id="5-方法调用"><a href="#5-方法调用" class="headerlink" title="5. 方法调用"></a>5. 方法调用</h3><p>方法调用：就是确定具体调用哪一个方法，并不涉及方法内部的执行过程</p>
+<ol>
 <li>部分方法是直接在类加载的解析阶段，就确定了直接引用关系</li>
 <li>但是对于实例方法，也称虚方法，因为多重和多态，需要运行期动态分派</li>
 </ol>
-</li>
-</ul>
 <h2 id="2、分派"><a href="#2、分派" class="headerlink" title="2、分派"></a>2、分派</h2><ul>
 <li>静态分派：所有依赖静态类型来定位方法执行版本的分派方式，比如：重载方法</li>
 <li>动态分派：根据运行期的实际类型来定位方法执行版本的分派方式，比如：覆盖方法</li>
 <li>单分派和多分派：就是按照分派思考的维度，多于一个的就算多分配，只有一个的称为单分派</li>
 </ul>
-<h1 id="五、垃圾回收"><a href="#五、垃圾回收" class="headerlink" title="五、垃圾回收"></a>五、垃圾回收</h1><h2 id="1、垃圾回收概述"><a href="#1、垃圾回收概述" class="headerlink" title="1、垃圾回收概述"></a>1、垃圾回收概述</h2><ul>
-<li><p>什么是垃圾：简单说就是内存中已经不再被使用到的内存空间就是垃圾</p>
-</li>
-<li><p>垃圾回收算法：</p>
+<h1 id="五、垃圾回收"><a href="#五、垃圾回收" class="headerlink" title="五、垃圾回收"></a>五、垃圾回收</h1><h2 id="1、垃圾回收概述"><a href="#1、垃圾回收概述" class="headerlink" title="1、垃圾回收概述"></a>1、垃圾回收概述</h2><p>什么是垃圾：简单说就是内存中已经不再被使用到的内存空间就是垃圾</p>
+<p>垃圾回收算法：</p>
 <ul>
 <li><p>引用计数法：给对象添加一个引用计数器，有访问就加1，引用失效就减1</p>
 <ul>
@@ -875,8 +795,6 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <h2 id="2、垃圾回收基础"><a href="#2、垃圾回收基础" class="headerlink" title="2、垃圾回收基础"></a>2、垃圾回收基础</h2><h3 id="1-跨代引用"><a href="#1-跨代引用" class="headerlink" title="1. 跨代引用"></a>1. 跨代引用</h3><ul>
 <li>跨代引用：也就是一个代中的对象引用另一个代中的对象</li>
 <li>跨代引用假说：跨代引用相对于同代引用来说只是极少数</li>
@@ -888,62 +806,47 @@
 <li>对象精度：每个记录精确到一个对象，该对象里有字段含有跨代指针</li>
 <li>卡精度：每个记录精确到一块内存区域，该区域内有对象含有跨代指针</li>
 <li>卡表（Card Table）：是记忆集的一种具体实现，定义了记忆集的记录精度和与堆内存的映射关系等</li>
-<li>卡表的每个元素都对应着其标识的内存区域中一块特定大小的内存块，这个内存块称为 卡页（Card Page）</li>
 </ul>
-<h3 id="3-写屏障"><a href="#3-写屏障" class="headerlink" title="3. 写屏障"></a>3. 写屏障</h3><ul>
-<li>写屏障可以看成是JVM对 ”引用类型字段赋值“ 这个动作的AOP</li>
-<li>通过写屏障来实现当对象状态改变后，维护卡表状态</li>
-</ul>
-<h3 id="4-判断是否垃圾的步骤"><a href="#4-判断是否垃圾的步骤" class="headerlink" title="4. 判断是否垃圾的步骤"></a>4. 判断是否垃圾的步骤</h3><ul>
-<li>跟搜索算法判断不可用</li>
-<li>看是否有必要执行 finalize 方法</li>
-<li>两个步骤走完后对象仍然没有人使用，那就属于垃圾</li>
-</ul>
+<p>卡表的每个元素都对应着其标识的内存区域中一块特定大小的内存块，这个内存块称为 卡页（Card Page）</p>
+<h3 id="3-写屏障"><a href="#3-写屏障" class="headerlink" title="3. 写屏障"></a>3. 写屏障</h3><p>写屏障可以看成是JVM对 ”引用类型字段赋值“ 这个动作的AOP</p>
+<p>通过写屏障来实现当对象状态改变后，维护卡表状态</p>
+<h3 id="4-判断是否垃圾的步骤"><a href="#4-判断是否垃圾的步骤" class="headerlink" title="4. 判断是否垃圾的步骤"></a>4. 判断是否垃圾的步骤</h3><p>跟搜索算法判断不可用</p>
+<p>看是否有必要执行 finalize 方法</p>
+<p>两个步骤走完后对象仍然没有人使用，那就属于垃圾</p>
 <h3 id="5-GC-类型"><a href="#5-GC-类型" class="headerlink" title="5. GC 类型"></a>5. GC 类型</h3><ul>
 <li>MinorGC / YoungGC：发生在新生代的收集动作</li>
 <li>MajorGC / OldGC：发生在老年代的GC，目前只有CMS收集器会有单独收集老年代的行为</li>
 <li>MixedGC：收集整个新生代以及部分老年代，目前只有G1收集器会有这种行为</li>
 <li>FullGC：收集整个Java堆和方法区的GC</li>
 </ul>
-<h3 id="6-Stop-The-World"><a href="#6-Stop-The-World" class="headerlink" title="6. Stop-The-World"></a>6. Stop-The-World</h3><ul>
-<li>STW是Java中一种全局暂停的现象，多半由于GC引起。所谓全局停顿，就是所有Java代码停止运行，native代码可以执行，但不能和JVM交互</li>
-<li>其危害是长时间服务停止，没有响应；对于HA系统，可能引起主备切换，严重危害生产环境</li>
-</ul>
+<h3 id="6-Stop-The-World"><a href="#6-Stop-The-World" class="headerlink" title="6. Stop-The-World"></a>6. Stop-The-World</h3><p>STW是Java中一种全局暂停的现象，多半由于GC引起。所谓全局停顿，就是所有Java代码停止运行，native代码可以执行，但不能和JVM交互</p>
+<p>其危害是长时间服务停止，没有响应；对于HA系统，可能引起主备切换，严重危害生产环境</p>
 <h3 id="7-垃圾收集类型"><a href="#7-垃圾收集类型" class="headerlink" title="7. 垃圾收集类型"></a>7. 垃圾收集类型</h3><ul>
 <li>串行收集：GC单线程内存回收、会暂停所有的用户线程，如：Serial</li>
 <li>并行收集：多个GC线程并发工作，此时用户线程是暂停的，如：Parallel</li>
 <li>并发收集：用户线程和GC线程同时执行（不一定是并行，可能交替执行），不需要停顿用户线程，如：CMS</li>
 </ul>
-<h3 id="8-判断类无用的条件"><a href="#8-判断类无用的条件" class="headerlink" title="8. 判断类无用的条件"></a>8. 判断类无用的条件</h3><ul>
-<li>JVM 中该类的所有实例都已经被回收</li>
-<li>加载该类的 ClassLoader 已经被回收</li>
-<li>没有任何地方引用该类的 Class 对象</li>
-<li>无法在任何地方通过反射访问这个类</li>
-</ul>
-<h2 id="3、垃圾回收算法"><a href="#3、垃圾回收算法" class="headerlink" title="3、垃圾回收算法"></a>3、垃圾回收算法</h2><h3 id="1-标记清除算法"><a href="#1-标记清除算法" class="headerlink" title="1. 标记清除算法"></a>1. 标记清除算法</h3><ul>
-<li><p>标记清除算法（Mark-Sweep）：分为标记和清除两个阶段，先标记出要回收的对象，然后统一回收这些对象</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114133338.png" alt="image-20220327114133338" style="zoom:80%;"></li>
-<li><p>优点：简单</p>
-</li>
-<li><p>缺点：</p>
+<h3 id="8-判断类无用的条件"><a href="#8-判断类无用的条件" class="headerlink" title="8. 判断类无用的条件"></a>8. 判断类无用的条件</h3><p>JVM 中该类的所有实例都已经被回收</p>
+<p>加载该类的 ClassLoader 已经被回收</p>
+<p>没有任何地方引用该类的 Class 对象</p>
+<p>无法在任何地方通过反射访问这个类</p>
+<h2 id="3、垃圾回收算法"><a href="#3、垃圾回收算法" class="headerlink" title="3、垃圾回收算法"></a>3、垃圾回收算法</h2><h3 id="1-标记清除算法"><a href="#1-标记清除算法" class="headerlink" title="1. 标记清除算法"></a>1. 标记清除算法</h3><p>标记清除算法（Mark-Sweep）：分为标记和清除两个阶段，先标记出要回收的对象，然后统一回收这些对象</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114133338.png" alt="image-20220327114133338" style="zoom:80%;">
+
+<p>优点：简单</p>
+<p>缺点：</p>
 <ul>
 <li>效率不高，标记和清除的效率都不高</li>
 <li>产生大量不连续的内存碎片，从而导致在分配大对象时触发GC</li>
 </ul>
-</li>
-</ul>
-<h3 id="2-复制算法"><a href="#2-复制算法" class="headerlink" title="2. 复制算法"></a>2. 复制算法</h3><ul>
-<li><p>复制算法（Copying）：把内存分成两块完全相同的区域，每次使用其中一块，当一块使用完了，就把这块上还存活的对象拷贝到另外一块，然后把这块清除掉</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114139913.png" alt="image-20220327114139913" style="zoom:80%;"></li>
-<li><p>优点：实现简单，运行高效，不用考虑内存碎片问题</p>
-</li>
-<li><p>缺点：内存有些浪费</p>
-</li>
-<li><p>JVM实际实现中，是将内存分为一块较大的Eden区和两块较小的 Survivor 空间，每次使用Eden和一块 Survivor，回收时，把存活的对象复制到另一块 Survivor</p>
-</li>
-<li><p>HotSpot 默认的 Eden 和 Survivor 比是 8:1，也就是每次能用 90% 的新生代空间</p>
-</li>
-<li><p>如果 Survivor 空间不够，就要依赖老年代进行分配担保，把放不下的对象直接进入老年代</p>
+<h3 id="2-复制算法"><a href="#2-复制算法" class="headerlink" title="2. 复制算法"></a>2. 复制算法</h3><p>复制算法（Copying）：把内存分成两块完全相同的区域，每次使用其中一块，当一块使用完了，就把这块上还存活的对象拷贝到另外一块，然后把这块清除掉</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114139913.png" alt="image-20220327114139913" style="zoom:80%;">
+
+<p>优点：实现简单，运行高效，不用考虑内存碎片问题</p>
+<p>缺点：内存有些浪费</p>
+<p>JVM实际实现中，是将内存分为一块较大的Eden区和两块较小的 Survivor 空间，每次使用Eden和一块 Survivor，回收时，把存活的对象复制到另一块 Survivor</p>
+<p>HotSpot 默认的 Eden 和 Survivor 比是 8:1，也就是每次能用 90% 的新生代空间</p>
+<p>如果 Survivor 空间不够，就要依赖老年代进行分配担保，把放不下的对象直接进入老年代</p>
 <blockquote>
 <p>分配担保：当新生代进行垃圾回收后，新生代的存活区放置不下，那么需要把这些对象放置到老年代去的策略，也就是老年代为新生代的GC做空间分配担保，步骤如下：</p>
 <ol>
@@ -953,108 +856,103 @@
 <li>如果不大于，则改做一次 Full GC</li>
 </ol>
 </blockquote>
-</li>
-</ul>
-<h3 id="3-标记整理算法"><a href="#3-标记整理算法" class="headerlink" title="3. 标记整理算法"></a>3. 标记整理算法</h3><ul>
-<li><p>标记整理算法(Mark-Compact)：由于复制算法在存活对象比较多的时候，效率较低，且有空间浪费，因此老年代一般不会选用复制算法，老年代多选用标记整理算法</p>
-</li>
-<li><p>标记过程跟标记清除算法一样，但后续不是直接清除可回收对象，而是让所有存活对象都向一端移动，然后直接清除边界以外的内存</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114146815.png" alt="image-20220327114146815" style="zoom:80%;"></li>
-</ul>
-<h2 id="4、垃圾收集器"><a href="#4、垃圾收集器" class="headerlink" title="4、垃圾收集器"></a>4、垃圾收集器</h2><ul>
-<li><p>串行收集器、并行收集器、新生代Parallel、Scavenge收集器、CMS、G1</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114152728.png" alt="image-20220327114152728" style="zoom:80%;"></li>
-</ul>
-<h3 id="1-串行收集器"><a href="#1-串行收集器" class="headerlink" title="1. 串行收集器"></a>1. 串行收集器</h3><ul>
-<li><p>Serial（串行）收集器 / Serial Old 收集器，是一个单线程的收集器，在垃圾收集时，会 Stop-the-World</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114158075.png" alt="image-20220327114158075" style="zoom:80%;"></li>
-<li><p>优点：简单，对于单cpu，由于没有多线程的交互开销，可能更高效，是默认的 Client 模式下的新生代收集器</p>
-</li>
-<li><p>使用 -XX:+UseSerialGC 来开启，会使用：Serial + SerialOld 的收集器组合</p>
-</li>
-<li><p>新生代使用复制算法，老年代使用标记-整理算法</p>
-</li>
-</ul>
-<h3 id="2-并行收集器"><a href="#2-并行收集器" class="headerlink" title="2. 并行收集器"></a>2. 并行收集器</h3><h4 id="1-ParNew收集器"><a href="#1-ParNew收集器" class="headerlink" title="1. ParNew收集器"></a>1. ParNew收集器</h4><ul>
-<li><p>ParNew（并行）收集器：使用多线程进行垃圾回收，在垃圾收集时，会Stop-the-World</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114209618.png" alt="image-20220327114209618" style="zoom:80%;"></li>
-<li><p>在并发能力好的 CPU 环境里，它停顿的时间要比串行收集器短；但对于单 CPU 或并发能力较弱的CPU，由于多线程的交互开销，可能比串行回收器更差</p>
-</li>
-<li><p>是 Server 模式下首选的新生代收集器，且能和 CMS 收集器配合使用</p>
-</li>
-<li><p>不再使用 -XX:+UseParNewGC来单独开启</p>
-</li>
-<li><p>-XX:ParallelGCThreads：指定线程数，最好与 cpu 数量一致</p>
-</li>
-</ul>
-<h4 id="2-新生代Parallel-Scavenge-收集器"><a href="#2-新生代Parallel-Scavenge-收集器" class="headerlink" title="2. 新生代Parallel Scavenge 收集器"></a>2. 新生代Parallel Scavenge 收集器</h4><ul>
-<li><p>新生代 Parallel Scavenge 收集器 / Parallel Old 收集器：是一个应用于新生代的，使用复制算法的、并行的收集器</p>
-</li>
-<li><p>与 ParNew 很类似，但更关注吞吐量，能最高效率的利用 CPU，适合运行后台应用</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114217744.png" alt="image-20220327114217744" style="zoom:80%;"></li>
-<li><p>使用 -XX:+UseParallelGC 来开启</p>
-</li>
-<li><p>使用 -XX:+UseParallelOldGC 来开启老年代使用 ParallelOld收集器，使用 Parallel Scavenge + Parallel Old 的收集器组合</p>
-</li>
-<li><p>-XX:MaxGCPauseMillis：设置GC 的最大停顿时间</p>
-</li>
-<li><p>新生代使用复制算法，老年代使用标记-整理算法</p>
-</li>
-</ul>
-<h3 id="3-CMS收集器"><a href="#3-CMS收集器" class="headerlink" title="3. CMS收集器"></a>3. CMS收集器</h3><ul>
-<li><p>CMS（Concurrent Mark and Sweep 并发标记清除）收集器分为：初始标记：只标记GC Roots 能直接关联到的对象；并发标记：进行GC Roots Tracing 的过程</p>
-</li>
-<li><p>重新标记：修正并发标记期间，因程序运行导致标记发生变化的那一部分对象</p>
-</li>
-<li><p>并发清除：并发回收垃圾对象</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114224115.png" alt="image-20220327114224115" style="zoom:80%;"></li>
-<li><p>在初始化标记和重新标记两个阶段还是会发生 Stop-the-World</p>
-</li>
-<li><p>使用标记清除算法，多线程并发收集的垃圾收集器</p>
-</li>
-<li><p>最后的重置线程，指的是清空跟收集相关的数据并重置，为下次收集做准备</p>
-</li>
-<li><p>优点：低停顿，并发执行</p>
-</li>
-<li><p>缺点：</p>
+<h3 id="3-标记整理算法"><a href="#3-标记整理算法" class="headerlink" title="3. 标记整理算法"></a>3. 标记整理算法</h3><p>标记整理算法(Mark-Compact)：由于复制算法在存活对象比较多的时候，效率较低，且有空间浪费，因此老年代一般不会选用复制算法，老年代多选用标记整理算法</p>
+<p>标记过程跟标记清除算法一样，但后续不是直接清除可回收对象，而是让所有存活对象都向一端移动，然后直接清除边界以外的内存</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114146815.png" alt="image-20220327114146815" style="zoom:80%;">
+
+
+<h2 id="4、垃圾收集器"><a href="#4、垃圾收集器" class="headerlink" title="4、垃圾收集器"></a>4、垃圾收集器</h2><p>串行收集器、并行收集器、新生代Parallel、Scavenge收集器、CMS、G1</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114152728.png" alt="image-20220327114152728" style="zoom:80%;">
+
+<h3 id="1-串行收集器"><a href="#1-串行收集器" class="headerlink" title="1. 串行收集器"></a>1. 串行收集器</h3><p>Serial（串行）收集器 / Serial Old 收集器，是一个单线程的收集器，在垃圾收集时，会 Stop-the-World</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114158075.png" alt="image-20220327114158075" style="zoom:80%;">
+
+<p>优点：简单，对于单cpu，由于没有多线程的交互开销，可能更高效，是默认的 Client 模式下的新生代收集器</p>
+<p>使用 -XX:+UseSerialGC 来开启，会使用：Serial + SerialOld 的收集器组合</p>
+<p>新生代使用复制算法，老年代使用标记-整理算法</p>
+<h3 id="2-并行收集器"><a href="#2-并行收集器" class="headerlink" title="2. 并行收集器"></a>2. 并行收集器</h3><h4 id="1-ParNew收集器"><a href="#1-ParNew收集器" class="headerlink" title="1. ParNew收集器"></a>1. ParNew收集器</h4><p>ParNew（并行）收集器：使用多线程进行垃圾回收，在垃圾收集时，会Stop-the-World</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114209618.png" alt="image-20220327114209618" style="zoom:80%;">
+
+<p>在并发能力好的 CPU 环境里，它停顿的时间要比串行收集器短；但对于单 CPU 或并发能力较弱的CPU，由于多线程的交互开销，可能比串行回收器更差</p>
+<p>是 Server 模式下首选的新生代收集器，且能和 CMS 收集器配合使用</p>
+<p>不再使用 -XX:+UseParNewGC来单独开启</p>
+<p>-XX:ParallelGCThreads：指定线程数，最好与 cpu 数量一致</p>
+<h4 id="2-新生代Parallel-Scavenge-收集器"><a href="#2-新生代Parallel-Scavenge-收集器" class="headerlink" title="2. 新生代Parallel Scavenge 收集器"></a>2. 新生代Parallel Scavenge 收集器</h4><p>新生代 Parallel Scavenge 收集器 / Parallel Old 收集器：是一个应用于新生代的，使用复制算法的、并行的收集器</p>
+<p>与 ParNew 很类似，但更关注吞吐量，能最高效率的利用 CPU，适合运行后台应用</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114217744.png" alt="image-20220327114217744" style="zoom:80%;">
+
 <ul>
-<li>并发执行，对 CPU 资源压力大</li>
-<li>无法处理 在处理过程中 产生的垃圾（浮动垃圾），可能导致 FullGC</li>
-<li>采用的标记清除算法会导致大量碎片，从而在分配大对象可能触发 FullGC</li>
+<li>使用 -XX:+UseParallelGC 来开启</li>
+<li>使用 -XX:+UseParallelOldGC 来开启老年代使用 ParallelOld收集器，使用 Parallel Scavenge + Parallel Old 的收集器组合</li>
+<li>-XX:MaxGCPauseMillis：设置GC 的最大停顿时间</li>
+<li>新生代使用复制算法，老年代使用标记-整理算法</li>
 </ul>
+<h3 id="3-CMS收集器"><a href="#3-CMS收集器" class="headerlink" title="3. CMS收集器"></a>3. CMS收集器</h3><p>CMS（Concurrent Mark and Sweep 并发标记清除）收集器分为：初始标记：只标记GC Roots 能直接关联到的对象；并发标记：进行GC Roots Tracing 的过程</p>
+<p>重新标记：修正并发标记期间，因程序运行导致标记发生变化的那一部分对象</p>
+<p>并发清除：并发回收垃圾对象</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114224115.png" alt="image-20220327114224115" style="zoom:80%;">
+
+<p>在初始化标记和重新标记两个阶段还是会发生 Stop-the-World</p>
+<p>使用标记清除算法，多线程并发收集的垃圾收集器</p>
+<p>最后的重置线程，指的是清空跟收集相关的数据并重置，为下次收集做准备</p>
+<p>优点：低停顿，并发执行</p>
+<p>缺点：</p>
+<ul>
+<li><p>并发执行，对 CPU 资源压力大</p>
+</li>
+<li><p>无法处理 在处理过程中 产生的垃圾（浮动垃圾），可能导致 FullGC</p>
+</li>
+<li><p>采用的标记清除算法会导致大量碎片，从而在分配大对象可能触发 FullGC</p>
 </li>
 <li><p>开启：-XX:UseConcMarkSweepGC：使用 ParNew + CMS + Serial Old 的收集器组合，Serial Old 将作为 CMS 出错的后备收集器</p>
 </li>
 <li><p>-XX:CMSInitiatingOccupancyFraction：设置 CMS 收集器在老年代空间被使用多少后触发回收，默认 80%</p>
 </li>
 </ul>
-<h3 id="4-G1收集器"><a href="#4-G1收集器" class="headerlink" title="4. G1收集器"></a>4. G1收集器</h3><ul>
-<li>G1（Garbage-First）收集器：是一款面向服务应用的收集器，与其他收集器相比，具有以下特点：<ol>
+<h3 id="4-G1收集器"><a href="#4-G1收集器" class="headerlink" title="4. G1收集器"></a>4. G1收集器</h3><p>G1（Garbage-First）收集器：是一款面向服务应用的收集器，与其他收集器相比，具有以下特点：</p>
+<ol>
 <li>G1 把内存划分成多个独立的区域（Region)</li>
 <li>G1 仍采用分代思想，保留了新生代和老年代，但它们不再是物理隔离的，而是一部分Region的集合，且不需要 Region 是连续的</li>
 </ol>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114230819.png" alt="image-20220327114230819" style="zoom:80%;"></li>
-<li>G1 能充分利用多 CPU 、多核环境硬件优势，尽量缩短 STW</li>
-<li>G1 整体上采用标记-整理算法，局部是通过复制算法，不会产生内存碎片</li>
-<li>G1 的停顿可预测，能明确指定在一个时间段内，消耗在垃圾收集上的时间不能超过多长时间</li>
-<li>G1 跟踪各个 Region 里面垃圾堆的价值大小，在后台维护一个优先列表，每次根据允许的时间来回收价值最大的区域，从而保证在有限时间内的高效收集</li>
-<li>垃圾收集：<ul>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114230819.png" alt="image-20220327114230819" style="zoom:80%;">
+
+<ul>
+<li><p>G1 能充分利用多 CPU 、多核环境硬件优势，尽量缩短 STW</p>
+</li>
+<li><p>G1 整体上采用标记-整理算法，局部是通过复制算法，不会产生内存碎片</p>
+</li>
+<li><p>G1 的停顿可预测，能明确指定在一个时间段内，消耗在垃圾收集上的时间不能超过多长时间</p>
+</li>
+<li><p>G1 跟踪各个 Region 里面垃圾堆的价值大小，在后台维护一个优先列表，每次根据允许的时间来回收价值最大的区域，从而保证在有限时间内的高效收集</p>
+</li>
+<li><p>垃圾收集：</p>
+<ul>
 <li>初始标记：只标记GC Roots 能直接关联到的对象</li>
 <li>并发标记：进行 GC Roots Tracing 的过程</li>
 <li>最终标记：修正并发标记期间，因程序运行导致标记发生变化的那一部分对象</li>
 <li>筛选回收：根据时间来进行价值最大化的回收</li>
 </ul>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114239791.png" alt="image-20220327114239791" style="zoom:80%;"></li>
-<li>使用和配置G1：-XX:+UseG1GC：开启G1，默认就是G1</li>
-<li>-XX:MaxGCPauseMillis = n ：最大GC停顿时间，这是个软目标，JVM将尽可能（但不保证）停顿小于这个时间</li>
-<li>-XX:InitiatingHeapOccupancyPercent = n：堆占用了多少的时候就触发GC，默认为45</li>
-<li>-XX:NewRatio = n：默认为2</li>
-<li>-XX:SurvivorRatio = n：默认为8</li>
-<li>-XX:MaxTenuringThreshold = n：新生代到老年代岁数，默认是15</li>
-<li>-XX:ParallelGCThreads = n：并行GC的线程数，默认值会根据平台不同而不同</li>
-<li>-XX:ConcGCThreads = n：并发 GC 使用的线程数</li>
-<li>-XX:G1ReservePercent = n：设置作为空闲空间的预留内存百分比，以降低目标空间溢出的风险，默认值是 10%</li>
-<li>-XX:G1HeapRegionSize = n：设置的 G1 区域的大小。值是2的幂，范围是1MB到32MB，目标是根据最小的Java堆大小划分出约2048个区域</li>
+<li><p>使用和配置G1：-XX:+UseG1GC：开启G1，默认就是G1</p>
+</li>
+<li><p>-XX:MaxGCPauseMillis = n ：最大GC停顿时间，这是个软目标，JVM将尽可能（但不保证）停顿小于这个时间</p>
+</li>
+<li><p>-XX:InitiatingHeapOccupancyPercent = n：堆占用了多少的时候就触发GC，默认为45</p>
+</li>
+<li><p>-XX:NewRatio = n：默认为2</p>
+</li>
+<li><p>-XX:SurvivorRatio = n：默认为8</p>
+</li>
+<li><p>-XX:MaxTenuringThreshold = n：新生代到老年代岁数，默认是15</p>
+</li>
+<li><p>-XX:ParallelGCThreads = n：并行GC的线程数，默认值会根据平台不同而不同</p>
+</li>
+<li><p>-XX:ConcGCThreads = n：并发 GC 使用的线程数</p>
+</li>
+<li><p>-XX:G1ReservePercent = n：设置作为空闲空间的预留内存百分比，以降低目标空间溢出的风险，默认值是 10%</p>
+</li>
+<li><p>-XX:G1HeapRegionSize = n：设置的 G1 区域的大小。值是2的幂，范围是1MB到32MB，目标是根据最小的Java堆大小划分出约2048个区域</p>
+</li>
 </ul>
 <h3 id="5-ZGC收集器（了解）"><a href="#5-ZGC收集器（了解）" class="headerlink" title="5. ZGC收集器（了解）"></a>5. ZGC收集器（了解）</h3><ul>
 <li>ZGC收集器：JDK11加入的具有实验性质的低延迟收集器</li>
@@ -1086,20 +984,14 @@
 </ul>
 </li>
 </ul>
-<h1 id="六、高效并发"><a href="#六、高效并发" class="headerlink" title="六、高效并发"></a>六、高效并发</h1><h2 id="1、Java内存模型和内存间的交互操作"><a href="#1、Java内存模型和内存间的交互操作" class="headerlink" title="1、Java内存模型和内存间的交互操作"></a>1、Java内存模型和内存间的交互操作</h2><h3 id="1-Java内存模型"><a href="#1-Java内存模型" class="headerlink" title="1. Java内存模型"></a>1. Java内存模型</h3><ul>
-<li><p>JCP 定义了一种 Java 内存模型，以前是在 JVM 规范中，后来独立出来成为JSR-133(Java内存模型和线程规范修订)</p>
-</li>
-<li><p>内存模型：在特定的操作协议下，对特定的内存或高速缓存进行读写访问的过程抽象</p>
-</li>
-<li><p>Java 内存模型主要关注 JVM 中把变量值存储到内存和从内存中取出变量值这样的底层细节</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114250099.png" alt="image-20220327114250099" style="zoom:80%;"></li>
-<li><p>所有变量（共享的）都存储在主内存中，每个线程都有自己的工作内存；工作内存中保存该线程使用到的变量的主内存副本拷贝</p>
-</li>
-<li><p>线程对变量的所有操作（读、写）都应该在工作内存中完成</p>
-</li>
-<li><p>不同线程不能相互访问工作内存，交互数据要通过主内存</p>
-</li>
-</ul>
+<h1 id="六、高效并发"><a href="#六、高效并发" class="headerlink" title="六、高效并发"></a>六、高效并发</h1><h2 id="1、Java内存模型和内存间的交互操作"><a href="#1、Java内存模型和内存间的交互操作" class="headerlink" title="1、Java内存模型和内存间的交互操作"></a>1、Java内存模型和内存间的交互操作</h2><h3 id="1-Java内存模型"><a href="#1-Java内存模型" class="headerlink" title="1. Java内存模型"></a>1. Java内存模型</h3><p>JCP 定义了一种 Java 内存模型，以前是在 JVM 规范中，后来独立出来成为JSR-133(Java内存模型和线程规范修订)</p>
+<p>内存模型：在特定的操作协议下，对特定的内存或高速缓存进行读写访问的过程抽象</p>
+<p>Java 内存模型主要关注 JVM 中把变量值存储到内存和从内存中取出变量值这样的底层细节</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114250099.png" alt="image-20220327114250099" style="zoom:80%;">
+
+<p>所有变量（共享的）都存储在主内存中，每个线程都有自己的工作内存；工作内存中保存该线程使用到的变量的主内存副本拷贝</p>
+<p>线程对变量的所有操作（读、写）都应该在工作内存中完成</p>
+<p>不同线程不能相互访问工作内存，交互数据要通过主内存</p>
 <h3 id="2-内存间的交互操作"><a href="#2-内存间的交互操作" class="headerlink" title="2. 内存间的交互操作"></a>2. 内存间的交互操作</h3><ul>
 <li><p>Java内存模型规定了一些操作来实现内存间交互，JVM会保存它们是原子的</p>
 </li>
@@ -1120,70 +1012,56 @@
 <li><p>wirte：写入，把 store 进来的数据存放如主内存的变量中</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114256397.png" alt="image-20220327114256397" style="zoom:80%;"></li>
 </ul>
-<h3 id="3-内存间的交互操作的规则"><a href="#3-内存间的交互操作的规则" class="headerlink" title="3. 内存间的交互操作的规则"></a>3. 内存间的交互操作的规则</h3><ul>
-<li>不允许 read 和 load 、store 和 write 操作之一单独出现，以上两个操作必须按照顺序执行，但不保证连续执行，也就是说，read 和 load 之间、store 与 write 之间是可插入其他指令的</li>
-<li>不允许一个线程丢弃它的最近的 assign 操作，即变量在工作内存中改变了之后必须把该变化同步回主内存</li>
-<li>不允许一个线程无原因地（没有发生过任何 assign 操作）把数据从线程的工作内存同步回主内存中</li>
-<li>一个新的变量只能从主内存中 ”诞生“，不允许在工作内存中直接使用一个未被初始化的变量，也就是对一个变量实施 use 和 store 操作之前，必须先执行过了 assign 和 load 操作</li>
-<li>一个变量在同一个时刻只允许一条线程对其执行 lock 操作，但 lock 操作可以被同一条线程重复执行多次，多次执行lock后，只有执行相同次数的 unlock 操作，变量才会被解锁</li>
-<li>如果对一个变量执行 lock 操作，将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行 load 或 assign 操作初始化变量的值</li>
-<li>如果一个变量没有被 lock 操作锁定，则不允许对它执行 unlock 操作，也不能 unlock 一个被其他线程锁定的变量</li>
-<li>对一个变量执行 unlock 操作之前，必须先把此变量同步回主内存（执行 store 和 write  操作）</li>
-</ul>
-<h2 id="2、volatile特性"><a href="#2、volatile特性" class="headerlink" title="2、volatile特性"></a>2、volatile特性</h2><h3 id="1-多线程中的可见性"><a href="#1-多线程中的可见性" class="headerlink" title="1. 多线程中的可见性"></a>1. 多线程中的可见性</h3><ul>
-<li>可见性：就是一个线程修改了变量，其他线程可以知道</li>
-<li>保证可见性的常见方法：volatile、synchronized、final（一旦初始化完成，其他线程就可见）</li>
-</ul>
-<h3 id="2-volatile"><a href="#2-volatile" class="headerlink" title="2. volatile"></a>2. volatile</h3><ul>
-<li>volatile 基本上是 JVM 提供的最轻量级的同步机制，用 volatile 修饰的变量，对所有的线程可见，即对 volatile 变量所做的写操作能立即反映到其他线程中</li>
-<li>用 volatile 修饰的变量，在多线程环境下仍然是不安全的</li>
-<li>volatile 修饰的变量，是禁止指令重排优化的</li>
-<li>适合使用 valatile 的场景<ul>
+<h3 id="3-内存间的交互操作的规则"><a href="#3-内存间的交互操作的规则" class="headerlink" title="3. 内存间的交互操作的规则"></a>3. 内存间的交互操作的规则</h3><p>不允许 read 和 load 、store 和 write 操作之一单独出现，以上两个操作必须按照顺序执行，但不保证连续执行，也就是说，read 和 load 之间、store 与 write 之间是可插入其他指令的</p>
+<p>不允许一个线程丢弃它的最近的 assign 操作，即变量在工作内存中改变了之后必须把该变化同步回主内存</p>
+<p>不允许一个线程无原因地（没有发生过任何 assign 操作）把数据从线程的工作内存同步回主内存中</p>
+<p>一个新的变量只能从主内存中 ”诞生“，不允许在工作内存中直接使用一个未被初始化的变量，也就是对一个变量实施 use 和 store 操作之前，必须先执行过了 assign 和 load 操作</p>
+<p>一个变量在同一个时刻只允许一条线程对其执行 lock 操作，但 lock 操作可以被同一条线程重复执行多次，多次执行lock后，只有执行相同次数的 unlock 操作，变量才会被解锁</p>
+<p>如果对一个变量执行 lock 操作，将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行 load 或 assign 操作初始化变量的值</p>
+<p>如果一个变量没有被 lock 操作锁定，则不允许对它执行 unlock 操作，也不能 unlock 一个被其他线程锁定的变量</p>
+<p>对一个变量执行 unlock 操作之前，必须先把此变量同步回主内存（执行 store 和 write  操作）</p>
+<h2 id="2、volatile特性"><a href="#2、volatile特性" class="headerlink" title="2、volatile特性"></a>2、volatile特性</h2><h3 id="1-多线程中的可见性"><a href="#1-多线程中的可见性" class="headerlink" title="1. 多线程中的可见性"></a>1. 多线程中的可见性</h3><p>可见性：就是一个线程修改了变量，其他线程可以知道</p>
+<p>保证可见性的常见方法：volatile、synchronized、final（一旦初始化完成，其他线程就可见）</p>
+<h3 id="2-volatile"><a href="#2-volatile" class="headerlink" title="2. volatile"></a>2. volatile</h3><p>volatile 基本上是 JVM 提供的最轻量级的同步机制，用 volatile 修饰的变量，对所有的线程可见，即对 volatile 变量所做的写操作能立即反映到其他线程中</p>
+<p>用 volatile 修饰的变量，在多线程环境下仍然是不安全的</p>
+<p>volatile 修饰的变量，是禁止指令重排优化的</p>
+<p>适合使用 valatile 的场景</p>
+<ul>
 <li>运算结果不依赖变量的当前值</li>
 <li>确保只有一个线程修改变量的值</li>
 </ul>
-</li>
-</ul>
-<h2 id="3、指令重排"><a href="#3、指令重排" class="headerlink" title="3、指令重排"></a>3、指令重排</h2><ul>
-<li>指令重排：指的是 JVM 为了优化，在条件允许的情况下，对指令进行一定的重新排列，直接运行当前能够立即执行的后序指令，避开获取下一条指令所需数据造成的等待</li>
-<li>线程内串行语义，不考虑多线程间的语义</li>
-<li>不是所有的指令都能重排，比如：<ul>
+<h2 id="3、指令重排"><a href="#3、指令重排" class="headerlink" title="3、指令重排"></a>3、指令重排</h2><p>指令重排：指的是 JVM 为了优化，在条件允许的情况下，对指令进行一定的重新排列，直接运行当前能够立即执行的后序指令，避开获取下一条指令所需数据造成的等待</p>
+<p>线程内串行语义，不考虑多线程间的语义</p>
+<p>不是所有的指令都能重排，比如：</p>
+<ul>
 <li>写后读 a = 1； b = a；写一个变量之后，再读这个位置</li>
 <li>写后写 a = 1；a = 2；写一个变量之后，再写这个变量</li>
 <li>读后写 a = b；b = 1；读一个变量之后，再写这个变量</li>
 </ul>
-</li>
-<li>以上语句不可重排，但是 a = 1；b = 2；是可以重排的</li>
-<li>程序顺序原则：一个线程内保证语义的串行性</li>
-<li>volatile规则：volatile 变量的写，先发生于读</li>
-<li>锁规则：解锁（unlock）必然发生在随后的加锁（lock）前</li>
-<li>传递性：A 先于 B，B 先于 C，那么 A 必然先于 C</li>
-<li>线程的 start 方法先于它的每一个动作</li>
-<li>线程的所有操作先于线程的终结</li>
-<li>线程中断（interrupt()）先于被中断线程的代码</li>
-<li>对象的构造函数执行结束先于 finalize() 方法</li>
-</ul>
-<h2 id="4、Java线程安全的处理方法"><a href="#4、Java线程安全的处理方法" class="headerlink" title="4、Java线程安全的处理方法"></a>4、Java线程安全的处理方法</h2><ul>
-<li>不可变是线程安全的</li>
-<li>互斥同步（阻塞同步）：synchronized、java.util.concurrent.ReentrantLock。目前这两个方法性能已经差不多了，建议优先选用 synchronized，ReentrantLock 增加了如下特性：<ul>
+<p>以上语句不可重排，但是 a = 1；b = 2；是可以重排的</p>
+<p>程序顺序原则：一个线程内保证语义的串行性</p>
+<p>volatile规则：volatile 变量的写，先发生于读</p>
+<p>锁规则：解锁（unlock）必然发生在随后的加锁（lock）前</p>
+<p>传递性：A 先于 B，B 先于 C，那么 A 必然先于 C</p>
+<p>线程的 start 方法先于它的每一个动作</p>
+<p>线程的所有操作先于线程的终结</p>
+<p>线程中断（interrupt()）先于被中断线程的代码</p>
+<p>对象的构造函数执行结束先于 finalize() 方法</p>
+<h2 id="4、Java线程安全的处理方法"><a href="#4、Java线程安全的处理方法" class="headerlink" title="4、Java线程安全的处理方法"></a>4、Java线程安全的处理方法</h2><p>不可变是线程安全的</p>
+<p>互斥同步（阻塞同步）：synchronized、java.util.concurrent.ReentrantLock。目前这两个方法性能已经差不多了，建议优先选用 synchronized，ReentrantLock 增加了如下特性：</p>
+<ul>
 <li>等待可中断：当持有锁的线程长时间不释放锁，正在等待的线程可以选择放弃等待</li>
 <li>公平锁：多个线程等待同一个锁时，须严格按照申请锁的时间顺序来获取锁</li>
 <li>锁绑定多个条件：一个 ReentrantLock 对象可以绑定多个 condition 对象，而 synchronized 是针对一个条件的，如果要多个，就得有多个锁</li>
 </ul>
-</li>
-<li>非阻塞同步：是一种基于冲突检查的乐观锁策略，通常是先操作，如果没有冲突，操作就成功了，有冲突再采取其他方式进行补偿处理</li>
-<li>无同步方案：其实就是在多线程中，方法并不涉及共享数据，自然也就无需同步了</li>
-</ul>
-<h2 id="5、锁优化"><a href="#5、锁优化" class="headerlink" title="5、锁优化"></a>5、锁优化</h2><h3 id="1-自旋锁与自适应自旋"><a href="#1-自旋锁与自适应自旋" class="headerlink" title="1. 自旋锁与自适应自旋"></a>1. 自旋锁与自适应自旋</h3><ul>
-<li>自旋：如果线程可以很快获得锁，那么可以不再 OS 层挂起线程，而是让线程做几个忙循环，这就是自旋</li>
-<li>自适应自旋：自旋的时间不再固定，而是由前一次在同一个锁上的自旋时间和锁的拥有者状态来决定</li>
-<li>如果锁被占用时间很短，自旋成功，那么能节省线程挂起、以及切换时间，从而提升系统性能</li>
-<li>如果锁被占用时间很长，自旋失败，会白白浪费处理器资源，降低系统性能</li>
-</ul>
-<h3 id="2-锁消除"><a href="#2-锁消除" class="headerlink" title="2. 锁消除"></a>2. 锁消除</h3><ul>
-<li><p>在编译代码的时候，检测到根本不存在共享数据竞争，自然也就无需同步加锁了；通过 -XX:+EliminateLocks 来开启</p>
-</li>
-<li><p>同时要使用 -XX:DoEscapeAnalysis 开启逃逸分析</p>
+<p>非阻塞同步：是一种基于冲突检查的乐观锁策略，通常是先操作，如果没有冲突，操作就成功了，有冲突再采取其他方式进行补偿处理</p>
+<p>无同步方案：其实就是在多线程中，方法并不涉及共享数据，自然也就无需同步了</p>
+<h2 id="5、锁优化"><a href="#5、锁优化" class="headerlink" title="5、锁优化"></a>5、锁优化</h2><h3 id="1-自旋锁与自适应自旋"><a href="#1-自旋锁与自适应自旋" class="headerlink" title="1. 自旋锁与自适应自旋"></a>1. 自旋锁与自适应自旋</h3><p>自旋：如果线程可以很快获得锁，那么可以不再 OS 层挂起线程，而是让线程做几个忙循环，这就是自旋</p>
+<p>自适应自旋：自旋的时间不再固定，而是由前一次在同一个锁上的自旋时间和锁的拥有者状态来决定</p>
+<p>如果锁被占用时间很短，自旋成功，那么能节省线程挂起、以及切换时间，从而提升系统性能</p>
+<p>如果锁被占用时间很长，自旋失败，会白白浪费处理器资源，降低系统性能</p>
+<h3 id="2-锁消除"><a href="#2-锁消除" class="headerlink" title="2. 锁消除"></a>2. 锁消除</h3><p>在编译代码的时候，检测到根本不存在共享数据竞争，自然也就无需同步加锁了；通过 -XX:+EliminateLocks 来开启</p>
+<p>同时要使用 -XX:DoEscapeAnalysis 开启逃逸分析</p>
 <blockquote>
 <p>逃逸分析：</p>
 <ol>
@@ -1191,86 +1069,48 @@
 <li>如果对象可能被其他外部线程访问，称为线程逃逸，比如赋值给类变量或者可以在其他线程中访问的实例变量 </li>
 </ol>
 </blockquote>
-</li>
-</ul>
-<h3 id="3-锁粗化"><a href="#3-锁粗化" class="headerlink" title="3. 锁粗化"></a>3. 锁粗化</h3><ul>
-<li>通常我们都要求同步块要小，但一系列连续的操作导致一个对象反复的加锁和解锁，这会导致不必要的性能损耗。这种情况建议把锁同步的范围加大到整个操作序列</li>
-</ul>
-<h3 id="4-轻量级锁"><a href="#4-轻量级锁" class="headerlink" title="4. 轻量级锁"></a>4. 轻量级锁</h3><ul>
-<li>轻量级是相对于传统锁机制而言，本意是没有多线程竞争的情况下，减少传统锁机制使用 OS 实现互斥所产生的性能损耗</li>
-<li>其实现原理很简单，就是类似乐观锁的方式</li>
-<li>如果轻量级锁失败，表示存在竞争，升级为重量级锁，导致性能下降</li>
-</ul>
-<h3 id="5-偏向锁"><a href="#5-偏向锁" class="headerlink" title="5. 偏向锁"></a>5. 偏向锁</h3><ul>
-<li>偏向锁是在无竞争情况下，直接把整个同步消除了，连乐观锁都不用，从而提高性能；所谓的偏向，就是偏心，即锁会偏向于当前已经占有锁的线程</li>
-<li>只要没有竞争，获得偏向锁的线程，在将来进入同步块，也不需要做同步</li>
-<li>当有其他线程请求相同的锁时，偏向模式结束</li>
-<li>如果程序中大多数锁总是被多个线程访问的时候，也就是竞争比较激烈，偏向锁反而会降低性能</li>
-<li>使用 -XX:-UseBiasedLocking 来禁用偏向锁，默认开启</li>
-</ul>
-<h3 id="6-JVM-中获取锁的步骤"><a href="#6-JVM-中获取锁的步骤" class="headerlink" title="6. JVM 中获取锁的步骤"></a>6. JVM 中获取锁的步骤</h3><ul>
-<li>会先尝试偏向锁；然后尝试轻量级锁</li>
-<li>再然后尝试自旋锁</li>
-<li>最后尝试普通锁，使用 OS 互斥量在操作系统层挂起</li>
-</ul>
-<h3 id="7-同步代码的基本规则"><a href="#7-同步代码的基本规则" class="headerlink" title="7. 同步代码的基本规则"></a>7. 同步代码的基本规则</h3><ul>
-<li>尽量减少持有锁的时间</li>
-<li>尽量减少锁的粒度</li>
-</ul>
-<h1 id="七、性能监控与故障处理工具"><a href="#七、性能监控与故障处理工具" class="headerlink" title="七、性能监控与故障处理工具"></a>七、性能监控与故障处理工具</h1><h2 id="1、命令行工具"><a href="#1、命令行工具" class="headerlink" title="1、命令行工具"></a>1、命令行工具</h2><ul>
-<li>命令行工具：jps、jinfo、jstack、jmap、jstat、jstatd、jcmd</li>
-<li>图形化工具：jconsole、jmc、visualvm</li>
-<li>两种连接方式：JMX、jstatd</li>
-</ul>
-<h3 id="1-JVM-检测工具的作用"><a href="#1-JVM-检测工具的作用" class="headerlink" title="1. JVM 检测工具的作用"></a>1. JVM 检测工具的作用</h3><ul>
-<li>对 jvm 运行期间的内部情况进行监控，比如：对 jvm 参数、CPU、内存、堆等信息的查看</li>
-<li>辅助进行性能调优</li>
-<li>辅助解决应用运行时的一些问题，比如：OutOfMemoryError、内存泄漏、线程死锁、锁争用、Java进程消耗 CPU 过高 等等</li>
-</ul>
-<h3 id="2-jps"><a href="#2-jps" class="headerlink" title="2. jps"></a>2. jps</h3><ul>
-<li>jps（JVM Process Status Tool）：主要用来输出 JVM 中运行的进程状态信息，语法格式如下：jps [options] [hostid]</li>
-<li>hostid 字符串的语法与 URI 的语法基本一致：[protocol:] [ [ // ] hostname] [ :port ] [/servername]，如果不指定hostid，默认为当前主机或服务器</li>
-</ul>
-<h3 id="3-jinfo"><a href="#3-jinfo" class="headerlink" title="3. jinfo"></a>3. jinfo</h3><ul>
-<li>打印给定进程或核心或远程调试服务器的配置信息。语法格式：jinfo  [option] pid  #指定进程号（pid）的进程</li>
-<li>jinfo [ option ] &lt;executable <core> #指定核心文件</core></li>
-<li>jinfo [option] [server-id@] <remote-hostname-or-ip> #指定远程调试服务器</remote-hostname-or-ip></li>
-</ul>
-<h3 id="4-jstack"><a href="#4-jstack" class="headerlink" title="4. jstack"></a>4. jstack</h3><ul>
-<li>jstack 主要用来查看某个 Java 进程内的线程堆栈信息。语法格式如下：jstack [option] pid</li>
-<li>jstack [option] executable core</li>
-<li>jstack [option] [server-id@] remorte-hostname-or-ip</li>
-</ul>
-<h3 id="5-jmap"><a href="#5-jmap" class="headerlink" title="5. jmap"></a>5. jmap</h3><ul>
-<li>jmap 用来查看堆内存使用情况，语法格式如下：jmap [option] pid</li>
-<li>jmap [option] executable core</li>
-<li>jmap [option] [server-id@] remote-hostname-or-ip</li>
-</ul>
-<h3 id="6-jstat"><a href="#6-jstat" class="headerlink" title="6. jstat"></a>6. jstat</h3><ul>
-<li>JVM 统计监测工具，查看各个区域内存和 GC 的情况</li>
-<li>语法格式如下：jstat [generalOption | outputOptions vmid [interval[s|ms] [count]]]</li>
-</ul>
-<h3 id="7-jstated"><a href="#7-jstated" class="headerlink" title="7. jstated"></a>7. jstated</h3><ul>
-<li>虚拟机的 jstat 守护进行，主要用于监控 JVM 的创建与终止，并提供一个接口，以有序远程监视工具附加到本地系统上运行的 JVM、</li>
-<li>语法格式： jstatd [ options ]</li>
-</ul>
-<h3 id="8-jcmd"><a href="#8-jcmd" class="headerlink" title="8. jcmd"></a>8. jcmd</h3><ul>
-<li>JVM 诊断工具，将诊断命令请求发送到正在运行的额 Java 虚拟机，比如可以用来导出堆，查看 java 进程，导出线程信息，执行 GC 等</li>
-</ul>
-<h2 id="2、图形化工具"><a href="#2、图形化工具" class="headerlink" title="2、图形化工具"></a>2、图形化工具</h2><h3 id="1-jconsole"><a href="#1-jconsole" class="headerlink" title="1. jconsole"></a>1. jconsole</h3><ul>
-<li>一个用于监视 Java 虚拟机的符合 JMX的图形工具。它可以监视本地和远程 JVM，还可以监视和管理应用程序</li>
-</ul>
-<h3 id="2-jmc"><a href="#2-jmc" class="headerlink" title="2. jmc"></a>2. jmc</h3><ul>
-<li>jmc（JDK Mission Control）Java 任务控制（JMC）客户端包括用于监视和管理 Java 应用程序的工具，而不是引入通常与这些类型的工具相关联的性能开销</li>
-</ul>
-<h3 id="3-VisualVM"><a href="#3-VisualVM" class="headerlink" title="3. VisualVM"></a>3. VisualVM</h3><ul>
-<li>一个图形工具，它提供有关在 Java 虚拟机中运行的基于 Java 技术的应用程序的详细信息</li>
-<li>Java VisualVM 提供内存和 CPU 分析，堆转储分析，内存泄漏检测，访问 MBean 和垃圾回收</li>
-</ul>
-<h2 id="3、远程连接"><a href="#3、远程连接" class="headerlink" title="3、远程连接"></a>3、远程连接</h2><ul>
-<li>JMX 连接可以查看：系统信息、CPU使用情况、线程多少、手动执行垃圾回收等比较偏于系统层面的信息</li>
-<li>jstatd 连接方式可以提供：JVM 内存分布详细信息、垃圾回收分布图、线程详细信息，甚至可以看到某个对象使用内存的大小</li>
-</ul>
+<h3 id="3-锁粗化"><a href="#3-锁粗化" class="headerlink" title="3. 锁粗化"></a>3. 锁粗化</h3><p>通常我们都要求同步块要小，但一系列连续的操作导致一个对象反复的加锁和解锁，这会导致不必要的性能损耗。这种情况建议把锁同步的范围加大到整个操作序列</p>
+<h3 id="4-轻量级锁"><a href="#4-轻量级锁" class="headerlink" title="4. 轻量级锁"></a>4. 轻量级锁</h3><p>轻量级是相对于传统锁机制而言，本意是没有多线程竞争的情况下，减少传统锁机制使用 OS 实现互斥所产生的性能损耗</p>
+<p>其实现原理很简单，就是类似乐观锁的方式</p>
+<p>如果轻量级锁失败，表示存在竞争，升级为重量级锁，导致性能下降</p>
+<h3 id="5-偏向锁"><a href="#5-偏向锁" class="headerlink" title="5. 偏向锁"></a>5. 偏向锁</h3><p>偏向锁是在无竞争情况下，直接把整个同步消除了，连乐观锁都不用，从而提高性能；所谓的偏向，就是偏心，即锁会偏向于当前已经占有锁的线程</p>
+<p>只要没有竞争，获得偏向锁的线程，在将来进入同步块，也不需要做同步</p>
+<p>当有其他线程请求相同的锁时，偏向模式结束</p>
+<p>如果程序中大多数锁总是被多个线程访问的时候，也就是竞争比较激烈，偏向锁反而会降低性能</p>
+<p>使用 -XX:-UseBiasedLocking 来禁用偏向锁，默认开启</p>
+<h3 id="6-JVM-中获取锁的步骤"><a href="#6-JVM-中获取锁的步骤" class="headerlink" title="6. JVM 中获取锁的步骤"></a>6. JVM 中获取锁的步骤</h3><p>会先尝试偏向锁；然后尝试轻量级锁</p>
+<p>再然后尝试自旋锁</p>
+<p>最后尝试普通锁，使用 OS 互斥量在操作系统层挂起</p>
+<h3 id="7-同步代码的基本规则"><a href="#7-同步代码的基本规则" class="headerlink" title="7. 同步代码的基本规则"></a>7. 同步代码的基本规则</h3><p>尽量减少持有锁的时间</p>
+<p>尽量减少锁的粒度</p>
+<h1 id="七、性能监控与故障处理工具"><a href="#七、性能监控与故障处理工具" class="headerlink" title="七、性能监控与故障处理工具"></a>七、性能监控与故障处理工具</h1><h2 id="1、命令行工具"><a href="#1、命令行工具" class="headerlink" title="1、命令行工具"></a>1、命令行工具</h2><p>命令行工具：jps、jinfo、jstack、jmap、jstat、jstatd、jcmd</p>
+<p>图形化工具：jconsole、jmc、visualvm</p>
+<p>两种连接方式：JMX、jstatd</p>
+<h3 id="1-JVM-检测工具的作用"><a href="#1-JVM-检测工具的作用" class="headerlink" title="1. JVM 检测工具的作用"></a>1. JVM 检测工具的作用</h3><p>对 jvm 运行期间的内部情况进行监控，比如：对 jvm 参数、CPU、内存、堆等信息的查看</p>
+<p>辅助进行性能调优</p>
+<p>辅助解决应用运行时的一些问题，比如：OutOfMemoryError、内存泄漏、线程死锁、锁争用、Java进程消耗 CPU 过高 等等</p>
+<h3 id="2-jps"><a href="#2-jps" class="headerlink" title="2. jps"></a>2. jps</h3><p>jps（JVM Process Status Tool）：主要用来输出 JVM 中运行的进程状态信息，语法格式如下：jps [options] [hostid]</p>
+<p>hostid 字符串的语法与 URI 的语法基本一致：[protocol:] [ [ // ] hostname] [ :port ] [/servername]，如果不指定hostid，默认为当前主机或服务器</p>
+<h3 id="3-jinfo"><a href="#3-jinfo" class="headerlink" title="3. jinfo"></a>3. jinfo</h3><p>打印给定进程或核心或远程调试服务器的配置信息。语法格式：jinfo  [option] pid  #指定进程号（pid）的进程</p>
+<p>jinfo [ option ] &lt;executable <core> #指定核心文件</core></p>
+<p>jinfo [option] [server-id@] <remote-hostname-or-ip> #指定远程调试服务器</remote-hostname-or-ip></p>
+<h3 id="4-jstack"><a href="#4-jstack" class="headerlink" title="4. jstack"></a>4. jstack</h3><p>jstack 主要用来查看某个 Java 进程内的线程堆栈信息。语法格式如下：jstack [option] pid</p>
+<p>jstack [option] executable core</p>
+<p>jstack [option] [server-id@] remorte-hostname-or-ip</p>
+<h3 id="5-jmap"><a href="#5-jmap" class="headerlink" title="5. jmap"></a>5. jmap</h3><p>jmap 用来查看堆内存使用情况，语法格式如下：jmap [option] pid</p>
+<p>jmap [option] executable core</p>
+<p>jmap [option] [server-id@] remote-hostname-or-ip</p>
+<h3 id="6-jstat"><a href="#6-jstat" class="headerlink" title="6. jstat"></a>6. jstat</h3><p>JVM 统计监测工具，查看各个区域内存和 GC 的情况</p>
+<p>语法格式如下：jstat [generalOption | outputOptions vmid [interval[s|ms] [count]]]</p>
+<h3 id="7-jstated"><a href="#7-jstated" class="headerlink" title="7. jstated"></a>7. jstated</h3><p>虚拟机的 jstat 守护进行，主要用于监控 JVM 的创建与终止，并提供一个接口，以有序远程监视工具附加到本地系统上运行的 JVM、</p>
+<p>语法格式： jstatd [ options ]</p>
+<h3 id="8-jcmd"><a href="#8-jcmd" class="headerlink" title="8. jcmd"></a>8. jcmd</h3><p>JVM 诊断工具，将诊断命令请求发送到正在运行的额 Java 虚拟机，比如可以用来导出堆，查看 java 进程，导出线程信息，执行 GC 等</p>
+<h2 id="2、图形化工具"><a href="#2、图形化工具" class="headerlink" title="2、图形化工具"></a>2、图形化工具</h2><h3 id="1-jconsole"><a href="#1-jconsole" class="headerlink" title="1. jconsole"></a>1. jconsole</h3><p>一个用于监视 Java 虚拟机的符合 JMX的图形工具。它可以监视本地和远程 JVM，还可以监视和管理应用程序</p>
+<h3 id="2-jmc"><a href="#2-jmc" class="headerlink" title="2. jmc"></a>2. jmc</h3><p>jmc（JDK Mission Control）Java 任务控制（JMC）客户端包括用于监视和管理 Java 应用程序的工具，而不是引入通常与这些类型的工具相关联的性能开销</p>
+<h3 id="3-VisualVM"><a href="#3-VisualVM" class="headerlink" title="3. VisualVM"></a>3. VisualVM</h3><p>一个图形工具，它提供有关在 Java 虚拟机中运行的基于 Java 技术的应用程序的详细信息</p>
+<p>Java VisualVM 提供内存和 CPU 分析，堆转储分析，内存泄漏检测，访问 MBean 和垃圾回收</p>
+<h2 id="3、远程连接"><a href="#3、远程连接" class="headerlink" title="3、远程连接"></a>3、远程连接</h2><p>JMX 连接可以查看：系统信息、CPU使用情况、线程多少、手动执行垃圾回收等比较偏于系统层面的信息</p>
+<p>jstatd 连接方式可以提供：JVM 内存分布详细信息、垃圾回收分布图、线程详细信息，甚至可以看到某个对象使用内存的大小</p>
 
                 
             </div>
@@ -1510,7 +1350,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/16/jvm/jvm-la-ji-hui-shou-qi/">
+                <a href="/2022/05/16/jvm/la-ji-hui-shou-qi/">
                     <div class="card-image">
                         
                         
@@ -1835,7 +1675,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">617.6k</span>&nbsp;字
+                class="white-color">622.1k</span>&nbsp;字
             
             
             

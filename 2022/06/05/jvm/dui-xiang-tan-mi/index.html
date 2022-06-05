@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JVM 的各种小算法们, 帅枫">
+    <meta name="keywords" content="对象探秘, 帅枫">
     <meta name="description" content="朝着成功前进">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JVM 的各种小算法们 | 帅枫</title>
+    <title>对象探秘 | 帅枫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -301,12 +301,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JVM 的各种小算法们</h1>
+                    <h1 class="description center-align post-title">对象探秘</h1>
                 </div>
             </div>
         </div>
@@ -422,8 +422,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JVM-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">JVM 垃圾回收算法</span>
+                            <a href="/tags/%E5%AF%B9%E8%B1%A1/">
+                                <span class="chip bg-color">对象</span>
                             </a>
                         
                     </div>
@@ -447,28 +447,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-16
+                    2022-06-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-03-27
+                    2022-06-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    20 分
+                    10 分
                 </div>
                 
 
@@ -491,329 +491,75 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、垃圾标记阶段的算法之引用计数算法"><a href="#一、垃圾标记阶段的算法之引用计数算法" class="headerlink" title="一、垃圾标记阶段的算法之引用计数算法"></a>一、垃圾标记阶段的算法之引用计数算法</h2><h3 id="一、垃圾标记阶段：对象存活判断"><a href="#一、垃圾标记阶段：对象存活判断" class="headerlink" title="一、垃圾标记阶段：对象存活判断"></a>一、垃圾标记阶段：对象存活判断</h3><ul>
-<li>在堆里存放着几乎所有的Java对象实例，在GC执行垃圾回收之前，首先需要区分出内存中哪些是存活对象，哪些是已经死亡的对象，只有被标记为已经死亡的对象，GC才会在执行垃圾回收时，释放掉其所占用的内存空间，因此这个过程我们可以称为垃圾标记阶段。</li>
-<li>那么JVM中究竟是如何标记一个死亡对象的呢？简单来说，当一个对象已经不再被任何的存活对象继续引用时，就可以宣判为已经死亡。</li>
-<li>判断对象存活的方式一般有两种方式：引用计数算法和 可达性分析算法。</li>
+                <h1 id="HotSpot虚拟机对象探秘"><a href="#HotSpot虚拟机对象探秘" class="headerlink" title="HotSpot虚拟机对象探秘"></a>HotSpot虚拟机对象探秘</h1><h2 id="一、对象的创建"><a href="#一、对象的创建" class="headerlink" title="一、对象的创建"></a>一、对象的创建</h2><p>Java是一门面向对象的编程语言，Java程序运行过程中无时无刻都有对象被创建出来。在语言层面上，创建对象通常（例外：复制、反序列化）仅仅是一个new关键字而已，而在虚拟机中，对象（文中讨论的对象限于普通Java对象，不包括数组和Class对象等）的创建又是怎样一个过程呢？</p>
+<h3 id="1、类加载"><a href="#1、类加载" class="headerlink" title="1、类加载"></a>1、类加载</h3><p>当Java虚拟机遇到一条字节码new指令时，首先将去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已被加载、解析和初始化过。如果没有，那必须先执行相应的类加载过程。</p>
+<h3 id="2、内存分配"><a href="#2、内存分配" class="headerlink" title="2、内存分配"></a>2、内存分配</h3><p>在类加载检查通过后，接下来虚拟机将为新生对象分配内存。对象所需内存的大小在类加载完成后便可完全确定，为对象分配空间的任务实际上便等同于把一块确定大小的内存块从Java堆中划分出来。</p>
+<p>假设Java堆中内存是绝对规整的，所有被使用过的内存都被放在一边，空闲的内存被放在另一边，中间放着一个指针作为分界点的指示器，那所分配内存就仅仅是把那个指针向空闲空间方向挪动一段与对象大小相等的距离，这种分配方式称为“指针碰撞”（Bump ThePointer）。</p>
+<p>但如果Java堆中的内存并不是规整的，已被使用的内存和空闲的内存相互交错在一起，那就没有办法简单地进行指针碰撞了，虚拟机就必须维护一个列表，记录上哪些内存块是可用的，在分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录，这种分配方式称为“空闲列表”（Free List）。</p>
+<p>选择哪种分配方式由Java堆是否规整决定，而Java堆是否规整又由所采用的垃圾收集器是否带有空间压缩整理（Compact）的能力决定。因此，当使用Serial、ParNew等带压缩整理过程的收集器时，系统采用的分配算法是指针碰撞，既简单又高效；</p>
+<p>而当使用CMS这种基于清除（Sweep）算法的收集器时，理论上就只能采用较为复杂的空闲列表来分配内存。</p>
+<h3 id="3、内存分配并发问题"><a href="#3、内存分配并发问题" class="headerlink" title="3、内存分配并发问题"></a>3、内存分配并发问题</h3><p>除如何划分可用空间之外，还有另外一个需要考虑的问题：对象创建在虚拟机中是非常频繁的行为，即使仅仅修改一个指针所指向的位置，在并发情况下也并不是线程安全的，可能出现正在给对象A分配内存，指针还没来得及修改，对象B又同时使用了原来的指针来分配内存的情况。</p>
+<p>解决这个问题有两种可选方案：</p>
+<ul>
+<li>  一种是对分配内存空间的动作进行同步处理——实际上虚拟机是采用CAS配上失败重试的方式保证更新操作的原子性；</li>
+<li>  另外一种是把内存分配的动作按照线程划分在不同的空间之中进行，即每个线程在Java堆中预先分配一小块内存，称为本地线程分配缓冲（Thread Local AllocationBuffer，TLAB），哪个线程要分配内存，就在哪个线程的本地缓冲区中分配，只有本地缓冲区用完了，分配新的缓存区时才需要同步锁定。</li>
 </ul>
-<h3 id="二、方式一：引用计数算法"><a href="#二、方式一：引用计数算法" class="headerlink" title="二、方式一：引用计数算法"></a>二、方式一：引用计数算法</h3><ul>
-<li>引用计数算法（Reference Counting)比较简单，对每个对象保存一个整数型的引用计数器属性，用于记录这个对象被引用的情况。</li>
-<li>对于一个对象A，只要有任何一个对象引用了A，则A的引用计数器就加1；当引用失效时，引用计数器就减1。只要对象A的引用计数器的值为0，即表示对象A不可能再被使用，可进行回收。</li>
-<li>优点：实现简单，垃圾对象便于识别；判定效率高，回收没有延迟性。</li>
-<li>缺点：<ul>
-<li>它需要单独的字段存储计数器，这样的做法增加了存储空间的开销。</li>
-<li>每次赋值都需要更新计数器，伴随着加法和减法的操作，这增加了时间开销。</li>
-<li>引用计数器有一个严重的问题，即无法处理循环引用的情况。这是一条致命缺陷，导致在Java的垃圾回收器中没有使用这类算法。</li>
-</ul>
-</li>
-</ul>
-<h3 id="三、循环引用"><a href="#三、循环引用" class="headerlink" title="三、循环引用"></a>三、循环引用</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114756871.png" alt="image-20220327114756871" style="zoom:80%;">
-
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RefCountGC</span> <span class="token punctuation">{</span>
-    <span class="token comment">// 这个成员属性唯一的作用就是占用一点内存</span>
-    <span class="token keyword">private</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bigSize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">5</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">// 5MB</span>
-    <span class="token class-name">Object</span> reference <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">RefCountGC</span> obj1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RefCountGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">RefCountGC</span> obj2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RefCountGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        obj1<span class="token punctuation">.</span>reference <span class="token operator">=</span> obj2<span class="token punctuation">;</span>
-        obj2<span class="token punctuation">.</span>reference <span class="token operator">=</span> obj1<span class="token punctuation">;</span>
-        obj1 <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-        obj2 <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-        
-        <span class="token comment">// 显示的执行垃圾回收行为。</span>
-        <span class="token comment">// 这里发生GC，obj1 和 obj2能否被回收？</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114802900.png" alt="image-20220327114802900" style="zoom:80%;">
-
 <blockquote>
-<p>如果不小心直接把Obj1-reference 和 Obj2-reference 置于null。则在Java堆当中的两块内存依然保持着相互引用，无法回收。</p>
+<p>  虚拟机是否使用TLAB，可以通过-XX：+/-UseTLAB参数来设定</p>
 </blockquote>
-<h3 id="四、小结"><a href="#四、小结" class="headerlink" title="四、小结"></a>四、小结</h3><ul>
-<li>引用计数算法，是很多语言的资源回收选择，例如因人工智能而更加火热的Python，它更是同时支持引用计数和垃圾收集机制。</li>
-<li>具体哪种最优是要看场景的，业界有大规模实践中仅保留引用计数机制，以提高吞吐量的尝试。</li>
-<li>Java并没有选择引用计数，是因为其存在一个基本问题，也就是很难处理循环引用关系。</li>
-<li>Python如何解决循环引用？<ul>
-<li>手动解除：很好理解，就是在合适的时机，解除引用关系。</li>
-<li>使用弱引用weakref，weakref是Python提供的标准库，旨在解决循环引用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="二、垃圾标记阶段的算法之可达性分析算法"><a href="#二、垃圾标记阶段的算法之可达性分析算法" class="headerlink" title="二、垃圾标记阶段的算法之可达性分析算法"></a>二、垃圾标记阶段的算法之可达性分析算法</h2><h3 id="一、方式二：可达性分析（或根搜索算法、追踪性垃圾收集）"><a href="#一、方式二：可达性分析（或根搜索算法、追踪性垃圾收集）" class="headerlink" title="一、方式二：可达性分析（或根搜索算法、追踪性垃圾收集）"></a>一、方式二：可达性分析（或根搜索算法、追踪性垃圾收集）</h3><ul>
-<li>相对于引用计数算法而言，可达性分析算法不仅同样具备实现简单和执行高效等特点，更重要的是该算法可以有效地解决在引用计数算法中循环引用的问题，防止内存泄露的发生。</li>
-<li>相较于引用计数算法，这里的可达性分析就是Java、C#选择的。这种类型的垃圾收集通常也叫做追踪性垃圾收集（Tracing Garbage Collection)。</li>
-<li>所谓“GC Roots”根集合就是一组必须活跃的引用。</li>
-<li>基本思路：<ul>
-<li>可达性分析算法是以根对象集合（GC Roots）为起始点，按照从上至下的方式搜索被根对象集合所连接的目标对象是否可达。</li>
-<li>使用可达性分析算法后，内存中的存活对象都会被根对象集合直接或间接连接着，搜索所走过的路径称为引用链（Reference Chain）</li>
-<li>如果目标对象没有任何引用链相连，则是不可达的，这就意味着该对象已经死亡，可以标记为垃圾对象。</li>
-<li>在可达性分析算法中，只能够被根对象集合直接或者间接连续的对象才存活对象。</li>
-</ul>
-</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114808975.png" alt="image-20220327114808975" style="zoom:80%;">
-
-<blockquote>
-<p>这个算法比较常用</p>
-</blockquote>
-<h3 id="二、GC-Roots"><a href="#二、GC-Roots" class="headerlink" title="二、GC Roots"></a>二、GC Roots</h3><p>在Java语言中，GC Roots 包含以下几种元素：</p>
-<ul>
-<li>虚拟机栈中引用的对象<ul>
-<li>比如：各个线程被调用的方法中使用到的参数、局部变量。</li>
-</ul>
-</li>
-<li>本地方法栈内JNI（通常说的本地方法）引用的对象。</li>
-<li>方法区中类静态属性引用的对象<ul>
-<li>比如：Java类的引用类型静态变量。</li>
-</ul>
-</li>
-<li>方法区中常量引用的对象<ul>
-<li>比如：字符串常量池（String Table）里的引用</li>
-</ul>
-</li>
-<li>所有被同步锁sychronized持有的对象。</li>
-<li>Java虚拟机内部的引用。<ul>
-<li>基本数据类型对应的Class对象，一些常驻的异常对象。</li>
-<li>如：NullPointerException、OutOfMemoryError），系统类加载器。</li>
-</ul>
-</li>
-<li>反映java虚拟机内部情况的JMXBean、JVMTI中注册的回调、本地代码缓存等。</li>
-<li>除了这些固定的GC Roots集合以外，根据用户所选用的垃圾收集器以当前回收的内存区域不同，还可以有其他对象“临时性”地加入，共同构成完整GC Roots集合。比如：分代收集和局部回收（Partial GC)。<ul>
-<li>如果只针对Java堆中的某一块区域进行垃圾回收（比如：典型的只针对新生代），必须考虑到内存区域是虚拟机自己的实现细节，更不是孤立封闭的，这个区域的对象完全有可能被其他区域的对象所引用，这时候就需要一并将关联的区域对象也加入GC Roots集合中去考虑，才能保证可达性分析的准确性。</li>
-</ul>
-</li>
-<li>小技巧：<ul>
-<li>由于Root 采用 栈方式存放变量和指针，所以如果一个指针，它保存了堆内存里面的对象，但是自己又不存放在堆内存里面，那它就是一个Root。</li>
-</ul>
-</li>
-</ul>
-<h3 id="三、注意"><a href="#三、注意" class="headerlink" title="三、注意"></a>三、注意</h3><ul>
-<li>如果要使用可达性分析算法来判断内存是否可回收，那么分析工作必须在一个保障一致性的快照中进行。这点不满足的话分析结果的准确性就无法保证。</li>
-<li>这点也是导致GC进行时必须“Stop The Word”的一个重要原因。<ul>
-<li>即使是号称（几乎）不会发生停顿的CMS收集器中，枚举根节点时也是必须要停顿的。</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、对象的finalization机制"><a href="#三、对象的finalization机制" class="headerlink" title="三、对象的finalization机制"></a>三、对象的finalization机制</h2><h3 id="一、对象的finalization机制"><a href="#一、对象的finalization机制" class="headerlink" title="一、对象的finalization机制"></a>一、对象的finalization机制</h3><ul>
-<li>Java语言提供了对象终止（finalization）机制来允许开发人员提供对象被销毁之前的自定义处理逻辑。</li>
-<li>当垃圾回收器没有引用指向一个对象，即：垃圾回收此对象之前，总会先调用这个对象的finalize()方法。</li>
-<li>finalize( ) 方法允许在子类中被重写， 用于在对象被回收时进行资源释放。通常在这个方法中进行一些资源释放和清理的工作，比如关闭文件、套接字和数据库连接等。</li>
-<li>永远不要主动调用某个对象的finalize（）方法，应该交给垃圾回收机制调用。理由包括下面三点：<ul>
-<li>在finalize()时可能会导致对象复活。</li>
-<li>finalize()方法的执行时间是没有保障的，它完全由GC线程决定，极端情况下，若不发生GC，则finalize( ) 方法将没有执行机会。</li>
-<li>一个糟糕的finalize（）会严重影响GC的性能。</li>
-</ul>
-</li>
-<li>从功能上来说，finalize（）方法与C++中的析构函数比较类似，但是Java采用的是基于垃圾回收器的自动内存管理机制，所以在finalize() 方法在本质上不同于C++中的析构函数。</li>
-<li>由于finalize（）方法的存在，虚拟机中的对象一般处于三种可能的状态。</li>
-</ul>
-<h3 id="二、生存还是死亡"><a href="#二、生存还是死亡" class="headerlink" title="二、生存还是死亡"></a>二、生存还是死亡</h3><ul>
-<li>如果从所有的根节点都无法访问到某个对象，说明对象已经不再使用了。一般来说，此时对象需要被回收。但事实上，也并非是“非死不可”的，这时候他们暂时处于“缓刑”阶段。一个无法触及的对象有可能在某一个条件下“复活”自己，如果这样，那么对它的回收就是不合理的，为此，定义虚拟机中的对象可能的三种状态。如下：<ul>
-<li>可触及的：从根节点开始，可以达到这个对象。</li>
-<li>可复活的：对象的所有引用都被释放，但是对象有可能在finalize（）中复活。</li>
-<li>不可触及的：对象的finalize（）被调用，并且没有复活，那么就会进入不可触及状态。不可触及的对象不可能被复活，因为finalize（）只会被调用一次。</li>
-</ul>
-</li>
-<li>以上三种转态中，是由于finalize（）方法的存在，进行的区分。只有在对象不可触及时才可以被回收。</li>
-</ul>
-<h3 id="三、具体过程"><a href="#三、具体过程" class="headerlink" title="三、具体过程"></a>三、具体过程</h3><ul>
-<li>判定一个对象objA是否可回收的，至少要经历两次标记过程：<ul>
-<li>如果对象objA到 GC Roots没有引用链，则进行第一次标记。</li>
-<li>进行筛选，判断此对象是否有必要执行finalize（）方法<ul>
-<li>如果对象objA没有重写finalize()方法，或者finalize（）方法已经被虚拟机调用过，则虚拟机视为“没有必要执行”，objA被判定为不可触及的。</li>
-<li>如果对象objA 重写了finalize（）方法，且还未执行过，那么objA会被插入到F-Queue队列中，由一个虚拟机自动创建，低优先级的Finalizer线程触发其finalize（）方法执行。</li>
-<li>finalize（）方法时对象逃脱死亡的最后机会，稍后GC会对F-Queue队列中的对象进行第二次标记。如果objA 在finalize()方法中与引用链上的任何一个对象建立了联系，那么在第二次标记时，obj会被移出“即将回收”集合。之后，对象会再次出现没有引用存在的情况。在这个情况下，finalize（）方法不会被再次调用，对象会直接变成可不触及的状态，也就是说，一个对象的finalize方法只会被调用一次。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="四、垃圾清除阶段算法之标记-清除算法"><a href="#四、垃圾清除阶段算法之标记-清除算法" class="headerlink" title="四、垃圾清除阶段算法之标记-清除算法"></a>四、垃圾清除阶段算法之标记-清除算法</h2><h3 id="一、垃圾清除阶段"><a href="#一、垃圾清除阶段" class="headerlink" title="一、垃圾清除阶段"></a>一、垃圾清除阶段</h3><ul>
-<li>当成功区分出内存中存活对象和死亡对象后，GC 接下来就是执行垃圾回收，释放掉无用对象所占用的内存空间，以便有足够的可用内存空间为新对象分配内存。</li>
-<li>目前在JVM中比较常见的三种垃圾收集算法是标记-清除算法（Mark-Sweep）、复制算法（Copying）、标记-压缩算法（Mark-Compact）。</li>
-</ul>
-<h3 id="二、标记-清除（Mark-Sweep-算法"><a href="#二、标记-清除（Mark-Sweep-算法" class="headerlink" title="二、标记-清除（Mark-Sweep)算法"></a>二、标记-清除（Mark-Sweep)算法</h3><ul>
-<li>背景：标记-清除算法（Mark-Sweep）是一种非常基础和常见的垃圾收集算法，该算法被J.McCarthy等人在1960年提出并应用于Lisp语言。</li>
-<li>执行过程：当堆中的有效内存空间（available memory）被耗尽的时候，就会停止整个程序（也被称为stop the world），然后进行两项工作，第一项则是标记，第二项则是清除。<ul>
-<li>标记：Collector从引用根节点开始遍历，标记所有被引用的对象。一般是在对象的Header中记录为可达对象。</li>
-<li>清除：Collector对堆内存从头到尾进行线性的遍历，如果发生某个对象在其Header中没有标记为可达对象，则将其回收。</li>
-</ul>
-</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114818883.png" alt="image-20220327114818883" style="zoom:80%;">
-
-<ul>
-<li>缺点：<ul>
-<li>效率不高</li>
-<li>在进行GC的时候，需要停止整个应用程序，导致用户体验差</li>
-<li>这种方式清理出来的空闲内存不是连续的，产生内存碎片。需要维护一个空闲列表。</li>
-</ul>
-</li>
-<li>注意：何为清除？<ul>
-<li>这里所谓的清除并不是真的置空，而是要把需要清除的对象地址保存在空闲的地址列表里。下次有新对象需要加载时，判断垃圾的位置空间是否足够，如果够，就存放。</li>
-</ul>
-</li>
-</ul>
-<h2 id="五、垃圾清除阶段算法之复制算法"><a href="#五、垃圾清除阶段算法之复制算法" class="headerlink" title="五、垃圾清除阶段算法之复制算法"></a>五、垃圾清除阶段算法之复制算法</h2><h3 id="一、复制（Copying）算法"><a href="#一、复制（Copying）算法" class="headerlink" title="一、复制（Copying）算法"></a>一、复制（Copying）算法</h3><ul>
-<li>背景：为了解决标记-清除算法在垃圾收集效率方面的缺陷，M.L.Minsky于1963年发表了著名的论文。M.L.Minsky在该论文中描述的算法被人们称为复制（Copying）算法，它也被M.L.Minsky本人成功地引入到了Lisp语言的一个实现版本中。</li>
-<li>核心思想；将活着的内存空间分为两块，每次只是用其中一块，在垃圾回收时将正在使用的内存中存活的对象复制到未被使用的内存块中，之后清除正在使用的内存块中的所有对象，交换两个内存的角色，最后完成垃圾回收。</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114826183.png" alt="image-20220327114826183" style="zoom:80%;">
-
-<ul>
-<li><p>优点：</p>
-<ul>
-<li>没有标记和清除过程，实现简单，运行高效。</li>
-<li>复制过去以后保证空间的连续性，不会出现“碎片“问题。</li>
-</ul>
-</li>
-<li><p>缺点：</p>
-<ul>
-<li>此算法的缺点是也是很明显的，就是需要两倍的内存空间。</li>
-<li>对于G1这种拆分成为大量region的GC，复制而不是移动，意味着GC需要维护region之间对象引用关系，不管是内存占用或者时间开销也不小。</li>
-</ul>
-</li>
-<li><p>特别的：</p>
-<ul>
-<li>如果系统中的垃圾对象很多，复制算法需要复制的存活对象 数量并不会太大，或者说非常低才行。</li>
-<li>即特别适合垃圾对象很多，存活对象很少的场景；例如：Young区的Survivor（）和Survivor1区。</li>
-</ul>
-</li>
-<li><p>应用场景：</p>
-<ul>
-<li>在新生代，对常规应用垃圾回收，一次通常可以回收70%-99%的内存空间。回收性价比很高。所以现在的商业虚拟机都是用这种收集算法回收新生代。</li>
-</ul>
-</li>
-</ul>
-<h2 id="六、垃圾清除阶段算法之标记-压缩（整理）算法"><a href="#六、垃圾清除阶段算法之标记-压缩（整理）算法" class="headerlink" title="六、垃圾清除阶段算法之标记-压缩（整理）算法"></a>六、垃圾清除阶段算法之标记-压缩（整理）算法</h2><h3 id="一、标记-压缩（或标记-整理、Mark-Compact-算法"><a href="#一、标记-压缩（或标记-整理、Mark-Compact-算法" class="headerlink" title="一、标记-压缩（或标记-整理、Mark-Compact) 算法"></a>一、标记-压缩（或标记-整理、Mark-Compact) 算法</h3><ul>
-<li>背景：复制算法的高效性是建立在存活对象少、垃圾对象多的前提下。这种情况在新生代经常发生，但是在老年代，更常见的情况是大部分对象都是存活对象。如果依然使用复制算法，由于存活对象比较多，复制的成本也将很高。因此，基于老年代垃圾回收的特性，需要使用其他的算法。</li>
-<li>标记-清除算法的确可以应用在老年代中，但是该算法不仅执行效率低下，而且在执行完内存回收后还会产生内存碎片，所以JVM的设计者需要在此基础之上进行改进。标记-压缩（Mark-Compact）算法由此诞生。</li>
-<li>1970 年前后，G. L. Steele 、 C. J. Chene 和 D.S. Wise等研究这发布标记-压缩算法。在许多现代的垃圾收集器中，人们都使用了标记-压缩算法或其他改进版本。</li>
-</ul>
-<h3 id="二、执行过程"><a href="#二、执行过程" class="headerlink" title="二、执行过程"></a>二、执行过程</h3><ul>
-<li>第一阶段和标记清除算法一样，从根节点开始标记所有被引用对象。</li>
-<li>第二阶段将所有存活对象压缩到内存的一端，按顺序排放。</li>
-<li>之后，清理边界外所有的空间。</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114852549.png" alt="image-20220327114852549" style="zoom:80%;">
-
-<ul>
-<li><p>标记-压缩算法的最终效果等同于标记-清除算法执行完成后，再进行一次内存碎片整理，因此，也可以把它称为标记-清除-压缩（Mark-Sweep-Compact）算法。</p>
-</li>
-<li><p>二者的本质差异在于标记-清除算法是一种非移动式的回收算法，标记-压缩是移动的。是否移动会后后的存活对象是一项优缺点并存的风险决策。</p>
-</li>
-<li><p>可以看到，标记的存活对象将会被整理，按照内存地址依次次排列，而未被标记的内存会被清理掉。如此一来，当我们需要给新对象分配内存时，JVM只需要持有一个内存的起始地址即可，这比维护一个空闲列表显然少了许多开销。</p>
-</li>
-</ul>
-<h3 id="三、指针碰撞"><a href="#三、指针碰撞" class="headerlink" title="三、指针碰撞"></a>三、指针碰撞</h3><ul>
-<li>如果内存空间以规整和有序的方式分布，即已用和未用的内存各自一边，彼此之间维系着一个记录下一次分配起始点的标记指针，当为新对象分配内存时，只需要通过修改指针的偏移量将新对象分配在第一个空闲内存位置上，这种分配方式就是指针碰撞（Bump the Pointer)。</li>
-<li>优点：<ul>
-<li>消除了标记-清除算法当中，内存区域分散的缺点，我们需要给新对象分配内存时，JVM只需要持有一个内存的起始地址即可。</li>
-<li>消除了复制算法当中，内存减半的高额代价。</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>从效率上说，标记-整理算法要低于复制算法。</li>
-<li>移动对象的同时，如果对象被其他对象引用，则还需要调整引用的地址。</li>
-<li>移动过程中，需要全程暂停用户应用程序。即：STW。</li>
-</ul>
-</li>
-</ul>
-<h2 id="七、小结"><a href="#七、小结" class="headerlink" title="七、小结"></a>七、小结</h2><h3 id="一、对比三种算法"><a href="#一、对比三种算法" class="headerlink" title="一、对比三种算法"></a>一、对比三种算法</h3><table>
+<h3 id="4、零值设定"><a href="#4、零值设定" class="headerlink" title="4、零值设定"></a>4、零值设定</h3><p>内存分配完成之后，虚拟机必须将分配到的内存空间（但不包括对象头）都初始化为零值，如果使用了TLAB的话，这一项工作也可以提前至TLAB分配时顺便进行。这步操作保证了对象的实例字段在Java代码中可以不赋初始值就直接使用，使程序能访问到这些字段的数据类型所对应的零值。</p>
+<h3 id="5、对象设置"><a href="#5、对象设置" class="headerlink" title="5、对象设置"></a>5、对象设置</h3><p>接下来，Java虚拟机还要对对象进行必要的设置，例如这个对象是哪个类的实例、如何才能找到类的元数据信息、对象的哈希码（实际上对象的哈希码会延后到真正调用Object::hashCode()方法时才计算）、对象的GC分代年龄等信息。这些信息存放在对象的对象头（Object Header）之中。根据虚拟机当前运行状态的不同，如是否启用偏向锁等，对象头会有不同的设置方式。关于对象头的具体内容，稍后会详细介绍。</p>
+<h3 id="6、初始化"><a href="#6、初始化" class="headerlink" title="6、初始化"></a>6、初始化</h3><p>在上面工作都完成之后，从虚拟机的视角来看，一个新的对象已经产生了。但是从Java程序的视角看来，对象创建才刚刚开始——构造函数，即Class文件中的&lt; init&gt;()方法还没有执行，所有的字段都为默认的零值，对象需要的其他资源和状态信息也还没有按照预定的意图构造好。一般来说（由字节码流中new指令后面是否跟随invokespecial指令所决定，Java编译器会在遇到new关键字的地方同时生成这两条字节码指令，但如果直接通过其他方式产生的则不一定如此），new指令之后会接着执行&lt; init&gt;()方法，按照程序员的意愿对对象进行初始化，这样一个真正可用的对象才算完全被构造出来。</p>
+<h2 id="二、对象的内存布局"><a href="#二、对象的内存布局" class="headerlink" title="二、对象的内存布局"></a>二、对象的内存布局</h2><h3 id="1、对象头"><a href="#1、对象头" class="headerlink" title="1、对象头"></a>1、对象头</h3><p>在HotSpot虚拟机里，对象在堆内存中的存储布局可以划分为三个部分：对象头（Header）、实例数据（Instance Data）和对齐填充（Padding）。</p>
+<p>HotSpot虚拟机对象的对象头部分包括两类信息：</p>
+<p>第一类是用于存储对象自身的运行时数据，如哈希码（HashCode）、GC分代年龄、锁状态标志、线程持有锁、偏向线程ID、偏向时间戳等，这部分数据的长度在32位和64位的虚拟机（未开启压缩指针）中分别为32个比特和64个比特，官方称它为“Mark Word”。对象需要存储的运行时数据很多，其实已经超出了32、64位Bitmap结构所能记录的最大限度，但对象头里的信息是与对象自身定义的数据无关的额外存储成本，考虑到虚拟机的空间效率，Mark Word被设计成一个有着动态定义的数据结构，以便在极小的空间内存储尽量多的数据，根据对象的状态复用自己的存储空间。例如在32位的HotSpot虚拟机中，如对象未被同步锁锁定的状态下，Mark Word的32个比特存储空间中的25个比特用于存储对象哈希码，4个比特用于存储对象分代年龄，2个比特用于存储锁标志位，1个比特固定为0，在其他状态（轻量级锁定、重量级锁定、GC标记、可偏向）下对象的存储内容如表所示：</p>
+<table>
 <thead>
 <tr>
-<th></th>
-<th>Mark-Sweep</th>
-<th>Mark-Compact</th>
-<th>Copying</th>
+<th>存储内容</th>
+<th>标志位</th>
+<th>状态</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>速度</td>
-<td>中等</td>
-<td>最慢</td>
-<td>最快</td>
+<td>对象哈希码、对象分代年龄</td>
+<td>01</td>
+<td>未锁定</td>
 </tr>
 <tr>
-<td>空间开销</td>
-<td>少（但会堆积碎片）</td>
-<td>少（不堆积碎片）</td>
-<td>通常需要活对象的2倍大小（不堆积碎片）</td>
+<td>指向锁记录的指针</td>
+<td>00</td>
+<td>轻量级锁定</td>
 </tr>
 <tr>
-<td>移动对象</td>
-<td>否</td>
-<td>是</td>
-<td>是</td>
+<td>执行重量级锁的指针</td>
+<td>10</td>
+<td>膨胀（总量级锁定）</td>
+</tr>
+<tr>
+<td>空，不需要记录的信息</td>
+<td>11</td>
+<td>GC标记</td>
+</tr>
+<tr>
+<td>偏向线程ID，偏向时间戳，对象分代年龄</td>
+<td>01</td>
+<td>可偏向</td>
 </tr>
 </tbody></table>
-<ul>
-<li>效率上说，复制算法是当之无愧的老大，但是却浪费了太多内存。</li>
-<li>而为了尽量兼顾上面提到的三个指标，标记-整理算法相对来说更平滑一些，但是效率上不尽人意，它比复制算法多了一个标记阶段，比标记-清除多了一个整理内存的阶段。</li>
-</ul>
-<h2 id="八、分代收集算法"><a href="#八、分代收集算法" class="headerlink" title="八、分代收集算法"></a>八、分代收集算法</h2><ul>
-<li><p>难道就没有一种最优算法吗？</p>
-</li>
-<li><p>没有最好的算法，只有最合适的算法。</p>
-</li>
-<li><p>前面所有这些算法中，并没有一种算法可以完全替代其他算法，它们都具有自己独特的优势和特点。分代收集算法应运而生。</p>
-</li>
-<li><p>分代收集算法，是基于这样一个事实：不同的对象生命周期是不一样的。因此，不同生命周期的对象可以采取不同的收集方式，以便提高回收效率。一般是把Java堆分为新生代和老年代，这样就可以根据各个年代的特点使用不同的回收算法，以提高垃圾回收的效率。</p>
-</li>
-<li><p>在Java程序运行的过程中，会产生大量对象，其中有些对象是与业务信息相关，比如Http请求中的Session对象、线程、Socket连接，这类对象根业务直接挂钩，因此生命周期比较长。但是还有一些对象，主要是程序运行过程中生成的临时变量，这些对象生命周期会比较短，比如：String对象，由于其不变类的特性，系统会产生大量的这些对象，有些对象甚至只用一次即可回收。</p>
-</li>
-<li><p>目前几乎所有的GC都是采用分代收集（Generational Collecting)算法执行垃圾回收的。</p>
-</li>
-<li><p>在HotSpot中，基于分代的概念，GC所使用的内存回收算法必须结合年轻代和老年代各自的特点。</p>
-</li>
-<li><p>年轻代（Young Gen）</p>
-<ul>
-<li>年轻代特点：区域相对老年代较小，对象生命周期短、存活率低、回收频繁。</li>
-<li>这种情况复制算法的回收整理，速度是最快的。复制算法的效率只和当前存活对象大小有关，因此很适用于年轻代的回收，而复制算法内存利用率不高的问题，通过HotSpot中的两个survivor的设计得到缓解。</li>
-</ul>
-</li>
-<li><p>老年代（Tenured Gen）</p>
-<ul>
-<li>老年代特点：区域较大，对象生命周期长、存活率高、回收不及年轻代频繁。</li>
-<li>这种情况存在大量存活率高的对象，复制算法明显变的不合适，一般是由标记-清除或者是标记-清除与标记-整理的混合实现 。<ul>
-<li>Mark阶段的开销与存活对象的数量成正比。</li>
-<li>Sweep阶段的开销与所管理区域的大小成正相关。</li>
-<li>Compact阶段的开销与存活对象的数据成正比。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>以HotSpot中的CMS回收器为例，CMS是基于Mark-Sweep实现的，对于对象的回收效率很高。而对于碎片问题，CMS采用基于Mark——Compact算法的Serial Old回收器作为补偿措施：当内存回收不佳（碎片导致的Concurrent Mode Failure时），将采用Serial Old执行Full GC已达到老年代内存的整理。</p>
-</li>
-<li><p>分代的思想被现有的虚拟机广泛使用。几乎所有的垃圾回收器都区分新生代和老年代。</p>
-</li>
-</ul>
-<h2 id="九、增量收集算法、区分算法"><a href="#九、增量收集算法、区分算法" class="headerlink" title="九、增量收集算法、区分算法"></a>九、增量收集算法、区分算法</h2><h3 id="一、增量收集算法"><a href="#一、增量收集算法" class="headerlink" title="一、增量收集算法"></a>一、增量收集算法</h3><ul>
-<li>上述现有的算法，在垃圾回收过程中，应用软件将处于Stop the World的状态。在Stop the World的状态下，应用程序所有的线程都会挂起，暂停一切正常的工作，等待垃圾回收的完成。如果垃圾回收时间长，应用程序会被挂起很久，将严重影响用户体验或者系统的稳定性。为了解决这个问题，即堆实时垃圾收集算法的研究直接导致了增量收集（Increment Collecting）算法的诞生。</li>
-<li>基本思想：<ul>
-<li>如果一次性将所有的垃圾进行处理，需要造成系统长时间的停顿，那么就可以让垃圾收集线程和应用程序线程交替执行。每次，垃圾收集线程只收集一小片区域的内存空间，接着切换到应用程序线程。依次反复，直到垃圾收集完成。</li>
-</ul>
-</li>
-<li>总的来说，增量收集算法的基础仍是传统的标记-清除和复制算法。增量收集算法通过对线程间冲突的妥善处理，允许垃圾收集线程以分段的方式完成标记、清理或复制工作。</li>
-<li>缺点：使用这种方式，由于在垃圾回收过程中，间断性地还执行了应用程序代码，所以能减少系统的停顿时间。但是，因为线程切换和上下文转换的消耗，会使得垃圾回收的总体成本上升，造成系统吞吐量的下降。</li>
-</ul>
-<h3 id="二、分区算法"><a href="#二、分区算法" class="headerlink" title="二、分区算法"></a>二、分区算法</h3><ul>
-<li>一般来说，在相同的情况下，堆空间越大，一次GC时所需要的的时间就越长，有关GC产生的停顿时间也越长。为了更好地控制GC产生的停顿时间，将一块大的内存区域分割成多个小块，根据目的的停顿时间，每次合理地回收若干个小区间，而不是整个堆空间，从而减少一次GC所产生的停顿。</li>
-<li>分代算法按照对象的生命周期长短换分成两个部分，分区算法将整个堆划分成连续的不同小区间。</li>
-<li>每一个区间都独立使用，独立回收。这种算法的好处是可以控制一次回收多少个小区间。</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114901060.png" alt="image-20220327114901060" style="zoom:80%;">
+<p>对象头的另外一部分是类型指针，即对象指向它的类型元数据的指针，Java虚拟机通过这个指针来确定该对象是哪个类的实例。并不是所有的虚拟机实现都必须在对象数据上保留类型指针，换句话说，查找对象的元数据信息并不一定要经过对象本身。此外，如果对象是一个Java数组，那在对象头中还必须有一块用于记录数组长度的数据，因为虚拟机可以通过普通 Java对象的元数据信息确定Java对象的大小，但是如果数组的长度是不确定的，将无法通过元数据中的信息推断出数组的大小。</p>
+<h3 id="2、数据部分"><a href="#2、数据部分" class="headerlink" title="2、数据部分"></a>2、数据部分</h3><p>接下来实例数据部分是对象真正存储的有效信息，即我们在程序代码里面所定义的各种类型的字段内容，无论是从父类继承下来的，还是在子类中定义的字段都必须记录起来。</p>
+<p>这部分的存储顺序会受到虚拟机分配策略参数（-XX：FieldsAllocationStyle参数）和字段在Java源码中定义顺序的影响。</p>
+<p>HotSpot虚拟机默认的分配顺序为 longs/doubles、ints、shorts/chars、bytes/booleans、oops（Ordinary Object Pointers，OOPs），从以上默认的分配策略中可以看到，相同宽度的字段总是被分配到一起存放，在满足这个前提条件的情况下，在父类中定义的变量会出现在子类之前。如果HotSpot虚拟机的 +XX：CompactFields参数值为true（默认就为true），那子类之中较窄的变量也允许插入父类变量的空隙之中，以节省出一点点空间。</p>
+<h3 id="3、对其填充"><a href="#3、对其填充" class="headerlink" title="3、对其填充"></a>3、对其填充</h3><p>对象的第三部分是对齐填充，这并不是必然存在的，也没有特别的含义，它仅仅起着占位符的作用。由于HotSpot虚拟机的自动内存管理系统要求对象起始地址必须是8字节的整数倍，换句话说就是任何对象的大小都必须是8字节的整数倍。对象头部分已经被精心设计成正好是8字节的倍数（1倍或者2倍），因此，如果对象实例数据部分没有对齐的话，就需要通过对齐填充来补全。</p>
+<h2 id="三、对象的访问定位"><a href="#三、对象的访问定位" class="headerlink" title="三、对象的访问定位"></a>三、对象的访问定位</h2><p>创建对象自然是为了后续使用该对象，我们的Java程序会通过栈上的reference数据来操作堆上的具体对象。由于reference类型在《Java虚拟机规范》里面只规定了它是一个指向对象的引用，并没有定义这个引用应该通过什么方式去定位、访问到堆中对象的具体位置，所以对象访问方式也是由虚拟机实现而定的，主流的访问方式主要有使用句柄和直接指针两种：</p>
+<h3 id="1、句柄"><a href="#1、句柄" class="headerlink" title="1、句柄"></a>1、句柄</h3><p>如果使用句柄访问的话，Java堆中将可能会划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址，而句柄中包含了对象实例数据与类型数据各自具体的地址信息，其结构如图所示：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220605204916774.png" alt="image-20220605204916774" style="zoom:80%;">
 
-<blockquote>
-<p>注意：这些只是基本的算法思路，实际GC实现过程要复杂的多，目前还在发展中的前沿GC都是复合算法，并且实行并发兼备。</p>
-</blockquote>
-<blockquote>
-<p>巨人的肩膀：</p>
-<p>尚硅谷 JVM</p>
-</blockquote>
+<h3 id="2、直接指针"><a href="#2、直接指针" class="headerlink" title="2、直接指针"></a>2、直接指针</h3><p>如果使用直接指针访问的话，Java堆中对象的内存布局就必须考虑如何放置访问类型数据的相关信息，reference中存储的直接就是对象地址，如果只是访问对象本身的话，就不需要多一次间接访问的开销，如图所示：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220605204958569.png" alt="image-20220605204958569" style="zoom:80%;">
+
+<p>使用直接指针来访问最大的好处就是速度更快，它节省了一次指针定位的时间开销，由于对象访问在Java中非常频繁，因此这类开销积少成多也是一项极为可观的执行成本，就主要虚拟机HotSpot而言，它主要使用第二种方式进行对象访问（有例外情况，如果使用了Shenandoah收集器的话也会有一次额外的转发），但从整个软件开发的范围来看，在各种语言、框架中使用句柄来访问的情况也十分常见。</p>
 
                 
             </div>
@@ -840,7 +586,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kuangtf.github.io/2022/05/16/jvm/jvm-la-ji-hui-shou-suan-fa/">https://kuangtf.github.io/2022/05/16/jvm/jvm-la-ji-hui-shou-suan-fa/</a>
+                    <a href="https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/">https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -878,8 +624,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JVM-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">JVM 垃圾回收算法</span>
+                                <a href="/tags/%E5%AF%B9%E8%B1%A1/">
+                                    <span class="chip bg-color">对象</span>
                                 </a>
                             
                         </div>
@@ -1053,13 +799,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/16/jvm/jvm-dui/">
+                <a href="/2022/06/05/jvm/java-chang-liang-chi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JVM 堆的那些琐事">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java 常量池">
                         
-                        <span class="card-title">JVM 堆的那些琐事</span>
+                        <span class="card-title">Java 常量池</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1070,7 +816,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-05
                         </span>
                         <span class="publish-author">
                             
@@ -1087,8 +833,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM-%E5%A0%86/">
-                        <span class="chip bg-color">JVM 堆</span>
+                    <a href="/tags/Java-%E5%B8%B8%E9%87%8F%E6%B1%A0/">
+                        <span class="chip bg-color">Java 常量池</span>
                     </a>
                     
                 </div>
@@ -1102,13 +848,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/16/jvm/jvm-la-ji-hui-shou-xiang-guan-gai-nian-jian-shu/">
+                <a href="/2022/06/04/kafka/kafka-zhi-sheng-chan-zhe-yu-xiao-fei-zhe/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="浅谈 JVM 垃圾回收相关概念">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Kafka之生产者与消费者">
                         
-                        <span class="card-title">浅谈 JVM 垃圾回收相关概念</span>
+                        <span class="card-title">Kafka之生产者与消费者</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1119,14 +865,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JVM/" class="post-category">
-                                    JVM
+                            <a href="/categories/Kafka/" class="post-category">
+                                    Kafka
                                 </a>
                             
                             
@@ -1136,8 +882,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%A6%82%E8%BF%B0/">
-                        <span class="chip bg-color">JVM 垃圾回收概述</span>
+                    <a href="/tags/Kafka%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/">
+                        <span class="chip bg-color">Kafka快速入门与实战</span>
                     </a>
                     
                 </div>
@@ -1378,7 +1124,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">617.6k</span>&nbsp;字
+                class="white-color">622.1k</span>&nbsp;字
             
             
             

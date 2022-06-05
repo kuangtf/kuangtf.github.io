@@ -6,7 +6,7 @@
   <link href="https://kuangtf.github.io/atom.xml" rel="self"/>
   
   <link href="https://kuangtf.github.io/"/>
-  <updated>2022-06-04T12:47:25.828Z</updated>
+  <updated>2022-06-05T13:08:45.772Z</updated>
   <id>https://kuangtf.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 常量池</title>
+    <link href="https://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/"/>
+    <id>https://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/</id>
+    <published>2022-06-05T13:07:53.000Z</published>
+    <updated>2022-06-05T13:08:45.772Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;java常量池&quot;&gt;&lt;a href=&quot;#java常量池&quot; class=&quot;headerlink&quot; title=&quot;java常量池&quot;&gt;&lt;/a&gt;java常量池&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    
+    
+    <category term="Java 常量池" scheme="https://kuangtf.github.io/tags/Java-%E5%B8%B8%E9%87%8F%E6%B1%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>对象探秘</title>
+    <link href="https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/"/>
+    <id>https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/</id>
+    <published>2022-06-05T12:53:44.000Z</published>
+    <updated>2022-06-05T12:54:59.185Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;HotSpot虚拟机对象探秘&quot;&gt;&lt;a href=&quot;#HotSpot虚拟机对象探秘&quot; class=&quot;headerlink&quot; title=&quot;HotSpot虚拟机对象探秘&quot;&gt;&lt;/a&gt;HotSpot虚拟机对象探秘&lt;/h1&gt;&lt;h2 id=&quot;一、对象的创建&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    
+    
+    <category term="对象" scheme="https://kuangtf.github.io/tags/%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Kafka之生产者与消费者</title>
@@ -470,56 +520,6 @@
     
     
     <category term="负载均衡算法" scheme="https://kuangtf.github.io/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分布式ID</title>
-    <link href="https://kuangtf.github.io/2022/05/16/fen-bu-shi/fen-bu-shi-id/"/>
-    <id>https://kuangtf.github.io/2022/05/16/fen-bu-shi/fen-bu-shi-id/</id>
-    <published>2022-05-16T12:25:17.363Z</published>
-    <updated>2022-03-27T06:34:55.028Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;一、分布式ID&quot;&gt;&lt;a href=&quot;#一、分布式ID&quot; class=&quot;headerlink&quot; title=&quot;一、分布式ID&quot;&gt;&lt;/a&gt;一、分布式ID&lt;/h2&gt;&lt;h3 id=&quot;1、何为-ID？&quot;&gt;&lt;a href=&quot;#1、何为-ID？&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="分布式" scheme="https://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-    <category term="分布式ID" scheme="https://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8FID/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一致性哈希，圈圈圈圈 圆圆圆圆</title>
-    <link href="https://kuangtf.github.io/2022/05/16/fen-bu-shi/yi-zhi-xing-ha-xi/"/>
-    <id>https://kuangtf.github.io/2022/05/16/fen-bu-shi/yi-zhi-xing-ha-xi/</id>
-    <published>2022-05-16T12:25:17.360Z</published>
-    <updated>2022-03-27T06:35:00.912Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;为什么要有一致性哈希算法&quot;&gt;&lt;a href=&quot;#为什么要有一致性哈希算法&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="分布式" scheme="https://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-    <category term="一致性哈希" scheme="https://kuangtf.github.io/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C/"/>
     
   </entry>
   

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="浅谈 JVM 方法区, 帅枫">
+    <meta name="keywords" content="你知道一个类是如何加载的吗, 帅枫">
     <meta name="description" content="朝着成功前进">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>浅谈 JVM 方法区 | 帅枫</title>
+    <title>你知道一个类是如何加载的吗 | 帅枫</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -301,12 +301,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">浅谈 JVM 方法区</h1>
+                    <h1 class="description center-align post-title">你知道一个类是如何加载的吗</h1>
                 </div>
             </div>
         </div>
@@ -422,8 +422,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JVM-%E6%96%B9%E6%B3%95%E5%8C%BA/">
-                                <span class="chip bg-color">JVM 方法区</span>
+                            <a href="/tags/JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">JVM 类加载子系统</span>
                             </a>
                         
                     </div>
@@ -454,21 +454,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-03-27
+                    2022-06-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    10 分
                 </div>
                 
 
@@ -491,276 +491,261 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、栈、堆、方法区的交互关系"><a href="#一、栈、堆、方法区的交互关系" class="headerlink" title="一、栈、堆、方法区的交互关系"></a>一、栈、堆、方法区的交互关系</h2><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114448397.png" alt="image-20220327114448397" style="zoom:80%;">
+                <h2 id="一、内存结构概述"><a href="#一、内存结构概述" class="headerlink" title="一、内存结构概述"></a>一、内存结构概述</h2><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114957141.png" alt="image-20220327114957141" style="zoom:80%;">
 
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114453994.png" alt="image-20220327114453994" style="zoom:80%;">
-
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114500066.png" alt="image-20220327114500066" style="zoom:80%;">
-
-<h2 id="二、方法区的理解"><a href="#二、方法区的理解" class="headerlink" title="二、方法区的理解"></a>二、方法区的理解</h2><h3 id="一、方法区在哪里？"><a href="#一、方法区在哪里？" class="headerlink" title="一、方法区在哪里？"></a>一、方法区在哪里？</h3><p>《Java虚拟机规范》中明确说明：”尽管所有的方法区在逻辑上是属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾回收或者进行压缩。“但对于 HotSpot JVM 而言，方法区还有一个别名叫做 Non-Heap（非堆），目的就是要和堆分开。</p>
-<p>所以，方法区看做是一块独立于 Java 堆的内存空间。</p>
-<h3 id="二、方法区的基本理解"><a href="#二、方法区的基本理解" class="headerlink" title="二、方法区的基本理解"></a>二、方法区的基本理解</h3><ul>
-<li>方法区（Method Area）与 Java 堆一样，是各个线程共享的内存区域。</li>
-<li>方法区在 JVM 启动的时候被创建，并且它的实际的物理内存空间中和 Java 堆区一样都可以是不连续的。</li>
-<li>方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。</li>
-<li>方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误：java.lang.OutOfMemoryErroe：PermGen space 或者 java.lang.OutOfMemoryError：Metaspace。<ul>
-<li>加载大量的第三方的jar包；Tomcat部署的工程过多（30-50）大量动态的生成反类。</li>
-</ul>
-</li>
-<li>关闭 JVM 就释放这个区域的内存。</li>
-</ul>
-<h3 id="三、Hotspot-中方法区的演进"><a href="#三、Hotspot-中方法区的演进" class="headerlink" title="三、Hotspot 中方法区的演进"></a>三、Hotspot 中方法区的演进</h3><ul>
-<li><p>在 JDK7 及以前，习惯上把所有方法区称为永久代。JDK8 开始使用元空间取代了永久代。</p>
-</li>
-<li><p>本质上，方法区和永久代并不等价。仅是对 hotspot 而言的。《Java虚拟机规范》对如何实现方法区，不做统一要求。例如：BEA JRockit / IBM J9中不存在永久代的概念。</p>
-<ul>
-<li>现在来看，当年使用永久代，不是好的 idea。导致 Java 程序更容易 OOM（超过 <code>-XX: MaxPermSize</code> 上限）</li>
-</ul>
-</li>
-<li><p>而到了 JDK8，终于完全废弃了永久代的概念，改用与 JRockit、J9 一样在本地内存中实现的元空间（Metaspace)来代替。</p>
-</li>
-<li><p>元空间的本质和永久代类似，都是对 JVM 规范中方法区的实现。不同元空间与永久代最大的区别在于：元空间不在虚拟机设置的内存中，而是使用本地内存。</p>
-</li>
-<li><p>永久代、元空间二者并不只是名字变了，内部结构也调整了。</p>
-</li>
-<li><p>根据《Java虚拟机规范》的规定，如果方法区无法满足新的内存分配需求时，将抛出 OOM 异常。</p>
-</li>
-</ul>
-<h2 id="三、设置方法区大小与-OOM"><a href="#三、设置方法区大小与-OOM" class="headerlink" title="三、设置方法区大小与 OOM"></a>三、设置方法区大小与 OOM</h2><h3 id="一、设置方法区内存的大小"><a href="#一、设置方法区内存的大小" class="headerlink" title="一、设置方法区内存的大小"></a>一、设置方法区内存的大小</h3><ul>
-<li>方法区的大小不必是固定，JVM 可以根据应用的需要动态调整。</li>
-<li>jdk7 及以前：<ul>
-<li>通过  <code>-XX:PermSize </code> 来设置永久代初始分配空间。默认值是 20.75M。</li>
-<li><code>-XX：MaxPermSize</code> 来设置永久代最大可分配空间。32 位机器默认是 64M，64 位机器模式是82M。</li>
-<li>当 JVM 加载的类信息容量超过了这个值，会报异常 OutOfMemoryError：PermGenspace。</li>
-</ul>
-</li>
-</ul>
-<h3 id="二、设置方法区内存的大小"><a href="#二、设置方法区内存的大小" class="headerlink" title="二、设置方法区内存的大小"></a>二、设置方法区内存的大小</h3><ul>
-<li>jdk8 及以后：<ul>
-<li>元数据区可以使用参数 <code>-XX：MetaspaceSize</code> 和 <code>-XX:MaxMetaspaceSize</code> 指定，替代上述原有的参数。</li>
-<li>默认值依赖平台。windows 下，<code>-XX：MetaspaceSize</code> 是 <code>21M，-XX：MaxMetaspaceSize</code> 的值是 -1， 即没有限制。</li>
-<li>与永久代不同，如果不指定大小，默认情况下，虚拟机会耗尽所有的可用系统内存。如果元数据区发生溢出，虚拟机一样会抛出异常 OutOfMemoryError：Metaspace。</li>
-<li>-<code>XX：MetaspaceSize</code> : 设置初始的元空间大小。对于一个 64 位的服务器端 JVM 来说，其默认的 <code>-XX：MetaspaceSize</code> 值为 21MB。这就是初始的高水位线，一旦触及这个水位线，Full GC 将会被触发并卸载没有用的类（即这些类对应的类加载器不再存活），然后这个高水位线将会重置。新的高水位线的值取决于 GC 后释放了多少元空间。如果释放的空间不足，那么在不超过<code>MaxMetaspaceSize</code> 时，适当提高该值。如果释放空间过多，则适当降低该值。</li>
-<li>如果初始化的高水位线设置过低，上述高水位调整情况会发生很多次。通过垃圾回收的日志可以观察到 Full GC 多次调用。为了避免频繁地 GC，建议将  <code>-XX：MetaspaceSize</code> 设置为一个相对较高的值。</li>
-</ul>
-</li>
-<li>举例：借助 CGLib 使得方法区出现内存溢出异常：</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaMehthodAreaOOM</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> main <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> argss<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token class-name">Enhancer</span> enhancer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Enhancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            enchaner<span class="token punctuation">.</span><span class="token function">setSuperclass</span><span class="token punctuation">(</span><span class="token class-name">OOMObject</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            enhancer<span class="token punctuation">.</span><span class="token function">estUseCache</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            enhancer<span class="token punctuation">.</span><span class="token function">setCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MathodInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">intercept</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj<span class="token punctuation">,</span> <span class="token class-name">Method</span> method<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">,</span> <span class="token class-name">MethodProxy</span> proxy<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">return</span> proxy<span class="token punctuation">.</span><span class="token function">invokeSuper</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            enhancer<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">OOMObject</span> <span class="token punctuation">{</span>
-        
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="三、如何解决这些-OOM？"><a href="#三、如何解决这些-OOM？" class="headerlink" title="三、如何解决这些 OOM？"></a>三、如何解决这些 OOM？</h3><ol>
-<li>要解决 OOM 异常或者 heap space 的异常，一般的手段是首先通过内存映射分析工具（如Eclipse Memory Analyzer）对 dump 出来的堆转储快照进行分析，重点是确认内存中的对象是否是必要的，也就是要先清楚到底什么时候出现了内存泄露（Memory Leak)还是内存溢出（Memory Overflow)。</li>
-<li>如果内存泄露，可进一步通过工具查看泄露对象到 GC Roots 的引用链。于是就能找到泄露对象是通过怎样的路径与 GC Roots 相关联并导致垃圾收集器无法自动回收他们的。掌握了泄露对象的类型信息，以及 GC Roots 引用链的信息，就可以比较准确地定位出泄露代码的位置。</li>
-<li>如果不存在内存泄露，换句话说就是内存中的对象确实都还必须活着，那就应当检查虚拟机的堆参数（<code>-Xmx</code> 与 <code>-Xms</code>），与机器物理内存对比看是否还可以调大，从代码上检查是否存在某些对象生命周期过长、持有状态时间过长的情况，尝试减少程序运行期的内存消耗。</li>
-</ol>
-<h2 id="四、方法区的内部结构"><a href="#四、方法区的内部结构" class="headerlink" title="四、方法区的内部结构"></a>四、方法区的内部结构</h2><h3 id="一、方法区（Method-Area）存储什么？"><a href="#一、方法区（Method-Area）存储什么？" class="headerlink" title="一、方法区（Method Area）存储什么？"></a>一、方法区（Method Area）存储什么？</h3><ul>
-<li>《深入理解Java虚拟机》书中对方法区（Method Area）存储内容描述如下：<ul>
-<li>它用于存储已被虚拟机加载类型信息、常量、静态变量、即时编译器编译后的代码缓存等。</li>
-</ul>
-</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114507427.png" alt="image-20220327114507427" style="zoom:80%;">
-
-<h3 id="二、方法区的内存结构"><a href="#二、方法区的内存结构" class="headerlink" title="二、方法区的内存结构"></a>二、方法区的内存结构</h3><ul>
-<li>类型信息，对每个加载的类型（类 class、接口 interface、枚举 enum、注解 annotation），JVM 必须在方法区中存储以下类型的信息：<ul>
-<li>这个类型的完整有效名称（全名=包名.类名)</li>
-<li>这个类型直接父类的完整有效名（对于 interface 或是j ava.lang.Object，都没有父类）</li>
-<li>这个类型的修饰符（public, abstract, final的某个子集）</li>
-<li>这个类型直接接口的一个有序列表。</li>
-</ul>
-</li>
-<li>域（Field）信息<ul>
-<li>JVM 必须在方法区中保存类型的所有域的相关信息以及域的声明顺序。</li>
-<li>域的相关信息包括：域名称、域类型、域修饰符（public, private, protected, static, final, volatile, transient的某个子集）</li>
-</ul>
-</li>
-<li>方法信息（Method）<ul>
-<li>方法名称</li>
-<li>方法的返回类型（或void)</li>
-<li>方法参数的数量和类型（按顺序）</li>
-<li>方法的修饰符（public， private, protected, static, final, synchronized, native, abstract 的一个子集）</li>
-<li>方法的字节码（bytecodes）、操作数栈、局部变量表及大小（abstract和native方法除外）</li>
-<li>异常表（abstract和native方法除外）<ul>
-<li>每个异常处理的开始位置、结束位置、代码处理在程序计数器中的偏移地址、被捕获的异常类的常量池索引。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>non-final 的类变量<ul>
-<li>静态变量和类关联在一起，随着类的加载而加载，它们成为类数据在逻辑上的一部分。</li>
-<li>类变量被类的所有实例共享，即使没有类实例时你也可以访问它。</li>
-</ul>
-</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MethodAreaTest</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">Order</span> order <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-        order<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>order<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hello!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二、类加载器与类的加载过程"><a href="#二、类加载器与类的加载过程" class="headerlink" title="二、类加载器与类的加载过程"></a>二、类加载器与类的加载过程</h2><h3 id="一、类加载器子系统作用"><a href="#一、类加载器子系统作用" class="headerlink" title="一、类加载器子系统作用"></a>一、类加载器子系统作用</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115004599.png" alt="image-20220327115004599" style="zoom:80%;">
 
 <ul>
-<li>补充说明：全局常量：static final<ul>
-<li>被声明为 final 的类变量的处理方法不同，每个全局常量在编译的时候就会被分配了。</li>
+<li>类加载器子系统负责从文件系统或者网络中加载class文件，class文件在文件开头有特定的文件标识。</li>
+<li><code>CLassLoader</code>只负责class文件的加载，至于他是否可以运行，则由Execution Engine决定。</li>
+<li>加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分信息是 Class 文件中常量池部分的内存映射）。</li>
 </ul>
-</li>
-</ul>
-<h3 id="三、运行时常量池-vs-常量池"><a href="#三、运行时常量池-vs-常量池" class="headerlink" title="三、运行时常量池 vs  常量池"></a>三、运行时常量池 vs  常量池</h3><ul>
-<li><p>方法区，内部包含了运行时常量池。</p>
-</li>
-<li><p>字节码文件，内部包含了常量池。</p>
-</li>
-<li><p>要弄清楚方法区，需要理解清楚 ClassFile，因为加载类的信息都在方法区。</p>
-</li>
-<li><p>要弄清楚方法区的运行时常量池，需要理解清楚 ClassFIle 中的常量池。</p>
-</li>
-<li><p>一个有效地字节码文件中除了包含类的信息版本、字段、方法以及接口等描述信息外，还包含一项信息那就是常量池表（Constant Pool Table），包括各种字面量和对象类型、域和方法的符号引用。</p>
-</li>
-</ul>
-<h3 id="四、为什么需要常量池"><a href="#四、为什么需要常量池" class="headerlink" title="四、为什么需要常量池"></a>四、为什么需要常量池</h3><ul>
-<li>一个 Java 源文件中的类、接口，编译后产生一个字节码文件。而 Java 中的字节码需要数据支持，通常这种数据会很大以至于不能直接存到字节码里，换一种方式，可以存到常量池，这个字节码包括了指向常量池的引用。在动态链接的时候就会用到运行时常量池，之前有介绍。</li>
-<li>比如：下面的代码：</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleClass</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="二、类加载器ClassLoader角色"><a href="#二、类加载器ClassLoader角色" class="headerlink" title="二、类加载器ClassLoader角色"></a>二、类加载器<code>ClassLoader</code>角色</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115011248.png" alt="image-20220327115011248" style="zoom:80%;">
 
 <ul>
-<li>虽然只有194字节，但是里面却使用了String、System，PringStream及Objective等结构。这里代码量其实已经很小了。如果代码多，引用到的结构会更多！这里就需要常量池了！</li>
+<li>class file 存在于本硬盘上，可以理解为设计师画在纸上的模板，而最终这个模板在执行的时候是要加载到<code>JVM</code>当中来根据这个文件实例化出n个一模一样的实例。</li>
+<li>class file 加载到<code>JVM</code>中，被称为DNA元数据模板，放在方法区。</li>
+<li>在 .class 文件 -&gt;  <code>JVM</code> -&gt; 最终成为元数据模板，此过程就一定要一个运输工具（类装载器 <code>ClassLoader</code>），扮演一个快递员的角色。</li>
 </ul>
-<h3 id="五、常量池中有什么"><a href="#五、常量池中有什么" class="headerlink" title="五、常量池中有什么"></a>五、常量池中有什么</h3><ul>
-<li>几种在常量池内存储的数据类型包括：<ul>
-<li>数量值</li>
-<li>字符串值</li>
-<li>类引用</li>
-<li>字段引用</li>
-<li>方法引用</li>
-</ul>
-</li>
-<li>例如下面这段代码：</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MethodAreaTest2</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">Object</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="三、类的加载过程"><a href="#三、类的加载过程" class="headerlink" title="三、类的加载过程"></a>三、类的加载过程</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115017597.png" alt="image-20220327115017597" style="zoom:80%;">
+
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115022429.png" alt="image-20220327115022429" style="zoom:80%;">
 
 <ul>
-<li>Object foo = new Obkect(); 将会被编译成如下字节码：</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span><span class="token operator">:</span>           <span class="token keyword">new</span>  #<span class="token number">2</span>          <span class="token comment">// class java/lang/objecy</span>
-<span class="token number">1</span><span class="token operator">:</span>							 dup	
-<span class="token number">2</span><span class="token operator">:</span>							 invokespecial  #<span class="token number">3</span>  <span class="token comment">// method java/lang/Object "&lt;init&gt;"() v;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<li><p>加载：</p>
 <ul>
-<li>小结：常量池，可以看做是一张表，虚拟机指令根据这张常量表找到要执行的类名、方法、参数类型、字面量等类型。</li>
+<li>通过一个类的全限定名获取定义此类的二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构</li>
+<li>在内存中生成一个代表这个类的<code>java.lang.Class</code>对象，作为方法区这个类的各种数据的访问入口。</li>
 </ul>
-<h3 id="六、运行时常量池"><a href="#六、运行时常量池" class="headerlink" title="六、运行时常量池"></a>六、运行时常量池</h3><ul>
-<li>运行时常量池（Runtime Constant Pool）是方法区的一部分。</li>
-<li>常量池表（Constant Pool Table）是 Class 文件的一部分，用于存放编译器生成的各种字面量与符号引用，这部分内容将在类加载后存放到方法区的运行时常量池中。</li>
-<li>运行时常量池，在加载类和接口到虚拟机后，就会创建对应的运行时常量池。</li>
-<li>JVM 为每个已加载的类型（类或接口）都维护一个常量池。池中的数据项像数组项一样，是通过索引访问的</li>
-<li>运行时常量池中包含多种不同的常量，包括编译器就已经明确的数值字面量，也包括到运行期解析后才能够获得的方法或者字段引用。此时不再是常量池中的符号地址了，这里换为真实地址。<ul>
-<li>运行时常量池，相对于 Class 文件常量池的另一重要特征是：具备动态性。<ul>
-<li>String.intern()</li>
+</li>
+<li><p>补充：加载.class 文件的方式</p>
+<ul>
+<li>从本地系统中直接加载</li>
+<li>通过网络获取，典型场景：Web Applet</li>
+<li>从zip压缩包中读取，成为日后jar、war格式的基础</li>
+<li>运行时计算生成，使用最多的是：动态代理技术</li>
+<li>由其它文件生成，典型场景：<code>JSP</code>应用</li>
+<li>从专有数据库中提取.class 文件，比较少见</li>
+<li>从加密文件中获取，典型的防Class文件被反编译的保护措施。</li>
+</ul>
+</li>
+<li><p>链接：</p>
+<ul>
+<li>验证(Verify) ：<ul>
+<li>目的在于确保Class文件的字节流中包含信息符合当前虚拟机要求，保证被加载的类的正确性，不会危害虚拟机自身的安全。</li>
+<li>主要包括四种验证，文件格式验证，元数据验证，字节码验证，符号引用验证。</li>
+</ul>
+</li>
+<li>准备（Prepare）：<ul>
+<li>为类变量分配内存并且设置该类变量的默认初始值，即零值。</li>
+<li>这里不包括用final修饰的<code>static</code>，因为final在编译的时候就会被分配了，准备阶段会显式初始化。</li>
+<li>这里不会为实例变量分配初始化，类变量会分配在方法区中，而实例变量是会随着对象一起分配到Java堆中。</li>
+</ul>
+</li>
+<li>解析（Resolve）：<ul>
+<li>将常量池内的符号引用转换为直接引用的过程。</li>
+<li>事实上，解析操作往往会伴随着<code>JVM</code>在执行完初始化之后再执行。</li>
+<li>符号引用就是一组符号来描述所引用的目标。符号引用的字面量形式明确定义在《<code>java</code>虚拟机规范》的class文件格式中。直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</li>
+<li>解析动作主要针对类或接口、字段、类方法、接口方法、方法类型等。对应常量池中的<code>CONSTANT_Class_info</code>、<code>CONSTANT_Fieldref_info</code>、<code>CONSTANT_Nethodref_info</code> 等。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>运行时常量池类似于传统编程语言中的符号表（symbol table），但是它所包含的数据却比符号表要更加丰富一些。</li>
-<li>当创建类或接口的运行时常量池时，如果构造运行时常量池所需的内存空间超过了方法区所能提供的最大值，则JVM会抛出 OutOfMemoryError 异常。</li>
+<li><p>初始化：</p>
+<ul>
+<li>初始化阶段就是执行类构造器方法<clinit>() 的过程。</clinit></li>
+<li>此方法不需定义，是<code>javac</code>编译器自动收集类中的所有类变量的赋值动作和静态代码块中的语句合并而来。</li>
+<li>构造器方法中指令按语句在源文件中出现的顺序执行。</li>
+<li><client>() 不同于类的构造器。（关联：构造器是虚拟机视角下的<init>())</init></client></li>
+<li>若该类具有父类，<code>JVM</code>会保证子类的<clinit>（）执行前，父类的<client>()已经执行完毕。</client></clinit></li>
+<li>虚拟机必须保证一个类的<clinit>() 方法在多线程下被同步加锁。</clinit></li>
 </ul>
-<h2 id="五、方法区的演进细节"><a href="#五、方法区的演进细节" class="headerlink" title="五、方法区的演进细节"></a>五、方法区的演进细节</h2><h3 id="一、方法区的演进细节"><a href="#一、方法区的演进细节" class="headerlink" title="一、方法区的演进细节"></a>一、方法区的演进细节</h3><ul>
-<li>首先明确：只有 HotSpot 才有永久代。</li>
-<li>BEA JRockit、IBM J9等来说，是不存在永久代的概念。原则上如何实现方法区属于虚拟机实现细节，不受《Java虚拟机规范》来管束，并不要求统一。</li>
-<li>HotSpot 中方法区的变化：</li>
+</li>
+</ul>
+<h2 id="三、类加载器分类"><a href="#三、类加载器分类" class="headerlink" title="三、类加载器分类"></a>三、类加载器分类</h2><h3 id="一、类加载器分类"><a href="#一、类加载器分类" class="headerlink" title="一、类加载器分类"></a>一、类加载器分类</h3><ul>
+<li><code>JVM</code>支持两种类型的类加载器，分别为引导类加载器（<code>Bootstrap ClassLoader</code>）和自定义类加载器（<code>User-Defined ClassLoader</code>）。</li>
+<li>从概念上来讲，自定义类加载器一般指的是程序中由开发人员自定义的一类类加载器，但是Java虚拟机规范却没有这么定义，而是将所有派生于抽象类<code>ClassLoader</code>的类加载器都换为自定义类加载器。</li>
+<li>无论类加载器的类型如何划分，在程序中我们最常见的类加载器始终只有3个，如下所示：</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115029890.png" alt="image-20220327115029890" style="zoom:80%;">
+
+<blockquote>
+<p>这里四者之间的关系是包含关系。而不是上层下层，也不是父类的继承关系。</p>
+</blockquote>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  虚拟机自带的类加载器：</p>
+</li>
+<li><p>启动类加载器（引导类加载器， <code>Bootstrap ClassLoader</code>)</p>
+<ul>
+<li>这个类使用<code>C/C++</code>语言实现的，嵌套在<code>JVM</code>内部）。</li>
+<li>它用来加载Java的核心库（<code>JAVA_HOME/jre/lib/rt.jar</code>、<code>resources.jar</code>或<code>sun.boot.class.path</code>路径下的内容），用于提供<code>JVM</code>自身需要的类。</li>
+<li>并不继承自<code>java.lang.ClassLoader</code>，没有父加载器。</li>
+<li>加载扩展类和应用程序类加载器，并指定为他们的父类加载器。</li>
+<li>出于安全考虑，<code>Bootstrap</code>启动类加载器只加载包名为<code>java</code>、<code>javax</code>、<code>sun</code>等开头的类。</li>
+</ul>
+</li>
+<li><p>扩展类加载器（<code>Extension ClassLoader</code>）</p>
+<ul>
+<li>Java语言编写，由<code>sun.misc.Launcher$ExtClassLoader</code>实现。</li>
+<li>派生于<code>ClassLoader</code>类。</li>
+<li>父类加载器为启动类加载器。</li>
+<li>从<code>java.ext.dirs</code>系统属性所指定的目录中加载类库，或从<code>JDK</code>的安装目录的<code>jre/lib/ext</code>子目录（扩展目录）下加载类库。如果用户创建的<code>JAR</code>放在此目录下，也会自动由扩展类加载器加载。</li>
+</ul>
+</li>
+<li><p>应用程序类加载器（系统类加载器，<code>AppClassLoader</code>)</p>
+<ul>
+<li><p><code>java</code>语言编写，由<code>sun.misc.Launcher$AppClassLoader</code>实现。</p>
+</li>
+<li><p>派生于 <code>ClassLoader</code>类。</p>
+</li>
+<li><p>父类加载器为扩展类加载器</p>
+</li>
+<li><p>它负责加载环境变量<code>classpath</code>或系统属性 <code>java.class.path</code>指定路径下的类库。</p>
+<p>该类加载是程序中默认的类加载器，一般来说，Java应用的类都是由它来完成加载。</p>
+</li>
+<li><p>通过<code>ClassLoader#getSystemClassLoader（）</code>方法可以获取到该类加载器</p>
+</li>
+</ul>
+</li>
+<li><p>用户自定义类加载器</p>
+<ul>
+<li>用Java的日常应用程序开发中，类的加载几乎是由上述3类种加载器相互配合执行的，在必要时，我们还可以自定义类加载器，来定制类的加载方式。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>为什么要自定义类的加载器？</p>
+<p>​    隔离加载类</p>
+<p>​    修改类记载的方式</p>
+<p>​    扩展加载源</p>
+<p>​    防止源码泄露</p>
+</blockquote>
+<ul>
+<li><p>用户自定义类加载器实现步骤：</p>
+<ul>
+<li>开发人员可以通过继承抽象类<code>java.lang.ClassLoader</code>类的方式，实现自己的类加载器，以满足一些特殊的需求。</li>
+<li>在<code>JDK1.2</code>之前，在自定义类加载器时，总会去继承<code>ClassLoader</code>类并重写<code>loadClass（）</code>方法，从而实现自定义的类加载类，但是在<code>JDK1.2</code>之后已不再建议用户区覆盖<code>loadClass（）</code> 方法，而是建议把自己的类加载逻辑写在<code>findClass（）</code>方法中。</li>
+<li>在编写自定义类加载器时，如果没有过于复杂的需求，可以直接继承<code>URLClassLoader</code>类，这样就可以避免自己去编写<code>findClass（）</code>方法以及其获取字节流的方式，使自定义类加载器编写更加简洁。</li>
+</ul>
+</li>
+</ul>
+<h3 id="二、关于ClassLoader"><a href="#二、关于ClassLoader" class="headerlink" title="二、关于ClassLoader"></a>二、关于<code>ClassLoader</code></h3><ul>
+<li><code>ClassLoader</code>类，它是一个抽象类，其后所有的类加载器都继承自<code>ClassLoader</code>（不包括启动类加载器）</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>jdk1.6及之前</th>
-<th><strong>只有永久代(permanent generation), 静态变量存放在永久代上</strong></th>
+<th>方法名称</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>jdk1.7</td>
-<td>有永久代，但已经逐步“去永久代”，字符串常量池、静态变量移除，保存在堆中</td>
+<td><code>getParent()</code></td>
+<td>返回该类加载器的超类加载器</td>
 </tr>
 <tr>
-<td>jdk1.8</td>
-<td>无永久代，类型信息、字段、方法、常量保存在本地内存的元空间，但字符串常量池、静态变量仍在堆</td>
+<td><code>laodClass(String name)</code></td>
+<td>加载名称为name的类，返回结果为<code>java.lang.Class</code>类的实例</td>
+</tr>
+<tr>
+<td><code>findClass(String name)</code></td>
+<td>查找名称为name的类，返回结果为<code>java.lang.Class</code>类的实例</td>
+</tr>
+<tr>
+<td><code>findLoadedClass(String name)</code></td>
+<td>查找名称为name的已经被加载过的类，返回结果为<code>java.lang.Class</code>类的实例</td>
+</tr>
+<tr>
+<td><code>defineClass(String name, byte[] n, int off, int len)</code></td>
+<td>把字节数组b中的内容转换为一个Java类，返回结果为<code>java.lang.Class</code>类的实例</td>
+</tr>
+<tr>
+<td><code>resolveClass(Class&lt;?&gt; c)</code></td>
+<td>连接指定的一个Java类</td>
 </tr>
 </tbody></table>
-<p><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114515942.png" alt="image-20220327114515942" style="zoom:80%;"><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114524330.png" alt="image-20220327114524330" style="zoom:80%;"><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327114535398.png" alt="image-20220327114535398" style="zoom:80%;"></p>
-<h3 id="二、永久代为什么要被元空间替换？"><a href="#二、永久代为什么要被元空间替换？" class="headerlink" title="二、永久代为什么要被元空间替换？"></a>二、永久代为什么要被元空间替换？</h3><ul>
-<li>随着 Java8 的到来，HotSpot VM 中再也见不到永久代了。但是这并不意味着类的元数据信息也消失了。这些数据被移到了一个与堆不相连的本地内存区域，这个区域叫做元空间（Metaspace）。</li>
-<li>由于类的元数据分配在本地内存中，元空间的最大可分配空就是系统可用内存空间。</li>
-<li>这项改动是很有必要的，原因有：<ul>
-<li>为永久代设置空间大小是很难确定的。<ul>
-<li>在某些场景下，如果动态加载类过多，容易产生Perm区的OOM。比如某个实际Web工程中，因为功能点比较多，在运行过程中，要不断动态加载很多类，经常出现致命错误。</li>
-</ul>
-</li>
-<li>对永久代进行调优是很困难的。</li>
-</ul>
-</li>
-<li>StringTable 为什么要调整？<ul>
-<li>jdk7中将 StringTable 放到了堆空间中。因为永久代的回收效率很低，在 full gc 的时候才会触发。而 full gc 是老年代的空间不足、永久代不足时才会触发。</li>
-<li>这就导致了 StringTable 回收效率不高。而我们开发中会有大量的字符串被创建，回收效率低，导致永久代内存不足。放到堆里，能即时回收内存。</li>
-</ul>
-</li>
-</ul>
-<h2 id="六、方法区的垃圾回收"><a href="#六、方法区的垃圾回收" class="headerlink" title="六、方法区的垃圾回收"></a>六、方法区的垃圾回收</h2><ul>
-<li>有些人认为方法区（如Hotspot虚拟机中的元空间或者永久代）是没有垃圾收集行为的，其实不然。《Java虚拟机规范》对方法区的结束是非常宽松的，提到过可以不要虚拟机在方法区中实现垃圾收集。事实上也确实有未实现或能完整实现方法区类型卸载的收集器存在（如JDK 11时期的 ZGC 收集器就不支持类卸载）</li>
-<li>一般来说，这个区域的回收效果比较难令人满意，有其是类型的卸载，条件相当苛刻。但是这部分区域的回收有时又确定是必要的。以前 Sun公 司的 Bug 列表中，曾出现过的若干个严重的 Bu g就是由于低版本的 HotSpot 虚拟机对此区域未完全回收而导致内存泄露。</li>
-<li>方法区的垃圾收集主要回收两部分内容：常量池中废弃的常量和不再使用的类型。</li>
-<li>先来说说方法区内常量池之中的主要存放的两大类常量：字面量和符号引用。字面量比较接近 Java 语言层次的常量概念，如文本字符串、被声明为 final 的常量值等。而符号引用则属于编译原理方面的概念，包括下面三类常量：<ul>
-<li>类和接口的全限定名</li>
-<li>字段的名称和描述符</li>
-<li>方法的名称和描述符</li>
-</ul>
-</li>
-<li>HotSpot 虚拟机对常量池的回收策略时很明确的，只要常量池中的常量没有被任何地方引用，就可以被回收。</li>
-<li>回收废弃常量与回收 Java 堆中的对象非常类似。</li>
-<li>判断一个常量是否“废弃”还是相对简单，而要判定一个类型是否属于“不再被使用的类”的条件就比较苛刻了。需要同时满足下面三个条件：<ul>
-<li>该类所有的实例都已经被回收，也就是 Java 堆中不存在该类及其任何派生子类实例。</li>
-<li>加载该类的类加载器已经被回收，这个条件除非是经过进行设计的可替换类加载器的场景，如OSGi、JSP 的重加载等，否则通常是很难达成的。</li>
-<li>该类对应的 java.lang.Class 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
-</ul>
-</li>
-<li>Java 虚拟机被允许对满足上述三个条件的无用类进行回收，这里说的仅仅是“被允许”，而不是和对象一样，没有引用了就必然会回收。关于是否要对类型进行回收，HotSpot 虚拟机提供了 <code>-Xnoclassgc</code> 参数进行控制，还可以使用 <code>-verbose:class</code> 以及 <code>-XX：TraceClass-Loading</code>、<code>-XX：+TraceClassUnLoading</code> 查看类加载和卸载信息。</li>
-<li>在大量使用反射、动态代理、CGLib 等字节码框架，动态生成 JSP 以及 OSGi 这类频繁自定义类加载器的场景中，通常都需要 Java 虚拟机具备类型卸载的能力，以保证不会对按方法区造成过大的内存压力。</li>
-</ul>
-<p>好了，到这里方法区就讲解完了，假如你有其他问题，其实我也不会 🤪🤪🤪</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115037611.png" alt="image-20220327115037611" style="zoom:80%;">
+
 <blockquote>
-<p>巨人的肩膀：</p>
-<p>尚硅谷 JVM</p>
+<p><code>sun.misc.Launcher</code>它是一个<code>java</code>虚拟机的入口应用</p>
 </blockquote>
+<h3 id="三、获取CLassLoader的途径"><a href="#三、获取CLassLoader的途径" class="headerlink" title="三、获取CLassLoader的途径"></a>三、获取<code>CLassLoader</code>的途径</h3><ul>
+<li>方式一：获取当前类的<code>ClassLoader</code><ul>
+<li><code>clazz.getClassLoader( )</code></li>
+</ul>
+</li>
+<li>方式二：获取当前线程上下文的<code>ClassLoader</code><ul>
+<li><code>Thread.currentThread().getContextClassLoader()</code></li>
+</ul>
+</li>
+<li>方式三：获取系统的<code>ClassLoader</code><ul>
+<li><code>ClassLoader.getSystemClassLoader()</code></li>
+</ul>
+</li>
+<li>方式四：获取调用者的<code>ClassLoader</code><ul>
+<li><code>DriverManager.getCallerClassLoader()</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="四、双亲委派机制"><a href="#四、双亲委派机制" class="headerlink" title="四、双亲委派机制"></a>四、双亲委派机制</h2><h3 id="一、双亲委派机制"><a href="#一、双亲委派机制" class="headerlink" title="一、双亲委派机制"></a>一、双亲委派机制</h3><ul>
+<li><p>Java虚拟机对class文件采用的是按需加载的方式，也就是说当需要使用该类时才会将它的class文件加载到内存生成class对象。而且加载某个类的class文件时，Java虚拟机采用的是双亲委派模式，即把请求交由父类处理，他是一种任务委派模式。</p>
+</li>
+<li><p>工作原理：</p>
+<ul>
+<li>如果一个类加载器收到了类加载请求，它并不会自己 先去加载，而是把这个请求委托给父类加载器去执行；</li>
+<li>如果父类加载器还存在其他父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器。</li>
+<li>如果父类加载器可以完成类加载任务，就成功返回，倘若父加载器无法完成此加载任务，子加载器才会尝试自己去加载，这就是双亲委派模式。</li>
+</ul>
+</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115043832.png" alt="image-20220327115043832" style="zoom:80%;">
+
+<h3 id="二、双亲委派机制举例"><a href="#二、双亲委派机制举例" class="headerlink" title="二、双亲委派机制举例"></a>二、双亲委派机制举例</h3><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327115049493.png" alt="image-20220327115049493" style="zoom:80%;">
+
+<h3 id="三、双亲委派机制优势"><a href="#三、双亲委派机制优势" class="headerlink" title="三、双亲委派机制优势"></a>三、双亲委派机制优势</h3><ul>
+<li>避免类的重复加载</li>
+<li>保护程序安全，防止核心<code>API</code>被随意篡改<ul>
+<li>自定义类：<code>java.lang.String</code></li>
+<li>自定义类：<code>java.lang.ShkStart</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>java.lang.SecurityException: Prohibited package name：java.lang</code></p>
+</blockquote>
+<h3 id="四、沙箱安全机制"><a href="#四、沙箱安全机制" class="headerlink" title="四、沙箱安全机制"></a>四、沙箱安全机制</h3><ul>
+<li>自定义String类，但是在加载自定义String类的时候会率先使用引导类加载器加载，而引导类加载器在加载的过程中会先加载<code>jdk</code>自带的文件(<code>rt.jar</code>包中<code>java\lang\Sttring.class</code>)，报错信息说没有main方法，就是因为加载的是<code>rt.jar</code>包中的String类。这样可以保证对<code>java</code>核心源代码的保护，这就是沙箱安全机制。</li>
+</ul>
+<h2 id="五、其他"><a href="#五、其他" class="headerlink" title="五、其他"></a>五、其他</h2><ul>
+<li>在<code>JVM</code>中表示两个Class对象是否为同一个存在两个必要条件：<ul>
+<li>类的完整类名必须一致，包括包名。</li>
+<li>加载这个类的<code>classLoader</code>（指<code>classLoader</code>实例对象）必须相同）。</li>
+</ul>
+</li>
+<li>换句话说，在<code>JVM</code>中，即使这两个类对象（class对象）来源于同一个Class文件，被同一个虚拟机所加载，但只要加载它们的<code>ClassLoader</code>实例对象不同，那么这两个类对象也是不相等的。</li>
+</ul>
+<h3 id="一、对类加载器的引用"><a href="#一、对类加载器的引用" class="headerlink" title="一、对类加载器的引用"></a>一、对类加载器的引用</h3><ul>
+<li>知道一个类型是由启动加载器加载的还是由用户类加载器加载的。如果一个类型是由用户类加载器加载的，那么<code>JVM</code>会将这个类加载器的同一个引用作为类型信息的一部分保存在方法区中。当解析一个类型到另一个类型的引用的时候，<code>JVM</code>需要`保证这两个类型的类加载器是相同的。</li>
+</ul>
+<h3 id="二、类的主动使用和被动使用"><a href="#二、类的主动使用和被动使用" class="headerlink" title="二、类的主动使用和被动使用"></a>二、类的主动使用和被动使用</h3><p>Java程序对类的使用方式分为：主动使用和被动使用。</p>
+<ul>
+<li>主动使用，又分为七种情况：<ul>
+<li>创建类的实例</li>
+<li>访问某个类或接口的静态变量，或者对该静态变量赋值。</li>
+<li>调用类的静态方法</li>
+<li>反射（比如：<code>Class.forName（“com.Test")</code>)</li>
+<li>初始化一个类的子类</li>
+<li>Java虚拟机启动时被标明为启动类的类</li>
+<li><code>JDK7</code>开始提供的动态语言支持：<ul>
+<li><code>java.lang.invoke.MethodHandle</code>实例的解析结果</li>
+<li><code>REF_getStatic</code>、<code>REF_putStatic</code>、<code>REF_invokeStatic</code>句柄对应的类没有初始化，则初始化。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>除了以上7种情况，其他使用Java类的方式都被看做是对类的被动使用，都不会导致类的初始化。</li>
+</ul>
 
                 
             </div>
@@ -787,7 +772,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kuangtf.github.io/2022/05/16/jvm/jvm-fang-fa-qu/">https://kuangtf.github.io/2022/05/16/jvm/jvm-fang-fa-qu/</a>
+                    <a href="https://kuangtf.github.io/2022/05/16/jvm/lei-jia-zai-zi-xi-tong/">https://kuangtf.github.io/2022/05/16/jvm/lei-jia-zai-zi-xi-tong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -825,8 +810,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JVM-%E6%96%B9%E6%B3%95%E5%8C%BA/">
-                                    <span class="chip bg-color">JVM 方法区</span>
+                                <a href="/tags/JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">JVM 类加载子系统</span>
                                 </a>
                             
                         </div>
@@ -1000,13 +985,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/16/jvm/jvm-lei-jia-zai-zi-xi-tong/">
+                <a href="/2022/05/16/jvm/xu-ni-ji-zhan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="你知道一个类是如何加载的吗">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="你了解 JVM 的虚拟机栈吗">
                         
-                        <span class="card-title">你知道一个类是如何加载的吗</span>
+                        <span class="card-title">你了解 JVM 的虚拟机栈吗</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1034,8 +1019,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">JVM 类加载子系统</span>
+                    <a href="/tags/JVM-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88/">
+                        <span class="chip bg-color">JVM 虚拟机栈</span>
                     </a>
                     
                 </div>
@@ -1049,13 +1034,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/16/jvm/jvm-dui/">
+                <a href="/2022/05/16/jvm/fang-fa-qu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JVM 堆的那些琐事">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">JVM 堆的那些琐事</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1083,8 +1068,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM-%E5%A0%86/">
-                        <span class="chip bg-color">JVM 堆</span>
+                    <a href="/tags/JVM-%E6%96%B9%E6%B3%95%E5%8C%BA/">
+                        <span class="chip bg-color">JVM 方法区</span>
                     </a>
                     
                 </div>
@@ -1325,7 +1310,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">617.6k</span>&nbsp;字
+                class="white-color">622.1k</span>&nbsp;字
             
             
             
