@@ -6,7 +6,7 @@
   <link href="https://kuangtf.github.io/atom.xml" rel="self"/>
   
   <link href="https://kuangtf.github.io/"/>
-  <updated>2022-06-05T13:08:45.772Z</updated>
+  <updated>2022-06-06T08:13:10.530Z</updated>
   <id>https://kuangtf.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HotSpot的算法细节实现</title>
+    <link href="https://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/"/>
+    <id>https://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/</id>
+    <published>2022-06-06T13:53:44.000Z</published>
+    <updated>2022-06-06T08:13:10.530Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;HotSpot的算法细节实现&quot;&gt;&lt;a href=&quot;#HotSpot的算法细节实现&quot; class=&quot;headerlink&quot; title=&quot;HotSpot的算法细节实现&quot;&gt;&lt;/a&gt;HotSpot的算法细节实现&lt;/h1&gt;&lt;h2 id=&quot;一、根节点枚举&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    
+    
+    <category term="HotSpot的算法细节实现" scheme="https://kuangtf.github.io/tags/HotSpot%E7%9A%84%E7%AE%97%E6%B3%95%E7%BB%86%E8%8A%82%E5%AE%9E%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM与Java体系结构</title>
+    <link href="https://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/"/>
+    <id>https://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/</id>
+    <published>2022-06-06T12:53:44.000Z</published>
+    <updated>2022-06-06T06:41:09.904Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;JVM与Java体系结构&quot;&gt;&lt;a href=&quot;#JVM与Java体系结构&quot; class=&quot;headerlink&quot; title=&quot;JVM与Java体系结构&quot;&gt;&lt;/a&gt;JVM与Java体系结构&lt;/h1&gt;&lt;h2 id=&quot;一、前言&quot;&gt;&lt;a href=&quot;#一、前言&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    
+    
+    <category term="JVM与Java体系结构" scheme="https://kuangtf.github.io/tags/JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 常量池</title>
@@ -46,7 +96,7 @@
     <link href="https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/"/>
     <id>https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/</id>
     <published>2022-06-05T12:53:44.000Z</published>
-    <updated>2022-06-05T12:54:59.185Z</updated>
+    <updated>2022-06-06T01:54:49.691Z</updated>
     
     
       
@@ -470,56 +520,6 @@
     
     
     <category term="Docker 入门" scheme="https://kuangtf.github.io/tags/Docker-%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>缓存和数据库一致性问题，看这篇就够了</title>
-    <link href="https://kuangtf.github.io/2022/05/16/fen-bu-shi/huan-cun-he-shu-ju-ku-yi-zhi-xing-wen-ti/"/>
-    <id>https://kuangtf.github.io/2022/05/16/fen-bu-shi/huan-cun-he-shu-ju-ku-yi-zhi-xing-wen-ti/</id>
-    <published>2022-05-16T12:25:17.371Z</published>
-    <updated>2022-04-29T13:06:29.527Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;缓存和数据库一致性问题，看这篇就够了&quot;&gt;&lt;a href=&quot;#缓存和数据库一致性问题，看这篇就够了&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="分布式" scheme="https://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-    <category term="Redis 一致性" scheme="https://kuangtf.github.io/tags/Redis-%E4%B8%80%E8%87%B4%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>负载均衡算法</title>
-    <link href="https://kuangtf.github.io/2022/05/16/fen-bu-shi/fen-bu-shi-fu-zai-jun-heng-suan-fa/"/>
-    <id>https://kuangtf.github.io/2022/05/16/fen-bu-shi/fen-bu-shi-fu-zai-jun-heng-suan-fa/</id>
-    <published>2022-05-16T12:25:17.365Z</published>
-    <updated>2022-04-30T07:27:35.010Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;一、随机法（Random）&quot;&gt;&lt;a href=&quot;#一、随机法（Random）&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="分布式" scheme="https://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-    <category term="负载均衡算法" scheme="https://kuangtf.github.io/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

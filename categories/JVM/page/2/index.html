@@ -371,11 +371,11 @@
                 </a>
                 
                 
-                <a href="/categories/JVM/" title="JVM: 15">
+                <a href="/categories/JVM/" title="JVM: 17">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #D5F5E3;">JVM
-                        <span class="tag-length">15</span>
+                        <span class="tag-length">17</span>
                     </span>
                 </a>
                 
@@ -564,6 +564,103 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2022/05/16/jvm/dui/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JVM 堆的那些琐事">
+                            
+                            <span class="card-title">JVM 堆的那些琐事</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                咋废话少说，直接进入重点 😃😃😃
+堆一、堆（Heap）的核心概述
+
+一、堆的核心概述
+一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。
+Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，是JVM管理的最大
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JVM-%E5%A0%86/">
+                            <span class="chip bg-color">JVM 堆</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/05/16/jvm/la-ji-hui-shou-suan-fa/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="JVM 的各种小算法们">
+                            
+                            <span class="card-title">JVM 的各种小算法们</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一、引用计数算法一、垃圾标记阶段：对象存活判断在堆里存放着几乎所有的Java对象实例，在GC执行垃圾回收之前，首先需要区分出内存中哪些是存活对象，哪些是已经死亡的对象，只有被标记为已经死亡的对象，GC才会在执行垃圾回收时，释放掉其所占用的内
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JVM-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/">
+                            <span class="chip bg-color">JVM 垃圾回收算法</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2022/05/16/jvm/la-ji-hui-shou-xiang-guan-gai-nian-jian-shu/">
                         <div class="card-image tag-image">
                             
@@ -577,8 +674,7 @@
                         <div class="summary block-with-text">
                             
                                 学过 JVM 的同学都知道，垃圾回收可以说是 JVM 的一个非常重要的知识点了，在我们讲解垃圾回收算法和垃圾回收器之前， 我们先来讲解有关垃圾回收相关的概念吧 🏃🏃🏃
-1、什么是垃圾所谓垃圾回收，那在 JVM 中啥才是垃圾呢？
-其实，
+一、垃圾回收概述1、什么是垃圾所谓垃圾回收，那在 JVM 中啥才是
                             
                         </div>
                         <div class="publish-info">
@@ -624,10 +720,7 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                一、GC分类与性能指标一、垃圾回收器概述
-垃圾收集器没有在规范中进行过多的规定，可以由不同的产商、不同版本的JVM来实现。
-由于JDK的版本处于高速迭代的过程中，因此Java发展至今已经衍生出了众多的GC版本。
-从不同角度分析垃圾收集器，可
+                                一、GC分类与性能指标一、垃圾回收器概述垃圾收集器没有在规范中进行过多的规定，可以由不同的产商、不同版本的JVM来实现。由于JDK的版本处于高速迭代的过程中，因此Java发展至今已经衍生出了众多的GC版本。从不同角度分析垃圾收集器，可以将G
                             
                         </div>
                         <div class="publish-info">
@@ -910,7 +1003,7 @@ JVM是通过
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">622.1k</span>&nbsp;字
+                class="white-color">630.3k</span>&nbsp;字
             
             
             
