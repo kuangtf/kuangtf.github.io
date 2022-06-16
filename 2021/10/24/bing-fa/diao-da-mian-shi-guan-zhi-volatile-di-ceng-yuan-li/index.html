@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
 </head>
 
 
@@ -454,21 +454,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-22
+                    2022-06-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    15 分
                 </div>
                 
 
@@ -491,52 +491,186 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1、常见面试题"><a href="#1、常见面试题" class="headerlink" title="1、常见面试题"></a>1、常见面试题</h2><ul>
-<li>volatile关键字的作用是什么?</li>
-<li>volatile能保证原子性吗?</li>
-<li>之前32位机器上共享的long和double变量的为什么要用volatile? </li>
-<li>i++为什么不能保证原子性?</li>
-<li>volatile是如何实现可见性的?</li>
-<li>volatile是如何实现有序性的?</li>
-</ul>
-<h2 id="2、volatile的作用"><a href="#2、volatile的作用" class="headerlink" title="2、volatile的作用"></a>2、volatile的作用</h2><h3 id="1、volatile保证可见性"><a href="#1、volatile保证可见性" class="headerlink" title="1、volatile保证可见性"></a>1、volatile保证可见性</h3><p>Java 编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致地更新，线程应该确保通过排它锁单独获得这个变量。Java 语言提供了 volatile，在某些情况下比锁更方便。如果一个字段被声明成 volatile，Java 线程内存模型确保所有线程看到这个变量的值是一致的。</p>
-<p><strong>那为什么会产生可见性问题呢？</strong></p>
-<p>为了提高处理速度，处理器不直接和内存进行通信，而是先将系统内存的数据读到高速缓存后再进行操作， 对共享变量操作之后不知道会何时写入内存。于是其他处理器不能及时得到最新的值，造成处理器中的数据不一致。</p>
-<p><strong>volatile如何保证可见性？</strong></p>
-<p>底层实现：如果对声明了 volatile 的变量进行写操作，JVM 就会向处理器发送一条 <strong>Lock 前缀</strong>的指令，将这个变量所在缓存行的数据写回到系统内存。（缓存行是高速缓存中可以分配的最小存储单位）</p>
-<p>这个lock前缀指令的作用，Lock 前缀的指令在多核处理器下会引发两件事情：</p>
-<ul>
-<li><p>将当前处理器缓存行的数据写回到系统内存。</p>
-</li>
-<li><p>写回内存的操作会使在其他 CPU 里缓存了该内存地址的数据无效。</p>
-</li>
-</ul>
-<p>1）Lock 前缀指令会引起处理器缓存写回到内存。Lock 前缀指令导致在执行指令期间，声言处理器的LOCK#信号。在多处理器环境中，LOCK#信号确保在声言该信号期间，处理器可以独占任何共享内存。因为该信号会锁住总线，导致其他 CPU 不能访问总线，不能访问总线就意味着不能访问系统内存。在最近的处理器里，LOCK#信号一般不锁总线，而是缓存，毕竟锁总线开销比较大。例如：Intel486和Pentium处理器，在锁操作时，总是在总线上声言LOCK#信号。但是在P6和目前的处理器中，如果访问的内存区域已经缓存在处理器内部，则不会声言LOCK#信号，它会锁定这块内存区域的缓存并回写到内存，并使用<strong>缓存一致性机制</strong>来确保修改的原子性，此操作被称为“缓存锁定”，缓存一致性机制会阻止同时修改由两个以上处理器缓存的内存区域数据。</p>
-<p>2）一个处理器的缓存回写到内存会导致其他处理器的缓存无效。例如 Intel 64 处理器使用 <strong>MESI</strong> （修改、独占、共享、无效）控制协议去维护内部缓存和其他处理器缓存的一致性。在多核处理器系统中进行操作的时候，Intel 64 处理器能嗅探到其他处理器访问系统内存和它们内部缓存。处理器使用<strong>嗅探技术</strong>保证它的内部缓存、系统内存和其他处理器的缓存的数据在总线上保持一致。</p>
-<p>那么内存里变量的值变化了，其他处理器缓存的值还是旧的，再执行就会有问题。所有在多处理器下，为了保证各个处理器的缓存是一致的，就会实现<strong>缓存一致性协议</strong>，每个处理器通过嗅探在总线上传播的数据来检查自己缓存的值是不是过期了，当处理器发现自己缓存行对应的内存地址被修改，将会将当前处理器的缓存行设置成无效状态，当处理器对这个数据进行修改操作的时候，会重新从系统内存中把数据读到处理器缓存里。</p>
-<p>那什么是缓存一致性协议呢？</p>
-<p>我们常说的缓存一致性协议是指 MESI 协议，它是一个基于总线嗅探机制的协议。</p>
-<p>MESI协议：Modified，已修改； Exclusive，独占；Shared，共享，Invalidated，已失效。（状态机模型）</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327113000019.png" alt="image-20220327113000019" style="zoom:80%;">
+                <h2 id="1、volatile-的应用"><a href="#1、volatile-的应用" class="headerlink" title="1、volatile 的应用"></a>1、volatile 的应用</h2><p>在多线程并发编程中 synchronized 和 volatile 都扮演着重要的角色，volatile是轻量级的 synchronized，它在处理多处理器开发中保证了共享变量的“<strong>可见性</strong>”。可见性的意思是当一个线程修改一个共享变量时，另一个线程能读到这个修改的值。如果volatile变量修饰符使用的恰当的话，比 synchronized 的使用和执行成本更低，因为它不会引起线程上下文的切换和调度。</p>
+<h3 id="1-1-为什么会产生可见性问题"><a href="#1-1-为什么会产生可见性问题" class="headerlink" title="1.1 为什么会产生可见性问题"></a>1.1 为什么会产生可见性问题</h3><p>为了提高处理速度，处理器不直接和内存进行通信，而是先将系统内存的数据读到高速缓存（L1、L2 或其他）后再进行操作， 对共享变量操作之后不知道会何时写入内存。于是其他处理器不能及时得到最新的值，造成处理器中的数据不一致。</p>
+<h3 id="1-2-volatile-的定义与实现原理"><a href="#1-2-volatile-的定义与实现原理" class="headerlink" title="1.2 volatile 的定义与实现原理"></a>1.2 volatile 的定义与实现原理</h3><p>Java 编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致地更新，线程应该确保通过排它锁单独获得这个变量。Java 语言提供了 volatile ，在某些情况下比使用锁更加方便。如果一个字段被声明成 volatile，Java 线程内存模型确保所有线程看到这个变量的值是一致的。</p>
+<p>在了解 volatile 实现原理之前，先看下其实现原理相关的 CPU 术语说明：</p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>术语描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内存屏障</td>
+<td>是一组处理器指令，用于实现对内存操作的顺序限制</td>
+</tr>
+<tr>
+<td>缓冲行</td>
+<td>缓存中可以分配的最小存储单位，处理器填写缓存线时会加载整个缓存线，需要使用多个主内存读周期</td>
+</tr>
+<tr>
+<td>原子操作</td>
+<td>不可中断的一个或一系列操作</td>
+</tr>
+<tr>
+<td>缓存行填充</td>
+<td>当处理器识别到从内存中读取操作数是可缓存的，处理器读取整个缓存行到适当的缓存（L1、L1…）</td>
+</tr>
+<tr>
+<td>缓存命中</td>
+<td>如果进行高速缓存填充操作的内存位置仍然是下次处理器访问的地址时，处理器从缓存中读取操作数，而不是从内存读取</td>
+</tr>
+<tr>
+<td>写命中</td>
+<td>当处理器将操作数写回到一个内存缓存区域时，它首先检查这个缓存的内存地址是否在缓存行中，如果存在一个有效的缓存行，则处理器将这个操作数写回到缓存，而不是写回到内存</td>
+</tr>
+<tr>
+<td>写缺失</td>
+<td>一个有效的缓存行被写入到不存在的内存区域</td>
+</tr>
+</tbody></table>
+<p>volatile 是如何来保证可见性的呢？在 X86 处理器下通过工具获取JIT编译器生成的汇编指令来查看对 volatile 进行写操作时，CPU会做什么事情。</p>
+<p>Java 代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">instance = new Singleton();   // instance是volatile变量<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>当一个处理器将数据从主内存读入缓存时，此时其他处理器的缓存中还没有这个数据，那么该处理器缓存中的这个数据就是<strong>独占</strong>状态，如果该缓存里面的数据还没有没修改，其他处理器又从主内存里面读了相同的数据，那么该数据就会变成<strong>共享</strong>状态，独占和共享状态都表示缓存中的数据不是脏数据。如果一个处理器修改了自己缓存里面的数据，但是还没写回主内存里面，那么这个修改了的缓存中的该数据就是已修改状态，就会导致其他处理器的缓存变为<strong>已失效</strong>状态。具体的转换流程就是上图中的这个状态机模型。</p>
-<h3 id="2、volatile保证有序性"><a href="#2、volatile保证有序性" class="headerlink" title="2、volatile保证有序性"></a>2、volatile保证有序性</h3><p>volatile 变量的内存有序性是基于<strong>内存屏障</strong>(Memory Barrier)实现。</p>
-<p><strong>为什么会有有序性问题呢？</strong></p>
-<p>编译器和处理器对指令序列进行重排序：即只要程序的最终结果与它顺序化情况的结果相等，那么指令的执行顺序可以与代码顺序不一致。</p>
-<p>指令重排的意义：JVM能根据处理器特性（CPU多级缓存系统、多核处理器等）适当的对机器指令进行重排序，使机器指令能更符合CPU的执行特性，最大限度的发挥机器性能。</p>
-<p><strong>内存屏障是什么东西呢？</strong></p>
-<p>内存屏障，又称内存栅栏，是一个 CPU 指令。</p>
-<p>在程序运行时，为了提高执行性能，编译器和处理器会对指令进行重排序，JMM 为了保证在不同的编译器和 CPU 上有相同的结果，通过插入特定类型的内存屏障来禁止+ 特定类型的编译器重排序和处理器重排序，插入一条内存屏障会告诉编译器和 CPU：不管什么指令都不能和这条 Memory Barrier 指令重排序。</p>
-<p><strong>那么volatile是怎么使用内存屏障来进行指令重排的呢？</strong></p>
-<p>JMM针对编译器制定的volatile重排序规则表  ：” NO “ 表示禁止重排序。</p>
+<p>转变成汇编代码如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">0x01a3de1d: movb $0×0,0×1104800(%esi);
+0x01a3de24: lock addl $0×0,(%esp);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>有 volatile 变量修饰的共享变量进行写操作时会多出第二行汇编代码，Lock 前缀的指令在多核处理器下会引发两件事情：</p>
+<ol>
+<li>  将当前处理器缓存行的数据写回到系统内存</li>
+<li>  这个写回内存的操作会使在其他 CPU 里缓存了该内存地址的数据无效</li>
+</ol>
+<p>如果对声明了 volatile 的变量进行写操作，JVM就会向处理器发送一条Lock前缀的指令，将这个变量所在缓存行的数据写回到系统内存。但是写回到了内存，如果其他处理器的值还是旧的，再执行计算操作就会有问题。所以在多处理器下，为了保证各个处理器的缓存是一致的，就会实现缓存一致性协议，每个处理器通过嗅探在总线上传播的数据来检查自己缓存的值是不是过期了，当处理器发现自己缓存行对应的内存地址被修改，就会将当前处理器的缓存行设置成无效状态，当处理器对这个数据进行修改操作的时候，会重新从系统内存中把数据读到处理器缓存里。</p>
+<p>下面具体讲解 volatile 的两条实现规则：</p>
+<p>1）<strong>Lock 前缀指令会引起处理器缓存写回到内存</strong>。Lock 前缀指令导致在执行指令期间，声言处理器的LOCK#信号。在多处理器环境中，LOCK#信号确保在声言该信号期间，处理器可以独占任何共享内存。因为该信号会锁住总线，导致其他 CPU 不能访问总线，不能访问总线就意味着不能访问系统内存。在最近的处理器里，LOCK#信号一般不锁总线，而是缓存，毕竟锁总线开销比较大。例如：Intel486和Pentium处理器，在锁操作时，总是在总线上声言LOCK#信号。但是在P6和目前的处理器中，如果访问的内存区域已经缓存在处理器内部，则不会声言LOCK#信号，它会锁定这块内存区域的缓存并回写到内存，并使用<strong>缓存一致性机制</strong>来确保修改的原子性，此操作被称为“缓存锁定”，缓存一致性机制会阻止同时修改由两个以上处理器缓存的内存区域数据。</p>
+<p>2）<strong>一个处理器的缓存回写到内存会导致其他处理器的缓存无效</strong>。例如 Intel 64 处理器使用 <strong>MESI</strong> （修改、独占、共享、无效）控制协议去维护内部缓存和其他处理器缓存的一致性。在多核处理器系统中进行操作的时候，Intel 64 处理器能嗅探到其他处理器访问系统内存和它们内部缓存。处理器使用<strong>嗅探技术</strong>保证它的内部缓存、系统内存和其他处理器的缓存的数据在总线上保持一致。例如在 Pentium 处理器中，如果通过嗅探一个处理器来检测其他处理器打算写内存地址，而这个地址当前处于共享状态，那么正在嗅探的处理器将使它的缓存无效，在下次访问相同内存地址时，强制执行缓存填充。</p>
+<h3 id="1-3-volatile-的使用优化"><a href="#1-3-volatile-的使用优化" class="headerlink" title="1.3 volatile 的使用优化"></a>1.3 volatile 的使用优化</h3><p>在 JDK7 的并发包里新增了一个队列集合类 LinkedTransferQueue，它在使用 volatile 变量时，用一种追加字节的方式来优化队列出队和入队的性能，LinkedTransferQueue 的代码如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** 队列中的头部节点 */</span>
+<span class="token keyword">private</span> <span class="token keyword">transient</span> <span class="token keyword">final</span> <span class="token class-name">PaddedAtomicReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">QNode</span><span class="token punctuation">&gt;</span></span> head<span class="token punctuation">;</span>
+<span class="token comment">/** 队列中的尾部节点 */</span>
+<span class="token keyword">private</span> <span class="token keyword">transient</span> <span class="token keyword">final</span> <span class="token class-name">PaddedAtomicReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">QNode</span><span class="token punctuation">&gt;</span></span> tail<span class="token punctuation">;</span>
+
+<span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">PaddedAtomicReference</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token keyword">extends</span> <span class="token class-name">AtomicReference</span> <span class="token class-name">T</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">//使用很多4个字节的引用追加到64个字节</span>
+    <span class="token class-name">Object</span> p0<span class="token punctuation">,</span> p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">,</span> p4<span class="token punctuation">,</span> p5<span class="token punctuation">,</span> p6<span class="token punctuation">,</span> p7<span class="token punctuation">,</span> p8<span class="token punctuation">,</span> p9<span class="token punctuation">,</span> pa<span class="token punctuation">,</span> pb<span class="token punctuation">,</span> pc<span class="token punctuation">,</span> pd<span class="token punctuation">,</span> pe<span class="token punctuation">;</span>
+    <span class="token class-name">PaddedAtomicReference</span><span class="token punctuation">(</span><span class="token class-name">T</span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	<span class="token keyword">super</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AtomicReference</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token keyword">implements</span> <span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span>Serializable</span> <span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token class-name">V</span> value<span class="token punctuation">;</span>
+	<span class="token comment">// 省略其他代码</span>
+｝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>追加为啥能优化性能，这种方式看起来很神奇，但如果深入就能理解其中的奥秘，LinkedTransferQueue 使用一个内部类类型来定义队列的头结点（head）和尾节点（tail），而这个内部类 PaddedAtomicReference 相对父类 AtomicReference 只做了一件事情，就是将共享变量追加到64字节，我们计算一下，一个对象的引用占4字节，它追加了15个变量（共占60个字节），再加上父类的 value 变量，一个 64 个字节。</p>
+<p>为什么追加64字节能提高并发编程的效率呢？因为对于英特尔酷睿等处理器的L1、L2或L3缓存的高速缓存行是64个字节宽，不支持部分填充缓存行，这意味着如果队列的头结点和尾结点都不足64字节的话，处理器会将它们都读到同一个高速缓存行中，在多处理器下每个处理器都会缓存同样的头、尾节点，当一个处理器试图修改头结点时，会将整个缓存行锁定，那么在缓存一致性机制的作用下，会导致其他处理器不能访问自己高速缓存中的尾节点，而队列的入队和出队操作则需要不停修改头结点和尾结点，所以在多处理器的情况下将会严重影响到队列的入队和出队效率，使用追加到64字节的方式来填满高速缓冲区的缓存行，避免头结点和尾结点加载到同一个缓存行，是头、尾结点在修改时不会相互锁定。</p>
+<p>那么是不是在使用 volatile 变量是都应该追加到64字节呢？不是的，在两种场景下不应该使用这种方式：</p>
+<ul>
+<li>  缓存行非64字节宽的处理器</li>
+<li>  共享变量不会被频繁地写，因为使用追加字节的方式需要处理器读取更多的字节到高速缓存中，这本书就会带来一定的性能消耗，如果共享变量不被频繁写的话，锁的几率也非常小，就没必要通过追加字节的方式来避免相互锁定。</li>
+</ul>
+<h2 id="2、volatile-的内存语义"><a href="#2、volatile-的内存语义" class="headerlink" title="2、volatile 的内存语义"></a>2、volatile 的内存语义</h2><h3 id="2-1-volatile-的特性"><a href="#2-1-volatile-的特性" class="headerlink" title="2.1 volatile 的特性"></a>2.1 volatile 的特性</h3><p>理解 volatile 特性的一个好方法是把对 volatile 变量的单个读/写，看成是使用同一个锁对这些单个读/写操作做了同步，下面通过具体的示例来说明：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">VolatileFeaturesExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">volatile</span> <span class="token keyword">long</span> vl <span class="token operator">=</span> <span class="token number">0L</span><span class="token punctuation">;</span> <span class="token comment">//使用 volatile 申明64位的long型变量</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">long</span> l<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	vl <span class="token operator">=</span> l<span class="token punctuation">;</span> <span class="token comment">// 单个volatile变量的写</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> getAndIncrement <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	vl<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 多个volatile变量的读/写</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	<span class="token keyword">return</span> vl<span class="token punctuation">;</span> <span class="token comment">// 单个 volatile 变量的读</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>假设有多个线程分别调用上面程序的三个方法，这个程序在语义上和下面程序等价：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">VolatileFeaturesExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">long</span> vl <span class="token operator">=</span> <span class="token number">0L</span><span class="token punctuation">;</span> <span class="token comment">// 64位的long型变量</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">long</span> l<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 对单个的普通变量的写用同一个锁同步</span>
+    	vl <span class="token operator">=</span> l<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> getAndIncrement <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 普通方法调用</span>
+        <span class="token keyword">long</span> temp <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调用已同步的读方法</span>
+        temp <span class="token operator">+=</span> <span class="token number">1L</span><span class="token punctuation">;</span> <span class="token comment">// 普通写操作</span>
+        <span class="token function">set</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调用已同步的写方法</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">long</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 对单个的普通变量的读用同一个锁同步</span>
+    	<span class="token keyword">return</span> vl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如上面示例程序所示，一个volatile变量的单个读写操作与一个普通变量的读写操作都是使用同一个锁同步，它们之间的执行效果相同。</p>
+<p>锁的 happens-before 规则保证释放和获取锁的两个线程之间的内存可见性，这意味着对一个volatile变量的读，总是能看到（任意线程）对这个volatile变量最后的写入。</p>
+<p>锁的语义决定了临界区代码的执行具有原子性，这意味着即使是64位的long型和double型变量，只要它是volatile变量，对该变量的读写就具有原子性，如果是多个volatile操作或类似于volatile++这种复合操作，这些操作整体上不具有原子性。</p>
+<p>总之，volatile变量自身具有下列特性：</p>
+<ul>
+<li>  可见性：对一个volatile变量的读，总是能看到（任意线程）对这个volatile变量的最后写入。</li>
+<li>  原子性：对任意单个volatile变量的读写具有原子性，但是类似于 volatile ++ 这种复合操作不具有原子性。</li>
+</ul>
+<h3 id="2-2-volatile-写-读建立的happens-before关系"><a href="#2-2-volatile-写-读建立的happens-before关系" class="headerlink" title="2.2 volatile 写-读建立的happens-before关系"></a>2.2 volatile 写-读建立的happens-before关系</h3><p>说完了volatile变量自身的特性，对程序员来说，volatile 对线程的内存可见性的影响比volatile自身的特性更为重要。</p>
+<p>从JDK5开始，volatile变量的读写可以实现线程之间的通信。</p>
+<p>从内存语义的角度来说，volatile的读写与锁的是否获取有相同的内存效果，volatile写和锁的释放有相同的内存语义，volatile读与锁的获取有相同的内存语义。</p>
+<p>volatile变量的示例：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">VolatileExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">volatile</span> <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">writer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+        flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">reader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 3</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> a<span class="token punctuation">;</span> <span class="token comment">// 4</span>
+            ……
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>假设线程A执行write()方法之后，线程B执行reader()方法，根据 happens-before 规则，这个过程建立的happens-before关系可以分为3类：</p>
+<ol>
+<li>  根据程序次序规则，1 happens-before 2, 3 happens-before 4</li>
+<li>  根据volatile规则，2 happens-before 3</li>
+<li>  根据happens-before的传递性规则，1 happens-before 4</li>
+</ol>
+<p>上述 happens-before 关系的图形化表示如下：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220612154519158.png" alt="image-20220612154519158" style="zoom:80%;">
+
+<p>在上图中，每一个箭头连接的两个节点，代表了一个happens-before关系，黑色箭头表示程序顺序规则；橙色箭头表示volatile规则，蓝色箭头表示组合这些规则后提供的happens-before保证。</p>
+<p>这里 A 线程写一个volatile变量后，B线程读同一个volatile变量。A线程在写volatile变量之前的所有可见的共享变量，在B线程读同一个volatile变量，将立即变得对B线程可见。</p>
+<h3 id="2-3-volatile-写-读的内存语义"><a href="#2-3-volatile-写-读的内存语义" class="headerlink" title="2.3 volatile 写-读的内存语义"></a>2.3 volatile 写-读的内存语义</h3><p>volatile 写的内存语义：当写一个volatile变量时，JMM会把该线程对应的本地内存中的共享变量值刷新到主内存。</p>
+<p>以上面的程序为例，假设线程A首先执行write（）方法，随后线程B执行reader（）方法，初始时两个线程的本地内存中的flag和a都是初始状态。下图是线程A执行volatile写后，共享变量的状态示意图：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220612165727366.png" alt="image-20220612165727366" style="zoom:80%;">
+
+<p>线程A在写flag变量后，本地内存A中被线程A更新过的两个共享变量的值被刷新到主内存中，此时本地内存A和主内存中的共享变量的值是一致的。</p>
+<p>volatile读的内存语义：当读一个volatile变量时，JMM会把该线程对应的本地内存置为无效，线程接下来将从主内存中读取共享变量。</p>
+<p>下图为线程B读同一个volatile变量后，共享变量的状态示意图：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220612170023886.png" alt="image-20220612170023886" style="zoom:80%;">
+
+<p>如图所示，在读flag变量后，本地内存B包含的值已经被置为无效，此时，线程B必须从主内存中读取共享变量，线程B的读取操作将导致本地内存B与主内存中的共享变量的值变成一致。</p>
+<p>如果我们把volatile写和volatile读两个步骤综合起来看的话，在读线程B读一个volatile变量后，写线程A在写这个volatile变量之前的所有可见的共享变量的值都将立即变得对线程B可见。</p>
+<p>对 volatile 写和volatile读的内存语义做个总结：</p>
+<ul>
+<li>  线程A写一个volatile变量，实质上是线程A向接下来将要读这个volatile变量的某个线程发出了（对其共享变量所做的修改）消息</li>
+<li>  线程B读一个volatile变量，实质上是线程B接收了之前某个线程发出的（在写这个volatile变量之前堆共享变量所做的修改）消息</li>
+<li>  线程A写一个volatile变量，随后线程B读这个volatile变量，这个过程实质上是线程A通过主内存像线程B发送消息。</li>
+</ul>
+<h3 id="2-4-volatile-内存语义的实现"><a href="#2-4-volatile-内存语义的实现" class="headerlink" title="2.4 volatile 内存语义的实现"></a>2.4 volatile 内存语义的实现</h3><p>上面说了volatile读写的内存语义，下面看看JMM如何实现volatile读写的内存语义。</p>
+<p>我们知道重排序分为编译器重排序和处理器重排序，为了实现volatile内存语义，JMM会分别限制这两种类型的重排序规则，下表就是JMM针对编译器制定的volatile重排序规则表：</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327113006324.png" alt="image-20220327113006324" style="zoom:80%;">
 
-<p>表的解释：I：当第二个操作是volatile写时，不管第一个操作是什么，都不能重排序。这个规则确保volatile写之前的操作不会被编译器重排序到volatile写之后 。II：当第一个操作是volatile读时，不管第二个操作是什么，都不能重排序。这个规则确保volatile读之后的操作不会被编译器重排序到volatile读之前 。III：当第一个操作是volatile写，第二个操作是volatile读时，不能重排序  。</p>
-<p>上面语义的实现：编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎不可能。为此，JMM采取保守策略，可以保证在任意处理器平台，任意的程序中都能得到正确的volatile内存语义 。下面是基于保守策略的JMM内存屏障插入策略  ：</p>
-<p>1）：在每个volatile写操作的前面插入一个StoreStore屏障  。</p>
-<p>2）：在每个volatile写操作的后面插入一个StoreLoad屏障   。</p>
-<p>3）：在每个volatile读操作的后面插入一个LoadLoad屏障  。</p>
-<p>4）：在每个volatile读操作的后面插入一个LoadStore屏障  。</p>
+<p>表的解释：</p>
+<p>I：当第二个操作是volatile写时，不管第一个操作是什么，都不能重排序。这个规则确保volatile写之前的操作不会被编译器重排序到volatile写之后 。</p>
+<p>II：当第一个操作是volatile读时，不管第二个操作是什么，都不能重排序。这个规则确保volatile读之后的操作不会被编译器重排序到volatile读之前 。</p>
+<p>III：当第一个操作是volatile写，第二个操作是volatile读时，不能重排序  。</p>
+<p>为了实现内存语义，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎不可能。为此，JMM采取保守策略，可以保证在任意处理器平台，任意的程序中都能得到正确的volatile内存语义 。下面是基于保守策略的JMM内存屏障插入策略  ：</p>
+<p>1）：在每个volatile写操作的前面插入一个StoreStore屏障  </p>
+<p>2）：在每个volatile写操作的后面插入一个StoreLoad屏障   </p>
+<p>3）：在每个volatile读操作的后面插入一个LoadLoad屏障  </p>
+<p>4）：在每个volatile读操作的后面插入一个LoadStore屏障  </p>
 <p>图解：volatile写插入内存屏障后生成的指令序列示意图  ：</p>
 <p>为啥屏障会有重排序的作用呢：以StoreStore为例：StoreStore屏障将保障上面所有的普通写在volatile写之前刷新到主内存  。</p>
 <img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220327113021473.png" alt="image-20220327113021473" style="zoom:80%;">
@@ -546,15 +680,6 @@
 
 <blockquote>
 <p>注意：上述volatile写和volatile读的内存屏障插入策略非常保守。在实际执行时，只要不改变 volatile写-读的内存语义，编译器可以根据具体情况省略不必要的屏障。  </p>
-</blockquote>
-<h3 id="3、volatile能保证原子性吗"><a href="#3、volatile能保证原子性吗" class="headerlink" title="3、volatile能保证原子性吗"></a>3、volatile能保证原子性吗</h3><p>volatile不能保证完全的原子性，只能保证单次的读/写操作具有原子性。</p>
-<p>对volatile变量的单次读/写操作可以保证原子性的，如long和double类型变量，但是并不能保证i++这种操作的原子性，因为本质上i++是读、加一、写三次操作，volatile并不能保证这三次操作的原子性。</p>
-<p><strong>共享的long和double变量的为什么要用volatile?</strong></p>
-<p>因为long和double两种数据类型的操作可分为高32位和低32位两部分，因此普通的long或double类型读/写可能不是原子的。在32位的机器上，对long和double变量的操作是分为两次操作，不是原子性的。但是在64位的机器上是原子性的操作。</p>
-<blockquote>
-<p>参考链接：</p>
-<p>Java 并发编程的艺术</p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&amp;mid=2247486479&amp;idx=1&amp;sn=433a551c37a445d068ffbf8ac85f0346&amp;chksm=f98e48a5cef9c1b3fadb691fee5ebe99eb29d83fd448595239ac8a2f755fa75cacaf8e4e8576&amp;scene=178&amp;cur_album_id=1408057986861416450#rd">https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&amp;mid=2247486479&amp;idx=1&amp;sn=433a551c37a445d068ffbf8ac85f0346&amp;chksm=f98e48a5cef9c1b3fadb691fee5ebe99eb29d83fd448595239ac8a2f755fa75cacaf8e4e8576&amp;scene=178&amp;cur_album_id=1408057986861416450#rd</a></p>
 </blockquote>
 
                 
@@ -1120,7 +1245,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">645.4k</span>&nbsp;字
+                class="white-color">657.6k</span>&nbsp;字
             
             
             

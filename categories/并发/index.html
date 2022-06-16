@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
 </head>
 
 
@@ -434,11 +434,11 @@
                 </a>
                 
                 
-                <a href="/categories/Spring-Boot/" title="Spring Boot: 11">
+                <a href="/categories/Spring-Boot/" title="Spring Boot: 12">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #85C1E9;">Spring Boot
-                        <span class="tag-length">11</span>
+                        <span class="tag-length">12</span>
                     </span>
                 </a>
                 
@@ -461,11 +461,11 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%B9%B6%E5%8F%91/" title="并发: 8">
+                <a href="/categories/%E5%B9%B6%E5%8F%91/" title="并发: 12">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #FEF9E7;">并发
-                        <span class="tag-length">8</span>
+                        <span class="tag-length">12</span>
                     </span>
                 </a>
                 
@@ -564,6 +564,196 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2022/06/16/bing-fa/shuang-chong-jian-cha-suo-ding-yu-yan-chi-chu-shi-hua/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="双重检查锁定与延迟初始化">
+                            
+                            <span class="card-title">双重检查锁定与延迟初始化</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、双重锁定的由来在 Java 程序中，有时候可能需要推迟一些高开销的对象初始化操作，并且只有在使用这些对象时才进行初始化。此时程序员可能会采用延迟初始化。但要正确实现线程安全的延迟初始化需要一些技巧，否则很容易出现问题。比如，下面是非线程
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
+                                    并发
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5%E9%94%81%E5%AE%9A%E4%B8%8E%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96/">
+                            <span class="chip bg-color">双重检查锁定与延迟初始化</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/16/bing-fa/final-yu-de-nei-cun-yu-yi/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="final 域的内存语义">
+                            
+                            <span class="card-title">final 域的内存语义</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、final域的重排序规则对于final域，编译器和处理器要遵守两个重排序规则：
+
+  在构造函数内对一个final域的写入，与随后把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。
+  初次读一个包含final域的对象
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
+                                    并发
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/final-%E5%9F%9F%E7%9A%84%E5%86%85%E5%AD%98%E8%AF%AD%E4%B9%89/">
+                            <span class="chip bg-color">final 域的内存语义</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/16/bing-fa/suo-de-nei-cun-yu-yi/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="锁的内存语义">
+                            
+                            <span class="card-title">锁的内存语义</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、锁的释放-获取建立的happens-before关系锁是并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
+下面是锁释放-获取的示例代码：
+class MonitorExample 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
+                                    并发
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E9%94%81%E7%9A%84%E5%86%85%E5%AD%98%E8%AF%AD%E4%B9%89/">
+                            <span class="chip bg-color">锁的内存语义</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/15/bing-fa/yuan-zi-cao-zuo-de-shi-xian-yuan-li/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="原子操作的实现原理">
+                            
+                            <span class="card-title">原子操作的实现原理</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                原子（atomic）本意是“不能被进一步分割的最小粒子”，而原子操作（atomic operation) 意味“不可被中断的一个或一系列操作”。在多处理上实现原子操作就变得有点复杂。看看处理器和Java中是如何实现原子操作的。
+1、术语定义
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-15
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
+                                    并发
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C/">
+                            <span class="chip bg-color">原子操作</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2022/05/16/bing-fa/diao-da-mian-shi-guan-zhi-java-xian-cheng-chi-xiang-jie/">
                         <div class="card-image tag-image">
                             
@@ -576,8 +766,8 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                吊打面试官之 Java 线程池详解一、线程池是什么线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。
-线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降
+                                一、线程池是什么线程池（Thread Pool）是一种基于池化思想管理线程的工具，经常出现在多线程服务器中，如MySQL。
+线程过多会带来额外的开销，其中包括创建销毁线程的开销、调度线程的开销等等，同时也降低了计算机的整体性能。线程池维护多
                             
                         </div>
                         <div class="publish-info">
@@ -719,8 +909,9 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                吊打面试官之 ThreadLocal 详解ThreadLocal 的基本原理我们先看一下 ThreadLocal 的简单使用：
+                                ThreadLocal 的基本原理我们先看一下 ThreadLocal 的简单使用：
 ThreadLocal&lt;String&gt; localName = new ThreadLocal();
+localName.set("帅枫");
                             
                         </div>
                         <div class="publish-info">
@@ -745,52 +936,6 @@ ThreadLocal&lt;String&gt; localName = new ThreadLocal();
                         
                         <a href="/tags/ThreadLocal/">
                             <span class="chip bg-color">ThreadLocal</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/10/24/bing-fa/aqs-huan-bu-dong-me-wo-jiao-ni-a/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="一文带你撸懂AQS、ReentrantLock原理及源码">
-                            
-                            <span class="card-title">一文带你撸懂AQS、ReentrantLock原理及源码</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                一文带你撸懂AQS、ReentrantLock原理及源码一、前言Java中的大部分同步类（Lock、Semaphore、ReentrantLock等）都是基于AbstractQueuedSynchronizer（简称为AQS）实现的。AQS
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
-                                    并发
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/AQS%E3%80%81ReentrantLock/">
-                            <span class="chip bg-color">AQS、ReentrantLock</span>
                         </a>
                         
                     </div>
@@ -859,15 +1004,10 @@ ThreadLocal&lt;String&gt; localName = new ThreadLocal();
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                一、常见面试题
-什么是锁的升级和降级
-什么是JVM里的偏向锁、轻量级锁、重量级锁
-不同JDK里的Synchronized的实现
-
-二、Synchronized的使用
-代码块形式：
-
-//  这个括号中的对象可以是this，也可以是自定义的 
+                                1、Synchronized的使用代码块形式：
+//  这个括号中的对象可以是this，也可以是自定义的 Object									 
+//  还可以是这个类的class对象， 类.class
+synchronized (this)  
                             
                         </div>
                         <div class="publish-info">
@@ -899,61 +1039,33 @@ ThreadLocal&lt;String&gt; localName = new ThreadLocal();
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/10/24/bing-fa/diao-da-mian-shi-guan-zhi-volatile-di-ceng-yuan-li/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="你会 volatile 底层原理？不要耍这样的小聪明">
-                            
-                            <span class="card-title">你会 volatile 底层原理？不要耍这样的小聪明</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、常见面试题
-volatile关键字的作用是什么?
-volatile能保证原子性吗?
-之前32位机器上共享的long和double变量的为什么要用volatile? 
-i++为什么不能保证原子性?
-volatile是如何实现可见性的?
-v
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%B9%B6%E5%8F%91/" class="post-category">
-                                    并发
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/volatile/">
-                            <span class="chip bg-color">volatile</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 </main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/categories/%E5%B9%B6%E5%8F%91/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
 
@@ -1029,7 +1141,7 @@ v
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">645.4k</span>&nbsp;字
+                class="white-color">657.6k</span>&nbsp;字
             
             
             

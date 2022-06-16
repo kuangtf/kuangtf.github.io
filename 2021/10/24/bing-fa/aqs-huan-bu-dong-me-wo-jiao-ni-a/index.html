@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
 </head>
 
 
@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-22
+                    2022-06-16
                 </div>
                 
 
@@ -491,7 +491,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一文带你撸懂AQS、ReentrantLock原理及源码"><a href="#一文带你撸懂AQS、ReentrantLock原理及源码" class="headerlink" title="一文带你撸懂AQS、ReentrantLock原理及源码"></a>一文带你撸懂AQS、ReentrantLock原理及源码</h1><h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>Java中的大部分同步类（Lock、Semaphore、ReentrantLock等）都是基于AbstractQueuedSynchronizer（简称为AQS）实现的。AQS是一种提供了原子式管理同步状态、阻塞和唤醒线程功能以及队列模型的简单框架。本文会从应用层逐渐深入到原理层，并通过ReentrantLock的基本特性和ReentrantLock与AQS的关联，来深入解读AQS相关独占锁的知识点，同时采取问答的模式来帮助大家理解AQS。</p>
+                <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>Java中的大部分同步类（Lock、Semaphore、ReentrantLock等）都是基于AbstractQueuedSynchronizer（简称为AQS）实现的。AQS是一种提供了原子式管理同步状态、阻塞和唤醒线程功能以及队列模型的简单框架。本文会从应用层逐渐深入到原理层，并通过ReentrantLock的基本特性和ReentrantLock与AQS的关联，来深入解读AQS相关独占锁的知识点，同时采取问答的模式来帮助大家理解AQS。</p>
 <h2 id="二、ReentrantLock"><a href="#二、ReentrantLock" class="headerlink" title="二、ReentrantLock"></a>二、ReentrantLock</h2><h3 id="1、ReentrantLock特性概览"><a href="#1、ReentrantLock特性概览" class="headerlink" title="1、ReentrantLock特性概览"></a>1、ReentrantLock特性概览</h3><p>ReentrantLock意思为可重入锁，指的是一个线程能够对一个临界资源重复加锁。为了帮助大家更好地理解ReentrantLock的特性，我们先将ReentrantLock跟常用的Synchronized（<a target="_blank" rel="noopener" href="https://kuangtf.gitee.io/2021/10/24/bing-fa/diao-da-mian-shi-guan-zhi-synchronized-di-ceng-yuan-li/">传送门</a>）进行比较，其特性如下：</p>
 <table>
 <thead>
@@ -1861,7 +1861,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">645.4k</span>&nbsp;字
+                class="white-color">657.6k</span>&nbsp;字
             
             
             

@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="帅枫" type="application/atom+xml">
 </head>
 
 
@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-03-27
+                    2022-06-10
                 </div>
                 
 
@@ -635,9 +635,7 @@ s1<span class="token punctuation">.</span>name<span class="token operator">==</s
 </blockquote>
 <h2 id="三、深拷贝"><a href="#三、深拷贝" class="headerlink" title="三、深拷贝"></a>三、深拷贝</h2><p>深拷贝：在对引用数据类型进行拷贝的时候，创建了一个新的对象，并且复制其内的成员变量。</p>
 <p>如图：</p>
-<img src="https://gitee.com/kuangty/blogImage/raw/master/img/image-20211201111538912.png" style="zoom:80%;">
-
-<p>如何实现呢？可以重写 clone() 方法和序列化</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20211201111538912.png" alt="image-20211201111538912" style="zoom:80%;">如何实现呢？可以重写 clone() 方法和序列化</p>
 <h3 id="重写clone-方法"><a href="#重写clone-方法" class="headerlink" title="重写clone()方法"></a>重写clone()方法</h3><p>如果使用重写clone()方法实现深拷贝，那么要将类中所有自定义引用变量的类也去实现Cloneable接口实现clone()方法。对于字符类可以创建一个新的字符串实现拷贝。</p>
 <p>代码如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//Person 类实现 Cloneable 接口并重写 clone() 方法。student 的clone()方法需要对各个引用都拷贝一遍。</span>
@@ -1267,7 +1265,7 @@ s1<span class="token punctuation">.</span>name<span class="token operator">==</s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">645.4k</span>&nbsp;字
+                class="white-color">657.6k</span>&nbsp;字
             
             
             
