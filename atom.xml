@@ -6,7 +6,7 @@
   <link href="https://kuangtf.github.io/atom.xml" rel="self"/>
   
   <link href="https://kuangtf.github.io/"/>
-  <updated>2022-06-16T12:48:42.744Z</updated>
+  <updated>2022-07-11T03:15:54.832Z</updated>
   <id>https://kuangtf.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kafka主题与分区详解</title>
+    <link href="https://kuangtf.github.io/2022/07/11/kafka/zhu-ti-yu-fen-qu-xiang-jie/"/>
+    <id>https://kuangtf.github.io/2022/07/11/kafka/zhu-ti-yu-fen-qu-xiang-jie/</id>
+    <published>2022-07-11T09:54:09.000Z</published>
+    <updated>2022-07-11T03:15:54.832Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;2-3-主题&quot;&gt;&lt;a href=&quot;#2-3-主题&quot; class=&quot;headerlink&quot; title=&quot;2.3 主题&quot;&gt;&lt;/a&gt;2.3 主题&lt;/h2&gt;&lt;h3 id=&quot;2-3-1-管理&quot;&gt;&lt;a href=&quot;#2-3-1-管理&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Kafka" scheme="https://kuangtf.github.io/categories/Kafka/"/>
+    
+    
+    <category term="主题与分区" scheme="https://kuangtf.github.io/tags/%E4%B8%BB%E9%A2%98%E4%B8%8E%E5%88%86%E5%8C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM 常用工具</title>
+    <link href="https://kuangtf.github.io/2022/06/17/jvm/jvm-chang-yong-gong-ju/"/>
+    <id>https://kuangtf.github.io/2022/06/17/jvm/jvm-chang-yong-gong-ju/</id>
+    <published>2022-06-17T06:43:24.727Z</published>
+    <updated>2022-06-17T06:44:06.434Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1、基础故障处理工具&quot;&gt;&lt;a href=&quot;#1、基础故障处理工具&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    
+    
+    <category term="JVM 常用工具" scheme="https://kuangtf.github.io/tags/JVM-%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>final 域的内存语义</title>
@@ -147,14 +197,14 @@
     <link href="https://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/"/>
     <id>https://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/</id>
     <published>2022-06-06T13:53:44.000Z</published>
-    <updated>2022-06-06T08:13:10.530Z</updated>
+    <updated>2022-06-17T06:44:28.421Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;HotSpot的算法细节实现&quot;&gt;&lt;a href=&quot;#HotSpot的算法细节实现&quot; class=&quot;headerlink&quot; title=&quot;HotSpot的算法细节实现&quot;&gt;&lt;/a&gt;HotSpot的算法细节实现&lt;/h1&gt;&lt;h2 id=&quot;一、根节点枚举&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;一、根节点枚举&quot;&gt;&lt;a href=&quot;#一、根节点枚举&quot; class=&quot;headerlink&quot; title=&quot;一、根节点枚举&quot;&gt;&lt;/a&gt;一、根节点枚举&lt;/h2&gt;&lt;p&gt;我们以可达性分析算法中从GC</summary>
         
       
     
@@ -172,14 +222,14 @@
     <link href="https://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/"/>
     <id>https://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/</id>
     <published>2022-06-06T12:53:44.000Z</published>
-    <updated>2022-06-06T06:41:09.904Z</updated>
+    <updated>2022-06-17T06:44:38.776Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;JVM与Java体系结构&quot;&gt;&lt;a href=&quot;#JVM与Java体系结构&quot; class=&quot;headerlink&quot; title=&quot;JVM与Java体系结构&quot;&gt;&lt;/a&gt;JVM与Java体系结构&lt;/h1&gt;&lt;h2 id=&quot;一、前言&quot;&gt;&lt;a href=&quot;#一、前言&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;一、前言&quot;&gt;&lt;a href=&quot;#一、前言&quot; class=&quot;headerlink&quot; title=&quot;一、前言&quot;&gt;&lt;/a&gt;一、前言&lt;/h2&gt;&lt;img</summary>
         
       
     
@@ -197,14 +247,15 @@
     <link href="https://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/"/>
     <id>https://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/</id>
     <published>2022-06-05T13:07:53.000Z</published>
-    <updated>2022-06-05T13:08:45.772Z</updated>
+    <updated>2022-06-17T06:44:31.554Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;java常量池&quot;&gt;&lt;a href=&quot;#java常量池&quot; class=&quot;headerlink&quot; title=&quot;java常量池&quot;&gt;&lt;/a&gt;java常量池&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;java 包括三种常量池，分别是 字符串常量池、Class 常量池（也叫常量池表）和运行时常量池。&lt;/p&gt;
+&lt;h2</summary>
         
       
     
@@ -222,14 +273,14 @@
     <link href="https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/"/>
     <id>https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/</id>
     <published>2022-06-05T12:53:44.000Z</published>
-    <updated>2022-06-06T01:54:49.691Z</updated>
+    <updated>2022-06-17T06:44:15.780Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;HotSpot虚拟机对象探秘&quot;&gt;&lt;a href=&quot;#HotSpot虚拟机对象探秘&quot; class=&quot;headerlink&quot; title=&quot;HotSpot虚拟机对象探秘&quot;&gt;&lt;/a&gt;HotSpot虚拟机对象探秘&lt;/h1&gt;&lt;h2 id=&quot;一、对象的创建&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;一、对象的创建&quot;&gt;&lt;a href=&quot;#一、对象的创建&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -466,56 +517,6 @@
     
     
     <category term="操作系统进程通信" scheme="https://kuangtf.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进程调度算法</title>
-    <link href="https://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-diao-du-suan-fa/"/>
-    <id>https://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-diao-du-suan-fa/</id>
-    <published>2022-05-16T12:25:17.427Z</published>
-    <updated>2022-03-27T06:32:36.594Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;进程调度算法也称 CPU 调度算法，当 CPU 空闲时，操作系统就从就绪队列中按照一定的算法选择某个就绪状态的进程，并给其分配</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://kuangtf.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统进程调度算法" scheme="https://kuangtf.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统进程基础扫盲</title>
-    <link href="https://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng/"/>
-    <id>https://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng/</id>
-    <published>2022-05-16T12:25:17.425Z</published>
-    <updated>2022-03-27T06:32:28.597Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;进程的概念&quot;&gt;&lt;a href=&quot;#进程的概念&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="https://kuangtf.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统进程基础" scheme="https://kuangtf.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   

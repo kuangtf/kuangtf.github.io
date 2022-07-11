@@ -353,6 +353,104 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2022/05/16/jvm/zhi-xing-yin-qing/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JVM 执行引擎">
+                            
+                            <span class="card-title">JVM 执行引擎</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一、执行引擎概述一、执行引擎概述执行引擎是Java虚拟机核心的组成部分之一。
+“虚拟机”是相对于“物理机”的概念，这两种机器都有代码执行能力，其区别是物理机的执行引擎是直接建立在处理机、缓存、指令集和操作系统层面上的，而虚拟机的执行引擎则是
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JVM-%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E/">
+                            <span class="chip bg-color">JVM 执行引擎</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/05/16/jvm/string-table/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="从内存结构的角度带你看 String Table">
+                            
+                            <span class="card-title">从内存结构的角度带你看 String Table</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一、String的基本特征一、String的基本特征
+String：字符串，使用一对 “ “ 引起来表示。
+String 声明为 final 的，不可被继承。
+String 实现了 Serializable：表示字符串是支持序列化的；实现了
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JVM-String-Table/">
+                            <span class="chip bg-color">JVM String Table</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2022/05/16/jvm/xu-ni-ji-zhan/">
                         <div class="card-image">
                             
@@ -519,11 +617,11 @@ CLassLoader只负责class文件的加载，至于他是否可以运行，则由E
                         <div class="summary block-with-text">
                             
                                 咋废话少说，直接进入重点 😃😃😃
-堆一、堆（Heap）的核心概述
+一、堆（Heap）的核心概述
 
 一、堆的核心概述
 一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。
-Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，是JVM管理的最大
+Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，是JVM管理的最大一
                             
                         </div>
                         <div class="publish-info">
@@ -555,101 +653,6 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/05/16/jvm/la-ji-hui-shou-suan-fa/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="JVM 的各种小算法们">
-                            
-                            <span class="card-title">JVM 的各种小算法们</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                一、引用计数算法一、垃圾标记阶段：对象存活判断在堆里存放着几乎所有的Java对象实例，在GC执行垃圾回收之前，首先需要区分出内存中哪些是存活对象，哪些是已经死亡的对象，只有被标记为已经死亡的对象，GC才会在执行垃圾回收时，释放掉其所占用的内
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/JVM/" class="post-category">
-                                    JVM
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JVM-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/">
-                            <span class="chip bg-color">JVM 垃圾回收算法</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/05/16/jvm/la-ji-hui-shou-xiang-guan-gai-nian-jian-shu/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="浅谈 JVM 垃圾回收相关概念">
-                            
-                            <span class="card-title">浅谈 JVM 垃圾回收相关概念</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                学过 JVM 的同学都知道，垃圾回收可以说是 JVM 的一个非常重要的知识点了，在我们讲解垃圾回收算法和垃圾回收器之前， 我们先来讲解有关垃圾回收相关的概念吧 🏃🏃🏃
-一、垃圾回收概述1、什么是垃圾所谓垃圾回收，那在 JVM 中啥才是
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/JVM/" class="post-category">
-                                    JVM
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JVM-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%A6%82%E8%BF%B0/">
-                            <span class="chip bg-color">JVM 垃圾回收概述</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -667,7 +670,7 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，�
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">13 / 27</div>
+            <div class="center-align b-text-gray">13 / 28</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -754,7 +757,7 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">657.6k</span>&nbsp;字
+                class="white-color">669.7k</span>&nbsp;字
             
             
             
