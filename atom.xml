@@ -3,11 +3,11 @@
   <title>Maple</title>
   
   <subtitle>Never Give Up</subtitle>
-  <link href="https://kuangtf.github.io/atom.xml" rel="self"/>
+  <link href="http://kuangtf.github.io/atom.xml" rel="self"/>
   
-  <link href="https://kuangtf.github.io/"/>
+  <link href="http://kuangtf.github.io/"/>
   <updated>2022-07-11T03:15:54.832Z</updated>
-  <id>https://kuangtf.github.io/</id>
+  <id>http://kuangtf.github.io/</id>
   
   <author>
     <name>Maple</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Kafka主题与分区详解</title>
-    <link href="https://kuangtf.github.io/2022/07/11/kafka/zhu-ti-yu-fen-qu-xiang-jie/"/>
-    <id>https://kuangtf.github.io/2022/07/11/kafka/zhu-ti-yu-fen-qu-xiang-jie/</id>
+    <link href="http://kuangtf.github.io/2022/07/11/kafka/zhu-ti-yu-fen-qu-xiang-jie/"/>
+    <id>http://kuangtf.github.io/2022/07/11/kafka/zhu-ti-yu-fen-qu-xiang-jie/</id>
     <published>2022-07-11T09:54:09.000Z</published>
     <updated>2022-07-11T03:15:54.832Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="Kafka" scheme="https://kuangtf.github.io/categories/Kafka/"/>
+    <category term="Kafka" scheme="http://kuangtf.github.io/categories/Kafka/"/>
     
     
-    <category term="主题与分区" scheme="https://kuangtf.github.io/tags/%E4%B8%BB%E9%A2%98%E4%B8%8E%E5%88%86%E5%8C%BA/"/>
+    <category term="主题与分区" scheme="http://kuangtf.github.io/tags/%E4%B8%BB%E9%A2%98%E4%B8%8E%E5%88%86%E5%8C%BA/"/>
     
   </entry>
   
   <entry>
     <title>JVM 常用工具</title>
-    <link href="https://kuangtf.github.io/2022/06/17/jvm/jvm-chang-yong-gong-ju/"/>
-    <id>https://kuangtf.github.io/2022/06/17/jvm/jvm-chang-yong-gong-ju/</id>
+    <link href="http://kuangtf.github.io/2022/06/17/jvm/jvm-chang-yong-gong-ju/"/>
+    <id>http://kuangtf.github.io/2022/06/17/jvm/jvm-chang-yong-gong-ju/</id>
     <published>2022-06-17T06:43:24.727Z</published>
     <updated>2022-06-17T06:44:06.434Z</updated>
     
@@ -59,42 +59,17 @@
     
     
     
-    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    <category term="JVM" scheme="http://kuangtf.github.io/categories/JVM/"/>
     
     
-    <category term="JVM 常用工具" scheme="https://kuangtf.github.io/tags/JVM-%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>final 域的内存语义</title>
-    <link href="https://kuangtf.github.io/2022/06/16/bing-fa/final-yu-de-nei-cun-yu-yi/"/>
-    <id>https://kuangtf.github.io/2022/06/16/bing-fa/final-yu-de-nei-cun-yu-yi/</id>
-    <published>2022-06-16T12:41:01.681Z</published>
-    <updated>2022-06-16T12:48:42.744Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1、final域的重排序规则&quot;&gt;&lt;a href=&quot;#1、final域的重排序规则&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="并发" scheme="https://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
-    
-    
-    <category term="final 域的内存语义" scheme="https://kuangtf.github.io/tags/final-%E5%9F%9F%E7%9A%84%E5%86%85%E5%AD%98%E8%AF%AD%E4%B9%89/"/>
+    <category term="JVM 常用工具" scheme="http://kuangtf.github.io/tags/JVM-%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>双重检查锁定与延迟初始化</title>
-    <link href="https://kuangtf.github.io/2022/06/16/bing-fa/shuang-chong-jian-cha-suo-ding-yu-yan-chi-chu-shi-hua/"/>
-    <id>https://kuangtf.github.io/2022/06/16/bing-fa/shuang-chong-jian-cha-suo-ding-yu-yan-chi-chu-shi-hua/</id>
+    <link href="http://kuangtf.github.io/2022/06/16/bing-fa/shuang-chong-jian-cha-suo-ding-yu-yan-chi-chu-shi-hua/"/>
+    <id>http://kuangtf.github.io/2022/06/16/bing-fa/shuang-chong-jian-cha-suo-ding-yu-yan-chi-chu-shi-hua/</id>
     <published>2022-06-16T12:41:01.681Z</published>
     <updated>2022-06-16T12:47:56.937Z</updated>
     
@@ -109,17 +84,42 @@
     
     
     
-    <category term="并发" scheme="https://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="http://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="双重检查锁定与延迟初始化" scheme="https://kuangtf.github.io/tags/%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5%E9%94%81%E5%AE%9A%E4%B8%8E%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <category term="双重检查锁定与延迟初始化" scheme="http://kuangtf.github.io/tags/%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5%E9%94%81%E5%AE%9A%E4%B8%8E%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>final 域的内存语义</title>
+    <link href="http://kuangtf.github.io/2022/06/16/bing-fa/final-yu-de-nei-cun-yu-yi/"/>
+    <id>http://kuangtf.github.io/2022/06/16/bing-fa/final-yu-de-nei-cun-yu-yi/</id>
+    <published>2022-06-16T12:41:01.681Z</published>
+    <updated>2022-06-16T12:48:42.744Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1、final域的重排序规则&quot;&gt;&lt;a href=&quot;#1、final域的重排序规则&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="并发" scheme="http://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
+    
+    
+    <category term="final 域的内存语义" scheme="http://kuangtf.github.io/tags/final-%E5%9F%9F%E7%9A%84%E5%86%85%E5%AD%98%E8%AF%AD%E4%B9%89/"/>
     
   </entry>
   
   <entry>
     <title>锁的内存语义</title>
-    <link href="https://kuangtf.github.io/2022/06/16/bing-fa/suo-de-nei-cun-yu-yi/"/>
-    <id>https://kuangtf.github.io/2022/06/16/bing-fa/suo-de-nei-cun-yu-yi/</id>
+    <link href="http://kuangtf.github.io/2022/06/16/bing-fa/suo-de-nei-cun-yu-yi/"/>
+    <id>http://kuangtf.github.io/2022/06/16/bing-fa/suo-de-nei-cun-yu-yi/</id>
     <published>2022-06-16T12:41:01.678Z</published>
     <updated>2022-06-16T12:48:19.283Z</updated>
     
@@ -134,17 +134,17 @@
     
     
     
-    <category term="并发" scheme="https://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="http://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="锁的内存语义" scheme="https://kuangtf.github.io/tags/%E9%94%81%E7%9A%84%E5%86%85%E5%AD%98%E8%AF%AD%E4%B9%89/"/>
+    <category term="锁的内存语义" scheme="http://kuangtf.github.io/tags/%E9%94%81%E7%9A%84%E5%86%85%E5%AD%98%E8%AF%AD%E4%B9%89/"/>
     
   </entry>
   
   <entry>
     <title>原子操作的实现原理</title>
-    <link href="https://kuangtf.github.io/2022/06/15/bing-fa/yuan-zi-cao-zuo-de-shi-xian-yuan-li/"/>
-    <id>https://kuangtf.github.io/2022/06/15/bing-fa/yuan-zi-cao-zuo-de-shi-xian-yuan-li/</id>
+    <link href="http://kuangtf.github.io/2022/06/15/bing-fa/yuan-zi-cao-zuo-de-shi-xian-yuan-li/"/>
+    <id>http://kuangtf.github.io/2022/06/15/bing-fa/yuan-zi-cao-zuo-de-shi-xian-yuan-li/</id>
     <published>2022-06-15T02:29:32.000Z</published>
     <updated>2022-06-15T02:30:21.434Z</updated>
     
@@ -160,17 +160,17 @@
     
     
     
-    <category term="并发" scheme="https://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="http://kuangtf.github.io/categories/%E5%B9%B6%E5%8F%91/"/>
     
     
-    <category term="原子操作" scheme="https://kuangtf.github.io/tags/%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C/"/>
+    <category term="原子操作" scheme="http://kuangtf.github.io/tags/%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C/"/>
     
   </entry>
   
   <entry>
     <title>分布式总结</title>
-    <link href="https://kuangtf.github.io/2022/06/07/fen-bu-shi/fen-bu-shi-zong-jie/"/>
-    <id>https://kuangtf.github.io/2022/06/07/fen-bu-shi/fen-bu-shi-zong-jie/</id>
+    <link href="http://kuangtf.github.io/2022/06/07/fen-bu-shi/fen-bu-shi-zong-jie/"/>
+    <id>http://kuangtf.github.io/2022/06/07/fen-bu-shi/fen-bu-shi-zong-jie/</id>
     <published>2022-06-07T01:58:03.000Z</published>
     <updated>2022-06-07T02:24:17.334Z</updated>
     
@@ -185,17 +185,17 @@
     
     
     
-    <category term="分布式" scheme="https://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    <category term="分布式" scheme="http://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
     
-    <category term="分布式总结" scheme="https://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%80%BB%E7%BB%93/"/>
+    <category term="分布式总结" scheme="http://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
   <entry>
     <title>HotSpot的算法细节实现</title>
-    <link href="https://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/"/>
-    <id>https://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/</id>
+    <link href="http://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/"/>
+    <id>http://kuangtf.github.io/2022/06/06/jvm/hotspot-de-suan-fa-xi-jie-shi-xian/</id>
     <published>2022-06-06T13:53:44.000Z</published>
     <updated>2022-06-17T06:44:28.421Z</updated>
     
@@ -210,17 +210,17 @@
     
     
     
-    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    <category term="JVM" scheme="http://kuangtf.github.io/categories/JVM/"/>
     
     
-    <category term="HotSpot的算法细节实现" scheme="https://kuangtf.github.io/tags/HotSpot%E7%9A%84%E7%AE%97%E6%B3%95%E7%BB%86%E8%8A%82%E5%AE%9E%E7%8E%B0/"/>
+    <category term="HotSpot的算法细节实现" scheme="http://kuangtf.github.io/tags/HotSpot%E7%9A%84%E7%AE%97%E6%B3%95%E7%BB%86%E8%8A%82%E5%AE%9E%E7%8E%B0/"/>
     
   </entry>
   
   <entry>
     <title>JVM与Java体系结构</title>
-    <link href="https://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/"/>
-    <id>https://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/</id>
+    <link href="http://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/"/>
+    <id>http://kuangtf.github.io/2022/06/06/jvm/jvm-yu-java-ti-xi-jie-gou/</id>
     <published>2022-06-06T12:53:44.000Z</published>
     <updated>2022-06-17T06:44:38.776Z</updated>
     
@@ -235,17 +235,17 @@
     
     
     
-    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    <category term="JVM" scheme="http://kuangtf.github.io/categories/JVM/"/>
     
     
-    <category term="JVM与Java体系结构" scheme="https://kuangtf.github.io/tags/JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    <category term="JVM与Java体系结构" scheme="http://kuangtf.github.io/tags/JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>Java 常量池</title>
-    <link href="https://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/"/>
-    <id>https://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/</id>
+    <link href="http://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/"/>
+    <id>http://kuangtf.github.io/2022/06/05/jvm/java-chang-liang-chi/</id>
     <published>2022-06-05T13:07:53.000Z</published>
     <updated>2022-06-17T06:44:31.554Z</updated>
     
@@ -261,17 +261,17 @@
     
     
     
-    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    <category term="JVM" scheme="http://kuangtf.github.io/categories/JVM/"/>
     
     
-    <category term="Java 常量池" scheme="https://kuangtf.github.io/tags/Java-%E5%B8%B8%E9%87%8F%E6%B1%A0/"/>
+    <category term="Java 常量池" scheme="http://kuangtf.github.io/tags/Java-%E5%B8%B8%E9%87%8F%E6%B1%A0/"/>
     
   </entry>
   
   <entry>
     <title>对象探秘</title>
-    <link href="https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/"/>
-    <id>https://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/</id>
+    <link href="http://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/"/>
+    <id>http://kuangtf.github.io/2022/06/05/jvm/dui-xiang-tan-mi/</id>
     <published>2022-06-05T12:53:44.000Z</published>
     <updated>2022-06-17T06:44:15.780Z</updated>
     
@@ -286,17 +286,17 @@
     
     
     
-    <category term="JVM" scheme="https://kuangtf.github.io/categories/JVM/"/>
+    <category term="JVM" scheme="http://kuangtf.github.io/categories/JVM/"/>
     
     
-    <category term="对象" scheme="https://kuangtf.github.io/tags/%E5%AF%B9%E8%B1%A1/"/>
+    <category term="对象" scheme="http://kuangtf.github.io/tags/%E5%AF%B9%E8%B1%A1/"/>
     
   </entry>
   
   <entry>
     <title>Kafka之生产者与消费者</title>
-    <link href="https://kuangtf.github.io/2022/06/04/kafka/kafka-zhi-sheng-chan-zhe-yu-xiao-fei-zhe/"/>
-    <id>https://kuangtf.github.io/2022/06/04/kafka/kafka-zhi-sheng-chan-zhe-yu-xiao-fei-zhe/</id>
+    <link href="http://kuangtf.github.io/2022/06/04/kafka/kafka-zhi-sheng-chan-zhe-yu-xiao-fei-zhe/"/>
+    <id>http://kuangtf.github.io/2022/06/04/kafka/kafka-zhi-sheng-chan-zhe-yu-xiao-fei-zhe/</id>
     <published>2022-06-04T12:43:15.000Z</published>
     <updated>2022-06-04T12:47:25.828Z</updated>
     
@@ -311,17 +311,17 @@
     
     
     
-    <category term="Kafka" scheme="https://kuangtf.github.io/categories/Kafka/"/>
+    <category term="Kafka" scheme="http://kuangtf.github.io/categories/Kafka/"/>
     
     
-    <category term="Kafka快速入门与实战" scheme="https://kuangtf.github.io/tags/Kafka%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/"/>
+    <category term="Kafka快速入门与实战" scheme="http://kuangtf.github.io/tags/Kafka%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>MyBatis 终极版</title>
-    <link href="https://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/"/>
-    <id>https://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/</id>
+    <link href="http://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/"/>
+    <id>http://kuangtf.github.io/2022/05/31/mybatis/mybatis-xiang-jie/</id>
     <published>2022-05-31T01:08:29.941Z</published>
     <updated>2022-06-02T07:05:14.069Z</updated>
     
@@ -336,17 +336,17 @@
     
     
     
-    <category term="MyBatis" scheme="https://kuangtf.github.io/categories/MyBatis/"/>
+    <category term="MyBatis" scheme="http://kuangtf.github.io/categories/MyBatis/"/>
     
     
-    <category term="MyBatis 终极版" scheme="https://kuangtf.github.io/tags/MyBatis-%E7%BB%88%E6%9E%81%E7%89%88/"/>
+    <category term="MyBatis 终极版" scheme="http://kuangtf.github.io/tags/MyBatis-%E7%BB%88%E6%9E%81%E7%89%88/"/>
     
   </entry>
   
   <entry>
     <title>Kafka快速入门与实战</title>
-    <link href="https://kuangtf.github.io/2022/05/23/kafka/kafka-kuai-su-ru-men-yu-shi-zhan/"/>
-    <id>https://kuangtf.github.io/2022/05/23/kafka/kafka-kuai-su-ru-men-yu-shi-zhan/</id>
+    <link href="http://kuangtf.github.io/2022/05/23/kafka/kafka-kuai-su-ru-men-yu-shi-zhan/"/>
+    <id>http://kuangtf.github.io/2022/05/23/kafka/kafka-kuai-su-ru-men-yu-shi-zhan/</id>
     <published>2022-05-23T09:54:09.000Z</published>
     <updated>2022-05-23T09:55:02.830Z</updated>
     
@@ -361,17 +361,17 @@
     
     
     
-    <category term="Kafka" scheme="https://kuangtf.github.io/categories/Kafka/"/>
+    <category term="Kafka" scheme="http://kuangtf.github.io/categories/Kafka/"/>
     
     
-    <category term="Kafka快速入门与实战" scheme="https://kuangtf.github.io/tags/Kafka%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/"/>
+    <category term="Kafka快速入门与实战" scheme="http://kuangtf.github.io/tags/Kafka%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>项目架构演变</title>
-    <link href="https://kuangtf.github.io/2022/05/16/dubbo/xiang-mu-jia-gou-yan-bian/"/>
-    <id>https://kuangtf.github.io/2022/05/16/dubbo/xiang-mu-jia-gou-yan-bian/</id>
+    <link href="http://kuangtf.github.io/2022/05/16/dubbo/xiang-mu-jia-gou-yan-bian/"/>
+    <id>http://kuangtf.github.io/2022/05/16/dubbo/xiang-mu-jia-gou-yan-bian/</id>
     <published>2022-05-16T12:47:17.000Z</published>
     <updated>2022-05-16T12:27:03.367Z</updated>
     
@@ -387,67 +387,17 @@
     
     
     
-    <category term="Dubbo" scheme="https://kuangtf.github.io/categories/Dubbo/"/>
+    <category term="Dubbo" scheme="http://kuangtf.github.io/categories/Dubbo/"/>
     
     
-    <category term="项目架构演变" scheme="https://kuangtf.github.io/tags/%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dubbo 高级实践</title>
-    <link href="https://kuangtf.github.io/2022/05/16/dubbo/dubbo-gao-ji-shi-jian/"/>
-    <id>https://kuangtf.github.io/2022/05/16/dubbo/dubbo-gao-ji-shi-jian/</id>
-    <published>2022-05-16T12:47:17.000Z</published>
-    <updated>2022-05-16T12:27:19.930Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1、SPI&quot;&gt;&lt;a href=&quot;#1、SPI&quot; class=&quot;headerlink&quot; title=&quot;1、SPI&quot;&gt;&lt;/a&gt;1、SPI&lt;/h2&gt;&lt;h3 id=&quot;1-1-SPI-简介&quot;&gt;&lt;a href=&quot;#1-1-SPI-简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Dubbo" scheme="https://kuangtf.github.io/categories/Dubbo/"/>
-    
-    
-    <category term="Dubbo 高级实践" scheme="https://kuangtf.github.io/tags/Dubbo-%E9%AB%98%E7%BA%A7%E5%AE%9E%E8%B7%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dubbo快速入门</title>
-    <link href="https://kuangtf.github.io/2022/05/16/dubbo/dubbo-kuai-su-ru-men/"/>
-    <id>https://kuangtf.github.io/2022/05/16/dubbo/dubbo-kuai-su-ru-men/</id>
-    <published>2022-05-16T12:47:17.000Z</published>
-    <updated>2022-06-07T11:35:39.181Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1、Dubbo-架构概述&quot;&gt;&lt;a href=&quot;#1、Dubbo-架构概述&quot; class=&quot;headerlink&quot; title=&quot;1、Dubbo 架构概述&quot;&gt;&lt;/a&gt;1、Dubbo 架构概述&lt;/h2&gt;&lt;h3 id=&quot;1-1-什么是-Dubbo&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Dubbo" scheme="https://kuangtf.github.io/categories/Dubbo/"/>
-    
-    
-    <category term="Dubbo快速入门" scheme="https://kuangtf.github.io/tags/Dubbo%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
+    <category term="项目架构演变" scheme="http://kuangtf.github.io/tags/%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/"/>
     
   </entry>
   
   <entry>
     <title>Dubbo 源码分析</title>
-    <link href="https://kuangtf.github.io/2022/05/16/dubbo/dubbo-yuan-ma-fen-xi/"/>
-    <id>https://kuangtf.github.io/2022/05/16/dubbo/dubbo-yuan-ma-fen-xi/</id>
+    <link href="http://kuangtf.github.io/2022/05/16/dubbo/dubbo-yuan-ma-fen-xi/"/>
+    <id>http://kuangtf.github.io/2022/05/16/dubbo/dubbo-yuan-ma-fen-xi/</id>
     <published>2022-05-16T12:47:17.000Z</published>
     <updated>2022-05-16T12:28:02.482Z</updated>
     
@@ -462,17 +412,67 @@
     
     
     
-    <category term="Dubbo" scheme="https://kuangtf.github.io/categories/Dubbo/"/>
+    <category term="Dubbo" scheme="http://kuangtf.github.io/categories/Dubbo/"/>
     
     
-    <category term="Dubbo 源码分析" scheme="https://kuangtf.github.io/tags/Dubbo-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <category term="Dubbo 源码分析" scheme="http://kuangtf.github.io/tags/Dubbo-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dubbo 高级实践</title>
+    <link href="http://kuangtf.github.io/2022/05/16/dubbo/dubbo-gao-ji-shi-jian/"/>
+    <id>http://kuangtf.github.io/2022/05/16/dubbo/dubbo-gao-ji-shi-jian/</id>
+    <published>2022-05-16T12:47:17.000Z</published>
+    <updated>2022-05-16T12:27:19.930Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1、SPI&quot;&gt;&lt;a href=&quot;#1、SPI&quot; class=&quot;headerlink&quot; title=&quot;1、SPI&quot;&gt;&lt;/a&gt;1、SPI&lt;/h2&gt;&lt;h3 id=&quot;1-1-SPI-简介&quot;&gt;&lt;a href=&quot;#1-1-SPI-简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Dubbo" scheme="http://kuangtf.github.io/categories/Dubbo/"/>
+    
+    
+    <category term="Dubbo 高级实践" scheme="http://kuangtf.github.io/tags/Dubbo-%E9%AB%98%E7%BA%A7%E5%AE%9E%E8%B7%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dubbo快速入门</title>
+    <link href="http://kuangtf.github.io/2022/05/16/dubbo/dubbo-kuai-su-ru-men/"/>
+    <id>http://kuangtf.github.io/2022/05/16/dubbo/dubbo-kuai-su-ru-men/</id>
+    <published>2022-05-16T12:47:17.000Z</published>
+    <updated>2022-06-07T11:35:39.181Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1、Dubbo-架构概述&quot;&gt;&lt;a href=&quot;#1、Dubbo-架构概述&quot; class=&quot;headerlink&quot; title=&quot;1、Dubbo 架构概述&quot;&gt;&lt;/a&gt;1、Dubbo 架构概述&lt;/h2&gt;&lt;h3 id=&quot;1-1-什么是-Dubbo&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Dubbo" scheme="http://kuangtf.github.io/categories/Dubbo/"/>
+    
+    
+    <category term="Dubbo快速入门" scheme="http://kuangtf.github.io/tags/Dubbo%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
     
   </entry>
   
   <entry>
     <title>常用设计模式</title>
-    <link href="https://kuangtf.github.io/2022/05/16/she-ji-mo-shi/chang-jian-she-ji-mo-shi/"/>
-    <id>https://kuangtf.github.io/2022/05/16/she-ji-mo-shi/chang-jian-she-ji-mo-shi/</id>
+    <link href="http://kuangtf.github.io/2022/05/16/she-ji-mo-shi/chang-jian-she-ji-mo-shi/"/>
+    <id>http://kuangtf.github.io/2022/05/16/she-ji-mo-shi/chang-jian-she-ji-mo-shi/</id>
     <published>2022-05-16T12:25:17.466Z</published>
     <updated>2022-04-12T03:14:36.129Z</updated>
     
@@ -487,17 +487,17 @@
     
     
     
-    <category term="设计模式" scheme="https://kuangtf.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="设计模式" scheme="http://kuangtf.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="Java 设计模式" scheme="https://kuangtf.github.io/tags/Java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="Java 设计模式" scheme="http://kuangtf.github.io/tags/Java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-jian-tong-xin/"/>
-    <id>https://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-jian-tong-xin/</id>
+    <link href="http://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-jian-tong-xin/"/>
+    <id>http://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-jian-tong-xin/</id>
     <published>2022-05-16T12:25:17.429Z</published>
     <updated>2022-03-27T06:32:38.887Z</updated>
     
@@ -513,10 +513,10 @@
     
     
     
-    <category term="操作系统" scheme="https://kuangtf.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <category term="操作系统" scheme="http://kuangtf.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-    <category term="操作系统进程通信" scheme="https://kuangtf.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
+    <category term="操作系统进程通信" scheme="http://kuangtf.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   
