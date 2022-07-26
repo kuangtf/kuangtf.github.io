@@ -6,7 +6,7 @@
   <link href="http://kuangtf.github.io/atom.xml" rel="self"/>
   
   <link href="http://kuangtf.github.io/"/>
-  <updated>2022-07-11T03:15:54.832Z</updated>
+  <updated>2022-07-26T04:01:03.322Z</updated>
   <id>http://kuangtf.github.io/</id>
   
   <author>
@@ -15,6 +15,131 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分布式理论之分布式一致性：Raft算法原理</title>
+    <link href="http://kuangtf.github.io/2022/07/26/fen-bu-shi/raft-suan-fa/"/>
+    <id>http://kuangtf.github.io/2022/07/26/fen-bu-shi/raft-suan-fa/</id>
+    <published>2022-07-26T03:56:10.250Z</published>
+    <updated>2022-07-26T04:01:03.322Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;上一章，我已经带大家了解了Paxos算法，Paxos算法过于晦涩，在工业应用中比较少，比较有名的是Google</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+    <category term="分布式理论之分布式一致性：Raft算法原理" scheme="http://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9ARaft%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式理论之分布式一致性：Paxos算法</title>
+    <link href="http://kuangtf.github.io/2022/07/26/fen-bu-shi/paxos-suan-fa/"/>
+    <id>http://kuangtf.github.io/2022/07/26/fen-bu-shi/paxos-suan-fa/</id>
+    <published>2022-07-26T03:52:03.853Z</published>
+    <updated>2022-07-26T04:01:11.076Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Paxos算法是一种基于消息传递的，解决分布式系统共识问题的经典算法， 当前最常用的一批共识算法都是基于它改进的。比如，Fast Paxos</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+    <category term="分布式理论之分布式一致性：Paxos算法" scheme="http://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9APaxos%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式理论之分布式事务：TCC</title>
+    <link href="http://kuangtf.github.io/2022/07/26/fen-bu-shi/tcc/"/>
+    <id>http://kuangtf.github.io/2022/07/26/fen-bu-shi/tcc/</id>
+    <published>2022-07-26T03:48:50.588Z</published>
+    <updated>2022-07-26T04:00:56.360Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2 id=&quot;一、简介&quot;&gt;&lt;a href=&quot;#一、简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+    <category term="分布式理论之分布式事务：TCC" scheme="http://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%EF%BC%9ATCC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式理论之分布式事务：3PC</title>
+    <link href="http://kuangtf.github.io/2022/07/26/fen-bu-shi/3pc/"/>
+    <id>http://kuangtf.github.io/2022/07/26/fen-bu-shi/3pc/</id>
+    <published>2022-07-26T03:46:29.133Z</published>
+    <updated>2022-07-26T04:00:40.987Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、简介&quot;&gt;&lt;a href=&quot;#一、简介&quot; class=&quot;headerlink&quot; title=&quot;一、简介&quot;&gt;&lt;/a&gt;一、简介&lt;/h2&gt;&lt;p&gt;在&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+    <category term="分布式理论之分布式事务：3PC" scheme="http://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%EF%BC%9A3PC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式理论之分布式事务：2PC</title>
+    <link href="http://kuangtf.github.io/2022/07/26/fen-bu-shi/2pc/"/>
+    <id>http://kuangtf.github.io/2022/07/26/fen-bu-shi/2pc/</id>
+    <published>2022-07-26T03:45:06.745Z</published>
+    <updated>2022-07-26T04:00:48.060Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2 id=&quot;一、何谓分布式事务&quot;&gt;&lt;a href=&quot;#一、何谓分布式事务&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="分布式" scheme="http://kuangtf.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+    <category term="分布式理论之分布式事务：2PC" scheme="http://kuangtf.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%EF%BC%9A2PC/"/>
+    
+  </entry>
   
   <entry>
     <title>Kafka主题与分区详解</title>
@@ -391,132 +516,6 @@
     
     
     <category term="项目架构演变" scheme="http://kuangtf.github.io/tags/%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dubbo 源码分析</title>
-    <link href="http://kuangtf.github.io/2022/05/16/dubbo/dubbo-yuan-ma-fen-xi/"/>
-    <id>http://kuangtf.github.io/2022/05/16/dubbo/dubbo-yuan-ma-fen-xi/</id>
-    <published>2022-05-16T12:47:17.000Z</published>
-    <updated>2022-05-16T12:28:02.482Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1、源码下载和编译&quot;&gt;&lt;a href=&quot;#1、源码下载和编译&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Dubbo" scheme="http://kuangtf.github.io/categories/Dubbo/"/>
-    
-    
-    <category term="Dubbo 源码分析" scheme="http://kuangtf.github.io/tags/Dubbo-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dubbo 高级实践</title>
-    <link href="http://kuangtf.github.io/2022/05/16/dubbo/dubbo-gao-ji-shi-jian/"/>
-    <id>http://kuangtf.github.io/2022/05/16/dubbo/dubbo-gao-ji-shi-jian/</id>
-    <published>2022-05-16T12:47:17.000Z</published>
-    <updated>2022-05-16T12:27:19.930Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1、SPI&quot;&gt;&lt;a href=&quot;#1、SPI&quot; class=&quot;headerlink&quot; title=&quot;1、SPI&quot;&gt;&lt;/a&gt;1、SPI&lt;/h2&gt;&lt;h3 id=&quot;1-1-SPI-简介&quot;&gt;&lt;a href=&quot;#1-1-SPI-简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Dubbo" scheme="http://kuangtf.github.io/categories/Dubbo/"/>
-    
-    
-    <category term="Dubbo 高级实践" scheme="http://kuangtf.github.io/tags/Dubbo-%E9%AB%98%E7%BA%A7%E5%AE%9E%E8%B7%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dubbo快速入门</title>
-    <link href="http://kuangtf.github.io/2022/05/16/dubbo/dubbo-kuai-su-ru-men/"/>
-    <id>http://kuangtf.github.io/2022/05/16/dubbo/dubbo-kuai-su-ru-men/</id>
-    <published>2022-05-16T12:47:17.000Z</published>
-    <updated>2022-06-07T11:35:39.181Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1、Dubbo-架构概述&quot;&gt;&lt;a href=&quot;#1、Dubbo-架构概述&quot; class=&quot;headerlink&quot; title=&quot;1、Dubbo 架构概述&quot;&gt;&lt;/a&gt;1、Dubbo 架构概述&lt;/h2&gt;&lt;h3 id=&quot;1-1-什么是-Dubbo&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Dubbo" scheme="http://kuangtf.github.io/categories/Dubbo/"/>
-    
-    
-    <category term="Dubbo快速入门" scheme="http://kuangtf.github.io/tags/Dubbo%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用设计模式</title>
-    <link href="http://kuangtf.github.io/2022/05/16/she-ji-mo-shi/chang-jian-she-ji-mo-shi/"/>
-    <id>http://kuangtf.github.io/2022/05/16/she-ji-mo-shi/chang-jian-she-ji-mo-shi/</id>
-    <published>2022-05-16T12:25:17.466Z</published>
-    <updated>2022-04-12T03:14:36.129Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、单例模式&quot;&gt;&lt;a href=&quot;#一、单例模式&quot; class=&quot;headerlink&quot; title=&quot;一、单例模式&quot;&gt;&lt;/a&gt;一、单例模式&lt;/h1&gt;&lt;h2 id=&quot;1、饿汉式&quot;&gt;&lt;a href=&quot;#1、饿汉式&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="设计模式" scheme="http://kuangtf.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-    <category term="Java 设计模式" scheme="http://kuangtf.github.io/tags/Java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进程间通信</title>
-    <link href="http://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-jian-tong-xin/"/>
-    <id>http://kuangtf.github.io/2022/05/16/cao-zuo-xi-tong/jin-cheng-jian-tong-xin/</id>
-    <published>2022-05-16T12:25:17.429Z</published>
-    <updated>2022-03-27T06:32:38.887Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前置知识&quot;&gt;&lt;a href=&quot;#前置知识&quot; class=&quot;headerlink&quot; title=&quot;前置知识&quot;&gt;&lt;/a&gt;前置知识&lt;/h2&gt;&lt;p&gt;说到进程通信，我们首先得知道怎么是线程通信吧，那什么是线程通信呢？&lt;/p&gt;
-&lt;p&gt;顾名思义，进程通信（</summary>
-        
-      
-    
-    
-    
-    <category term="操作系统" scheme="http://kuangtf.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="操作系统进程通信" scheme="http://kuangtf.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   

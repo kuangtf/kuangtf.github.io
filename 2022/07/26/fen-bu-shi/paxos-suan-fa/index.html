@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="一致性协议和算法, Maple">
+    <meta name="keywords" content="分布式理论之分布式一致性：Paxos算法, Maple">
     <meta name="description" content="人生如逆旅 我亦是行人">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>一致性协议和算法 | Maple</title>
+    <title>分布式理论之分布式一致性：Paxos算法 | Maple</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/libs/awesome/css/all.css">
@@ -314,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">一致性协议和算法</h1>
+                    <h1 class="description center-align post-title">分布式理论之分布式一致性：Paxos算法</h1>
                 </div>
             </div>
         </div>
@@ -435,8 +435,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE%E5%92%8C%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">一致性协议和算法</span>
+                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9APaxos%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">分布式理论之分布式一致性：Paxos算法</span>
                             </a>
                         
                     </div>
@@ -460,28 +460,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-10
+                    2022-07-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-29
+                    2022-07-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.6k
+                    4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    23 分
+                    14 分
                 </div>
                 
 
@@ -504,142 +504,125 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>而为了解决数据一致性问题，在科学家和程序员的不断探索中，就出现了很多的一致性协议和算法。比如 2PC（两阶段提交），3PC（三阶段提交），Paxos算法等等。</p>
-<p>这时候请你思考一个问题，同学之间如果采用传纸条的方式去传播消息，那么就会出现一个问题——我咋知道我的小纸条有没有传到我想要传递的那个人手中呢？万一被哪个小家伙给劫持篡改了呢，对吧？</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/b0e01fe3213dcc1535c31298ba9bdfbc.png" alt="img" style="zoom:80%;">
-
-<p>这个时候就引申出一个概念—— <strong>拜占庭将军问题</strong> 。它意指 <strong>在不可靠信道上试图通过消息传递的方式达到一致性是不可能的</strong>， 所以所有的一致性算法的 <strong>必要前提</strong> 就是安全可靠的消息通道。</p>
-<p>而为什么要去解决数据一致性的问题？你想想，如果一个秒杀系统将服务拆分成了下订单和加积分服务，这两个服务部署在不同的机器上了，万一在消息的传播过程中积分系统宕机了，总不能你这边下了订单却没加积分吧？你总得保证两边的数据需要一致吧？</p>
-<h2 id="1-2PC（两阶段提交）"><a href="#1-2PC（两阶段提交）" class="headerlink" title="1. 2PC（两阶段提交）"></a>1. 2PC（两阶段提交）</h2><p>两阶段提交是一种保证分布式系统数据一致性的协议，现在很多数据库都是采用的两阶段提交协议来完成 <strong>分布式事务</strong> 的处理。</p>
-<p>在介绍2PC之前，我们先来想想分布式事务到底有什么问题呢？</p>
-<p>还拿秒杀系统的下订单和加积分两个系统来举例吧（我想你们可能都吐了🤮🤮🤮），我们此时下完订单会发个消息给积分系统告诉它下面该增加积分了。如果我们仅仅是发送一个消息也不收回复，那么我们的订单系统怎么能知道积分系统的收到消息的情况呢？如果我们增加一个收回复的过程，那么当积分系统收到消息后返回给订单系统一个 <code>Response</code> ，但在中间出现了网络波动，那个回复消息没有发送成功，订单系统是不是以为积分系统消息接收失败了？它是不是会回滚事务？但此时积分系统是成功收到消息的，它就会去处理消息然后给用户增加积分，这个时候就会出现积分加了但是订单没下成功。</p>
-<p>所以我们所需要解决的是在分布式系统中，整个调用链中，我们所有服务的数据处理要么都成功要么都失败，即所有服务的 <strong>原子性问题</strong> 。</p>
-<p>在两阶段提交中，主要涉及到两个角色，分别是协调者和参与者。</p>
-<p>第一阶段：当要执行一个分布式事务的时候，事务发起者首先向协调者发起事务请求，然后协调者会给所有参与者发送 <code>prepare</code> 请求（其中包括事务内容）告诉参与者你们需要执行事务了，如果能执行我发的事务内容那么就先执行但不提交，执行后请给我回复。然后参与者收到 <code>prepare</code> 消息后，他们会开始执行事务（但不提交），并将 <code>Undo</code> 和 <code>Redo</code> 信息记入事务日志中，之后参与者就向协调者反馈是否准备好了。</p>
-<p>第二阶段：第二阶段主要是协调者根据参与者反馈的情况来决定接下来是否可以进行事务的提交操作，即提交事务或者回滚事务。</p>
-<p>比如这个时候 <strong>所有的参与者</strong> 都返回了准备好了的消息，这个时候就进行事务的提交，协调者此时会给所有的参与者发送 <strong><code>Commit</code> 请求</strong> ，当参与者收到 <code>Commit</code> 请求的时候会执行前面执行的事务的 <strong>提交操作</strong> ，提交完毕之后将给协调者发送提交成功的响应。</p>
-<p>而如果在第一阶段并不是所有参与者都返回了准备好了的消息，那么此时协调者将会给所有参与者发送 <strong>回滚事务的 <code>rollback</code> 请求</strong>，参与者收到之后将会 <strong>回滚它在第一阶段所做的事务处理</strong> ，然后再将处理情况返回给协调者，最终协调者收到响应后便给事务发起者返回处理失败的结果。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/7ce4e40b68d625676bb42c29efce046a.png" alt="2PC流程" style="zoom:80%;">
-
-<p>个人觉得 2PC 实现得</p>
-<p>还是比较鸡肋的，因为事实上它只解决了各个事务的原子性问题，随之也带来了很多的问题。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/9af1ad68517561a8e9f5d3455a32132d.png" alt="img" style="zoom:80%;">
-
+                <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>Paxos算法是一种基于消息传递的，解决分布式系统共识问题的经典算法， 当前最常用的一批共识算法都是基于它改进的。比如，Fast Paxos 算法、Cheap Paxos 算法、Raft 算法等等。</p>
+<p>Paxos算法最初由Leslie Lamport提出，但是他在论文《Paxos Made Simple》(<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/uploads/prod/2016/12/paxos-simple-Copy.pdf)%E4%B8%AD%E5%B9%B6%E6%B2%A1%E6%9C%89%E7%94%A8%E4%BB%BB%E4%BD%95%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E5%AF%B9Paxos%E7%AE%97%E6%B3%95%E8%BF%9B%E8%A1%8C%E6%8F%8F%E8%BF%B0%EF%BC%8C%E4%BB%A5%E8%87%B4%E4%BA%8E%E8%AF%A5%E8%AE%BA%E6%96%87%E5%9B%A0%E4%B8%BA%E5%A4%AA%E4%B8%8D%E8%A7%84%E8%8C%83%E4%B8%94%E6%99%A6%E6%B6%A9%E9%9A%BE%E6%87%82%E8%80%8C%E8%A2%ABTOCS%E6%8B%92%E6%94%B6%EF%BC%8C%E7%9B%B4%E5%88%B0%E8%A2%AB%E9%9B%AA%E8%97%8F%E4%BA%86">https://www.microsoft.com/en-us/research/uploads/prod/2016/12/paxos-simple-Copy.pdf)中并没有用任何数学语言对Paxos算法进行描述，以致于该论文因为太不规范且晦涩难懂而被TOCS拒收，直到被雪藏了</a> 9 年后，TOCS 编委中才有人从故纸堆中找到了这篇划时代的论文，并予以发表。</p>
+<p>Leslie Lamport提出的 Paxos 算法包含 2 个部分 ：</p>
 <ul>
-<li><strong>单点故障问题</strong>，如果协调者挂了那么整个系统都处于不可用的状态了。</li>
-<li><strong>阻塞问题</strong>，即当协调者发送 <code>prepare</code> 请求，参与者收到之后如果能处理那么它将会进行事务的处理但并不提交，这个时候会一直占用着资源不释放，如果此时协调者挂了，那么这些资源都不会再释放了，这会极大影响性能。</li>
-<li><strong>数据不一致问题</strong>，比如当第二阶段，协调者只发送了一部分的 <code>commit</code> 请求就挂了，那么也就意味着，收到消息的参与者会进行事务的提交，而后面没收到的则不会进行事务提交，那么这时候就会产生数据不一致性问题。</li>
+<li>  Basic Paxos 算法，描述的是多节点之间如何就某个值达成共识；</li>
+<li>  Multi-Paxos 思想，描述的是执行多个 Basic Paxos 实例，就一系列值达成共识。</li>
 </ul>
-<h2 id="2-3PC（三阶段提交）"><a href="#2-3PC（三阶段提交）" class="headerlink" title="2. 3PC（三阶段提交）"></a>2. 3PC（三阶段提交）</h2><p>因为2PC存在的一系列问题，比如单点，容错机制缺陷等等，从而产生了 <strong>3PC（三阶段提交）</strong> 。那么这三阶段又分别是什么呢？</p>
 <blockquote>
-<p>千万不要吧PC理解成个人电脑了，其实他们是 phase-commit 的缩写，即阶段提交。</p>
+<p>  Basic Paxos 是 Multi-Paxos 思想的核心，说白了，Multi-Paxos 就是多执行几次 Basic Paxos。</p>
 </blockquote>
-<ol>
-<li><strong>CanCommit阶段</strong>：协调者向所有参与者发送 <code>CanCommit</code> 请求，参与者收到请求后会根据自身情况查看是否能执行事务，如果可以则返回 YES 响应并进入预备状态，否则返回 NO 。</li>
-<li><strong>PreCommit阶段</strong>：协调者根据参与者返回的响应来决定是否可以进行下面的 <code>PreCommit</code> 操作。如果上面参与者返回的都是 YES，那么协调者将向所有参与者发送 <code>PreCommit</code> 预提交请求，<strong>参与者收到预提交请求后，会进行事务的执行操作，并将 <code>Undo</code> 和 <code>Redo</code> 信息写入事务日志中</strong> ，最后如果参与者顺利执行了事务则给协调者返回成功的响应。如果在第一阶段协调者收到了 <strong>任何一个 NO</strong> 的信息，或者 <strong>在一定时间内</strong> 并没有收到全部的参与者的响应，那么就会中断事务，它会向所有参与者发送中断请求（abort），参与者收到中断请求之后会立即中断事务，或者在一定时间内没有收到协调者的请求，它也会中断事务。</li>
-<li><strong>DoCommit阶段</strong>：这个阶段其实和 <code>2PC</code> 的第二阶段差不多，如果协调者收到了所有参与者在 <code>PreCommit</code> 阶段的 YES 响应，那么协调者将会给所有参与者发送 <code>DoCommit</code> 请求，<strong>参与者收到 <code>DoCommit</code> 请求后则会进行事务的提交工作</strong>，完成后则会给协调者返回响应，协调者收到所有参与者返回的事务提交成功的响应之后则完成事务。若协调者在 <code>PreCommit</code> 阶段 <strong>收到了任何一个 NO 或者在一定时间内没有收到所有参与者的响应</strong> ，那么就会进行中断请求的发送，参与者收到中断请求后则会 <strong>通过上面记录的回滚日志</strong> 来进行事务的回滚操作，并向协调者反馈回滚状况，协调者收到参与者返回的消息后，中断事务。</li>
+<p>我们先来看下Basic Paxos 算法的过程，然后再来讨论Multi-Paxos 思想。</p>
+<h2 id="一、Basic-Paxos-算法角色"><a href="#一、Basic-Paxos-算法角色" class="headerlink" title="一、Basic Paxos 算法角色"></a>一、Basic Paxos 算法角色</h2><p>Basic Paxos算法在Leslie Lamport论文中的内容是比较精简的，核心是三种基本角色：<strong>Proposer</strong>、<strong>Acceptor</strong>及<strong>Learner</strong>：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115230103.png" alt="image-20220726115230103" style="zoom:80%;">
+
+<h3 id="1-1-Proposer（提议者）"><a href="#1-1-Proposer（提议者）" class="headerlink" title="1.1 Proposer（提议者）"></a>1.1 Proposer（提议者）</h3><p>Proposer， 提出提案 <code>[n,v]</code>，用于投票表决。一般来说，集群中收到客户端请求的节点，就是提议者。Proposer可以有多个， 代表的是接入和协调功能，收到客户端请求后，发起二阶段提交（Basic Paxos算法本质是一种二阶段提交算法，后面我们就会明白），进行共识协商。</p>
+<blockquote>
+<p>  所谓提案（Proposal），可以是任何操作，一个提案包含两个字段：[n, v]，其中 n为提案序号（全局唯一），v为提议值。</p>
+</blockquote>
+<h3 id="1-2-Acceptor（接受者）"><a href="#1-2-Acceptor（接受者）" class="headerlink" title="1.2 Acceptor（接受者）"></a>1.2 Acceptor（接受者）</h3><p>Acceptor， 对每个提案进行投票，并存储接受的值。一般来说，集群中的所有节点都在扮演接受者的角色，参与共识协商，并接受和存储数据。Acceptor 之间完全对等独立，对于Proposer 提出的提案，必须获得**超过半数以上(N/2+1)**的 Acceptor批准后才能通过。</p>
+<h3 id="1-3-Learner（学习者）"><a href="#1-3-Learner（学习者）" class="headerlink" title="1.3 Learner（学习者）"></a>1.3 Learner（学习者）</h3><p>Learner， 被告知投票的结果，接受达成共识的值，存储保存，不参与投票的过程。一般来说，学习者是数据备份节点，比如“Master-Slave”模型中的 Slave，被动地接受数据，容灾备份。</p>
+<h2 id="二、Basic-Paxos-算法流程"><a href="#二、Basic-Paxos-算法流程" class="headerlink" title="二、Basic Paxos 算法流程"></a>二、Basic Paxos 算法流程</h2><p>Basic Paxos算法达成共识的过程分为两个阶段：</p>
+<blockquote>
+<p>  <strong>Phase 1.</strong></p>
+<p>  (a) A proposer selects a proposal number n and sends a prepare request with number n to a majority of acceptors.</p>
+<p>  (b) If an acceptor receives a prepare request with number n greater than that of any prepare request to which it has already responded, then it responds to the request with a promise not to accept any more proposals numbered less than n and with the highest-numbered proposal (if any) that it has accepted.</p>
+<p>  <strong>Phase 2.</strong></p>
+<p>  (a) If the proposer receives a response to its prepare requests (numbered n) from a majority of acceptors, then it sends an accept request to each of those acceptors for a proposal numbered n with a value v, where v is the value of the highest-numbered proposal among the responses, or is any value if the responses reported no proposals.，</p>
+<p>  (b) If an acceptor receives an accept request for a proposal numbered n, it accepts the proposal unless it has already responded to a prepare request having a number greater than n.</p>
+</blockquote>
+<p>上述两个阶段的交互主要在Proposer和Acceptor之间，整个交互过程如图下：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115252476.png" alt="image-20220726115252476" style="zoom:80%;">
+
+<p>看不懂？没关系，我来详细分析下这个两个阶段。</p>
+<h3 id="2-1-阶段一（准备阶段）"><a href="#2-1-阶段一（准备阶段）" class="headerlink" title="2.1 阶段一（准备阶段）"></a>2.1 阶段一（准备阶段）</h3><ol>
+<li> Proposer向所有的Acceptor广播Prepare请求，Prepare请求仅仅是提案序号<strong>SN1</strong>；</li>
+<li> Acceptor接收到Prepare请求<strong>SN1</strong>后，检查自身上次回复过的Prepare请求<strong>SN2</strong> ①：如果之前没有进行过任何Prepare请求的响应，则简单回复；②：如果<strong>SN1≤SN2</strong>，则忽略此请求，直接结束本次批准过程；③：如果 <strong>SN1≥SN2</strong>，检查上次批准的accept请求**[SNx，Vx]<strong>，并回复</strong>[SNx，Vx]<strong>，同时该Acceptor承诺不再接受任何编号小于</strong>SN1**的提案。</li>
 </ol>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/d0b44361c746593f70a6e42c298b413a.png" alt="3PC流程" style="zoom:80%;">
+<h3 id="2-2-阶段二（批准阶段）"><a href="#2-2-阶段二（批准阶段）" class="headerlink" title="2.2 阶段二（批准阶段）"></a>2.2 阶段二（批准阶段）</h3><ol>
+<li> 经过一段时间后，Proposer收到一些Acceptor回复，回复可分为以下几种情况：①：若回复数量多于半数<strong>（N/2+1）</strong>，并所有的回复都是<ok>，则Porposer发起自己的提案accept请求，请求内容为 <strong>[SN1, V1]<strong>（V1随意取值）；②：若回复数量多于半数</strong>（N/2+1）</strong>，但有的回复为：[SN2，V2]，[SN3，V3]…… 则Porposer找到所有回复中序号最大的那个，假设为 **[SNx，Vx]**，然后发起accept请求，请求内容为提案 <strong>[SN1，Vx]<strong>；③：若回复数量少于半数，则Proposer尝试将提案序号自增1</strong>（SN1+1=SN2）</strong>，转【阶段一（准备阶段）】继续执行；</ok></li>
+<li> Acceptor接收到accept请求 <strong>[SN1，Vx]<strong>后，只要该Acceptor</strong>尚未响应过任何编号大于SN1的Prepare请求</strong>，它就接受该提案，然后响应<aok>；</aok></li>
+<li> Proposer收到超过半数的<aok>响应后，将提案最终结果通知给Learner；否则，将提案序号自增1，转【阶段一（准备阶段）】继续执行。</aok></li>
+</ol>
+<h2 id="三、Basic-Paxos-算法示例"><a href="#三、Basic-Paxos-算法示例" class="headerlink" title="三、Basic Paxos 算法示例"></a>三、Basic Paxos 算法示例</h2><p>上面两节，我已讲完了Basic Paxos 算法的基本角色和核心流程。我知道很多童鞋没看懂，没关系，本节我引入一个示例来讲解下，帮助理解。</p>
+<p>假设我们的集群中有A、B、C三个节点，它们需要对客户端写入的某个值X达成共识。</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115318047.png" alt="image-20220726115318047" style="zoom:80%;">
+
+<p>我们假设客户端 1 的提案编号为 1，节点 A、B 先收到来自客户端 1 的Prepare请求；客户端 2 的提案编号为 5，节点 C 先收到来自客户端 2 的Prepare请求。</p>
+<blockquote>
+<p>  我这里补充一句：<strong>集群中收到客户端请求的节点，才是Proposer，并且集群中的所有节点都在扮演Acceptor</strong>。我这里只是为了方便演示，把客户端 1 和 2 看作是Proposer。</p>
+</blockquote>
+<h3 id="3-1-阶段一（准备阶段）"><a href="#3-1-阶段一（准备阶段）" class="headerlink" title="3.1 阶段一（准备阶段）"></a>3.1 阶段一（准备阶段）</h3><p>首先来看第一个阶段，客户端 1、2 作为Proposer，分别向所有Acceptor发送包含提案编号的Prepare请求：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115331204.png" alt="image-20220726115331204" style="zoom:80%;">
 
 <blockquote>
-<p>这里是 <code>3PC</code> 在成功的环境下的流程图，你可以看到 <code>3PC</code> 在很多地方进行了超时中断的处理，比如协调者在指定时间内为收到全部的确认消息则进行事务中断的处理，这样能 <strong>减少同步阻塞的时间</strong> 。还有需要注意的是，**<code>3PC</code> 在 <code>DoCommit</code> 阶段参与者如未收到协调者发送的提交事务的请求，它会在一定时间内进行事务的提交<strong>。为什么这么做呢？是因为这个时候我们肯定</strong>保证了在第一阶段所有的协调者全部返回了可以执行事务的响应<strong>，这个时候我们有理由</strong>相信其他系统都能进行事务的执行和提交<strong>，所以</strong>不管**协调者有没有发消息给参与者，进入第三阶段参与者都会进行事务的提交操作。</p>
+<p>  这里要注意的是，在Prepare请求中，只需要携带提案编号就可以了，不需要提案值。</p>
 </blockquote>
-<p>总之，<code>3PC</code> 通过一系列的超时机制很好的缓解了阻塞问题，但是最重要的一致性并没有得到根本的解决，比如在 <code>PreCommit</code> 阶段，当一个参与者收到了请求之后其他参与者和协调者挂了或者出现了网络分区，这个时候收到消息的参与者都会进行事务提交，这就会出现数据不一致性问题。</p>
-<p>所以，要解决一致性问题还需要靠 <code>Paxos</code> 算法⭐️ ⭐️ ⭐️ 。</p>
-<h2 id="3-Paxos-算法"><a href="#3-Paxos-算法" class="headerlink" title="3. Paxos 算法"></a>3. Paxos 算法</h2><p><code>Paxos</code> 算法是基于<strong>消息传递且具有高度容错特性的一致性算法</strong>，是目前公认的解决分布式一致性问题最有效的算法之一，<strong>其解决的问题就是在分布式系统中如何就某个值（决议）达成一致</strong> 。</p>
-<p>在 <code>Paxos</code> 中主要有三个角色，分别为 <code>Proposer提案者</code>、<code>Acceptor表决者</code>、<code>Learner学习者</code>。<code>Paxos</code> 算法和 <code>2PC</code> 一样，也有两个阶段，分别为 <code>Prepare</code> 和 <code>accept</code> 阶段。</p>
-<h3 id="3-1-prepare-阶段"><a href="#3-1-prepare-阶段" class="headerlink" title="3.1. prepare 阶段"></a>3.1. prepare 阶段</h3><ul>
-<li><code>Proposer提案者</code>：负责提出 <code>proposal</code>，每个提案者在提出提案时都会首先获取到一个 <strong>具有全局唯一性的、递增的提案编号N</strong>，即在整个集群中是唯一的编号 N，然后将该编号赋予其要提出的提案，在<strong>第一阶段是只将提案编号发送给所有的表决者</strong>。</li>
-<li><code>Acceptor表决者</code>：每个表决者在 <code>accept</code> 某提案后，会将该提案编号N记录在本地，这样每个表决者中保存的已经被 accept 的提案中会存在一个<strong>编号最大的提案</strong>，其编号假设为 <code>maxN</code>。每个表决者仅会 <code>accept</code> 编号大于自己本地 <code>maxN</code> 的提案，在批准提案时表决者会将以前接受过的最大编号的提案作为响应反馈给 <code>Proposer</code> 。</li>
-</ul>
-<blockquote>
-<p>下面是 <code>prepare</code> 阶段的流程图，你可以对照着参考一下。</p>
-</blockquote>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/22e8d512d954676bdf0cc92d200af8ef.png" alt="paxos第一阶段" style="zoom:80%;">
-
-<h3 id="3-2-accept-阶段"><a href="#3-2-accept-阶段" class="headerlink" title="3.2. accept 阶段"></a>3.2. accept 阶段</h3><p>当一个提案被 <code>Proposer</code> 提出后，如果 <code>Proposer</code> 收到了超过半数的 <code>Acceptor</code> 的批准（<code>Proposer</code> 本身同意），那么此时 <code>Proposer</code> 会给所有的 <code>Acceptor</code> 发送真正的提案（你可以理解为第一阶段为试探），这个时候 <code>Proposer</code> 就会发送提案的内容和提案编号。</p>
-<p>表决者收到提案请求后会再次比较本身已经批准过的最大提案编号和该提案编号，如果该提案编号 <strong>大于等于</strong> 已经批准过的最大提案编号，那么就 <code>accept</code> 该提案（此时执行提案内容但不提交），随后将情况返回给 <code>Proposer</code> 。如果不满足则不回应或者返回 NO 。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/b82536f956f70a584c6a20c10113f225.png" alt="paxos第二阶段1" style="zoom:80%;">
-
-<p>当 <code>Proposer</code> 收到超过半数的 <code>accept</code> ，那么它这个时候会向所有的 <code>acceptor</code> 发送提案的提交请求。需要注意的是，因为上述仅仅是超过半数的 <code>acceptor</code> 批准执行了该提案内容，其他没有批准的并没有执行该提案内容，所以这个时候需要<strong>向未批准的 <code>acceptor</code> 发送提案内容和提案编号并让它无条件执行和提交</strong>，而对于前面已经批准过该提案的 <code>acceptor</code> 来说 <strong>仅仅需要发送该提案的编号</strong> ，让 <code>acceptor</code> 执行提交就行了。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/743889b97485fdfe2094e5ef0af6b141.png" alt="paxos第二阶段2" style="zoom:80%;">
-
-<p>而如果 <code>Proposer</code> 如果没有收到超过半数的 <code>accept</code> 那么它将会将 <strong>递增</strong> 该 <code>Proposal</code> 的编号，然后 <strong>重新进入 <code>Prepare</code> 阶段</strong> 。</p>
-<blockquote>
-<p>对于 <code>Learner</code> 来说如何去学习 <code>Acceptor</code> 批准的提案内容，这有很多方式，读者可以自己去了解一下，这里不做过多解释。</p>
-</blockquote>
-<h3 id="3-3-paxos-算法的死循环问题"><a href="#3-3-paxos-算法的死循环问题" class="headerlink" title="3.3. paxos 算法的死循环问题"></a>3.3. <code>paxos</code> 算法的死循环问题</h3><p>其实就有点类似于两个人吵架，小明说我是对的，小红说我才是对的，两个人据理力争的谁也不让谁🤬🤬。</p>
-<p>比如说，此时提案者 P1 提出一个方案 M1，完成了 <code>Prepare</code> 阶段的工作，这个时候 <code>acceptor</code> 则批准了 M1，但是此时提案者 P2 同时也提出了一个方案 M2，它也完成了 <code>Prepare</code> 阶段的工作。然后 P1 的方案已经不能在第二阶段被批准了（因为 <code>acceptor</code> 已经批准了比 M1 更大的 M2），所以 P1 自增方案变为 M3 重新进入 <code>Prepare</code> 阶段，然后 <code>acceptor</code> ，又批准了新的 M3 方案，它又不能批准 M2 了，这个时候 M2 又自增进入 <code>Prepare</code> 阶段。。。</p>
-<p>就这样无休无止的永远提案下去，这就是 <code>paxos</code> 算法的死循环问题。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtianyu/img/img/72ccf65cdc107346ff2a1a881d296a2b.png" alt="img" style="zoom:80%;">
-
-<p>那么如何解决呢？很简单，人多了容易吵架，我现在 <strong>就允许一个能提案</strong> 就行了。</p>
-<h2 id="4、Raft-算法"><a href="#4、Raft-算法" class="headerlink" title="4、Raft 算法"></a>4、Raft 算法</h2><h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>首先需要明确的是一致性算法的目标是什么，主要面对的问题是在只使用单个服务器时由于发生错误导致数据丢失等事情发生。解决这个问题的思路也很简单，就是备份，将操作重复到多个机器上就不怕单个机器出错了。但随之而来的就是，数据不一致、乱序等问题，一致性算法想要做到的是即使有结点出错，对外仍是一个完整的可以正常工作的整体。</p>
-<p>Raft 是一个非拜占庭的一致性算法，即所有通信是正确的而非伪造的。N 个结点的情况下（N为奇数）可以最多容忍 (N−1)/2(N−1)/2 个结点故障。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/1.gif" alt="img" style="zoom:80%;">
-
-<p>Raft 正常工作时的流程如上图，也就是正常情况下日志复制的流程。Raft 中使用 <strong>日志</strong> 来记录所有操作，所有结点都有自己的日志列表来记录所有请求。算法将机器分成三种角色：Leader、Follower 和 Candidate。正常情况下只存在一个 Leader，其他均为 Follower，所有客户端都与 Leader 进行交互。</p>
-<p>所有操作采用类似两阶段提交的方式，Leader 在收到来自客户端的请求后并不会执行，只是将其写入自己的日志列表中，然后将该操作发送给所有的 Follower。Follower 在收到请求后也只是写入自己的日志列表中然后回复 Leader，当有超过半数的结点写入后 Leader 才会提交该操作并返回给客户端，同时通知所有其他结点提交该操作。</p>
-<p>通过这一流程保证了只要提交过后的操作一定在多数结点上留有记录（在日志列表中），从而保证了该数据不会丢失。</p>
-<h3 id="领导选举"><a href="#领导选举" class="headerlink" title="领导选举"></a>领导选举</h3><p>在了解了算法的基本工作流程之后，就让我们开始解决其中会遇到的问题，首先就是 Leader 如何而来。</p>
-<h4 id="初次选举"><a href="#初次选举" class="headerlink" title="初次选举"></a>初次选举</h4><p>在算法刚开始时，所有结点都是 Follower，每个结点都会有一个定时器，每次收到来自 Leader 的信息就会更新该定时器。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/2.gif" alt="img" style="zoom:80%;">
-
-<p>如果定时器超时，说明一段时间内没有收到 Leader 的消息，那么就可以认为 Leader 已死或者不存在，那么该结点就会转变成 Candidate，意思为准备竞争成为 Leader。</p>
-<p>成为 Candidate 后结点会向所有其他结点发送请求投票的请求（RequestVote），其他结点在收到请求后会判断是否可以投给他并返回结果。Candidate 如果收到了半数以上的投票就可以成为 Leader，成为之后会立即并在任期内定期发送一个心跳信息通知其他所有结点新的 Leader 信息，并用来重置定时器，避免其他结点再次成为 Candidate。</p>
-<p>如果 Candidate 在一定时间内没有获得足够的投票，那么就会进行一轮新的选举，直到其成为 Leader,或者其他结点成为了新的 Leader，自己变成 Follower。</p>
-<h4 id="再次选举"><a href="#再次选举" class="headerlink" title="再次选举"></a>再次选举</h4><p>再次选举会在两种情况下发生。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/3.gif" alt="img" style="zoom:80%;">
-
-<p>第一种情况是 Leader 下线，此时所有其他结点的计时器不会被重置，直到一个结点成为了 Candidate，和上述一样开始一轮新的选举选出一个新的 Leader。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/4.gif" alt="img"></p>
-<p>第二种情况是某一 Follower 结点与 Leader 间通信发生问题，导致发生了分区，这时没有 Leader 的那个分区就会进行一次选举。这种情况下，因为要求获得多数的投票才可以成为 Leader，因此只有拥有多数结点的分区可以正常工作。而对于少数结点的分区，即使仍存在 Leader，但由于写入日志的结点数量不可能超过半数因此不可能提交操作。这解释了为何 Raft 至多容忍 (N−1)/2(N−1)/2 个结点故障。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220429200948937.png" alt="image-20220429200948937" style="zoom:80%;">
-
-<p>这解释了每个结点会如何在三个状态间发生变化。</p>
-<h4 id="任期-Term"><a href="#任期-Term" class="headerlink" title="任期 Term"></a>任期 Term</h4><p>Leader 的选举引出了一个新的概念——<strong>任期</strong>（Term）。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220429200956676.png" alt="image-20220429200956676" style="zoom:80%;">
-
-<p>每一个任期以一次选举作为起点，所以当一个结点成为 Candidate 并向其他结点请求投票时，会将自己的 Term 加 1，表明新一轮的开始以及旧 Leader 的任期结束。所有结点在收到比自己更新的 Term 之后就会更新自己的 Term 并转成 Follower，而收到过时的消息则拒绝该请求。</p>
-<p>在一次成功选举完成后，Leader 会负责管理所有结点直至任期结束。如果没有产生新的 Leader 就会开始一轮新的 Term。任期在 Raft 起到了类似时钟的功能，用于检测信息是否过期。</p>
-<h4 id="投票限制"><a href="#投票限制" class="headerlink" title="投票限制"></a>投票限制</h4><p>在投票时候，所有服务器采用先来先得的原则，在一个任期内只可以投票给一个结点，得到超过半数的投票才可成为 Leader，从而保证了一个任期内只会有一个 Leader 产生（<strong>Election Safety</strong>）。</p>
-<p>在 Raft 中日志只有从 Leader 到 Follower 这一流向，所以需要保证 Leader 的日志必须正确，即必须拥有所有已在多数节点上存在的日志，这一步骤由投票来限制。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220429201010920.png" alt="image-20220429201010920" style="zoom:80%;">
-
-<p>投票由一个称为 RequestVote 的 RPC 调用进行，请求中除了有 Candidate 自己的 term 和 id 之外，还要带有自己最后一个日志条目的 index 和 term。接收者收到后首先会判断请求的 term 是否更大，不是则说明是旧消息，拒绝该请求。如果任期更大则开始判断日志是否更加新。日志 Term 越大则越新，相同那么 index 较大的认为是更加新的日志。接收者只会投票给拥有相同或者更加新的日志的 Candidate。</p>
-<p>由于只有日志在被多数结点复制之后才会被提交并返回，所以如果一个 Candidate 并不拥有最新的已被复制的日志，那么他不可能获得多数票，从而保证了 Leader 一定具有所有已被多数拥有的日志（<strong>Leader Completeness</strong>），在后续同步时会将其同步给所有结点。</p>
-<h4 id="定时器时间"><a href="#定时器时间" class="headerlink" title="定时器时间"></a>定时器时间</h4><p>定时器时间的设定实际上也会影响到算法性能甚至是正确性。试想一下这样一个场景，Leader 下线，有两个结点同时成为 Candidate，然后由于网络结构等原因，每个结点都获得了一半的投票，因此无人成为 Leader 进入了下一轮。然而在下一轮由于这两个结点同时结束，又同时成为了 Candidate，再次重复了之前的这一流程，那么算法就无法正常工作。</p>
-<p>为了解决这一问题，Raft 采用了一个十分“艺术”的解决方法，随机定时器长短（例如 150-300ms）。通过这一方法避免了两个结点同时成为 Candidate，即使发生了也能快速恢复。这一长短必须长于 Leader 的心跳间隔，否则在正常情况下也会有 Candidate 出现导致算法无法正常工作。</p>
-<h3 id="日志复制"><a href="#日志复制" class="headerlink" title="日志复制"></a>日志复制</h3><p>在之前的<a target="_blank" rel="noopener" href="https://blog.zinglix.xyz/2020/06/25/raft/#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B">工作流程</a>章节中已经描述了日志是如何被复制到其他结点上的，但实际中还会发生结点下线，从而产生不一致的情况的发生，也是这一章我们将要讨论的内容。</p>
-<h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>Raft 保证了如下几点：</p>
+<p>按照上图的时间线顺序，站在节点的角度看，节点 A、B 先收到了提案编号为 1 的Prepare请求，节点 C 先收到了提案编号为 5 的Prepare请求，它们会做如下处理：</p>
 <ul>
-<li>Leader 绝不会覆盖或删除自己的日志，只会追加 （<strong>Leader Append-Only</strong>）</li>
-<li>如果两个日志的 index 和 term 相同，那么这两个日志相同 （<strong>Log Matching</strong>）</li>
-<li>如果两个日志相同，那么他们之前的日志均相同</li>
+<li>  由于节点 A、B 之前没有通过任何提案，所以将返回一个 “尚无提案”的响应。也就是说节点 A 和 B 在告诉Proposer，我之前没有通过任何提案，并承诺以后不再响应提案编号小于等于 1 的Prepare请求，不会通过编号小于 1 的提案。</li>
+<li>  节点 C 也是如此，它将返回一个 “尚无提案”的响应，并承诺以后不再响应提案编号小于等于 5 的Prepare请求，不会通过编号小于 5 的提案。</li>
 </ul>
-<p>第一点主要是因为选举时的限制，根据 Leader Completeness，成为 Leader 的结点里的日志一定拥有所有已被多数节点拥有的日志条目，所以先前的日志条目很可能已经被提交，因此不可以删除之前的日志。</p>
-<p>第二点主要是因为一个任期内只可能出现一个 Leader，而 Leader 只会为一个 index 创建一个日志条目，而且一旦写入就不会修改，因此保证了日志的唯一性。</p>
-<p>第三点是因为在写入日志时会检查前一个日志是否一致。换言之就是，如果写入了一条日志，那么前一个日志条目也一定一致，从而递归的保证了前面的所有日志都一致。从而也保证了当一个日志被提交之后，所有结点在该 index 上提交的内容是一样的（<strong>State Machine Safety</strong>）。</p>
-<h4 id="日志同步"><a href="#日志同步" class="headerlink" title="日志同步"></a>日志同步</h4><p>接下来我们就可以看到 Raft 实际中是如何做到日志同步的。这一过程由一个称为 AppendEntries 的 RPC 调用实现，Leader 会给每个 Follower 发送该 RPC 以追加日志，请求中除了当前任期 term、Leader 的 id 和已提交的日志 index，还有将要追加的日志列表（空则成为心跳包），前一个日志的 index 和 term。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220429201026366.png" alt="image-20220429201026366" style="zoom:80%;">
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115354299.png" alt="image-20220726115354299" style="zoom:80%;">
 
-<p>当接收到该请求后，会先检查 term，如果请求中的 term 比自己的小说明已过期，拒绝请求。之后会对比先前日志的 index 和 term，如果一致，那么由前提可知前面的日志均相同，那么就可以从此处更新日志，将请求中的所有日志写入自己的日志列表中，否则返回 false。如果发生 index 相同但 term 不同则清空后续所有的日志，以 Leader 为准。最后检查已提交的日志 index，对可提交的日志进行提交操作。</p>
-<p>对于 Leader 来说会维护 nextIndex[] 和 matchIndex[] 两个数组，分别记录了每个 Follower 下一个将要发送的日志 index 和已经匹配上的日志 index。每次成为 Leader 都会初始化这两个数组，前者初始化为 Leader 最后一条日志的 index 加 1，后者初始化为 0。每次发送 RPC 时会发送 nextIndex[i] 及之后的日志，成功则更新两个数组，否则减少 nextIndex[i] 的值重试，重复这一过程直至成功。</p>
-<blockquote>
-<p>这里减少 nextIndex 的值有不同的策略，可以每次减一，也可以减一个较大的值，或者是跨任期减少，用于快速找到和该结点相匹配的日志条目。实际中还有可能会定期存储日志，所以当前日志列表中并不会太大，可以完整打包发给对方，这一做法比较适合新加入集群的结点。</p>
-</blockquote>
-<h4 id="日志提交"><a href="#日志提交" class="headerlink" title="日志提交"></a>日志提交</h4><p>只要日志在多数结点上存在，那么 Leader 就可以提交该操作。但是 Raft 额外限制了 Leader 只对自己任期内的日志条目适用该规则，先前任期的条目只能由当前任期的提交而间接被提交。</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220429201034249.png" alt="image-20220429201034249" style="zoom:80%;">
+<p>然后过了一段时间， 节点 A、B 收到了提案编号为 5 的Prepare请求，节点 C 收到了提案编号为 1 的Prepare请求，将执行下面的处理过程：</p>
+<ul>
+<li>  节点 A、B 收到提案编号为 5 的Prepare请求时，因为提案编号 5 大于它们之前响应的Prepare请求的提案编号 1，而且两个节点都没有通过任何提案，所以它将返回一个 “尚无提案”的响应，并承诺以后不再响应提案编号小于等于 5 的Prepare请求，不会通过编号小于 5 的提案。</li>
+<li>  当节点 C 收到提案编号为 1 的Prepare请求时，由于提案编号 1 小于它之前响应的Prepare请求的提案编号 5，所以丢弃该Prepare请求，不做响应。</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115414255.png" alt="image-20220726115414255" style="zoom:80%;">
 
-<p>例如论文中图 8 这一 corner case。一开始如 (a) 所示，之后 S1 下线，(b) 中 S5 从 S3 和 S4 处获得了投票成为了 Leader 并收到了一条来自客户端的消息，之后 S5 下线。(c) 中 S1 恢复并成为了 Leader，并且将日志复制给了多数结点，之后进行了一个致命操作，将 index 为 2 的日志提交了，然后 S1 下线。(d) 中 S5 恢复，并从 S2、S3、S4 处获得了足够投票，然后将已提交的 index 为 2 的日志覆盖了。</p>
-<p>为了解决这个问题，Raft 只允许提交自己任期内的日志，从而日志 2 只能像 (e) 中由于日志 3 同步而被间接提交，避免了 Follower 中由于缺少新任期的日志，使得 S5 能够继续成为 Leader。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这张图实乃整个算法的精髓所在，值得细细品读</p>
-<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220429201042129.png" alt="image-20220429201042129" style="zoom:80%;">
+<h3 id="3-2-阶段二（批准阶段）"><a href="#3-2-阶段二（批准阶段）" class="headerlink" title="3.2 阶段二（批准阶段）"></a>3.2 阶段二（批准阶段）</h3><p>第二个阶段，客户端 1、2 在收到大多数节点的Prepare响应之后，会分别发送Accept请求：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115431418.png" alt="image-20220726115431418" style="zoom:80%;">
 
-<p>Raft 简单来说就是用 Leader 负责复制日志，超过半数就可以提交。然后用了诸多限制（Election Safety、Leader Append-Only、Log Matching、Leader Completeness、State Machine Safety）保证了日志的正确性和一致性。这些限制和算法的流程可以说是强耦合在一起的，如果单拿一个出来会容易想不通为什么，但是这些限制结合到一起就成了一个极其精妙的算法~</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.zinglix.xyz/2020/06/25/raft/">https://blog.zinglix.xyz/2020/06/25/raft/</a></p>
-</blockquote>
+<ul>
+<li>  当客户端 1 收到大多数的接受者（节点 A、B）的Prepare响应后，根据响应中提案编号最大的提案的值，设置Accept请求中的值。因为该值在来自节点 A、B 的Prepare响应中都为空（也就是“尚无提案”），所以就把自己的提议值 3 作为提案的值，发送Accept请求[1, 3]。</li>
+<li>  当客户端 2 收到大多数的接受者的Prepare响应后（节点 A、B 和节点 C），根据响应中提案编号最大的提案的值，来设置接受请求中的值。因为该值在来自节点 A、B、C 的准备响应中都为空（“尚无提案”），所以就把自己的提议值 7 作为提案的值，发送Accept请求[5, 7]。</li>
+</ul>
+<p>然后，当三个节点收到 2 个客户端的Accept请求时，会进行这样的处理：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115501116.png" alt="image-20220726115501116" style="zoom:80%;">
+
+<ul>
+<li>  当节点 A、B、C 收到接受请求[1, 3]的时候，由于提案的提案编号 1 小于三个节点承诺能通过的提案的最小提案编号 5，所以提案[1, 3]将被拒绝。</li>
+<li>  当节点 A、B、C 收到接受请求[5, 7]的时候，由于提案的提案编号 5 不小于三个节点承诺能通过的提案的最小提案编号 5，所以就通过提案[5, 7]，也就是接受了值 7，三个节点就 X 值为 7 达成了共识。</li>
+</ul>
+<p>通过上面的示例演示可以看到， Basic Paxos 是通过二阶段提交的方式来达成共识的。除了共识，Basic Paxos 还实现了容错，在少于一半的节点出现故障时，集群也能工作。</p>
+<p>本质上，提案编号的大小代表着优先级，你可以这么理解，根据提案编号的大小，接受者保证三个承诺：</p>
+<ol>
+<li> 如果Prepare请求的提案编号，小于等于接受者已经响应的Prepare请求的提案编号，那么接受者将承诺不响应这个Prepare请求；</li>
+<li> 如果Accept请求中的提案的提案编号，小于接受者已经响应的Prepare请求的提案编号，那么接受者将承诺不通过这个提案；</li>
+<li> 如果接受者之前有通过提案，那么接受者将承诺，会在Prepare请求的响应中，包含已经通过的最大编号的提案信息。</li>
+</ol>
+<h2 id="四、Multi-Paxos-思想"><a href="#四、Multi-Paxos-思想" class="headerlink" title="四、Multi-Paxos 思想"></a>四、Multi-Paxos 思想</h2><p>Basic Paxos 只能就单个值（Value）达成共识，一旦遇到为一系列的值达成共识的时候，它就不管用了。Leslie Lamport提到的 Multi-Paxos 是一种思想，基于该思想，可以通过多个 Basic Paxos 实例实现一系列值的共识算法（比如 Chubby 的 Multi-Paxos 实现、Raft 算法等）。</p>
+<h3 id="4-1-Basic-Paxos的问题"><a href="#4-1-Basic-Paxos的问题" class="headerlink" title="4.1 Basic Paxos的问题"></a>4.1 Basic Paxos的问题</h3><p>我们先来看看Basic Paxos算法存在哪些问题，为何Leslie Lamport要对它进行优化？</p>
+<ol>
+<li> 首先，如果多个Proposer同时提交提案，可能出现提案冲突，导致在Prepare阶段没有Proposer接收到大多数Prepare响应，协商失败，需要重新协商，而不断的重新协商最终导致了“活性问题”。</li>
+<li> 想象一下，一个 5 节点的集群，如果 3 个节点作为Proposer同时提案，就可能发生因为没有Proposer接收大多数响应（比如 1 个Proposer接收到 1 个Prepare响应，另外 2 个Proposer分别接收到 2 个Prepare响应）而准备失败，需要重新协商。</li>
+<li> 此外，Basic Paxos 是通过二阶段提交来达成共识的，2 轮 RPC 通讯本身就十分消耗性能，存在可能的延时问题。如果因为活性问题再多次往返通讯，对整个系统性能的影响可想而知。</li>
+</ol>
+<h3 id="4-2-领导者选举"><a href="#4-2-领导者选举" class="headerlink" title="4.2 领导者选举"></a>4.2 领导者选举</h3><p>针对活性问题，一种解决方案就是<strong>引入领导者节点</strong>，领导者节点作为唯一Proposer，这样就不存在多个Proposer同时提交提案的情况，也就不存在因提案冲突而引发的活性问题了。</p>
+<p>Leslie Lamport没有说如何选举领导者，需要我们在实现 Multi-Paxos 算法的时候自己实现。比如在 Chubby 中，Leader节点是通过执行 Basic Paxos 算法进行投票选举产生的。</p>
+<h3 id="4-3-二阶段优化"><a href="#4-3-二阶段优化" class="headerlink" title="4.3 二阶段优化"></a>4.3 二阶段优化</h3><p>针对二阶段提交的性能问题，我们可以采用“当领导者处于稳定状态时，省掉Prepare阶段，直接进入Accept阶段”这个优化机制。</p>
+<p>我们来思考下阶段一（准备阶段）的意义：是发现Acceptor节点上已经通过的提案的值。如果在所有Acceptor节点上，都没有已经通过的提案了，这时领导者就可以自己指定提案的值了，那么，准备阶段就没有意义了，也就是可以省掉了。</p>
+<p>也就是说，领导者节点上，序列中的命令是最新的，不再需要通过Prepare请求来发现之前被大多数节点通过的提案，领导者可以独立指定提案中的值。这时，领导者在提交命令时，可以省掉Prepare阶段，直接进入到Accept阶段：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115525606.png" alt="image-20220726115525606" style="zoom:80%;">
+
+<p>通过上图，可以看到，Multi-Paxos 引入领导者节点之后，因为只有领导者节点一个Proposer，只有它说了算，所以就不存在提案冲突。另外，当领导者节点处于稳定状态时，就省掉了Prepare阶段，直接进入Accept阶段，所以在很大程度上减少了网络通信的往返开销，提升了性能，降低了延迟。</p>
+<h3 id="4-4-Chuppy的实现"><a href="#4-4-Chuppy的实现" class="headerlink" title="4.4 Chuppy的实现"></a>4.4 Chuppy的实现</h3><p>在实际的系统中，我们该如何实现 Multi-Paxos 呢？接下来，我以 Chubby 的 Multi-Paxos 实现为例，讲解一下。</p>
+<p>在 Chubby 中，主节点（领导者节点）是通过执行 Basic Paxos 算法，进行投票选举产生的，并且在运行过程中，主节点会通过不断续租的方式来延长租期（Lease）。比如在实际场景中，几天内都是同一个节点作为主节点。如果主节点故障了，那么其他的节点又会投票选举出新的主节点，也就是说主节点是一直存在的，而且是唯一的。</p>
+<p>Chubby 实现了Leslie Lamport提到的 “当领导者处于稳定状态时，省掉了准备阶段，直接进入接受阶段” 这个优化机制，提升了数据的提交效率，但是所有写请求都在主节点处理，限制了集群处理写请求的并发能力，约等于单机。</p>
+<p>Chubby 为了实现了强一致性，读操作也只能在主节点上执行。也就是说，只要数据写入成功，之后所有的客户端读到的数据都是一致的。具体的过程如下：</p>
+<p>1.所有的读请求和写请求都由主节点来处理。当主节点从客户端接收到写请求后，作为Proposer，执行 Basic Paxos 实例，将数据发送给所有的节点，并且在大多数节点接受了这个写请求之后，再响应给客户端成功；</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115533581.png" alt="image-20220726115533581" style="zoom:80%;">
+
+<p>2.当主节点接收到读请求后，主节点只需要查询本地数据，然后返回给客户端就可以了：</p>
+<img src="https://cdn.jsdelivr.net/gh/kuangtf/PictureBed/img/image-20220726115540773.png" alt="image-20220726115540773" style="zoom:80%;">
+
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>通过本章的讲解 ，我们应该理解了Paxos算法的核心内容：Basic Paxos算法和Multi-Paxos 思想。</p>
+<p>Basic Paxos 是经过证明的，而 Multi-Paxos 是一种思想，缺失实现算法的必须编程细节，这就导致Multi-Paxos 的最终算法实现，是建立在一个未经证明的基础之上的，正确性是个问号。</p>
+<p>所以在实际使用时，不推荐设计和实现新的 Multi-Paxos 算法，而是建议优先考虑 Raft 算法，因为 Raft 的正确性是经过证明的。当 Raft 算法不能满足需求时，你再考虑实现和优化 Multi-Paxos 算法。</p>
 
                 
             </div>
@@ -666,7 +649,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://kuangtf.github.io/2021/11/10/fen-bu-shi/yi-zhi-xing-suan-fa/">http://kuangtf.github.io/2021/11/10/fen-bu-shi/yi-zhi-xing-suan-fa/</a>
+                    <a href="http://kuangtf.github.io/2022/07/26/fen-bu-shi/paxos-suan-fa/">http://kuangtf.github.io/2022/07/26/fen-bu-shi/paxos-suan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -704,8 +687,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE%E5%92%8C%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">一致性协议和算法</span>
+                                <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9APaxos%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">分布式理论之分布式一致性：Paxos算法</span>
                                 </a>
                             
                         </div>
@@ -879,13 +862,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/10/zookeeper/zookeeper-xiang-guan-gai-nian-zong-jie-jin-jie/">
+                <a href="/2022/07/26/fen-bu-shi/raft-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="ZooKeeper相关概念进阶">
+                        <img src="https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="分布式理论之分布式一致性：Raft算法原理">
                         
-                        <span class="card-title">ZooKeeper相关概念进阶</span>
+                        <span class="card-title">分布式理论之分布式一致性：Raft算法原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -896,14 +879,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-26
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ZooKeeper/" class="post-category">
-                                    ZooKeeper
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
                                 </a>
                             
                             
@@ -913,8 +896,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ZooKeeper%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%BF%9B%E9%98%B6/">
-                        <span class="chip bg-color">ZooKeeper相关概念进阶</span>
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9ARaft%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">分布式理论之分布式一致性：Raft算法原理</span>
                     </a>
                     
                 </div>
@@ -928,13 +911,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/04/mysql/biao-mei-wen-wo-you-na-xie-suo-yin-wo-huan-neng-bu-hui/">
+                <a href="/2022/07/26/fen-bu-shi/tcc/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/medias/featureimages/8.jpg" class="responsive-img" alt="表妹问我有哪些索引，我还能不会">
+                        <img src="https://cdn.jsdelivr.net/gh/kuangtf/kuangtf.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="分布式理论之分布式事务：TCC">
                         
-                        <span class="card-title">表妹问我有哪些索引，我还能不会</span>
+                        <span class="card-title">分布式理论之分布式事务：TCC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -945,14 +928,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/MySQL/" class="post-category">
-                                    MySQL
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
                                 </a>
                             
                             
@@ -962,8 +945,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL-%E7%B4%A2%E5%BC%95/">
-                        <span class="chip bg-color">MySQL 索引</span>
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%EF%BC%9ATCC/">
+                        <span class="chip bg-color">分布式理论之分布式事务：TCC</span>
                     </a>
                     
                 </div>
@@ -1204,7 +1187,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">669.7k</span>&nbsp;字
+                class="white-color">673.7k</span>&nbsp;字
             
             
             
